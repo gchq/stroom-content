@@ -1,0 +1,11 @@
+name: stroom-content
+root: ~/git_work/stroom-content/
+
+windows:
+  - shell:
+      layout: main-vertical
+      panes:
+          - vim 
+          - cd stroom-content-source
+          - 
+

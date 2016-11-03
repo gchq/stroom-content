@@ -1,0 +1,83 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<pipeline>
+   <elements>
+      <add>
+         <element>
+            <id>CSV splitter filter</id>
+            <type>DSParser</type>
+         </element>
+         <element>
+            <id>XSLT filter</id>
+            <type>XSLTFilter</type>
+         </element>
+         <element>
+            <id>XML writer</id>
+            <type>XMLWriter</type>
+         </element>
+         <element>
+            <id>stream appender</id>
+            <type>StreamAppender</type>
+         </element>
+      </add>
+   </elements>
+   <properties>
+      <add>
+         <property>
+            <element>CSV splitter filter</element>
+            <name>textConverter</name>
+            <value>
+               <entity>
+                  <type>TextConverter</type>
+                  <uuid>4fe46544-fbf6-4a0d-ab44-16cd0e00a0a5</uuid>
+                  <name>CSV splitter</name>
+               </entity>
+            </value>
+         </property>
+         <property>
+            <element>XSLT filter</element>
+            <name>xslt</name>
+            <value>
+               <entity>
+                  <type>XSLT</type>
+                  <uuid>efb3738b-f7f3-44b9-839e-b74b341c78ee</uuid>
+                  <name>XSLT</name>
+               </entity>
+            </value>
+         </property>
+         <property>
+            <element>stream appender</element>
+            <name>feed</name>
+            <value>
+               <entity>
+                  <type>Feed</type>
+                  <uuid>306959c0-7125-492d-8f0d-81af248a85f2</uuid>
+                  <name>CSV_FEED</name>
+               </entity>
+            </value>
+         </property>
+         <property>
+            <element>stream appender</element>
+            <name>streamType</name>
+            <value>
+               <string>Events</string>
+            </value>
+         </property>
+      </add>
+   </properties>
+   <links>
+      <add>
+         <link>
+            <from>CSV splitter filter</from>
+            <to>XSLT filter</to>
+         </link>
+         <link>
+            <from>XSLT filter</from>
+            <to>XML writer</to>
+         </link>
+         <link>
+            <from>XML writer</from>
+            <to>stream appender</to>
+         </link>
+      </add>
+   </links>
+</pipeline>

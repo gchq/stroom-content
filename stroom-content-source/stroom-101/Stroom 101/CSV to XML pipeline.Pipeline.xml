@@ -1,0 +1,11 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<pipeline>
+   <createTime>1476276350593</createTime>
+   <createUser>admin</createUser>
+   <description/>
+   <name>CSV to XML pipeline</name>
+   <pipelineType>Event Data</pipelineType>
+   <updateTime>1476279778760</updateTime>
+   <updateUser>admin</updateUser>
+   <uuid>6a317bc8-8593-4bf7-b91c-7f77ef30d2f7</uuid>
+</pipeline>
