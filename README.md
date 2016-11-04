@@ -23,6 +23,9 @@ For example:
 ./buildContentPacks.py  stroom-101 core-xml-schemas
 ```
 
+## Released content packs
+
+For a set of pre-built content packs see the [releases page](https://github.com/gchq/stroom-content/releases).
 
 ## Importing the content packs
 
