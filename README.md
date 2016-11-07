@@ -4,6 +4,16 @@ _Stroom Content_ is a repository of the content definition files used to import 
 
 The content is grouped into a number of _content packs_ which can each be built into a zip file that is ready for import directly into _Stroom_.
 
+## Content pack contents
+
+The following content packs are currently available.  Click on the link for a description of the content pack.
+
+[**core-xml-schemas**](./docs/core-xml-schemas.md)
+
+[**event-logging-xml-schema**](./docs/event-logging-xml-schema.md)
+
+[**stroom-101**](./docs/stroom-101.md)
+
 ## Building the content packs
 
 Each content pack is defined as a directory within _stroom-content-source_ with the name of content pack being the name of the directory.
