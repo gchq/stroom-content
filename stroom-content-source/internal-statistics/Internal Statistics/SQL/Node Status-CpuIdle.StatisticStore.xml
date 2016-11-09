@@ -1,0 +1,11 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<statisticStore>
+   <description>Node Status-CpuIdle</description>
+   <enabled>true</enabled>
+   <engineName>SQL</engineName>
+   <name>Node Status-CpuIdle</name>
+   <precision>60000</precision>
+   <rollUpType>ALL</rollUpType>
+   <statisticType>VALUE</statisticType>
+   <uuid>946a8765-a59a-11e6-bdc4-0242ac110002</uuid>
+</statisticStore>
