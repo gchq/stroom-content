@@ -12,15 +12,15 @@ The following represents the folder structure and content that will be imported 
 
         Displays various visualisations related to the current and historic load on the system, typically broken down by _Stroom_ node. Includes:
 
-            * CPU % by node
-
-            * Read Event per second by node
-            
-            * Write Events per second by node
-            
-            * Pipeline stream processes by node
-            
-            * Task queue size
+     * CPU % by node
+     
+     * Read Event per second by node
+     
+     * Write Events per second by node
+     
+     * Pipeline stream processes by node
+     
+     * Task queue size
 
     * **Stroom Volumes** `Dashboard`
 
