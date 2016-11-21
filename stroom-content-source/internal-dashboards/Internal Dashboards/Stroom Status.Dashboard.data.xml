@@ -53,11 +53,6 @@
                   <visible>true</visible>
                </field>
             </fields>
-            <extractionPipeline>
-               <type>Pipeline</type>
-               <uuid>3d9d60e9-61c2-4c88-a57b-7bc584dd970e</uuid>
-               <name>Search Extraction</name>
-            </extractionPipeline>
             <maxResults>
                <level>1000000</level>
             </maxResults>
@@ -172,11 +167,6 @@
                   <visible>true</visible>
                </field>
             </fields>
-            <extractionPipeline>
-               <type>Pipeline</type>
-               <uuid>3d9d60e9-61c2-4c88-a57b-7bc584dd970e</uuid>
-               <name>Search Extraction</name>
-            </extractionPipeline>
             <maxResults>
                <level>1000000</level>
             </maxResults>
@@ -326,11 +316,6 @@
                   <visible>true</visible>
                </field>
             </fields>
-            <extractionPipeline>
-               <type>Pipeline</type>
-               <uuid>3d9d60e9-61c2-4c88-a57b-7bc584dd970e</uuid>
-               <name>Search Extraction</name>
-            </extractionPipeline>
             <maxResults>
                <level>10</level>
                <level>1</level>
@@ -486,11 +471,6 @@
                   <visible>true</visible>
                </field>
             </fields>
-            <extractionPipeline>
-               <type>Pipeline</type>
-               <uuid>3d9d60e9-61c2-4c88-a57b-7bc584dd970e</uuid>
-               <name>Search Extraction</name>
-            </extractionPipeline>
             <maxResults>
                <level>1</level>
                <level>1</level>
@@ -581,11 +561,6 @@
                   <visible>true</visible>
                </field>
             </fields>
-            <extractionPipeline>
-               <type>Pipeline</type>
-               <uuid>3d9d60e9-61c2-4c88-a57b-7bc584dd970e</uuid>
-               <name>Search Extraction</name>
-            </extractionPipeline>
             <maxResults>
                <level>1000000</level>
             </maxResults>
@@ -675,11 +650,6 @@
                   <visible>true</visible>
                </field>
             </fields>
-            <extractionPipeline>
-               <type>Pipeline</type>
-               <uuid>3d9d60e9-61c2-4c88-a57b-7bc584dd970e</uuid>
-               <name>Search Extraction</name>
-            </extractionPipeline>
             <maxResults>
                <level>1000000</level>
             </maxResults>
@@ -730,11 +700,6 @@
                   <visible>true</visible>
                </field>
             </fields>
-            <extractionPipeline>
-               <type>Pipeline</type>
-               <uuid>3d9d60e9-61c2-4c88-a57b-7bc584dd970e</uuid>
-               <name>Search Extraction</name>
-            </extractionPipeline>
             <maxResults>
                <level>1000000</level>
             </maxResults>
