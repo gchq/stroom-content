@@ -53,7 +53,7 @@
          <query>
             <dataSource>
                <type>StatisticStore</type>
-               <uuid>f52556a4-a5d3-11e6-8f02-0242ac110002</uuid>
+               <uuid>946a89dd-a59a-11e6-bdc4-0242ac110002</uuid>
                <name>Volume Free</name>
             </dataSource>
             <expression>
@@ -64,14 +64,14 @@
                      <enabled>true</enabled>
                      <field>Date Time</field>
                      <condition>BETWEEN</condition>
-                     <value>2016-11-07T00:00:00.000Z,2016-11-09T00:00:00.000Z</value>
+                     <value>now() - 60d,now()</value>
                   </term>
                </children>
             </expression>
             <automate>
                <open>true</open>
                <refresh>true</refresh>
-               <refreshInterval>60</refreshInterval>
+               <refreshInterval>60s</refreshInterval>
             </automate>
          </query>
       </component>

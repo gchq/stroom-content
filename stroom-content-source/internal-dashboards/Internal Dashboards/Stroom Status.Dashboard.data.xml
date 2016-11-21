@@ -70,7 +70,7 @@
          <query>
             <dataSource>
                <type>StatisticStore</type>
-               <uuid>f52551a7-a5d3-11e6-8f02-0242ac110002</uuid>
+               <uuid>946a8501-a59a-11e6-bdc4-0242ac110002</uuid>
                <name>Node Status-CpuUser</name>
             </dataSource>
             <expression>
@@ -81,14 +81,14 @@
                      <enabled>true</enabled>
                      <field>Date Time</field>
                      <condition>BETWEEN</condition>
-                     <value>2016-11-07T00:00:00.000Z,2016-11-11T00:00:00.000Z</value>
+                     <value>now() - 2w,now()</value>
                   </term>
                </children>
             </expression>
             <automate>
                <open>true</open>
                <refresh>true</refresh>
-               <refreshInterval>100</refreshInterval>
+               <refreshInterval>60s</refreshInterval>
             </automate>
          </query>
       </component>
@@ -113,7 +113,7 @@
          <query>
             <dataSource>
                <type>StatisticStore</type>
-               <uuid>f525508c-a5d3-11e6-8f02-0242ac110002</uuid>
+               <uuid>946a83ea-a59a-11e6-bdc4-0242ac110002</uuid>
                <name>Node Status-JvmHeapUsedMb</name>
             </dataSource>
             <expression>
@@ -124,14 +124,14 @@
                      <enabled>true</enabled>
                      <field>Date Time</field>
                      <condition>BETWEEN</condition>
-                     <value>2016-11-07T00:00:00.000Z,2016-11-11T00:00:00.000Z</value>
+                     <value>now() - 2w,now()</value>
                   </term>
                </children>
             </expression>
             <automate>
                <open>true</open>
                <refresh>true</refresh>
-               <refreshInterval>100</refreshInterval>
+               <refreshInterval>60s</refreshInterval>
             </automate>
          </query>
       </component>
@@ -203,7 +203,7 @@
          <query>
             <dataSource>
                <type>StatisticStore</type>
-               <uuid>f5254e22-a5d3-11e6-8f02-0242ac110002</uuid>
+               <uuid>946a821a-a59a-11e6-bdc4-0242ac110002</uuid>
                <name>Node Status-ReadEps</name>
             </dataSource>
             <expression>
@@ -214,14 +214,14 @@
                      <enabled>true</enabled>
                      <field>Date Time</field>
                      <condition>BETWEEN</condition>
-                     <value>2016-11-07T00:00:00.000Z,2016-11-11T00:00:00.000Z</value>
+                     <value>now() - 2w,now()</value>
                   </term>
                </children>
             </expression>
             <automate>
                <open>true</open>
                <refresh>true</refresh>
-               <refreshInterval>100</refreshInterval>
+               <refreshInterval>60s</refreshInterval>
             </automate>
          </query>
       </component>
@@ -358,7 +358,7 @@
          <query>
             <dataSource>
                <type>StatisticStore</type>
-               <uuid>f5254db4-a5d3-11e6-8f02-0242ac110002</uuid>
+               <uuid>946a81a2-a59a-11e6-bdc4-0242ac110002</uuid>
                <name>Node Status-WriteEps</name>
             </dataSource>
             <expression>
@@ -369,14 +369,14 @@
                      <enabled>true</enabled>
                      <field>Date Time</field>
                      <condition>BETWEEN</condition>
-                     <value>2016-11-07T00:00:00.000Z,2016-11-11T00:00:00.000Z</value>
+                     <value>now() - 2w,now()</value>
                   </term>
                </children>
             </expression>
             <automate>
                <open>true</open>
                <refresh>true</refresh>
-               <refreshInterval>100</refreshInterval>
+               <refreshInterval>60s</refreshInterval>
             </automate>
          </query>
       </component>
@@ -518,7 +518,7 @@
          <query>
             <dataSource>
                <type>StatisticStore</type>
-               <uuid>f5254d26-a5d3-11e6-8f02-0242ac110002</uuid>
+               <uuid>946a80fc-a59a-11e6-bdc4-0242ac110002</uuid>
                <name>PipelineStreamProcessor</name>
             </dataSource>
             <expression>
@@ -529,14 +529,14 @@
                      <enabled>true</enabled>
                      <field>Date Time</field>
                      <condition>BETWEEN</condition>
-                     <value>2016-11-07T00:00:00.000Z,2016-11-11T00:00:00.000Z</value>
+                     <value>now() - 2w,now()</value>
                   </term>
                </children>
             </expression>
             <automate>
                <open>true</open>
                <refresh>true</refresh>
-               <refreshInterval>100</refreshInterval>
+               <refreshInterval>60s</refreshInterval>
             </automate>
          </query>
       </component>
@@ -612,7 +612,7 @@
          <query>
             <dataSource>
                <type>StatisticStore</type>
-               <uuid>f5254bb2-a5d3-11e6-8f02-0242ac110002</uuid>
+               <uuid>946a7f0f-a59a-11e6-bdc4-0242ac110002</uuid>
                <name>Stream Task Queue Size</name>
             </dataSource>
             <expression>
@@ -623,14 +623,14 @@
                      <enabled>true</enabled>
                      <field>Date Time</field>
                      <condition>BETWEEN</condition>
-                     <value>2016-11-07T00:00:00.000Z,2016-11-11T00:00:00.000Z</value>
+                     <value>now() - 2w,now()</value>
                   </term>
                </children>
             </expression>
             <automate>
                <open>true</open>
                <refresh>true</refresh>
-               <refreshInterval>100</refreshInterval>
+               <refreshInterval>60s</refreshInterval>
             </automate>
          </query>
       </component>
