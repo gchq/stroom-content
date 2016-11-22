@@ -18,6 +18,8 @@ The following content packs are currently available.  Click on the link for deta
 
 [**standard-pipelines**](./docs/standard-pipelines.md) - A set of standard data format agonostic pipelines for processing data.
 
+[**standard-translations**](./docs/standard-translations.md) - A set of standard parsers and translations for converting bespoke log formats in event-logging XML.
+
 [**stroom-101**](./docs/stroom-101.md) - The entities used in the [quick start guide](https://gchq.github.io/stroom-docs/quick-start-guide/quick-start.html) 
 
 [**template-pipelines**](./docs/template-pipelines.md) - A set of template pipelines that other pipelines can inherit from.

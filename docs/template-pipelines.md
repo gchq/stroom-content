@@ -27,7 +27,7 @@ This is a fragment of a pipeline that is inherited from by the Event Data (....)
 
 ## Context Data
 
-<!--TODO-->
+This template pipeline is used for pipelines that process _Context_ data that is received alongside raw events. A _Context Data_ type pipeline is used to inject context data into another pipeline.
 
 ## Event Data (JSON)
 

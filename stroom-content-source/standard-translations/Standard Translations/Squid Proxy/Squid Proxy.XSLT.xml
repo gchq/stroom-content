@@ -1,0 +1,6 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<xslt>
+   <description>Translates default Squid proxy access log format</description>
+   <name>Squid Proxy</name>
+   <uuid>49cf1829-7ff5-449b-b2b4-d5c00b0aa9f3</uuid>
+</xslt>
