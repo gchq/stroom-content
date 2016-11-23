@@ -1,0 +1,29 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<pipeline>
+   <properties>
+      <add>
+         <property>
+            <element>translationFilter</element>
+            <name>xslt</name>
+            <value>
+               <entity>
+                  <type>XSLT</type>
+                  <uuid>49cf1829-7ff5-449b-b2b4-d5c00b0aa9f3</uuid>
+                  <name>Squid Proxy</name>
+               </entity>
+            </value>
+         </property>
+         <property>
+            <element>dsParser</element>
+            <name>textConverter</name>
+            <value>
+               <entity>
+                  <type>TextConverter</type>
+                  <uuid>7e3471e4-dcc1-4132-a565-ef5862347421</uuid>
+                  <name>Squid Proxy</name>
+               </entity>
+            </value>
+         </property>
+      </add>
+   </properties>
+</pipeline>
