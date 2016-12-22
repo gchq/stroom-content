@@ -118,7 +118,7 @@
             <xs:documentation>An identifer for the event that contributed to this statistic event. An identifier can be composed of multiple parts or a single part. Each part can be either a long or string type. If multiple parts are used then the order of the parts in the document must be consistent and will be read in document order.</xs:documentation>
         </xs:annotation>
         <xs:choice minOccurs="1" maxOccurs="unbounded">
-            <xs:element name="longIdentifier" type="xs:long" minOccurs="1" maxOccurs="1">
+            <xs:element name="longIdentifier" minOccurs="1" maxOccurs="1">
                 <xs:complexType>
                     <xs:simpleContent>
                         <xs:extension base="xs:long">
@@ -131,7 +131,7 @@
                     </xs:simpleContent>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="stringIdentifier" type="xs:string" minOccurs="1" maxOccurs="1">
+            <xs:element name="stringIdentifier" minOccurs="1" maxOccurs="1">
                 <xs:complexType>
                     <xs:simpleContent>
                         <xs:extension base="s:RestrictedStringType">
