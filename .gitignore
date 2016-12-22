@@ -4,3 +4,4 @@ stroom-content-artifacts
 node_modules
 _book
 _unused
+.idea
