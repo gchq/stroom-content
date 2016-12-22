@@ -72,7 +72,7 @@
 		</xs:attribute>
 		<xs:attribute name="value" use="required">
 			<xs:annotation>
-				<xs:documentation>The actual value of the tag, e.g. PULL_PRINT_CSV-EVENTS, jbloggs, server.mydomain, 192.168.0.1, etc.</xs:documentation>
+				<xs:documentation>The actual value of the tag, e.g. MY_FEED_NAME, jbloggs, server.mydomain, 192.168.0.1, etc.</xs:documentation>
 			</xs:annotation>
 			<xs:simpleType>
 				<xs:restriction base="xs:string">
