@@ -1,11 +1,11 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <statisticStore>
-   <description>Node Status-CpuSystem</description>
+   <description>EPS</description>
    <enabled>true</enabled>
    <engineName>SQL</engineName>
-   <name>Node Status-CpuSystem</name>
+   <name>EPS</name>
    <precision>60000</precision>
-   <rollUpType>ALL</rollUpType>
+   <rollUpType>CUSTOM</rollUpType>
    <statisticType>VALUE</statisticType>
-   <uuid>946a85af-a59a-11e6-bdc4-0242ac110002</uuid>
+   <uuid>a9936548-2572-448b-9d5b-8543052c4d92</uuid>
 </statisticStore>
