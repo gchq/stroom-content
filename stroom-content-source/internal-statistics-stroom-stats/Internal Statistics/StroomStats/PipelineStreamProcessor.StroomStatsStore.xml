@@ -1,5 +1,5 @@
 <?xml version="1.1" encoding="UTF-8"?>
-<statisticStore>
+<stroomStatsStore>
     <description>Counts the number of times that a node/feed/pipeline combination is processed</description>
    <enabled>true</enabled>
    <name>PipelineStreamProcessor</name>
@@ -7,4 +7,4 @@
    <rollUpType>ALL</rollUpType>
    <statisticType>COUNT</statisticType>
    <uuid>efd9bad4-0bab-460f-ae98-79e9717deeaf</uuid>
-</statisticStore>
+</stroomStatsStore>
