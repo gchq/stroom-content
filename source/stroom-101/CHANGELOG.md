@@ -15,11 +15,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 
-## [core-xml-schemas-v1.0]
+## [stroom-101-v1.0]
 
 * Inital version.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v1.0...HEAD
-[core-xml-schemas-v1.0]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v1.0...core-xml-schemas-v1.0
+[Unreleased]: https://github.com/gchq/stroom-content/compare/stroom-101-v1.0...HEAD
+[stroom-101-v1.0]: https://github.com/gchq/stroom-content/compare/stroom-101-v1.0...stroom-101-v1.0
 

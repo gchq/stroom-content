@@ -15,11 +15,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 
-## [core-xml-schemas-v1.0]
+## [event-logging-xml-schema-v1.0]
 
 * Inital version.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v1.0...HEAD
-[core-xml-schemas-v1.0]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v1.0...core-xml-schemas-v1.0
+[Unreleased]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schema-v1.0...HEAD
+[event-logging-xml-schema-v1.0]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schema-v1.0...event-logging-xml-schema-v1.0
 
