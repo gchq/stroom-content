@@ -48,8 +48,8 @@
          <query>
             <dataSource>
                <type>StatisticStore</type>
-               <uuid>946a89dd-a59a-11e6-bdc4-0242ac110002</uuid>
-               <name>Volume Free</name>
+               <uuid>ac4d8d10-6f75-4946-9708-18b8cb42a5a3</uuid>
+               <name>Volumes</name>
             </dataSource>
             <expression>
                <enabled>true</enabled>
@@ -60,6 +60,12 @@
                      <field>Date Time</field>
                      <condition>BETWEEN</condition>
                      <value>now() - 60d,now()</value>
+                  </term>
+                  <term>
+                     <enabled>true</enabled>
+                     <field>Type</field>
+                     <condition>EQUALS</condition>
+                     <value>Free</value>
                   </term>
                </children>
             </expression>

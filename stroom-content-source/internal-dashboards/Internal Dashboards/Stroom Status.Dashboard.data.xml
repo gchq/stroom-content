@@ -65,8 +65,8 @@
          <query>
             <dataSource>
                <type>StatisticStore</type>
-               <uuid>946a8501-a59a-11e6-bdc4-0242ac110002</uuid>
-               <name>Node Status-CpuUser</name>
+               <uuid>af08c4a7-ee7c-44e4-8f5e-e9c6be280434</uuid>
+               <name>CPU</name>
             </dataSource>
             <expression>
                <enabled>true</enabled>
@@ -77,6 +77,12 @@
                      <field>Date Time</field>
                      <condition>BETWEEN</condition>
                      <value>now() - 2w,now()</value>
+                  </term>
+                  <term>
+                     <enabled>true</enabled>
+                     <field>Type</field>
+                     <condition>EQUALS</condition>
+                     <value>User (%)</value>
                   </term>
                </children>
             </expression>
@@ -108,8 +114,8 @@
          <query>
             <dataSource>
                <type>StatisticStore</type>
-               <uuid>946a83ea-a59a-11e6-bdc4-0242ac110002</uuid>
-               <name>Node Status-JvmHeapUsedMb</name>
+               <uuid>77c09ccb-e251-4ca5-bca0-56a842654397</uuid>
+               <name>Memory</name>
             </dataSource>
             <expression>
                <enabled>true</enabled>
@@ -120,6 +126,12 @@
                      <field>Date Time</field>
                      <condition>BETWEEN</condition>
                      <value>now() - 2w,now()</value>
+                  </term>
+                  <term>
+                     <enabled>true</enabled>
+                     <field>Type</field>
+                     <condition>EQUALS</condition>
+                     <value>Heap Used</value>
                   </term>
                </children>
             </expression>
@@ -193,8 +205,8 @@
          <query>
             <dataSource>
                <type>StatisticStore</type>
-               <uuid>946a821a-a59a-11e6-bdc4-0242ac110002</uuid>
-               <name>Node Status-ReadEps</name>
+               <uuid>a9936548-2572-448b-9d5b-8543052c4d92</uuid>
+               <name>EPS</name>
             </dataSource>
             <expression>
                <enabled>true</enabled>
@@ -205,6 +217,12 @@
                      <field>Date Time</field>
                      <condition>BETWEEN</condition>
                      <value>now() - 2w,now()</value>
+                  </term>
+                  <term>
+                     <enabled>true</enabled>
+                     <field>Type</field>
+                     <condition>EQUALS</condition>
+                     <value>Read</value>
                   </term>
                </children>
             </expression>
@@ -343,8 +361,8 @@
          <query>
             <dataSource>
                <type>StatisticStore</type>
-               <uuid>946a81a2-a59a-11e6-bdc4-0242ac110002</uuid>
-               <name>Node Status-WriteEps</name>
+               <uuid>a9936548-2572-448b-9d5b-8543052c4d92</uuid>
+               <name>EPS</name>
             </dataSource>
             <expression>
                <enabled>true</enabled>
@@ -355,6 +373,12 @@
                      <field>Date Time</field>
                      <condition>BETWEEN</condition>
                      <value>now() - 2w,now()</value>
+                  </term>
+                  <term>
+                     <enabled>true</enabled>
+                     <field>Type</field>
+                     <condition>EQUALS</condition>
+                     <value>Write</value>
                   </term>
                </children>
             </expression>
