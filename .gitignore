@@ -1,5 +1,6 @@
 *.swp
 stroom-content-target
+target
 stroom-content-artifacts
 node_modules
 _book
