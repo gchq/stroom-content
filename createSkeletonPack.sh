@@ -70,4 +70,6 @@ EOL
 echo ""
 echo "TIP: Use the linux binary 'uuidgen' to generatethe UUIDs required in the content pack's XML files."
 echo ""
+echo "TIP: Run the script createNewStroomFolder.sh from any directory to create a new Stroom Folder in that directory."
+echo ""
 echo "Done"
