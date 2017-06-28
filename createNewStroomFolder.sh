@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#Creates a new Stroom folder in the current directory.
+#A stroom folder consists of an xml definition file and a directory
+#The folder will be created with a newly generated UUID
+
 if [ ! "$#" -eq 1 ]; then
     echo "Usage: $0 folderName" >&2
     echo "E.g: $0 \"My new folder\"" >&2
