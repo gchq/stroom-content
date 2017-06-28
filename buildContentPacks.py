@@ -43,8 +43,8 @@ import fnmatch
 import xml.etree.ElementTree as ET
 
 USAGE_TXT = "Usage:\nbuildContentPacks.py [--combine] [--all] [packName ...]\ne.g.\nTo build all content packs - buildPacks.py [--combine] --all\nTo build specific named content packs - buildPacks.py [--combine] pack-1 pack-2 pack-n\nWhere --combine indicates all packs should be combined into a single zip file, otherwise each pack will be placed in its own zip file."
-SOURCE_DIR_NAME = "stroom-content-source"
-TARGET_DIR_NAME = "stroom-content-target"
+SOURCE_DIR_NAME = "source"
+TARGET_DIR_NAME = "target"
 STROOM_CONTENT_DIR_NAME = "stroomContent"
 FOLDER_ENTITY_TYPE = "folder"
 FOLDER_ENTITY_SUFFIX = ".Folder.xml"
