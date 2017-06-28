@@ -45,6 +45,7 @@ import xml.etree.ElementTree as ET
 USAGE_TXT = "Usage:\nbuildContentPacks.py [--combine] [--all] [packName ...]\ne.g.\nTo build all content packs - buildPacks.py [--combine] --all\nTo build specific named content packs - buildPacks.py [--combine] pack-1 pack-2 pack-n\nWhere --combine indicates all packs should be combined into a single zip file, otherwise each pack will be placed in its own zip file."
 SOURCE_DIR_NAME = "stroom-content-source"
 TARGET_DIR_NAME = "stroom-content-target"
+STROOM_CONTENT_DIR_NAME = "stroomContent"
 FOLDER_ENTITY_TYPE = "folder"
 FOLDER_ENTITY_SUFFIX = ".Folder.xml"
 
@@ -142,9 +143,11 @@ def validate_packs(pack_list, root_path):
             print "Pack %s does not exist in %s" % (pack, root_path)
             exit(1)
 
+        stroom_content_path = os.path.join(pack_path, STROOM_CONTENT_DIR_NAME)
+
         #make sure we don't have multiple folder entities with
         #different uuids else this may cause odd behaviour on import
-        for root, dirnames, filenames in os.walk(pack_path):
+        for root, dirnames, filenames in os.walk(stroom_content_path):
             # folder_entities = fnmatch.filter(filenames, '*' + FOLDER_ENTITY_SUFFIX) 
             # print "folder entities: %s" % folder_entities
             # for filename in folder_entities:
@@ -152,7 +155,7 @@ def validate_packs(pack_list, root_path):
                 # print "dirname: %s" % dirname
                 full_filename = os.path.join(root, dirname, '..', dirname + FOLDER_ENTITY_SUFFIX)
                 # print "full_filename: %s" % full_filename
-                entity_path = os.path.relpath(os.path.join(root, dirname), pack_path)
+                entity_path = os.path.relpath(os.path.join(root, dirname), stroom_content_path)
                 # print "entity_path: %s" % entity_path
                 uuid = extract_uuid(full_filename)
                 if uuid == None:
@@ -169,7 +172,7 @@ def validate_packs(pack_list, root_path):
         #Loop through all the xml files finding those that have a uuid element
         #for each one that isn't a folder entity make sure the uuid
         #is not already used by another entity
-        for root, dirnames, filenames in os.walk(pack_path):
+        for root, dirnames, filenames in os.walk(stroom_content_path):
             for xml_file in fnmatch.filter(filenames, '*.xml'):
                 full_filename = os.path.join(root, xml_file)
                 uuid = extract_uuid(full_filename)
