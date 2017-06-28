@@ -19,4 +19,5 @@ Inital version.
 
 
 [Unreleased]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v1.0...HEAD
+[core-xml-schemas-v1.0]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v1.0...core-xml-schemas-v1.0
 
