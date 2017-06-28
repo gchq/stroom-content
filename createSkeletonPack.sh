@@ -33,6 +33,7 @@ makeDir() {
     dir=$1
     echo "Creating directory $dir"
     mkdir $dir
+    touch $dir/.gitkeep
 }
 
 echo "Creating content pack $contentPackName..."
