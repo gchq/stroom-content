@@ -15,6 +15,7 @@ folderName="$1"
 echo "Creating folder ${folderName} and its associated XML file in this directory..."
 
 mkdir "${folderName}"
+touch "${folderName}"/.gitkeep
 cat >"${folderName}.Folder.xml" <<EOL
 <?xml version="1.1" encoding="UTF-8"?>
 <folder>
