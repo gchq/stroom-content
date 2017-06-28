@@ -65,6 +65,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 ### Removed
+
+## [${contentPackName}-v1.0]
+
+Initial version.
+
+
+[Unreleased]: https://github.com/gchq/stroom-content/compare/${contentPackName}-v1.0...HEAD
+[${contentPackName}-v1.0]: https://github.com/gchq/stroom-content/compare/${contentPackName}-v1.0...${contentPackName}-v1.0
 EOL
 
 echo ""
