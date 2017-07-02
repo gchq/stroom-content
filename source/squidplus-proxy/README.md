@@ -30,7 +30,7 @@ The following represents the folder structure and content that will be imported 
 
 * Dependancies
 
-This content is dependant on the `Event Data (XML)` Pipeline from the template-pipelines Content Pack.
+This content is dependant on the `Event Data (XML)` Pipeline from the [`template-pipelines`](../template-pipelines/README.md) Content Pack.
 
 ## Client Contents
 
