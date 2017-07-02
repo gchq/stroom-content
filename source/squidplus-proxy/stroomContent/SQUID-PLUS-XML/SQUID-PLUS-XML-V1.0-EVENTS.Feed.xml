@@ -1,0 +1,16 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<feed>
+   <classification/>
+   <contextEncoding>UTF-8</contextEncoding>
+   <createTime>1497745702120</createTime>
+   <createUser>burn</createUser>
+   <description>Translate SquidPlus XML format events.</description>
+   <encoding>UTF-8</encoding>
+   <name>SQUID-PLUS-XML-V1.0-EVENTS</name>
+   <reference>false</reference>
+   <status>RECEIVE</status>
+   <streamType>Raw Events</streamType>
+   <updateTime>1498826563113</updateTime>
+   <updateUser>burn</updateUser>
+   <uuid>d1f8a728-5f5d-4451-9f02-710b4b8731f5</uuid>
+</feed>
