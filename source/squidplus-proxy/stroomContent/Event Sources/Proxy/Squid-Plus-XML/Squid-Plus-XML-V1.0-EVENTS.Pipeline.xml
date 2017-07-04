@@ -1,9 +1,7 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <pipeline>
-   <createTime>1497745714265</createTime>
-   <createUser>burn</createUser>
    <description>Squid Plus pipeline</description>
-   <name>SQUID-PLUS-XML-V1.0-EVENTS</name>
+   <name>Squid-Plus-XML-V1.0-EVENTS</name>
    <parentPipelineXML>&lt;?xml version="1.1" encoding="UTF-8"?&gt;
 &lt;doc&gt;
    &lt;type&gt;Pipeline&lt;/type&gt;
@@ -12,7 +10,5 @@
 &lt;/doc&gt;
 </parentPipelineXML>
    <pipelineType>Event Data</pipelineType>
-   <updateTime>1498952709941</updateTime>
-   <updateUser>burn</updateUser>
    <uuid>e1b04961-93c2-460f-990b-0f0d391ac381</uuid>
 </pipeline>

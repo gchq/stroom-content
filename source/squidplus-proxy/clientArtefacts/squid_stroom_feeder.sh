@@ -40,8 +40,6 @@ while getopts "n" opt; do
  esac
 done
 
-# FEED_NAME         - Name of feed (asssigned by Audit Authority)
-
 # SYSTEM            - Name of System
 SYSTEM="My Squid Service"
 
@@ -73,9 +71,8 @@ VERSION=`rpm -q squid`
 
 # FEED_NAME         - Name of Stroom feed (asssigned by Audit Authority)
 #
-# We work out which feed we want based on the Linux audit version running and possible
-# supporting toolsets
-FEED_NAME="SQUID-PLUS-XML-V1.0-EVENTS"
+# This is the Stroom feed name we post the collected audit events to.
+FEED_NAME="Squid-Plus-XML-V1.0-EVENTS"
 
 # FAILED_RETENTION  - Retention period to hold logs that failed to transmit (days)
 #
