@@ -1,0 +1,12 @@
+//stroom-101
+
+dependencies {
+    myConfig project(':core-xml-schemas')
+}
+
+
+hello {
+    doLast { task ->
+        println "stroom-101 custom stuff"
+    }
+}
