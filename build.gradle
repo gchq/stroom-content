@@ -1,0 +1,32 @@
+
+dependencies {
+}
+
+subprojects {
+    //apply plugin: 'java'
+    apply plugin: 'base'
+
+    //compileJava.doLast {
+
+            //println "I'm $task.project.name and I'm compiling java"
+    //}
+    task dist(type: Zip) {
+        from .
+    }
+
+    configurations {
+        myConfig {
+
+        }
+    }
+}
+
+allprojects {
+    task hello {
+        doLast { task ->
+            println "I'm $task.project.name"
+        }
+    }
+
+}
+    
