@@ -6,6 +6,7 @@ node_modules
 _book
 _unused
 .idea
+./source/*/build
 
 #Gradle stuff (from https://github.com/github/gitignore/blob/master/Gradle.gitignore)
 .gradle
