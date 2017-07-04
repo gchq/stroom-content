@@ -106,7 +106,7 @@ def build_pack(pack_name):
 
 def extract_uuid(entity_file):
     if not os.path.isfile(entity_file):
-        print "Entity file %s does not exist" % entity_file
+        print "ERROR - Entity file %s does not exist" % entity_file
         exit(1)
 
     # print "Extracting uuid for %s" % entity_file
@@ -121,7 +121,7 @@ def extract_uuid(entity_file):
 
 def extract_entity_type(entity_file):
     if not os.path.isfile(entity_file):
-        print "Entity file %s does not exist" % entity_file
+        print "ERROR - Entity file %s does not exist" % entity_file
         exit(1)
 
     # print "Extracting uuid for %s" % entity_file
@@ -140,7 +140,7 @@ def validate_packs(pack_list, root_path):
         pack_path = os.path.join(root_path, pack)
         #check the folder exists for the pack name
         if not os.path.isdir(pack_path):
-            print "Pack %s does not exist in %s" % (pack, root_path)
+            print "ERROR - Pack %s does not exist in %s" % (pack, root_path)
             exit(1)
 
         stroom_content_path = os.path.join(pack_path, STROOM_CONTENT_DIR_NAME)
@@ -159,14 +159,14 @@ def validate_packs(pack_list, root_path):
                 # print "entity_path: %s" % entity_path
                 uuid = extract_uuid(full_filename)
                 if uuid == None:
-                    print "Entity file %s does not have a UUID" % full_filename
+                    print "ERROR - Entity file %s does not have a UUID" % full_filename
                     exit(1)
                 # print "uuid = %s" % uuid
 
                 if not entity_path in path_to_uuid_dict:
                     path_to_uuid_dict[entity_path] = uuid
                 elif path_to_uuid_dict[entity_path] != uuid:
-                    print "Multiple uuids exist for path %" % entity_path
+                    print "ERROR - Multiple uuids exist for path %s" % entity_path
                     exit(1)
 
         #Loop through all the xml files finding those that have a uuid element
@@ -183,7 +183,7 @@ def validate_packs(pack_list, root_path):
                     if entity_type != FOLDER_ENTITY_TYPE:
                         #this is not a folder entity
                         if uuid in uuids:
-                            print "Entity %s with type %s has a duplicate UUID %s" % (full_filename, entity_type, uuid)
+                            print "ERROR - Entity %s with type %s has a duplicate UUID %s" % (full_filename, entity_type, uuid)
                             exit(1)
                         else:
                             uuids.append(uuid)
@@ -212,7 +212,7 @@ for arg in sys.argv[1:]:
         packs_to_build.append(arg)
 
 if len(packs_to_build) > 0 and isAllPacks:
-    print "Cannot specify --all and named packs"
+    print "ERROR - Cannot specify --all and named packs"
     print_usage()
     exit(1)
 
