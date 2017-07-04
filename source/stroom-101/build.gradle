@@ -1,7 +1,8 @@
 //stroom-101
 
 dependencies {
-    myConfig project(':core-xml-schemas')
+    compileSource project(path: ':core-xml-schemas', configuration: 'distConfig')
+    //compileSource project(':core-xml-schemas')
 }
 
 

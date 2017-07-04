@@ -11,14 +11,64 @@ subprojects {
             //println "I'm $task.project.name and I'm compiling java"
     //}
     task dist(type: Zip) {
-        from .
+        //println "zipping source/${task.project.name}/"
+        from "stroomContent/"
+        archiveName "${project.name}.zip"
     }
 
     configurations {
-        myConfig {
+        distConfig
+        compileSource 
+    }
 
+    artifacts {
+        //compileSource dist
+        distConfig dist
+    }
+
+    //sourceSets {
+        //compileSource 
+
+    task copyPack(type: Copy, dependsOn: dist) {
+        from 'build/distributions/*.zip'
+        into 'target'
+    }
+
+    task buildDeps(type: Copy) {
+        from configurations.compileSource
+        into project.file('target')
+    }
+
+    task copyDeps(dependsOn: buildDeps) {
+        doLast {
+            configurations.compileSource.each { dep -> 
+                println "compileSource $dep"
+                copy {
+                    from "$dep.name"
+                    into 'target'
+                }
+            }
+            configurations.distConfig.each { dep -> 
+                println "distConfig $dep"
+            }
         }
     }
+
+
+    task copyAll(dependsOn: [copyDeps, copyPack])
+
+    task printDeps() {
+        doLast {
+            configurations.compileSource.each { dep -> 
+                println "compileSource $dep"
+            }
+        }
+    }
+
+    //task bundle(type: Zip, dependsOn: dist) {
+        //into "./target/${project.name}-bundle.zip"
+        //from configurations.compileSource
+    //}
 }
 
 allprojects {
