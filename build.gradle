@@ -29,8 +29,9 @@ subprojects {
     //sourceSets {
         //compileSource 
 
+    
     task copyPack(type: Copy, dependsOn: dist) {
-        from 'build/distributions/*.zip'
+        from project.file('build/distributions')
         into 'target'
     }
 
@@ -39,23 +40,27 @@ subprojects {
         into project.file('target')
     }
 
-    task copyDeps(dependsOn: buildDeps) {
-        doLast {
-            configurations.compileSource.each { dep -> 
-                println "compileSource $dep"
-                copy {
-                    from "$dep.name"
-                    into 'target'
-                }
-            }
-            configurations.distConfig.each { dep -> 
-                println "distConfig $dep"
-            }
-        }
-    }
+    //task copyDeps(dependsOn: buildDeps) {
+    ////task copyDeps() {
+        //doLast {
+            //configurations.compileSource.each { dep -> 
+                //def x = project.file('.').getAbsolutePath()
+                //println "file $x"
+                //println "compileSource $dep"
+                //copy {
+                    //from "$dep.name"
+                    //into 'target'
+                //}
+            //}
+            //configurations.distConfig.each { dep -> 
+                //println "distConfig $dep"
+            //}
+        //}
+    //}
 
 
-    task copyAll(dependsOn: [copyDeps, copyPack])
+    //task copyAll(dependsOn: [copyDeps, copyPack])
+    task copyAll(dependsOn: [buildDeps, copyPack])
 
     task printDeps() {
         doLast {
