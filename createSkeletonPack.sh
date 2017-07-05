@@ -27,6 +27,7 @@ clientDir="$contentPackDir/clientArtefacts"
 stroomContentDir="$contentPackDir/stroomContent"
 changeLogFile="${contentPackDir}/CHANGELOG.md"
 rootReadmeFile="${contentPackDir}/README.md"
+buildFile="${contentPackDir}/build.gradle"
 
 makeDir() {
     [ "$#" -eq 0 ] && echo "Expecting dir as an arg" && exit 1
@@ -74,6 +75,18 @@ Initial version.
 [Unreleased]: https://github.com/gchq/stroom-content/compare/${contentPackName}-v1.0...HEAD
 [${contentPackName}-v1.0]: https://github.com/gchq/stroom-content/compare/${contentPackName}-v1.0...${contentPackName}-v1.0
 EOL
+
+echo "Creating Gradle build file $buildFile"
+cat >$buildFile <<EOL
+//${contentPackName}
+
+//example of how to configure dependencies on another content packs
+//dependencies {
+//    compileSource project(path: ':one-content-pack', configuration: 'distConfig')
+//    compileSource project(path: ':another-content-pack', configuration: 'distConfig')
+//}
+EOL
+
 
 echo ""
 echo "TIP: Use the linux binary 'uuidgen' to generatethe UUIDs required in the content pack's XML files."

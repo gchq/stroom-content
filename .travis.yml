@@ -4,5 +4,5 @@ dist: trusty
 sudo: false
 
 #Building all the packs will ensure we don't have any folder or uuid conflicts, so acts as a validator
-script: ./buildContentPacks.py --all
+script: ./gradlew clean build
 

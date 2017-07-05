@@ -1,0 +1,11 @@
+
+rootProject.name = 'stroom-content'
+
+//dynamically add all pack dirs in ./source as gradle projects
+new File('source').eachDir { it ->
+    def projectName = it.name
+    println "Adding project $projectName"
+    include ":$projectName"
+    project(":$projectName").projectDir = new File("./source/$projectName")
+}
+
