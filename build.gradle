@@ -1,8 +1,19 @@
 //root
 
+//Validates all the uuids to make sure there are no dup uuids
+//for different entities. Also ensures any Folder entities with the 
+//same path have the same uuid
+//TODO the logic in this script should be rewritten in groovy and stuck in here
+task validateAll(type: Exec) {
+    def validationScript = './buildContentPacks.py'
+    executable = validationScript
+    args = ['--all', '--validateOnly']
+}
+
 subprojects {
     apply plugin: 'base'
 
+    //zip up all the files that make up the pack
     task dist(type: Zip) {
         //println "zipping source/${task.project.name}/"
         from("." ) {
@@ -19,27 +30,32 @@ subprojects {
     }
 
     artifacts {
-        //compileSource dist
         distConfig dist
     }
     
+    //unzip the project's own pack into zipSource
+    //while we could just copy the files the zip has already excluded stuff we don't
+    //want to this is easier
     task unzipPack(type: Copy, dependsOn: dist) {
         def zipFile = project.file("build/distributions/${project.name}.zip")
         from zipTree(zipFile)
         into 'target/zipSource'
     }
 
+    //copy this project's pack zip into target
     task copyPack(type: Copy, dependsOn: dist) {
         def zipFile = project.file("build/distributions/${project.name}.zip")
         from zipFile
         into 'target'
     }
 
+    //copy any dependency packs into a dependencies dir
     task copyDeps(type: Copy, dependsOn: dist) {
         from configurations.compileSource
         into project.file('target/zipSource/dependencies')
     }
 
+    //unzip all the dependency pack zips then delete the zips
     task unzipDeps(dependsOn: copyDeps) {
         doLast {
             fileTree(dir: project.file('target/zipSource/dependencies'))
@@ -56,6 +72,7 @@ subprojects {
         }
     }
 
+    //zip up this project's source + any dependency source into a fat zip
     task zipAll(type: Zip, dependsOn: [unzipDeps, unzipPack]) {
         destinationDir project.file('target')
         archiveName "${project.name}-all.zip"
@@ -63,12 +80,13 @@ subprojects {
         //into(project.file('target'))
     }
 
+    //remove the zip file source
     task deleteZipSource(type: Delete, dependsOn: [copyPack, zipAll]) {
         delete project.file('target/zipSource/')
     }
 
 
-    task doAll(dependsOn: [copyDeps, unzipPack, copyPack, unzipDeps, zipAll, deleteZipSource])
+    //task doAll(dependsOn: [copyDeps, unzipPack, copyPack, unzipDeps, zipAll, deleteZipSource])
 
     task printDeps() {
         doLast {
@@ -79,6 +97,7 @@ subprojects {
     }
 
     build {
+        dependsOn validateAll
         dependsOn copyDeps
         dependsOn unzipPack
         dependsOn copyPack
@@ -87,6 +106,7 @@ subprojects {
         dependsOn deleteZipSource
     }
 
+    clean.doFirst {
+        delete project.file('target')
+    }
 }
-
-    
