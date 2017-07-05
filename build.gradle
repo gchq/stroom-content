@@ -4,7 +4,7 @@
 //for different entities. Also ensures any Folder entities with the 
 //same path have the same uuid
 //TODO the logic in this script should be rewritten in groovy and stuck in here
-task validateAll(type: Exec) {
+task validate(type: Exec) {
     def validationScript = './buildContentPacks.py'
     executable = validationScript
     args = ['--all', '--validateOnly']
@@ -107,7 +107,7 @@ subprojects {
     }
 
     build {
-        dependsOn validateAll
+        dependsOn validate
         dependsOn copyDeps
         dependsOn unzipPack
         dependsOn copyPack
@@ -123,5 +123,4 @@ subprojects {
             delete project.file('target')
         }
     }
-
 }
