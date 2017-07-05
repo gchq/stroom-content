@@ -9,6 +9,12 @@ task validateAll(type: Exec) {
     executable = validationScript
     args = ['--all', '--validateOnly']
 }
+task cleanRoot() {
+    delete project.file('target')
+}
+
+allprojects {
+}
 
 subprojects {
     apply plugin: 'base'
@@ -85,6 +91,10 @@ subprojects {
         delete project.file('target/zipSource/')
     }
 
+    task CopyZipsToRoot(type: Copy, dependsOn: [deleteZipSource]) {
+        from project.file('target')
+        into rootProject.file('target')
+    }
 
     //task doAll(dependsOn: [copyDeps, unzipPack, copyPack, unzipDeps, zipAll, deleteZipSource])
 
@@ -104,9 +114,14 @@ subprojects {
         dependsOn unzipDeps
         dependsOn zipAll
         dependsOn deleteZipSource
+        dependsOn CopyZipsToRoot
     }
 
-    clean.doFirst {
-        delete project.file('target')
+    clean {
+        dependsOn cleanRoot
+        doFirst {
+            delete project.file('target')
+        }
     }
+
 }
