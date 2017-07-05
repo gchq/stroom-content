@@ -18,10 +18,12 @@
 #**********************************************************************
 # buildContentPacks.py
 # 
-# Usage: buildContentPacks.py [--combine] [--all] [packName ...]
+# Usage: buildContentPacks.py [--combine] [--validateOnly] [--all] [packName ...]
 # e.g.:  buildContentPacks.py --combine stroom-101 core-xml-schemas
 #        buildContentPacks.py stroom-101 core-xml-schemas
 #        buildContentPacks.py --all
+#        buildContentPacks.py --validateOnly --all
+#        buildContentPacks.py --validateOnly stroom-101 core-xml-schemas
 #
 # Script to package up the content pack source into a zip file or zip files.
 #
@@ -133,6 +135,8 @@ def extract_entity_type(entity_file):
 
 
 def validate_packs(pack_list, root_path):
+
+    # print "Validating packs: %s" % pack_list
     
     path_to_uuid_dict = dict()
     uuids = []
@@ -187,6 +191,7 @@ def validate_packs(pack_list, root_path):
                             exit(1)
                         else:
                             uuids.append(uuid)
+    print "Validation completed with no errors"
 
 
 
@@ -201,6 +206,7 @@ if len(sys.argv) == 1:
 
 isAllPacks = False
 arePacksCombined = False
+isValidateOnly = False
 packs_to_build = []
 
 for arg in sys.argv[1:]:
@@ -208,11 +214,18 @@ for arg in sys.argv[1:]:
         isAllPacks = True
     elif arg == "--combine":
         arePacksCombined = True
+    elif arg == "--validateOnly":
+        isValidateOnly = True
     else:
         packs_to_build.append(arg)
 
 if len(packs_to_build) > 0 and isAllPacks:
     print "ERROR - Cannot specify --all and named packs"
+    print_usage()
+    exit(1)
+
+if len(packs_to_build) == 0 and not isAllPacks:
+    print "ERROR - Must specify --all or provide a list of named packs"
     print_usage()
     exit(1)
 
@@ -222,31 +235,32 @@ if not os.path.exists(target_path):
     os.mkdir(target_path)
 
 if isAllPacks:
-    print "Building all content packs"
+    print "Processing all content packs"
     for list_entry in os.listdir(source_path):
         if os.path.isdir(os.path.join(source_path, list_entry)):
             packs_to_build.append(list_entry)
 else:
-    print "Building the following packs:"
-
-validate_packs(packs_to_build, source_path)
+    print "Processing packs: %s" % packs_to_build
 
 print "Using root path: ", root_path
 print "Using source path: ", source_path
 print "Using target path: ", target_path
 
-clear_dir(target_path)
+validate_packs(packs_to_build, source_path)
 
-if arePacksCombined:
-    dest_zip_file_name = "ContentPacks.zip"
-    dest_zip_file_path = os.path.join(target_path, dest_zip_file_name)
-    with zipfile.ZipFile(dest_zip_file_path, 'w', zipfile.ZIP_DEFLATED) as zip_handle:
-        added_files = []
+if not isValidateOnly:
+    clear_dir(target_path)
+
+    if arePacksCombined:
+        dest_zip_file_name = "ContentPacks.zip"
+        dest_zip_file_path = os.path.join(target_path, dest_zip_file_name)
+        with zipfile.ZipFile(dest_zip_file_path, 'w', zipfile.ZIP_DEFLATED) as zip_handle:
+            added_files = []
+            for pack in packs_to_build:
+                zip_pack(source_path, pack, zip_handle, added_files)
+    else:
         for pack in packs_to_build:
-            zip_pack(source_path, pack, zip_handle, added_files)
-else:
-    for pack in packs_to_build:
-        build_pack(pack)
+            build_pack(pack)
 
 print "Done!"
 exit(0)

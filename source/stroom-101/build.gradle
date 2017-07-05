@@ -1,0 +1,7 @@
+//stroom-101
+
+dependencies {
+    compileSource project(path: ':core-xml-schemas', configuration: 'distConfig')
+    compileSource project(path: ':event-logging-xml-schema', configuration: 'distConfig')
+}
+
