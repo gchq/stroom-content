@@ -1,7 +1,2 @@
 //core-xml-schemas
 
-hello {
-    doLast { task ->
-        println "core-xml-schemas custom stuff"
-    }
-}

@@ -2,12 +2,6 @@
 
 dependencies {
     compileSource project(path: ':core-xml-schemas', configuration: 'distConfig')
-    //compileSource project(':core-xml-schemas')
+    compileSource project(path: ':event-logging-xml-schema', configuration: 'distConfig')
 }
 
-
-hello {
-    doLast { task ->
-        println "stroom-101 custom stuff"
-    }
-}

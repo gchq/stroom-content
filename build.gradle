@@ -1,18 +1,15 @@
-
-dependencies {
-}
+//root
 
 subprojects {
-    //apply plugin: 'java'
     apply plugin: 'base'
 
-    //compileJava.doLast {
-
-            //println "I'm $task.project.name and I'm compiling java"
-    //}
     task dist(type: Zip) {
         //println "zipping source/${task.project.name}/"
-        from "stroomContent/"
+        from("." ) {
+            exclude 'build*'
+            exclude 'target'
+            exclude '**/.gitkeep'
+        }
         archiveName "${project.name}.zip"
     }
 
@@ -25,42 +22,53 @@ subprojects {
         //compileSource dist
         distConfig dist
     }
-
-    //sourceSets {
-        //compileSource 
-
     
+    task unzipPack(type: Copy, dependsOn: dist) {
+        def zipFile = project.file("build/distributions/${project.name}.zip")
+        from zipTree(zipFile)
+        into 'target/zipSource'
+    }
+
     task copyPack(type: Copy, dependsOn: dist) {
-        from project.file('build/distributions')
+        def zipFile = project.file("build/distributions/${project.name}.zip")
+        from zipFile
         into 'target'
     }
 
-    task buildDeps(type: Copy) {
+    task copyDeps(type: Copy, dependsOn: dist) {
         from configurations.compileSource
-        into project.file('target')
+        into project.file('target/zipSource/dependencies')
     }
 
-    //task copyDeps(dependsOn: buildDeps) {
-    ////task copyDeps() {
-        //doLast {
-            //configurations.compileSource.each { dep -> 
-                //def x = project.file('.').getAbsolutePath()
-                //println "file $x"
-                //println "compileSource $dep"
-                //copy {
-                    //from "$dep.name"
-                    //into 'target'
-                //}
-            //}
-            //configurations.distConfig.each { dep -> 
-                //println "distConfig $dep"
-            //}
-        //}
-    //}
+    task unzipDeps(dependsOn: copyDeps) {
+        doLast {
+            fileTree(dir: project.file('target/zipSource/dependencies'))
+                .include('*.zip')
+                .each { depZipFile ->
+                    copy {
+                        //println "Copying ${depZipFile}"
+                        def depName = depZipFile.name - '.zip'
+                        from zipTree(depZipFile)
+                        into project.file("target/zipSource/dependencies/${depName}")
+                    }
+                    delete depZipFile
+            }
+        }
+    }
+
+    task zipAll(type: Zip, dependsOn: [unzipDeps, unzipPack]) {
+        destinationDir project.file('target')
+        archiveName "${project.name}-all.zip"
+        from(project.file('target/zipSource')) 
+        //into(project.file('target'))
+    }
+
+    task deleteZipSource(type: Delete, dependsOn: [copyPack, zipAll]) {
+        delete project.file('target/zipSource/')
+    }
 
 
-    //task copyAll(dependsOn: [copyDeps, copyPack])
-    task copyAll(dependsOn: [buildDeps, copyPack])
+    task doAll(dependsOn: [copyDeps, unzipPack, copyPack, unzipDeps, zipAll, deleteZipSource])
 
     task printDeps() {
         doLast {
@@ -70,18 +78,15 @@ subprojects {
         }
     }
 
-    //task bundle(type: Zip, dependsOn: dist) {
-        //into "./target/${project.name}-bundle.zip"
-        //from configurations.compileSource
-    //}
-}
-
-allprojects {
-    task hello {
-        doLast { task ->
-            println "I'm $task.project.name"
-        }
+    build {
+        dependsOn copyDeps
+        dependsOn unzipPack
+        dependsOn copyPack
+        dependsOn unzipDeps
+        dependsOn zipAll
+        dependsOn deleteZipSource
     }
 
 }
+
     
