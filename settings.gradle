@@ -1,11 +1,11 @@
 
 rootProject.name = 'stroom-content'
 
-include '::stroom-101'
-project(':stroom-101').projectDir = new File('./source/stroom-101')
+//dynamically add all pack dirs in ./source as gradle projects
+new File('source').eachDir { it ->
+    def projectName = it.name
+    println "Adding project $projectName"
+    include ":$projectName"
+    project(":$projectName").projectDir = new File("./source/$projectName")
+}
 
-include ':core-xml-schemas'
-project(':core-xml-schemas').projectDir = new File('./source/core-xml-schemas')
-
-include ':event-logging-xml-schema'
-project(':event-logging-xml-schema').projectDir = new File('./source/event-logging-xml-schema')
