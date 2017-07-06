@@ -1,0 +1,118 @@
+//root
+
+def BUILD_DIR_NAME="build"
+def DIST_DIR_NAME="${BUILD_DIR_NAME}/distributions"
+def ZIP_SOURCE_DIR_NAME="${BUILD_DIR_NAME}/zipSource"
+def DEP_SOURCE_DIR_NAME="${ZIP_SOURCE_DIR_NAME}/dependencies"
+
+//Validates all the uuids to make sure there are no dup uuids
+//for different entities. Also ensures any Folder entities with the 
+//same path have the same uuid
+//TODO the logic in this script should be rewritten in groovy and stuck in here
+task validate(type: Exec) {
+    def validationScript = './buildContentPacks.py'
+    executable = validationScript
+    args = ['--all', '--validateOnly']
+}
+
+task cleanRoot() {
+    delete project.file(BUILD_DIR_NAME)
+}
+
+allprojects {
+}
+
+subprojects {
+
+    apply plugin: 'base'
+
+    //zip up all the files that make up the pack
+    task dist(type: Zip) {
+        //println "zipping source/${task.project.name}/"
+        from("." ) {
+            exclude "${BUILD_DIR_NAME}*"
+            exclude '**/.gitkeep'
+        }
+        archiveName "${project.name}.zip"
+    }
+
+    configurations {
+        distConfig
+        compileSource 
+    }
+
+    artifacts {
+        distConfig dist
+    }
+    
+    //unzip the project's own pack into zipSource
+    //while we could just copy the files the zip has already excluded stuff we don't
+    //want to this is easier
+    task unzipPack(type: Copy, dependsOn: dist) {
+        def zipFile = project.file("${DIST_DIR_NAME}/${project.name}.zip")
+        from zipTree(zipFile)
+        into ZIP_SOURCE_DIR_NAME
+    }
+
+    //copy any dependency packs into a dependencies dir
+    task copyDeps(type: Copy, dependsOn: dist) {
+        from configurations.compileSource
+        into project.file(DEP_SOURCE_DIR_NAME)
+    }
+
+    //unzip all the dependency pack zips then delete the zips
+    task unzipDeps(dependsOn: copyDeps) {
+        doLast {
+            fileTree(dir: project.file(DEP_SOURCE_DIR_NAME))
+                .include('*.zip')
+                .each { depZipFile ->
+                    copy {
+                        //println "Copying ${depZipFile}"
+                        def depName = depZipFile.name - '.zip'
+                        from zipTree(depZipFile)
+                        into project.file("${DEP_SOURCE_DIR_NAME}/${depName}")
+                    }
+                    delete depZipFile
+            }
+        }
+    }
+
+    //zip up this project's source + any dependency source into a fat zip
+    task zipAll(type: Zip, dependsOn: [unzipDeps, unzipPack]) {
+        destinationDir project.file(DIST_DIR_NAME)
+        archiveName "${project.name}-all.zip"
+        from(project.file(ZIP_SOURCE_DIR_NAME)) 
+    }
+
+    //remove the zip file source
+    task deleteZipSource(type: Delete, dependsOn: [zipAll]) {
+        delete project.file(ZIP_SOURCE_DIR_NAME)
+    }
+
+    task CopyZipsToRoot(type: Copy, dependsOn: [deleteZipSource]) {
+        from project.file(DIST_DIR_NAME)
+        into rootProject.file(DIST_DIR_NAME)
+    }
+
+    task printDeps() {
+        doLast {
+            configurations.compileSource.each { dep -> 
+                println "compileSource $dep"
+            }
+        }
+    }
+
+    build {
+        dependsOn validate
+        dependsOn copyDeps
+        dependsOn unzipPack
+        dependsOn unzipDeps
+        dependsOn zipAll
+        dependsOn deleteZipSource
+        dependsOn CopyZipsToRoot
+    }
+
+    clean {
+        dependsOn cleanRoot
+    }
+}

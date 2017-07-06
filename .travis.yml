@@ -1,0 +1,8 @@
+#No language required so just use ruby to avoid warnings in travis yml linter
+language: ruby
+dist: trusty
+sudo: false
+
+#Building all the packs will ensure we don't have any folder or uuid conflicts, so acts as a validator
+script: ./gradlew clean build
+

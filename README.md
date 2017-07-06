@@ -111,6 +111,35 @@ A Squid Proxy Access log content pack containing both Linux Client and Stroom co
 
 Each content pack is defined as a directory within _stroom-content-source_ with the name of content pack being the name of the directory.
 
+There are currently two methods to building content packs, a Gradle build or a python script. The former has superseded the latter, though the python script is still useful if you want all packs built into a single zip file. For all other purposes the Gradle build should be favoured.
+
+### Gradle build
+
+The Gradle build will manage the dependencies between content packs, including transitive dependencies, so if you want a pack that has dependencies on other packs then those dependency packs will get built with it.
+
+To run a full build of all packs do:
+
+`./gradlew clean build`
+
+If you just want to validate the pack's source to make sure the UUID references are correct and there are no clashes, then do:
+
+`./gradlew validate`
+
+To build a single pack do something like:
+
+`./gradlew clean :my-pack-name:build`
+
+The build will place the following pairs of zip files in `./build/distributions`:
+
+* `my-pack-name.zip`
+
+* `my-pack-name-all.zip`
+
+The `-all` variant contains all dependency packs and is therefore larger. The other zip just contains the named pack with no dependencies.
+
+
+### Python script (_deprecated_)
+
 The content packs can be built into the zip files by running the python script _buildContentPacks.py_. You can either build all packs or a list of named packs and you can choose to have them packaged as single combined zip or one per pack.
 
 For example:
@@ -160,17 +189,21 @@ The _Export_ function will create a zip file containing all the serialised entit
 
 Minor changes to existing content pack can be made by editing the XML files directly, though testing the pack in an instance of Stroom is advised to ensure the change works.  More complex changes should be done by importing the pack to be changed and any dependencies into a vanilla instance of stroom, making the changes in Stroom and then exporting the packs out. The exported pack should be unzipped into the pack's _stroomContent_ directory for addition into source control.  It is advisable to remove any of the audit trail elements (`createUser`, `createTime`,`updateUser` & `updateTime`) that Stroom adds in to the XML file as these are not required in content packs and may result in warnings on import if left in.
 
-## Helper scripts
+### Gradle dependencies
+
+The dependencies between content packs are also defined in the Gradle `build.gradle` file in the root of each content pack directory. The `createSkeletonPack.sh` script will create a skeleton `build.gradle` file for you with an example of how to define dependencies on other packs. A pack should define all direct dependencies it has in its entities and not rely on transitive dependencies as this is more explicit.
+
+### Helper scripts
 
 The following helper shell scripts exist to assist in content pack creation.
 
-### createSkeletonPack.sh
+#### createSkeletonPack.sh
 
 This script will create a skeleton structure for a new content pack.
 
 `./createSkeletonPack.sh my-new-pack`
 
-### createNewStroomFolder.sh
+#### createNewStroomFolder.sh
 
 This script can be run from within an directory to create a new Stroom Folder (XML definition file and directory). This should only be used to create a directory that doesn't already exist in Stroom as it will have a new UUID generated for it.
 
