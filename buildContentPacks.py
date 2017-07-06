@@ -173,6 +173,7 @@ def validate_packs(pack_list, root_path):
                     print "ERROR - Multiple uuids exist for path %s" % entity_path
                     exit(1)
 
+
         #Loop through all the xml files finding those that have a uuid element
         #for each one that isn't a folder entity make sure the uuid
         #is not already used by another entity
@@ -191,6 +192,13 @@ def validate_packs(pack_list, root_path):
                             exit(1)
                         else:
                             uuids.append(uuid)
+
+    print ""
+    print "UUIDs for paths:"
+    for key in sorted(path_to_uuid_dict):
+        print "%s - %s" % (key, path_to_uuid_dict[key])
+
+    print ""
     print "Validation completed with no errors"
 
 
