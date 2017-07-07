@@ -106,7 +106,7 @@ There are currently two methods to building content packs, a Gradle build or a p
 
 ### Gradle build
 
-The Gradle build will manage the dependencies between content packs, including transitive dependencies, so if you want a pack that has dependencies on other packs then those dependency packs will get built with it.
+The Gradle build will manage the dependencies between content packs, including transitive dependencies, so if you want a pack that has dependencies on other packs then those dependency packs will get built with it. Running the build requires _xmllint_ and _python_.
 
 To run a full build of all packs do:
 
