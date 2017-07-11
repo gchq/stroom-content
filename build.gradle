@@ -1,5 +1,6 @@
 //root
 
+def STROOM_CONTENT_DIR="stroomContent"
 def BUILD_DIR_NAME="build"
 def DIST_DIR_NAME="${BUILD_DIR_NAME}/distributions"
 def ZIP_SOURCE_DIR_NAME="${BUILD_DIR_NAME}/zipSource"
@@ -9,7 +10,7 @@ def DEP_SOURCE_DIR_NAME="${ZIP_SOURCE_DIR_NAME}/dependencies"
 //for different entities. Also ensures any Folder entities with the 
 //same path have the same uuid
 //TODO the logic in this script should be rewritten in groovy and stuck in here
-task validate(type: Exec) {
+task runValidationScript(type: Exec) {
     def validationScript = './buildContentPacks.py'
     executable = validationScript
     args = ['--all', '--validateOnly']
@@ -102,8 +103,52 @@ subprojects {
         }
     }
 
+    task validateXmlSchemas() {
+        doLast {
+            //def dir = project.file(STROOM_CONTENT_DIR);
+            fileTree(dir: project.file(STROOM_CONTENT_DIR))
+                .include('**/*XMLSchema.data.xsd')
+                .each { xsdFile -> 
+                    def xsdFileName = xsdFile.absolutePath
+                    def execResult = exec() {
+                        //xmlint is available in libxml2-utils
+                        executable 'xmllint'
+                        args '--noout', '--nowarning', '--schema', 'http://www.w3.org/2001/XMLSchema.xsd', xsdFileName
+                        ignoreExitValue true
+                    }
+
+                    if (execResult.exitValue != 0) {
+                        throw new GradleException("Schema failed validation: $xsdFileName")
+                    }
+            }
+        }
+    }
+
+    task validateXml() {
+        doLast {
+            //def dir = project.file(STROOM_CONTENT_DIR);
+            fileTree(dir: project.file(STROOM_CONTENT_DIR))
+                .include('**/*.xml')
+                .each { xmlFile -> 
+                    def xmlFileName = xmlFile.absolutePath
+                    def execResult = exec() {
+                        //xmlint is available in libxml2-utils
+                        executable 'xmllint'
+                        args '--noout', '--nowarning', xmlFileName
+                        ignoreExitValue true
+                    }
+
+                    if (execResult.exitValue != 0) {
+                        throw new GradleException("XML file failed validation: $xmlFileName")
+                    }
+            }
+        }
+    }
+
     build {
-        dependsOn validate
+        dependsOn runValidationScript
+        dependsOn validateXmlSchemas
+        dependsOn validateXml
         dependsOn copyDeps
         dependsOn unzipPack
         dependsOn unzipDeps
