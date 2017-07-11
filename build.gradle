@@ -111,6 +111,7 @@ subprojects {
                 .each { xsdFile -> 
                     def xsdFileName = xsdFile.absolutePath
                     def execResult = exec() {
+                        //xmlint is available in libxml2-utils
                         executable 'xmllint'
                         args '--noout', '--nowarning', '--schema', 'http://www.w3.org/2001/XMLSchema.xsd', xsdFileName
                         ignoreExitValue true
@@ -131,6 +132,7 @@ subprojects {
                 .each { xmlFile -> 
                     def xmlFileName = xmlFile.absolutePath
                     def execResult = exec() {
+                        //xmlint is available in libxml2-utils
                         executable 'xmllint'
                         args '--noout', '--nowarning', xmlFileName
                         ignoreExitValue true
