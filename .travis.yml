@@ -3,9 +3,10 @@ language: ruby
 dist: trusty
 sudo: required
 
+#libxml2-utils is required for the xmllint binary
 before_install:
     - sudo apt-get -qq update
-    - sudo apt-get install -y libxml2-dev
+    - sudo apt-get install -y libxml2-utils
 
 #Building all the packs will ensure we don't have any folder or uuid conflicts, so acts as a validator
 script: ./gradlew clean build
