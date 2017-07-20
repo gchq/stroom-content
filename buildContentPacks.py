@@ -69,7 +69,7 @@ def print_usage():
 
 
 def clear_dir(dir_path):
-    print("Clearing contents of {}").format(dir_path)
+    print("Clearing contents of {}".format(dir_path))
     for the_file in os.listdir(dir_path):
         file_path = os.path.join(dir_path, the_file)
         try:
@@ -92,14 +92,14 @@ def zip_pack(root_path, pack_name, zip_handle, added_files):
             rel_path = os.path.relpath(abs_path, zip_source_path)
             if not rel_path in added_files:
                 added_files.append(rel_path)
-                print("  {}").format(rel_path)
+                print("  {}".format(rel_path))
                 zip_handle.write(abs_path, rel_path)
 
 
 def build_pack(pack_name):
     dest_zip_file_name = pack_name + ".zip"
     dest_zip_file_path = os.path.join(target_path, dest_zip_file_name)
-    print("Building content pack: {} into zip file {}").format(pack_name, dest_zip_file_name)
+    print("Building content pack: {} into zip file {}".format(pack_name, dest_zip_file_name))
 
     added_files = []
 
@@ -108,10 +108,10 @@ def build_pack(pack_name):
 
 def extract_uuid(entity_file):
     if not os.path.isfile(entity_file):
-        print("ERROR - Entity file {} does not exist").format(entity_file)
+        print("ERROR - Entity file {} does not exist".format(entity_file))
         exit(1)
 
-    # print("Extracting uuid for {}").format(entity_file)
+    # print("Extracting uuid for {}".format(entity_file))
     xml_root = ET.parse(entity_file).getroot()
     uuidElm = xml_root.find('uuid')
 
@@ -123,10 +123,10 @@ def extract_uuid(entity_file):
 
 def extract_entity_type(entity_file):
     if not os.path.isfile(entity_file):
-        print("ERROR - Entity file {} does not exist").format(entity_file)
+        print("ERROR - Entity file {} does not exist".format(entity_file))
         exit(1)
 
-    # print("Extracting uuid for {}").format(entity_file)
+    # print("Extracting uuid for {}".format(entity_file))
     xml_root = ET.parse(entity_file).getroot()
     entity_type = xml_root.tag
 
@@ -136,7 +136,7 @@ def extract_entity_type(entity_file):
 
 def validate_packs(pack_list, root_path):
 
-    # print("Validating packs: {}").format(pack_list)
+    # print("Validating packs: {}".format(pack_list))
     
     path_to_uuid_dict = dict()
     uuids = []
@@ -144,7 +144,7 @@ def validate_packs(pack_list, root_path):
         pack_path = os.path.join(root_path, pack)
         #check the folder exists for the pack name
         if not os.path.isdir(pack_path):
-            print("ERROR - Pack {} does not exist in {}").format(pack, root_path)
+            print("ERROR - Pack {} does not exist in {}".format(pack, root_path))
             exit(1)
 
         stroom_content_path = os.path.join(pack_path, STROOM_CONTENT_DIR_NAME)
@@ -153,24 +153,24 @@ def validate_packs(pack_list, root_path):
         #different uuids else this may cause odd behaviour on import
         for root, dirnames, filenames in os.walk(stroom_content_path):
             # folder_entities = fnmatch.filter(filenames, '*' + FOLDER_ENTITY_SUFFIX) 
-            # print("folder entities: {}").format(folder_entities)
+            # print("folder entities: {}".format(folder_entities))
             # for filename in folder_entities:
             for dirname in dirnames:
-                # print("dirname: {}").format(dirname)
+                # print("dirname: {}".format(dirname))
                 full_filename = os.path.join(root, dirname, '..', dirname + FOLDER_ENTITY_SUFFIX)
-                # print("full_filename: {}").format(full_filename)
+                # print("full_filename: {}".format(full_filename))
                 entity_path = os.path.relpath(os.path.join(root, dirname), stroom_content_path)
-                # print("entity_path: {}").format(entity_path)
+                # print("entity_path: {}".format(entity_path))
                 uuid = extract_uuid(full_filename)
                 if uuid == None:
-                    print("ERROR - Entity file {} does not have a UUID").format(full_filename)
+                    print("ERROR - Entity file {} does not have a UUID".format(full_filename))
                     exit(1)
-                # print("uuid = {}").format(uuid)
+                # print("uuid = {}".format(uuid))
 
                 if not entity_path in path_to_uuid_dict:
                     path_to_uuid_dict[entity_path] = uuid
                 elif path_to_uuid_dict[entity_path] != uuid:
-                    print("ERROR - Multiple uuids exist for path {}").format(entity_path)
+                    print("ERROR - Multiple uuids exist for path {}".format(entity_path))
                     exit(1)
 
 
@@ -188,7 +188,7 @@ def validate_packs(pack_list, root_path):
                     if entity_type != FOLDER_ENTITY_TYPE:
                         #this is not a folder entity
                         if uuid in uuids:
-                            print("ERROR - Entity {} with type {} has a duplicate UUID {}").format(full_filename, entity_type, uuid)
+                            print("ERROR - Entity {} with type {} has a duplicate UUID {}".format(full_filename, entity_type, uuid))
                             exit(1)
                         else:
                             uuids.append(uuid)
@@ -196,7 +196,7 @@ def validate_packs(pack_list, root_path):
     print("")
     print("UUIDs for paths:")
     for key in sorted(path_to_uuid_dict):
-        print("{} - {}").format(key, path_to_uuid_dict[key])
+        print("{} - {}".format(key, path_to_uuid_dict[key]))
 
     print("")
     print("Validation completed with no errors")
@@ -239,7 +239,7 @@ if len(packs_to_build) == 0 and not isAllPacks:
 
 # ensure we have a target dir to put the zips in 
 if not os.path.exists(target_path):
-    print("Creating target directory {}").format(target_path)
+    print("Creating target directory {}".format(target_path))
     os.mkdir(target_path)
 
 if isAllPacks:
@@ -248,11 +248,11 @@ if isAllPacks:
         if os.path.isdir(os.path.join(source_path, list_entry)):
             packs_to_build.append(list_entry)
 else:
-    print("Processing packs: {}").format(packs_to_build)
+    print("Processing packs: {}".format(packs_to_build))
 
-print("Using root path: ").format(root_path)
-print("Using source path: ").format(source_path)
-print("Using target path: ").format(target_path)
+print("Using root path: {}".format(root_path))
+print("Using source path: {}".format(source_path))
+print("Using target path: {}".format(target_path))
 
 validate_packs(packs_to_build, source_path)
 
