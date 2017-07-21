@@ -10,4 +10,8 @@ The following represents the folder structure and content that will be imported 
 
             Version 3.0.0 of the event-logging XMLSchema.
 
+        * **event-logging v3.1.1** `XMLSchema`
+
+            Version 3.1.1 of the event-logging XMLSchema.
+
 
