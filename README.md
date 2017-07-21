@@ -199,3 +199,6 @@ This script will create a skeleton structure for a new content pack.
 
 This script can be run from within an directory to create a new Stroom Folder (XML definition file and directory). This should only be used to create a directory that doesn't already exist in Stroom as it will have a new UUID generated for it.
 
+#### removeAuditElements.py
+
+This script (_requires python3_) will strip the audit elements (e.g. `<createUser>...</createUser>`) from all xml files. This is to make it easier to clean any content generated in stroom and exported out for inclusion in a content pack.
