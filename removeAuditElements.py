@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #**********************************************************************
 # Copyright 2016 Crown Copyright
 # 
@@ -38,43 +38,66 @@ import xml.etree.ElementTree as ET
 
 SOURCE_DIR_NAME = "source"
 STROOM_CONTENT_DIR_NAME = "stroomContent"
+XML_DECLARATION = '<?xml version="1.1" encoding="UTF-8"?>\n'
 
 root_path = os.path.dirname(os.path.realpath(__file__))
 source_path = os.path.join(root_path, SOURCE_DIR_NAME)
 
 
 def remove_element(parent_elm, element_name):
-    elm = xml_root.find('./' + element_name)
+    # print("  parent_elm is {}".format(parent_elm))
+    elm = parent_elm.find(element_name)
     if elm is not None:
-        print("  Removing element {}".format(element_name))
+        # print("  Removing element {}".format(element_name))
         parent_elm.remove(elm)
         return True
     else:
+        # print("  Element {} not found".format(element_name))
         return False
 
 def remove_audit_elements(xml_file):
-    print("Processing file {}".format(xml_file))
-    xml_root = ET.parse(entity_file).getroot()
+    # print("Processing file {}".format(xml_file))
+    try:
+        tree = ET.parse(xml_file)
+        xml_root = tree.getroot()
 
-    has_changed = False
-    has_changed = has_changed or remove_element('createTime')
-    has_changed = has_changed or remove_element('createUser')
-    has_changed = has_changed or remove_element('updateTime')
-    has_changed = has_changed or remove_element('createUser')
+        has_changed = False
+        has_changed = remove_element(xml_root, 'createTime') or has_changed 
+        has_changed = remove_element(xml_root, 'createUser') or has_changed 
+        has_changed = remove_element(xml_root, 'updateTime') or has_changed 
+        has_changed = remove_element(xml_root, 'updateUser') or has_changed 
 
-    if (has_changed):
-        print("Writing changes to file {}".format(xml_file))
-        ET.write(open(xml_file, 'w'))
+        if (has_changed):
+            print("Writing changes to file {}".format(xml_file))
+
+            #elementTree uses a slightly different xml declaration to ours so write our own
+            # with open(xml_file, 'wb', encoding='utf-8') as f:
+            with open(xml_file, 'wb') as f:
+                f.write(XML_DECLARATION.encode(encoding='UTF-8'))
+                tree.write(f, encoding='UTF-8', xml_declaration=False)
+                f.write('\n'.encode(encoding='UTF-8'))
+
+    except ET.ParseError as e:
+        print("ERROR file is not valid xml {}".format(xml_file))
+        exit(1)
+
+        
 
 
 
 # Script proper starts here
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-for root, dirnames, filenames in os.walk(stroom_content_path):
-    for xml_file in fnmatch.filter(filenames, '*.xml'):
-        full_filename = os.path.join(root, xml_file)
-        remove_audit_elements(full_filename)
+print("Looking for xml files to clean...")
+
+for the_file in os.listdir(source_path):
+    content_dir = os.path.join(source_path, the_file, STROOM_CONTENT_DIR_NAME)
+    if os.path.isdir(content_dir): 
+        for root, dirnames, filenames in os.walk(content_dir):
+            for xml_file in fnmatch.filter(filenames, '*.xml'):
+                if (not fnmatch.fnmatch(xml_file, '*.data.xml')):
+                    full_filename = os.path.join(root, xml_file)
+                    remove_audit_elements(full_filename)
 
 print("Done!")
 exit(0)
