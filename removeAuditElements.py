@@ -18,7 +18,7 @@
 #**********************************************************************
 # removeAuditElements.py
 # 
-# Usage: buildContentPacks.py 
+# Usage: removeAuditElements.py 
 #
 # Script to remove any of the audit elements from the XML files. When Stroom
 # exports content, it includes the various audit elements such as createdBy. 
