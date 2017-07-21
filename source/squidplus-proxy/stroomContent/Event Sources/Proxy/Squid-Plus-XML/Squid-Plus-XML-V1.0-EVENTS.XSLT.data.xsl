@@ -74,7 +74,7 @@
 
   <!-- Ingest the Evts tree -->
   <xsl:template match="Evts">
-    <Events xsi:schemaLocation="event-logging:3 file://event-logging-v3.0.0.xsd" Version="3.0.0">
+    <Events xsi:schemaLocation="event-logging:3 file://event-logging-v3.1.1.xsd" Version="3.1.1">
       <xsl:apply-templates />
     </Events>
   </xsl:template>
@@ -285,7 +285,7 @@
     </EventDetail>
   </xsl:template>
 
-  <!-- Establish the Source  and Destination nodes -->
+  <!-- Establish the Source and Destination nodes -->
   <xsl:template name="setupParticipants">
     <Source>
       <Device>
@@ -349,17 +349,12 @@
         </xsl:if>
 
         <!-- Inbound activity -->
-        <xsl:if test="SzAllFrom > 0">
-          <InboundSize>
-            <xsl:value-of select="SzAllFrom" />
-          </InboundSize>
-        </xsl:if>
-        <xsl:variable name="InboundContentSize" select="SzAllFrom - SzAllFrom" />
-        <xsl:if test="$InboundContentSize > 0">
-          <InboundContentSize>
-            <xsl:value-of select="format-number($InboundContentSize, '#')" />
-          </InboundContentSize>
-        </xsl:if>
+        <InboundSize>
+          <xsl:value-of select="SzAllFrom" />
+        </InboundSize>
+        <InboundContentSize>
+          <xsl:value-of select="format-number(SzAllFrom - SzHdrsFrom, '#')" />
+        </InboundContentSize>
         <xsl:if test="recHdr != '-'">
           <InboundHeader>
             <xsl:value-of select="recHdr" />
@@ -368,7 +363,7 @@
 
         <!-- Outbound activity -->
 
-        <!-- Sometimes squid generates a szAllToClient of 0 but a header size> 0 -->
+        <!-- Sometimes squid generates a szAllTo(the Client) of 0 but a header size greater than 0, so we adjust -->
         <xsl:variable name="outbytes">
           <xsl:choose>
             <xsl:when test="SzAllTo > 0">
@@ -380,17 +375,12 @@
             <xsl:otherwise>0</xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
-        <xsl:if test="$outbytes > 0">
-          <OutboundSize>
-            <xsl:value-of select="$outbytes" />
-          </OutboundSize>
-        </xsl:if>
-        <xsl:variable name="OutboundContentSize" select="SzAllTo - SzHdrsTo" />
-        <xsl:if test="$OutboundContentSize > 0">
-          <OutboundContentSize>
-            <xsl:value-of select="format-number($OutboundContentSize, '#')" />
-          </OutboundContentSize>
-        </xsl:if>
+        <OutboundSize>
+          <xsl:value-of select="$outbytes" />
+        </OutboundSize>
+        <OutboundContentSize>
+          <xsl:value-of select="format-number($outbytes - SzHdrsTo, '#')" />
+        </OutboundContentSize>
         <xsl:if test="rplHdr != '-'">
           <OutboundHeader>
             <xsl:value-of select="rplHdr" />
@@ -398,11 +388,9 @@
         </xsl:if>
 
         <!-- -->
-        <xsl:if test="rTime != 0">
-          <RequestTime>
-            <xsl:value-of select="rTime" />
-          </RequestTime>
-        </xsl:if>
+        <RequestTime>
+          <xsl:value-of select="rTime" />
+        </RequestTime>
         <xsl:if test="rStatus != '-'">
           <ConnectionStatus>
             <xsl:value-of select="rStatus" />
@@ -533,4 +521,3 @@
     </xsl:choose>
   </xsl:template>
 </xsl:stylesheet>
-

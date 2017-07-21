@@ -32,7 +32,7 @@ The following represents the folder structure and content that will be imported 
 
 | Content pack | Version | Notes |
 |:------------ |:------- |:----- |
-| [`template-pipelines` Content Pack](../template-pipelines/README.md) | [v1.0](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v1.0) | Content pack elment is the Event Data (XML) Pipeline |
+| [`template-pipelines` Content Pack](../template-pipelines/README.md) | [v1.0](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v1.0) | Content pack element is the Event Data (XML) Pipeline |
 
 ## Client Contents
 
