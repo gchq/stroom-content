@@ -33,7 +33,7 @@
                         <xs:sequence>
                             <xs:element name="key">
                                 <xs:annotation>
-                                    <xs:documentation>The unique identifier for the statistic that this statistic event will contribute to</xs:documentation>
+                                    <xs:documentation>The unique identifier for the statistic that this statistic event will contribute to. Typically this will be the UUID for the statistic.</xs:documentation>
                                 </xs:annotation>
                                 <xs:complexType>
                                     <xs:simpleContent>
@@ -55,7 +55,7 @@
                             <xs:choice>
                                 <xs:element name="count" nillable="false">
                                     <xs:annotation>
-                                        <xs:documentation>The count of items within the event, e.g. if the statistic event is StreamEventCount then the number of events in the stream would go in this element.  If the statistic is counting user logons and the source represennts a single user logon event then there is no concept of a count so the value would be 1.</xs:documentation>
+                                        <xs:documentation>The count of items within the event, e.g. if the statistic event is StreamEventCount then the number of events in the stream would go in this element.  If the statistic is counting user logons and the source event represents a single user logon event then there is no concept of a count so the value would be 1.</xs:documentation>
                                     </xs:annotation>
                                     <xs:simpleType>
                                         <xs:restriction base="xs:long">
@@ -74,7 +74,7 @@
                                     <xs:sequence>
                                         <xs:element name="tag" type="s:TagType" minOccurs="1" maxOccurs="unbounded">
                                             <xs:annotation>
-                                                <xs:documentation>Tags/values are used to optionally further refine the statistic</xs:documentation>
+                                                <xs:documentation>Tags/values are used to optionally further qualify refine the statistic</xs:documentation>
                                             </xs:annotation>
                                         </xs:element>
                                     </xs:sequence>
@@ -82,7 +82,7 @@
                             </xs:element>
                             <xs:element name="identifiers" minOccurs="0">
                                 <xs:annotation>
-                                    <xs:documentation>Where applicable, a collection of all compound identifiers that contributed to this statistic event</xs:documentation>
+                                    <xs:documentation>Where applicable, a collection of all compound identifiers that contributed to this statistic event. For example if user logon events are being counted then the unique identifer of the source event can be associated with the statistic event to provide a link back to the source data</xs:documentation>
                                 </xs:annotation>
                                 <xs:complexType>
                                     <xs:sequence>
