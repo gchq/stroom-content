@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+## [core-xml-schemas-v1.1]
+
+### Added
+
+* Add v3.0.0 of the statistics XMLSchema
+
+### Changed
+
 * Refactor content pack directory structure
 
 ### Removed
@@ -20,6 +28,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Inital version.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v1.0...HEAD
+[Unreleased]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v1.1...HEAD
+[core-xml-schemas-v1.1]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v1.0...core-xml-schemas-v1.1
 [core-xml-schemas-v1.0]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v1.0...core-xml-schemas-v1.0
 
