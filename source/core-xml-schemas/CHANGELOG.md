@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+## [core-xml-schemas-v2.0]
+
+### Added
+
+* Add v4.0.0 of statistics schema with `key` element removed and version attribute added
+
+### Changed
+
+* Marked v3.0.0 of the statistics schema as deprecated
+
 ## [core-xml-schemas-v1.1]
 
 ### Added
@@ -28,7 +38,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Inital version.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v1.1...HEAD
+[Unreleased]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v2.0...HEAD
+[core-xml-schemas-v2.0]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v1.1...core-xml-schemas-v2.0
 [core-xml-schemas-v1.1]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v1.0...core-xml-schemas-v1.1
 [core-xml-schemas-v1.0]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v1.0...core-xml-schemas-v1.0
 

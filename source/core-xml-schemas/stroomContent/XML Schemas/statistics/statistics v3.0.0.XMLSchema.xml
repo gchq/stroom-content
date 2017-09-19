@@ -1,6 +1,6 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <xmlSchema>
-   <deprecated>false</deprecated>
+   <deprecated>true</deprecated>
    <description>XML Schema for sending statistic events to Stroom-Stats</description>
    <name>statistics v3.0</name>
    <namespaceURI>statistics:3</namespaceURI>

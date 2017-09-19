@@ -16,6 +16,7 @@ The core XML Schemas required by Stroom for basic operation.
 
 | Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
 | --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
+| [v2.0](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v2.0)                   | Y              | Y             |
 | [v1.1](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v1.1)                   | Y              | Y             |
 | [v1.0](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v1.0)                   | Y              | Y             |
 

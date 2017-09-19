@@ -17,7 +17,7 @@ The following represents the folder structure and content that will be imported 
         * [reference-data v2.0.1](#reference-data) `XMLSchema`
     * _statistics_ 
         * [statistics v2.0.1](#statistics) `XMLSchema`
-        * [statistics v3.0.0](#statistics) `XMLSchema`
+        * [statistics v4.0.0](#statistics) `XMLSchema`
 
 
 ## analytic-output 
@@ -52,7 +52,7 @@ Statistics data can be recorded in two ways in _stroomn_, either using the inter
 
 * SQL Statistics - v2.0.1
 
-* _stroom-stats_ - v3.0.0
+* _stroom-stats_ - v4.0.0
 
 ### SQL Statistics
 
