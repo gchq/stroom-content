@@ -20,7 +20,7 @@
       <xsl:copy-of select="node()"/>
       
       <data name="AnnotationURL">
-        <xsl:attribute name="value" select="concat('[', $annotationID, '](http://stroom.annotations.org:3000/', $annotationID, ')')" />
+        <xsl:attribute name="value" select="concat('[', $annotationID, '](__annotations-ui__:3000/', $annotationID, ')')" />
       </data>
     </record>
   </xsl:template>
