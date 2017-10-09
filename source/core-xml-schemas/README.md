@@ -17,6 +17,7 @@ The following represents the folder structure and content that will be imported 
         * [reference-data v2.0.1](#reference-data) `XMLSchema`
     * _statistics_ 
         * [statistics v2.0.1](#statistics) `XMLSchema`
+        * [statistics v4.0.0](#statistics) `XMLSchema`
 
 
 ## analytic-output 
@@ -45,6 +46,21 @@ Data input to the _ReferenceDataFilter_ pipeline element must conform to this XM
 
 ## statistics
 
-This structure is used to describe a statistics event record. Statistics are used to record counts (or values) of events happening, e.g. the number of a particular kind of event witin a time period, or the CPU% of a Stroom node.
+Statistic events in _stroom_ are an abstraction of the rich event records in stroom. The idea is to condense part of an event down to a count or value with some qualifying attributes, e.g. the number of bytes in a file upload event, or reducing a rich logon event down to a count of 1 with qualifying attributes for the user and device. These statistic events can then be aggregated in a number of different time buckets for fast querying. 
 
-Data fed to the _NewStatisticsFilter_ pipeline element must conform to this XMLSchema.
+Statistics data can be recorded in two ways in _stroomn_, either using the internal SQL based statistics store, or by sending the statistic events via _Kafka_ to _stroom-stats_. Each mechanism uses a different version of the Statistics XMLSchema. The appropriate schema version for each statistics store is as follows:
+
+* SQL Statistics - v2.0.1
+
+* _stroom-stats_ - v4.0.0
+
+### SQL Statistics
+
+This statistics store is built in to _stroom_.  The schema is used to describe a statistics event record. Statistics are used to record counts (or values) of events happening, e.g. the number of a particular kind of event within a time period, or the CPU% of a Stroom node.
+
+Data fed to the _StatisticsFilter_ pipeline element must conform to this XMLSchema.
+
+### _stroom-stats_ Statistics
+_stroom-stats_ is external to _stroom_ and provides a more scalable and feature rich store for statistics data. The structure of a _stroom-stats_ statistic event is broadly similar to a SQL Statistics event, with the addition of some features to support recording references to the source event(s) that contributed to the Statistic event.
+
+Data fed to the `statisticEvents-Count` and `statisticEvents-Value` Kafka topics using _stroom's_ _KafkaProducerFilter_ pipeline element must conform to this XMLSchema.
