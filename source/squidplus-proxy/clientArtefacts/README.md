@@ -10,7 +10,7 @@ NOTE: Currently the SquidPlus format captures both 'original receive request hea
 
 # Storage Imposts
   - Deployment size of approx 40K
-  - Temporary storage of up to 8.00GB for a period of 90 days (given failure of web service) within the configured Squid log directory (see later).  These values are the default posture, if you need to change this, then edit `squid_stroom_feeder.sh` and change one of both of the **FAILED_RETENTION** and **FAILED_MAX** environment variables
+  - Temporary storage of up to 8.00GB for a period of 90 days (given failure of web service) within the configured Squid log directory (see later).  These values are the default posture, if you need to change this, then edit `squid_stroom_feeder.sh` and change one or both of the **FAILED_RETENTION** and **FAILED_MAX** environment variables
 
 # Prerequisites
   - Squid configured appropriately (see later)
