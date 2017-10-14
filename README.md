@@ -14,6 +14,8 @@ The core XML Schemas required by Stroom for basic operation.
 
 | Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
 | --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
+| [v2.0](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v2.0)                   | Y              | Y             |
+| [v1.1](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v1.1)                   | Y              | Y             |
 | [v1.0](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v1.0)                   | Y              | Y             |
 
 
@@ -23,6 +25,7 @@ An XML Schema standard for describing audit events.
 
 | Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
 | --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
+| [v3.1.1](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.1.1)       | Y              | Y             |
 | [v1.0](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v1.0)           | Y              | Y             |
 
 
@@ -207,3 +210,9 @@ This script will create a skeleton structure for a new content pack.
 
 This script can be run from within an directory to create a new Stroom Folder (XML definition file and directory). This should only be used to create a directory that doesn't already exist in Stroom as it will have a new UUID generated for it.
 
+<<<<<<< HEAD
+=======
+#### removeAuditElements.py
+
+This script (_requires python3_) will strip the audit elements (e.g. `<createUser>...</createUser>`) from all xml files. This is to make it easier to clean any content generated in stroom and exported out for inclusion in a content pack.
+>>>>>>> upstream/master

@@ -1,4 +1,7 @@
 //root
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.1'
+}
 
 def STROOM_CONTENT_DIR="stroomContent"
 def BUILD_DIR_NAME="build"
