@@ -100,6 +100,15 @@ A set of template pipelines that other pipelines can inherit from.
 | [v1.0](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v1.0)                 | Y              | Y             |
 
 
+### [**apachehttpd-blackbox**](./source/apachehttpd-blackbox/README.md) 
+
+An Apache Httpd Access log (custom) content pack containing both Linux Client and Stroom content artefacts.
+
+| Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
+| --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
+| [v1.0](https://github.com/gchq/stroom-content/releases/tag/apachehttpd-blackbox-v1.0)               | Y              | Y             |
+
+
 ### [**squidplus-proxy**](./source/squidplus-proxy/README.md) 
 
 A Squid Proxy Access log content pack containing both Linux Client and Stroom content artefacts.
