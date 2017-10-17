@@ -217,7 +217,8 @@
       -->
       <xsl:choose>
         <xsl:when test="string-length(data[@name='query']/@value) > 0">
-          <TypeId>Search of Web Service</TypeId>
+        <TypeId>SearchWebService</TypeId>
+          <Description>Search of Web Service</Description>
           <Search>
             <DataSources>
               <DataSource>
@@ -237,7 +238,8 @@
           </Search>
         </xsl:when>
         <xsl:when test="matches($method, 'GET|OPTIONS|HEAD')">
-          <TypeId>Recieve data from Web Service</TypeId>
+        <TypeId>SendFromWebService</TypeId>
+          <Description>Recieve data from Web Service</Description>
           <Receive>
             <xsl:call-template name="setupParticipants_receive" />
             <Payload>
@@ -247,7 +249,9 @@
           </Receive>
         </xsl:when>
         <xsl:otherwise>
-          <TypeId>Send/Access data to Web Service</TypeId>
+                <TypeId>SendToWebService</TypeId>
+
+          <Description>Send/Access data to Web Service</Description>
           <Send>
             <xsl:call-template name="setupParticipants_send" />
             <Payload>
