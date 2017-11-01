@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+* Add Heap Histogram (Bytes + Instances) statistics
+
 ### Changed
 
 * Refactor content pack directory structure
