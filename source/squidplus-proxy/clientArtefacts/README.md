@@ -31,7 +31,7 @@ access_log stdio:/var/log/squid/access.log squid
 ```
 which results in standard squid logs being collected in /var/log/squid/access.log.
 
-To gain better information from the Squid proxy we use the so-called SquidPlus log format which gathers more information about a proxy transaction.  We also save the resultant SquidPlus format logs in a different directory to deconflict any pre-configuration log rotation mechanisms.  So the configuration changes need to be
+To gain better information from the Squid proxy we use the so-called SquidPlus log format which gathers more information about a proxy transaction.  We also save the resultant SquidPlus format logs in a different directory to deconflict any pre-configuration log rotation mechanisms. Further, by default, Squid does not log query terms on URLs. Should you require the terms, you should turn off the `strip_query_terms` option. So the configuration changes need to be
   - Create the SquidPlus log directory and also a squidplus log queuing directory. Note these directories are preset in the `squid_stroom_feeder.sh` script so if you change them, change the script (see **STROOM_LOG_QUEUED** and **STROOM_LOG_SOURCE** variables). Ensure the directories are writable by the appropriate user (typically squid:squid)
 
 ```bash
@@ -43,8 +43,10 @@ chown squid:squid /var/log/squid/squidCurrent /var/log/squid/squidlogQueue
     - Add a logformat directive to define the SquidPlus format
     - Define a new 'access_log' directive to use the SquidPlus format that saves logs in tge /var/log/squid/squidCurrent directory
     - Allow for log file rotation
+    - Optionally turn off the 'strip_query_terms' option
     - If the proxy can use user attribution, then if the standard %un element doesn't record the attributed user identify, then use an appropriate directive
     The above would look like
+
 
 ```
 # Logging
@@ -52,6 +54,11 @@ chown squid:squid /var/log/squid/squidCurrent /var/log/squid/squidlogQueue
 logformat squidplus %ts.%03tu %tr %>a/%>p %<a/%<p %<la/%<lp %>la/%>lp %Ss/%>Hs/%<Hs %<st/%<sh %>st/%>sh %mt %rm "%ru" "%un" %Sh "%>h" "%<h"
 logfile_rotate 10
 access_log stdio:/var/log/squid/squidCurrent/access.log squidplus
+```
+
+```
+# Turn off stripping query terms
+strip_query_terms off
 ```
   - Restart squid service
 

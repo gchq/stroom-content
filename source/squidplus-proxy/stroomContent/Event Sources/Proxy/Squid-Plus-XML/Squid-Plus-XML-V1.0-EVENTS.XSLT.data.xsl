@@ -5,6 +5,11 @@
   This Translation is for logs from a Squid Proxy using the SquidPlus log format (see below)
   together with a supporting script that enriches the original event and converts the output format into XML.
   
+  It is recommended to enable query capture in urls. To do this, in your squid.conf file add
+  
+  # Keep query terms in the Request URL
+  strip_query_terms off
+  
   Squid Plus Format:
   The SquidPlus logging format is designed to gain additional information about the proxy transaction.
   
@@ -259,27 +264,67 @@
   <!-- Event detail -->
   <xsl:template name="event_detail">
     <EventDetail>
-      <TypeId>ProxyConnection</TypeId>
 
       <!--
-      We model a Proxy event as a Recieve or Send depending on the method. 
+      We model Proxy events as either, Searches, Recieve or Send events depending on if there is a query in the URL and also the method.
+      
       We make use of the Receive/Send subelements Source/Destination to map the Client/Destination Squid values
       and the Payload sub-element to map the URL and other details of the activity
       -->
+
+      <!-- 
+      We consider a query to be at least ONE character and rely on the URL query indicator ? 
+      -->
+      <xsl:variable name="query">
+        <xsl:if test="matches(rURL, '.+?.+')">
+          <xsl:value-of select="substring-after(rURL, '?')" />
+        </xsl:if>
+      </xsl:variable>
       <xsl:choose>
-        <xsl:when test="matches(rMethod, 'GET|OPTIONS|HEAD')">
-          <Receive>
-            <xsl:call-template name="setupParticipants" />
-            <xsl:call-template name="setPayload" />
+        <xsl:when test="$query != ''">
+          <TypeId>ProxyConnection-Query</TypeId>
+          <Description>Search of Resource via Proxy</Description>
+          <Search>
+            <DataSources>
+              <DataSource>
+                <xsl:value-of select="substring-before(rURL, '?')" />
+              </DataSource>
+            </DataSources>
+            <Query>
+              <Raw>
+                <xsl:value-of select="$query" />
+              </Raw>
+            </Query>
+            <Results>
+              <xsl:call-template name="setResource" />
+            </Results>
             <xsl:call-template name="setOutcome" />
-          </Receive>
+          </Search>
         </xsl:when>
         <xsl:otherwise>
-          <Send>
-            <xsl:call-template name="setupParticipants" />
-            <xsl:call-template name="setPayload" />
-            <xsl:call-template name="setOutcome" />
-          </Send>
+          <TypeId>ProxyConnection</TypeId>
+          <xsl:choose>
+            <xsl:when test="matches(rMethod, 'GET|OPTIONS|HEAD')">
+              <Description>Receipt of information from a Resource via Proxy</Description>
+              <Receive>
+                <xsl:call-template name="setupParticipants" />
+                <Payload>
+                  <xsl:call-template name="setResource" />
+                </Payload>
+                <xsl:call-template name="setOutcome" />
+              </Receive>
+            </xsl:when>
+            <xsl:otherwise>
+              <Description>Transmission of information to a Resource via Proxy</Description>
+              <Send>
+                <xsl:call-template name="setupParticipants" />
+                <Payload>
+                  <xsl:call-template name="setResource" />
+                </Payload>
+                <xsl:call-template name="setOutcome" />
+              </Send>
+            </xsl:otherwise>
+          </xsl:choose>
         </xsl:otherwise>
       </xsl:choose>
     </EventDetail>
@@ -328,94 +373,92 @@
   </xsl:template>
 
   <!-- Define the Payload node -->
-  <xsl:template name="setPayload">
-    <Payload>
-      <Resource>
-        <URL>
-          <xsl:value-of select="rURL" />
-        </URL>
-        <xsl:if test="contains(recHdr, 'Referer:')">
-          <Referrer>
-            <xsl:value-of select="substring-before(substring-after(recHdr, 'Referer: '), '\r')" />
-          </Referrer>
-        </xsl:if>
-        <HTTPMethod>
-          <xsl:value-of select="rMethod" />
-        </HTTPMethod>
-        <xsl:if test="contains(recHdr, 'User-Agent:')">
-          <UserAgent>
-            <xsl:value-of select="substring-before(substring-after(recHdr, 'User-Agent: '), '\r')" />
-          </UserAgent>
-        </xsl:if>
+  <xsl:template name="setResource">
+    <Resource>
+      <URL>
+        <xsl:value-of select="rURL" />
+      </URL>
+      <xsl:if test="contains(recHdr, 'Referer:')">
+        <Referrer>
+          <xsl:value-of select="substring-before(substring-after(recHdr, 'Referer: '), '\r')" />
+        </Referrer>
+      </xsl:if>
+      <HTTPMethod>
+        <xsl:value-of select="rMethod" />
+      </HTTPMethod>
+      <xsl:if test="contains(recHdr, 'User-Agent:')">
+        <UserAgent>
+          <xsl:value-of select="substring-before(substring-after(recHdr, 'User-Agent: '), '\r')" />
+        </UserAgent>
+      </xsl:if>
 
-        <!-- Inbound activity -->
-        <InboundSize>
-          <xsl:value-of select="SzAllFrom" />
-        </InboundSize>
-        <InboundContentSize>
-          <xsl:value-of select="format-number(SzAllFrom - SzHdrsFrom, '#')" />
-        </InboundContentSize>
-        <xsl:if test="recHdr != '-'">
-          <InboundHeader>
-            <xsl:value-of select="recHdr" />
-          </InboundHeader>
-        </xsl:if>
+      <!-- Inbound activity -->
+      <InboundSize>
+        <xsl:value-of select="SzAllFrom" />
+      </InboundSize>
+      <InboundContentSize>
+        <xsl:value-of select="format-number(SzAllFrom - SzHdrsFrom, '#')" />
+      </InboundContentSize>
+      <xsl:if test="recHdr != '-'">
+        <InboundHeader>
+          <xsl:value-of select="recHdr" />
+        </InboundHeader>
+      </xsl:if>
 
-        <!-- Outbound activity -->
+      <!-- Outbound activity -->
 
-        <!-- Sometimes squid generates a szAllTo(the Client) of 0 but a header size greater than 0, so we adjust -->
-        <xsl:variable name="outbytes">
-          <xsl:choose>
-            <xsl:when test="SzAllTo > 0">
-              <xsl:value-of select="SzAllTo" />
-            </xsl:when>
-            <xsl:when test="SzAllTo = 0 and SzHdrsTo > 0">
-              <xsl:value-of select="SzHdrsTo" />
-            </xsl:when>
-            <xsl:otherwise>0</xsl:otherwise>
-          </xsl:choose>
-        </xsl:variable>
-        <OutboundSize>
-          <xsl:value-of select="$outbytes" />
-        </OutboundSize>
-        <OutboundContentSize>
-          <xsl:value-of select="format-number($outbytes - SzHdrsTo, '#')" />
-        </OutboundContentSize>
-        <xsl:if test="rplHdr != '-'">
-          <OutboundHeader>
-            <xsl:value-of select="rplHdr" />
-          </OutboundHeader>
-        </xsl:if>
+      <!-- Sometimes squid generates a szAllTo(the Client) of 0 but a header size greater than 0, so we adjust -->
+      <xsl:variable name="outbytes">
+        <xsl:choose>
+          <xsl:when test="SzAllTo > 0">
+            <xsl:value-of select="SzAllTo" />
+          </xsl:when>
+          <xsl:when test="SzAllTo = 0 and SzHdrsTo > 0">
+            <xsl:value-of select="SzHdrsTo" />
+          </xsl:when>
+          <xsl:otherwise>0</xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+      <OutboundSize>
+        <xsl:value-of select="$outbytes" />
+      </OutboundSize>
+      <OutboundContentSize>
+        <xsl:value-of select="format-number($outbytes - SzHdrsTo, '#')" />
+      </OutboundContentSize>
+      <xsl:if test="rplHdr != '-'">
+        <OutboundHeader>
+          <xsl:value-of select="rplHdr" />
+        </OutboundHeader>
+      </xsl:if>
 
-        <!-- -->
-        <RequestTime>
-          <xsl:value-of select="rTime" />
-        </RequestTime>
-        <xsl:if test="rStatus != '-'">
-          <ConnectionStatus>
-            <xsl:value-of select="rStatus" />
-          </ConnectionStatus>
-        </xsl:if>
-        <InitialResponseCode>
-          <xsl:value-of select="nHopStatus" />
-        </InitialResponseCode>
-        <ResponseCode>
-          <xsl:value-of select="tCliStatus" />
-        </ResponseCode>
-        <xsl:if test="mime != '-'">
-          <MimeType>
-            <xsl:value-of select="mime" />
-          </MimeType>
-        </xsl:if>
-        <Data Name="ProxyNextClientIP" Value="{lcIP}" />
-        <Data Name="ProxyNextClientFQDN" Value="{lcHost}" />
-        <Data Name="ProxyNextClientPort" Value="{lcPort}" />
-        <Data Name="ProxyNextServerIP" Value="{lsIP}" />
-        <Data Name="ProxyNextServerFQDN" Value="{lsHost}" />
-        <Data Name="ProxyNextServerPort" Value="{lsPort}" />
-        <Data Name="ProxyHierarchy" Value="{hierarch}" />
-      </Resource>
-    </Payload>
+      <!-- -->
+      <RequestTime>
+        <xsl:value-of select="rTime" />
+      </RequestTime>
+      <xsl:if test="rStatus != '-'">
+        <ConnectionStatus>
+          <xsl:value-of select="rStatus" />
+        </ConnectionStatus>
+      </xsl:if>
+      <InitialResponseCode>
+        <xsl:value-of select="nHopStatus" />
+      </InitialResponseCode>
+      <ResponseCode>
+        <xsl:value-of select="tCliStatus" />
+      </ResponseCode>
+      <xsl:if test="mime != '-'">
+        <MimeType>
+          <xsl:value-of select="mime" />
+        </MimeType>
+      </xsl:if>
+      <Data Name="ProxyNextClientIP" Value="{lcIP}" />
+      <Data Name="ProxyNextClientFQDN" Value="{lcHost}" />
+      <Data Name="ProxyNextClientPort" Value="{lcPort}" />
+      <Data Name="ProxyNextServerIP" Value="{lsIP}" />
+      <Data Name="ProxyNextServerFQDN" Value="{lsHost}" />
+      <Data Name="ProxyNextServerPort" Value="{lsPort}" />
+      <Data Name="ProxyHierarchy" Value="{hierarch}" />
+    </Resource>
   </xsl:template>
 
   <!-- 
