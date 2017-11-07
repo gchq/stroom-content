@@ -1,0 +1,10 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<statisticStore>
+   <description>The instance count from a jmap heap histogram, qualified by node and java class name. Change the property stroom.node.status.heapHistogram.classNameMatchRegex to control which classes are included.</description>
+   <enabled>true</enabled>
+   <name>Heap Histogram Instances</name>
+   <precision>60000</precision>
+   <rollUpType>ALL</rollUpType>
+   <statisticType>VALUE</statisticType>
+   <uuid>e4f243b8-2c70-4d6e-9d5a-16466bf8764f</uuid>
+</statisticStore>
