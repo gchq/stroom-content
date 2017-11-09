@@ -266,7 +266,7 @@
     <EventDetail>
 
       <!--
-      We model Proxy events as either, Searches, Recieve or Send events depending on if there is a query in the URL and also the method.
+      We model Proxy events as either Recieve or Send events depending on the method.
       
       We make use of the Receive/Send subelements Source/Destination to map the Client/Destination Squid values
       and the Payload sub-element to map the URL and other details of the activity
@@ -275,56 +275,34 @@
       <!-- 
       We consider a query to be at least ONE character and rely on the URL query indicator ? 
       -->
-      <xsl:variable name="query">
-        <xsl:if test="matches(rURL, '.+?.+')">
-          <xsl:value-of select="substring-after(rURL, '?')" />
-        </xsl:if>
-      </xsl:variable>
       <xsl:choose>
-        <xsl:when test="$query != ''">
+        <xsl:when test="matches(rURL, '.+?.+')">
           <TypeId>ProxyConnection-Query</TypeId>
-          <Description>Search of Resource via Proxy</Description>
-          <Search>
-            <DataSources>
-              <DataSource>
-                <xsl:value-of select="substring-before(rURL, '?')" />
-              </DataSource>
-            </DataSources>
-            <Query>
-              <Raw>
-                <xsl:value-of select="$query" />
-              </Raw>
-            </Query>
-            <Results>
-              <xsl:call-template name="setResource" />
-            </Results>
-            <xsl:call-template name="setOutcome" />
-          </Search>
         </xsl:when>
         <xsl:otherwise>
           <TypeId>ProxyConnection</TypeId>
-          <xsl:choose>
-            <xsl:when test="matches(rMethod, 'GET|OPTIONS|HEAD')">
-              <Description>Receipt of information from a Resource via Proxy</Description>
-              <Receive>
-                <xsl:call-template name="setupParticipants" />
-                <Payload>
-                  <xsl:call-template name="setResource" />
-                </Payload>
-                <xsl:call-template name="setOutcome" />
-              </Receive>
-            </xsl:when>
-            <xsl:otherwise>
-              <Description>Transmission of information to a Resource via Proxy</Description>
-              <Send>
-                <xsl:call-template name="setupParticipants" />
-                <Payload>
-                  <xsl:call-template name="setResource" />
-                </Payload>
-                <xsl:call-template name="setOutcome" />
-              </Send>
-            </xsl:otherwise>
-          </xsl:choose>
+        </xsl:otherwise>
+      </xsl:choose>
+      <xsl:choose>
+        <xsl:when test="matches(rMethod, 'GET|OPTIONS|HEAD')">
+          <Description>Receipt of information from a Resource via Proxy</Description>
+          <Receive>
+            <xsl:call-template name="setupParticipants" />
+            <Payload>
+              <xsl:call-template name="setPayload" />
+            </Payload>
+            <xsl:call-template name="setOutcome" />
+          </Receive>
+        </xsl:when>
+        <xsl:otherwise>
+          <Description>Transmission of information to a Resource via Proxy</Description>
+          <Send>
+            <xsl:call-template name="setupParticipants" />
+            <Payload>
+              <xsl:call-template name="setPayload" />
+            </Payload>
+            <xsl:call-template name="setOutcome" />
+          </Send>
         </xsl:otherwise>
       </xsl:choose>
     </EventDetail>
@@ -373,7 +351,26 @@
   </xsl:template>
 
   <!-- Define the Payload node -->
-  <xsl:template name="setResource">
+  <xsl:template name="setPayload">
+    <xsl:variable name="query">
+      <xsl:if test="matches(rURL, '.+?.+')">
+        <xsl:value-of select="substring-after(rURL, '?')" />
+      </xsl:if>
+    </xsl:variable>
+    <xsl:if test="$query != ''">
+      <Criteria>
+        <DataSources>
+          <DataSource>
+            <xsl:value-of select="substring-before(rURL, '?')" />
+          </DataSource>
+        </DataSources>
+        <Query>
+          <Raw>
+            <xsl:value-of select="$query" />
+          </Raw>
+        </Query>
+      </Criteria>
+    </xsl:if>
     <Resource>
       <URL>
         <xsl:value-of select="rURL" />
