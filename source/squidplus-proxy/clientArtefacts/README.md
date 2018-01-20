@@ -14,7 +14,7 @@ NOTE: Currently the SquidPlus format captures both 'original receive request hea
 
 # Prerequisites
   - Squid configured appropriately (see later)
-  - requires the bind-utils, coreutils, curl, net-tools, gzip and sed packages. Also requires both perl and perl(XML::Simple) packages as well
+  - requires the bind-utils, coreutils, curl, net-tools, gzip and sed packages. Also requires both perl and perl(XML::Simple) packages as well (including perl-Socket6, perl-XML-Simple)
 
 # Capability Workflow
 The workflow is such that, every 10 minutes cron starts a script which
