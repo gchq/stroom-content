@@ -1,10 +1,6 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <xslt>
-   <createTime>1505975570740</createTime>
-   <createUser>admin</createUser>
-   <description/>
+   <description />
    <name>Dashboard UUID XSLT</name>
-   <updateTime>1505975570740</updateTime>
-   <updateUser>admin</updateUser>
    <uuid>ccb9f424-1b84-4e73-bd41-4049257368e5</uuid>
 </xslt>
