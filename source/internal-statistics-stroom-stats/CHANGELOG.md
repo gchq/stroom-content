@@ -23,6 +23,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 [Unreleased]: https://github.com/gchq/stroom-content/compare/internal-statistics-stroom-stats-v2.0...HEAD
-[internal-statistics-stroom-stats-v2.0]: https://github.com/gchq/stroom-content/compare/internal-statisticsstroom-stats-v2.0...internal-statistics-sql-v2.0
+[internal-statistics-stroom-stats-v2.0]: https://github.com/gchq/stroom-content/compare/internal-statistics-stroom-stats-v2.0...internal-statistics-stroom-stats-v2.0
 
 
