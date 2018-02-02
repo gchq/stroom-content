@@ -11,11 +11,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+## [event-logging-xml-schema-v3.2.3]
+
+### Added
+
+* Schema changes
+
+    * Issue **#23** : Added optional Coordinates element to LocationComplexType to capture lat/long
+
 ## [event-logging-xml-schema-v3.1.1]
 
 ### Changed
 
-* Issue **#18** : Remove `pattern` from `VersionSimpleType` as this is trumped by the enumerations. Add past versions as enumerations.
+* Schema changes
+
+    * Issue **#18** : Remove `pattern` from `VersionSimpleType` as this is trumped by the enumerations. Add past versions as enumerations.
 
 ### Removed
 
@@ -52,7 +62,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Inital version.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schema-v3.1.1...HEAD
+[Unreleased]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schema-v3.2.3...HEAD
+[event-logging-xml-schema-v3.2.3]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schema-v3.1.1...event-logging-xml-schema-v3.2.3
 [event-logging-xml-schema-v3.1.1]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schema-v3.1.0...event-logging-xml-schema-v3.1.1
 [event-logging-xml-schema-v3.1.0]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schema-v1.0...event-logging-xml-schema-v3.1.0
 [event-logging-xml-schema-v1.0]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schema-v1.0...event-logging-xml-schema-v1.0
