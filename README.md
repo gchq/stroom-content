@@ -53,6 +53,7 @@ A set of _StatisticStore_ entities for representing the internal statistics gene
 
 | Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
 | --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
+| [v2.1](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-sql-v2.1)            | N              | Y             |
 | [v2.0](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-sql-v2.0)            | N              | Y             |
 | [v1.2](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-v1.2)                | Y              | N             |
 | [v1.1](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-v1.1)                | Y              | N             |
@@ -67,6 +68,7 @@ A set of _StroomStatsStore_ entities for representing the internal statistics ge
 
 | Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
 | --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
+| [v2.1](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-stroom-stats-v2.1)   | N              | Y             |
 | [v2.0](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-stroom-stats-v2.0)   | N              | Y             |
 
 
