@@ -1,4 +1,6 @@
 
+# Release 1.1  - 20180411 Burn Alting - burn@swtf.dyndsn.org
+#   - Correct minor script errors
 # Release 1.0  - 20170623 Burn Alting - burn@swtf.dyndns.org
 #   - Initial Release
 
@@ -227,12 +229,12 @@ send_to_stroom() {
   if [ -n "${myDomain}" ]; then
     myNameserver=`dig ${myDomain} SOA +time=3 +tries=2 +noall +answer +short 2>/dev/null | head -1 | cut -d' ' -f1`
     if [ -n "$myNameserver" ]; then
-      hostArgs="${hostArgs} -H MyNameServer:\"${myNameServer}\""
+      hostArgs="${hostArgs} -H MyNameServer:\"${myNameserver}\""
     else
       # Let's try dumb and see if there is a name server in /etc/resolv.conf and choose the first one
       h=`egrep '^nameserver ' /etc/resolv.conf | head -1 | cut -f2 -d' '`
       if [ -n "${h}" ]; then
-        h0=`host $h | gawk '{print $NF }'`
+        h0=`host $h 2> /dev/null | gawk '{print $NF }'`
         if [ -n "${h0}" ]; then
            hostArgs="${hostArgs} -H MyNameServer:\"${h0}\""
         elif [ -n "${h}" ]; then
@@ -243,7 +245,8 @@ send_to_stroom() {
   fi
   # Gather various configuration details via facter(1) command if available
   if hash facter 2>/dev/null; then
-    myMeta=`facter | awk '{
+    # Redirect facter's stderr as this script may not be running as root
+    myMeta=`facter 2> /dev/null | awk '{
 if ($1 == "fqdn") printf "FQDN:%s\\\n", $3;
 if ($1 == "uuid") printf "UUID:%s\\\n", $3;
 if ($1 ~ /^ipaddress/) printf "%s:%s\\\n", $1, $3;
