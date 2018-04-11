@@ -1,0 +1,14 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<pipeline>
+   <description>Apache Httpd BlackBox Access log pipeline</description>
+   <name>ApacheHttpd-BlackBox-V1.0-EVENTS</name>
+   <parentPipelineXML>&lt;?xml version="1.1" encoding="UTF-8"?&gt;
+&lt;doc&gt;
+   &lt;type&gt;Pipeline&lt;/type&gt;
+   &lt;uuid&gt;7740cfc4-3443-4001-bf0b-6adc77d5a3cf&lt;/uuid&gt;
+   &lt;name&gt;Event Data&lt;/name&gt;
+&lt;/doc&gt;
+</parentPipelineXML>
+   <pipelineType>Event Data</pipelineType>
+   <uuid>355ab19b-cbe0-467d-a814-cde7917b0d40</uuid>
+</pipeline>

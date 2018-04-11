@@ -1,0 +1,12 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<feed>
+   <classification />
+   <contextEncoding>UTF-8</contextEncoding>
+   <description>Apache HTTPD feed based on the extended Black Box log format. See the Text converter for details of Apache Configuration and translation for mapping to Stroom Schema</description>
+   <encoding>UTF-8</encoding>
+   <name>ApacheHttpd-BlackBox-V1.0-EVENTS</name>
+   <reference>false</reference>
+   <status>RECEIVE</status>
+   <streamType>Raw Events</streamType>
+   <uuid>74d9c799-5b53-4ea6-a5d2-ebb61fb1d0b5</uuid>
+</feed>

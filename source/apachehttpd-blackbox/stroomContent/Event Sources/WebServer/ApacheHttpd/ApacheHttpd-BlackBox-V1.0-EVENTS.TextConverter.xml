@@ -1,0 +1,7 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<textConverter>
+   <converterType>DATA_SPLITTER</converterType>
+   <description>Apache HTTPD feed based on the extended Black Box log format. See the Text  conversion for details of Apache Configuration and translation for mapping to Stroom Schema</description>
+   <name>ApacheHttpd-BlackBox-V1.0-EVENTS</name>
+   <uuid>f5e9f65c-d777-480d-837c-8ee7156839d7</uuid>
+</textConverter>

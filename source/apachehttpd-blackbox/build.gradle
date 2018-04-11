@@ -1,0 +1,8 @@
+//apachehttpd-blackbox
+
+dependencies {
+    compileSource project(path: ':core-xml-schemas', configuration: 'distConfig')
+    compileSource project(path: ':event-logging-xml-schema', configuration: 'distConfig')
+    compileSource project(path: ':template-pipelines', configuration: 'distConfig')
+}
+
