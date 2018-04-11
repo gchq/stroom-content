@@ -1,0 +1,7 @@
+//support-scripts
+
+//example of how to configure dependencies on another content packs
+//dependencies {
+//    compileSource project(path: ':one-content-pack', configuration: 'distConfig')
+//    compileSource project(path: ':another-content-pack', configuration: 'distConfig')
+//}
