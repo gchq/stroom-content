@@ -25,6 +25,8 @@ An XML Schema standard for describing audit events.
 
 | Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
 | --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
+| [v3.2.3](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.2.3)       | Y              | Y             |
+| [v3.1.2](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.1.2)       | Y              | Y             |
 | [v3.1.1](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.1.1)       | Y              | Y             |
 | [v1.0](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v1.0)           | Y              | Y             |
 
@@ -45,6 +47,7 @@ A set of _StatisticStore_ entities for representing the internal statistics gene
 
 | Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
 | --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
+| [v2.1](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-sql-v2.1)            | N              | Y             |
 | [v2.0](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-sql-v2.0)            | N              | Y             |
 | [v1.2](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-v1.2)                | Y              | N             |
 | [v1.1](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-v1.1)                | Y              | N             |
@@ -57,6 +60,7 @@ A set of _StroomStatsStore_ entities for representing the internal statistics ge
 
 | Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
 | --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
+| [v2.1](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-stroom-stats-v2.1)   | N              | Y             |
 | [v2.0](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-stroom-stats-v2.0)   | N              | Y             |
 
 

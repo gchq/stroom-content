@@ -1,0 +1,11 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<xmlSchema>
+   <deprecated>false</deprecated>
+   <description/>
+   <name>event-logging v3.2.3</name>
+   <namespaceURI>event-logging:3</namespaceURI>
+   <schemaGroup>EVENTS</schemaGroup>
+   <systemId>file://event-logging-v3.2.3.xsd</systemId>
+   <uuid>02f10b89-0b12-400f-9834-89960a61f511</uuid>
+
+</xmlSchema>
