@@ -1,0 +1,12 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<feed>
+   <createTime>1539244801883</createTime>
+   <createUser>admin</createUser>
+   <name>AUTH_ACCESS_LOG</name>
+   <reference>false</reference>
+   <status>RECEIVE</status>
+   <streamType>Raw Events</streamType>
+   <updateTime>1539244801883</updateTime>
+   <updateUser>admin</updateUser>
+   <uuid>d5963c4f-ab6c-4f86-b04b-14ffc3d793dd</uuid>
+</feed>

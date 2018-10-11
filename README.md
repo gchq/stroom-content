@@ -84,6 +84,13 @@ The entities used in the [quick start guide](https://gchq.github.io/stroom-docs/
 | --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
 | [v1.0](https://github.com/gchq/stroom-content/releases/tag/stroom-101-v1.0)                         | Y              | Y             |
 
+### [**stroom-logs**](./source/stroom-logs/README.md)
+#### Compatibility matrix
+
+| Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
+| --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
+| [v1.0](https://github.com/gchq/stroom-content/releases/tag/stroom-101-v1.0)                         | N              | Y             |
+
 ## Building the content packs
 
 Each content pack is defined as a directory within _stroom-content-source_ with the name of content pack being the name of the directory.

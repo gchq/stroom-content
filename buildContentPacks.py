@@ -149,29 +149,37 @@ def validate_packs(pack_list, root_path):
 
         stroom_content_path = os.path.join(pack_path, STROOM_CONTENT_DIR_NAME)
 
-        #make sure we don't have multiple folder entities with
-        #different uuids else this may cause odd behaviour on import
+        isStroom6OrAbove = False
         for root, dirnames, filenames in os.walk(stroom_content_path):
-            # folder_entities = fnmatch.filter(filenames, '*' + FOLDER_ENTITY_SUFFIX) 
-            # print("folder entities: {}".format(folder_entities))
-            # for filename in folder_entities:
-            for dirname in dirnames:
-                # print("dirname: {}".format(dirname))
-                full_filename = os.path.join(root, dirname, '..', dirname + FOLDER_ENTITY_SUFFIX)
-                # print("full_filename: {}".format(full_filename))
-                entity_path = os.path.relpath(os.path.join(root, dirname), stroom_content_path)
-                # print("entity_path: {}".format(entity_path))
-                uuid = extract_uuid(full_filename)
-                if uuid == None:
-                    print("ERROR - Entity file {} does not have a UUID".format(full_filename))
-                    exit(1)
-                # print("uuid = {}".format(uuid))
+            for filename in filenames:
+                if filename.endswith('.node'):
+                    isStroom6OrAbove = True
+        if not isStroom6OrAbove:
+            print("This looks like a pre-v6 project, so we will try and validate uuids")
+            
+            #make sure we don't have multiple folder entities with
+            #different uuids else this may cause odd behaviour on import
+            for root, dirnames, filenames in os.walk(stroom_content_path):
+                # folder_entities = fnmatch.filter(filenames, '*' + FOLDER_ENTITY_SUFFIX) 
+                # print("folder entities: {}".format(folder_entities))
+                # for filename in folder_entities:
+                for dirname in dirnames:
+                    # print("dirname: {}".format(dirname))
+                    full_filename = os.path.join(root, dirname, '..', dirname + FOLDER_ENTITY_SUFFIX)
+                    # print("full_filename: {}".format(full_filename))
+                    entity_path = os.path.relpath(os.path.join(root, dirname), stroom_content_path)
+                    # print("entity_path: {}".format(entity_path))
+                    uuid = extract_uuid(full_filename)
+                    if uuid == None:
+                        print("ERROR - Entity file {} does not have a UUID".format(full_filename))
+                        exit(1)
+                    # print("uuid = {}".format(uuid))
 
-                if not entity_path in path_to_uuid_dict:
-                    path_to_uuid_dict[entity_path] = uuid
-                elif path_to_uuid_dict[entity_path] != uuid:
-                    print("ERROR - Multiple uuids exist for path {}".format(entity_path))
-                    exit(1)
+                    if not entity_path in path_to_uuid_dict:
+                        path_to_uuid_dict[entity_path] = uuid
+                    elif path_to_uuid_dict[entity_path] != uuid:
+                        print("ERROR - Multiple uuids exist for path {}".format(entity_path))
+                        exit(1)
 
 
         #Loop through all the xml files finding those that have a uuid element

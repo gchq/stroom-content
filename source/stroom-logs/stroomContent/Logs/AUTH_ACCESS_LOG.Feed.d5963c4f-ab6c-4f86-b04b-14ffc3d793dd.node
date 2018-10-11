@@ -1,0 +1,4 @@
+name=AUTH_ACCESS_LOG
+path=Logs
+type=Feed
+uuid=d5963c4f-ab6c-4f86-b04b-14ffc3d793dd
