@@ -6,90 +6,86 @@ The content is grouped into a number of _content packs_ which can each be built 
 
 ## Content pack contents
 
-The following content packs are currently available.  Click on the link for details of what is in each content pack.
+The following content packs are currently available. Click on the link for details of what is in each content pack.
 
-### [**core-xml-schemas**](./source/core-xml-schemas/README.md) 
+### [**core-xml-schemas**](./source/core-xml-schemas/README.md)
 
 The core XML Schemas required by Stroom for basic operation.
 
 #### Compatibility matrix
 
-| Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
-| --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
-| [v2.0](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v2.0)                   | Y              | Y             |
-| [v1.1](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v1.1)                   | Y              | Y             |
-| [v1.0](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v1.0)                   | Y              | Y             |
+| Pack version                                                                      | Stroom 5.0.x | Stroom 6.0.x |
+| --------------------------------------------------------------------------------- | ------------ | ------------ |
+| [v2.0](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v2.0) | Y            | Y            |
+| [v1.1](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v1.1) | Y            | Y            |
+| [v1.0](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v1.0) | Y            | Y            |
 
-
-### [**event-logging-xml-schema**](./source/event-logging-xml-schema/README.md) 
+### [**event-logging-xml-schema**](./source/event-logging-xml-schema/README.md)
 
 An XML Schema standard for describing audit events.
 
 #### Compatibility matrix
 
-| Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
-| --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
-| [v3.2.3](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.2.3)       | Y              | Y             |
-| [v3.1.2](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.1.2)       | Y              | Y             |
-| [v3.1.1](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.1.1)       | Y              | Y             |
-| [v1.0](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v1.0)           | Y              | Y             |
+| Pack version                                                                                  | Stroom 5.0.x | Stroom 6.0.x |
+| --------------------------------------------------------------------------------------------- | ------------ | ------------ |
+| [v3.2.3](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.2.3) | Y            | Y            |
+| [v3.1.2](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.1.2) | Y            | Y            |
+| [v3.1.1](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.1.1) | Y            | Y            |
+| [v1.0](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v1.0)     | Y            | Y            |
 
-
-### [**internal-dashboards**](./source/internal-dashboards/README.md) 
+### [**internal-dashboards**](./source/internal-dashboards/README.md)
 
 A set of _Dashboard_ entities for displaying various metrics about the state of the _Stroom_ application and the undelying hardware and file systems.
 
 #### Compatibility matrix
 
-| Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
-| --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
-| [v1.1](https://github.com/gchq/stroom-content/releases/tag/internal-dashboards-v1.1)                | Y              | Y             |
-| [v1.0](https://github.com/gchq/stroom-content/releases/tag/internal-dashboards-v1.0)                | Y              | Y             |
+| Pack version                                                                         | Stroom 5.0.x | Stroom 6.0.x |
+| ------------------------------------------------------------------------------------ | ------------ | ------------ |
+| [v1.1](https://github.com/gchq/stroom-content/releases/tag/internal-dashboards-v1.1) | Y            | Y            |
+| [v1.0](https://github.com/gchq/stroom-content/releases/tag/internal-dashboards-v1.0) | Y            | Y            |
 
-
-### [**internal-statistics-sql**](./source/internal-statistics/README.md) 
+### [**internal-statistics-sql**](./source/internal-statistics/README.md)
 
 A set of _StatisticStore_ entities for representing the internal statistics generated by Stroom and record by the SQL Statistics service. This pack was previously known as 'internal-statistics' so the versions in the matrix below refer to either name.
 
 #### Compatibility matrix
 
-| Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
-| --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
-| [v2.1](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-sql-v2.1)            | N              | Y             |
-| [v2.0](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-sql-v2.0)            | N              | Y             |
-| [v1.2](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-v1.2)                | Y              | N             |
-| [v1.1](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-v1.1)                | Y              | N             |
-| [v1.0](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-v1.0)                | Y              | N             |
+| Pack version                                                                             | Stroom 5.0.x | Stroom 6.0.x |
+| ---------------------------------------------------------------------------------------- | ------------ | ------------ |
+| [v2.1](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-sql-v2.1) | N            | Y            |
+| [v2.0](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-sql-v2.0) | N            | Y            |
+| [v1.2](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-v1.2)     | Y            | N            |
+| [v1.1](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-v1.1)     | Y            | N            |
+| [v1.0](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-v1.0)     | Y            | N            |
 
-
-### [**internal-statistics-stroom-stats**](./source/internal-statistics/README.md) 
+### [**internal-statistics-stroom-stats**](./source/internal-statistics/README.md)
 
 A set of _StroomStatsStore_ entities for representing the internal statistics generated by Stroom and recorded by the Stroom-Stats service.
 
 #### Compatibility matrix
 
-| Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
-| --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
-| [v2.1](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-stroom-stats-v2.1)   | N              | Y             |
-| [v2.0](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-stroom-stats-v2.0)   | N              | Y             |
+| Pack version                                                                                      | Stroom 5.0.x | Stroom 6.0.x |
+| ------------------------------------------------------------------------------------------------- | ------------ | ------------ |
+| [v2.1](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-stroom-stats-v2.1) | N            | Y            |
+| [v2.0](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-stroom-stats-v2.0) | N            | Y            |
 
+### [**stroom-101**](./source/stroom-101/README.md)
 
-### [**stroom-101**](./source/stroom-101/README.md) 
-
-The entities used in the [quick start guide](https://gchq.github.io/stroom-docs/quick-start-guide/quick-start.html) 
+The entities used in the [quick start guide](https://gchq.github.io/stroom-docs/quick-start-guide/quick-start.html)
 
 #### Compatibility matrix
 
-| Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
-| --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
-| [v1.0](https://github.com/gchq/stroom-content/releases/tag/stroom-101-v1.0)                         | Y              | Y             |
+| Pack version                                                                | Stroom 5.0.x | Stroom 6.0.x |
+| --------------------------------------------------------------------------- | ------------ | ------------ |
+| [v1.0](https://github.com/gchq/stroom-content/releases/tag/stroom-101-v1.0) | Y            | Y            |
 
 ### [**stroom-logs**](./source/stroom-logs/README.md)
+
 #### Compatibility matrix
 
-| Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
-| --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
-| [v1.0](https://github.com/gchq/stroom-content/releases/tag/stroom-101-v1.0)                         | N              | Y             |
+| Pack version                                                                 | Stroom 5.0.x | Stroom 6.0.x |
+| ---------------------------------------------------------------------------- | ------------ | ------------ |
+| [v1.0](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v1.0) | N            | Y            |
 
 ## Building the content packs
 
@@ -115,12 +111,11 @@ To build a single pack do something like:
 
 The build will place the following pairs of zip files in `./build/distributions`:
 
-* `my-pack-name.zip`
+- `my-pack-name.zip`
 
-* `my-pack-name-all.zip`
+- `my-pack-name-all.zip`
 
 The `-all` variant contains all dependency packs and is therefore larger. The other zip just contains the named pack with no dependencies.
-
 
 ### Python script (_deprecated_)
 
@@ -130,10 +125,10 @@ For example:
 
 ```bash
 #build all packs into a single zip
-./buildContentPacks.py --combine --all 
+./buildContentPacks.py --combine --all
 
 #build all packs, one zip per pack
-./buildContentPacks.py  --all 
+./buildContentPacks.py  --all
 
 #build a named list of packs
 ./buildContentPacks.py  stroom-101 core-xml-schemas
@@ -151,9 +146,9 @@ The content pack zip files can be imported into _Stroom_ by selecting _Import_ f
 
 ### IMPORTANT - A word about UUIDs
 
-Each _Stroom_ entity is identified by a [Universally Unique Identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier).  Where entities have dependencies on other entities, e.g. a _Dashboard_ entity depends on a _StatisticStore_ entity, this dependency relationship is defined by the UUID of the dependency entity. It is possible to import content into _Stroom_ with missing dependencies as this can sometimes be a valid use case, though with missing dependencies the entities will not work correctly until the dependencies are resolved, e.g. by updating the dependency.
+Each _Stroom_ entity is identified by a [Universally Unique Identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier). Where entities have dependencies on other entities, e.g. a _Dashboard_ entity depends on a _StatisticStore_ entity, this dependency relationship is defined by the UUID of the dependency entity. It is possible to import content into _Stroom_ with missing dependencies as this can sometimes be a valid use case, though with missing dependencies the entities will not work correctly until the dependencies are resolved, e.g. by updating the dependency.
 
-All the entities defined in these content packs are defined with hard coded UUIDs and dependencies.  It is therefore critical that the correct UUIDs are used in the entity and dependency definitions in the XML.
+All the entities defined in these content packs are defined with hard coded UUIDs and dependencies. It is therefore critical that the correct UUIDs are used in the entity and dependency definitions in the XML.
 
 Where a Stroom folder is used in more than one content pack, you should ensure that the name of the folder and its UUID matches for all instances.
 
