@@ -154,6 +154,7 @@ def validate_packs(pack_list, root_path):
             for filename in filenames:
                 if filename.endswith('.node'):
                     isStroom6OrAbove = True
+                    break
         if not isStroom6OrAbove:
             print("This looks like a pre-v6 project, so we will try and validate uuids")
             
