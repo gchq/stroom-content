@@ -22,7 +22,7 @@
 #
 # Script to remove any of the audit elements from the XML files. When Stroom
 # exports content, it includes the various audit elements such as createdBy. 
-# These elements are not desired in the content pakc source so make merging 
+# These elements are not desired in the content pack source so make merging 
 # developed content from Stroom back into source control more difficult.  This 
 # script will just strip them out.
 #
