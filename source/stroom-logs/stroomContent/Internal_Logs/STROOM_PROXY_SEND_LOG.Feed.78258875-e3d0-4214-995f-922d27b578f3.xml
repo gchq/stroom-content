@@ -1,0 +1,12 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<feed>
+   <createTime>1540363283558</createTime>
+   <createUser>admin</createUser>
+   <name>STROOM_PROXY_SEND_LOG</name>
+   <reference>false</reference>
+   <status>RECEIVE</status>
+   <streamType>Raw Events</streamType>
+   <updateTime>1540363303237</updateTime>
+   <updateUser>admin</updateUser>
+   <uuid>78258875-e3d0-4214-995f-922d27b578f3</uuid>
+</feed>
