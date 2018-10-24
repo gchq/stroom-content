@@ -1,6 +1,6 @@
 //root
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.1'
+    gradleVersion = '4.10.2'
 }
 
 def STROOM_CONTENT_DIR="stroomContent"
