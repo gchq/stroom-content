@@ -7,16 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-### Added
+## [stroom-logs-v1.1]
 
-### Changed
-
-### Removed
+* Add feeds for stroom-proxy logs in _stroom_logs_
 
 ## [stroom-logs-v1.0]
 
 Initial version. Just contains feeds for logs from `stroom-auth-service`.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/stroom-logs-v1.0...HEAD
+[Unreleased]: https://github.com/gchq/stroom-content/compare/stroom-logs-v1.1...HEAD
+[stroom-logs-v1.1]: https://github.com/gchq/stroom-content/compare/stroom-logs-v1.0...stroom-logs-v1.1
 [stroom-logs-v1.0]: https://github.com/gchq/stroom-content/compare/stroom-logs-v1.0...stroom-logs-v1.0
