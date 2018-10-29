@@ -1,0 +1,8 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<feed>
+   <name>AUTH_EVENT_LOG</name>
+   <reference>false</reference>
+   <status>RECEIVE</status>
+   <streamType>Raw Events</streamType>
+   <uuid>a095682e-939d-4cb3-a703-3fd9b4e51d4c</uuid>
+</feed>

@@ -11,10 +11,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
-* Refactor content pack directory structure
-
 ### Removed
 
+## [internal-statistics-sql-v2.1]
+
+### Added
+
+* Add Heap Histogram (Bytes + Instances) statistics
+
+### Changed
+
+* Refactor content pack directory structure
 
 ## [internal-statistics-sql-v2.0]
 
@@ -43,7 +50,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Inital version.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/internal-statistics-sql-v2.0...HEAD
+[Unreleased]: https://github.com/gchq/stroom-content/compare/internal-statistics-sql-v2.1...HEAD
+[internal-statistics-sql-v2.1]: https://github.com/gchq/stroom-content/compare/internal-statistics-sql-v2.0...internal-statistics-sql-v2.1
 [internal-statistics-sql-v2.0]: https://github.com/gchq/stroom-content/compare/internal-statistics-v1.2...internal-statistics-sql-v2.0
 [internal-statistics-v1.2]: https://github.com/gchq/stroom-content/compare/internal-statistics-v1.1...internal-statistics-v1.2
 [internal-statistics-v1.1]: https://github.com/gchq/stroom-content/compare/internal-statistics-v1.0...internal-statistics-v1.1

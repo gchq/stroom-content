@@ -1,0 +1,10 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<stroomStatsStore>
+   <description>The total bytes used in the java heap from a jmap heap histogram, qualified by node and java class name. Change the property stroom.node.status.heapHistogram.classNameMatchRegex to control which classes are included.</description>
+   <enabled>true</enabled>
+   <name>Heap Histogram Bytes</name>
+   <precision>MINUTE</precision>
+   <rollUpType>ALL</rollUpType>
+   <statisticType>VALUE</statisticType>
+   <uuid>b0110ab4-ac25-4b73-b4f6-96f2b50b456a</uuid>
+</stroomStatsStore>
