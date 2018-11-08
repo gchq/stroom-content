@@ -1,4 +1,4 @@
-name=STROOM_PROXY_ACCESS_LOG
+name=STROOM_PROXY-ACCESS-EVENTS
 path=Internal Logs
 type=Feed
 uuid=e6051c62-66e2-4781-af05-cf14e14d88c8

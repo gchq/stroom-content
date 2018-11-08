@@ -1,6 +1,6 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <feed>
-   <name>STROOM_APP_LOG</name>
+   <name>STROOM-APP-EVENTS</name>
    <reference>false</reference>
    <status>RECEIVE</status>
    <streamType>Raw Events</streamType>

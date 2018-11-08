@@ -1,6 +1,6 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <feed>
-   <name>AUTH_EVENT_LOG</name>
+   <name>STROOM_AUTH-USER-EVENTS</name>
    <reference>false</reference>
    <status>RECEIVE</status>
    <streamType>Raw Events</streamType>

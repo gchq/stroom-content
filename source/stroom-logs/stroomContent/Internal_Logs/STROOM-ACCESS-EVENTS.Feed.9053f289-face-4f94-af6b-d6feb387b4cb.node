@@ -1,4 +1,4 @@
-name=STROOM_ACCESS_LOG
+name=STROOM-ACCESS-EVENTS
 path=Internal Logs
 type=Feed
 uuid=9053f289-face-4f94-af6b-d6feb387b4cb
