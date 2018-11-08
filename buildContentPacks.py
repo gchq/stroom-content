@@ -43,6 +43,10 @@ import zipfile
 import shutil
 import fnmatch
 import xml.etree.ElementTree as ET
+import ConfigParser
+
+#comment
+
 
 USAGE_TXT = "Usage:\nbuildContentPacks.py [--combine] [--validateOnly] [--all] [packName ...]\ne.g.\nTo build all content packs - buildPacks.py [--combine] --all\nTo build specific named content packs - buildPacks.py [--combine] pack-1 pack-2 pack-n\nWhere --combine indicates all packs should be combined into a single zip file, otherwise each pack will be placed in its own zip file."
 SOURCE_DIR_NAME = "source"
