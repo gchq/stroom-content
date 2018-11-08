@@ -9,6 +9,5 @@
    &lt;name&gt;Common Event Data&lt;/name&gt;
 &lt;/doc&gt;
 </parentPipelineXML>
-   <pipelineType>Event Data</pipelineType>
    <uuid>712eba75-0aa8-4cde-b1da-9e5d71855daf</uuid>
 </pipeline>
