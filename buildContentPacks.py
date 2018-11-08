@@ -149,14 +149,18 @@ def validate_packs(pack_list, root_path):
 
         stroom_content_path = os.path.join(pack_path, STROOM_CONTENT_DIR_NAME)
 
-        isStroom6OrAbove = False
+        isStroomSixOrAbove = False
         for root, dirnames, filenames in os.walk(stroom_content_path):
-            for filename in filenames:
-                if filename.endswith('.node'):
-                    isStroom6OrAbove = True
-                    break
-        if not isStroom6OrAbove:
-            print("This looks like a pre-v6 project, so we will try and validate uuids")
+            if not isStroomSixOrAbove:
+                for filename in filenames:
+                    if not isStroomSixOrAbove and filename.endswith('.node'):
+                        isStroomSixOrAbove = True
+                        break
+                
+        if isStroomSixOrAbove:
+            print("Pack {} looks like a post-v6 project".format(pack))
+        else:
+            print("Pack {} looks like a pre-v6 project, so we will try and validate folder uuids".format(pack))
             
             #make sure we don't have multiple folder entities with
             #different uuids else this may cause odd behaviour on import
