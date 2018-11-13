@@ -1,0 +1,10 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<statisticStore>
+   <description />
+   <enabled>true</enabled>
+   <name>Stroom App Logs SQL Statistic</name>
+   <precision>3600000</precision>
+   <rollUpType>CUSTOM</rollUpType>
+   <statisticType>COUNT</statisticType>
+   <uuid>378e1c9b-755f-48a5-a883-d0a7dbe3d167</uuid>
+</statisticStore>

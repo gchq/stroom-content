@@ -1,4 +1,4 @@
-name=Stroom console logs
+name=Stroom App Logs
 path=Internal Logs
 type=TextConverter
 uuid=b7ee8fed-3366-44ec-b40f-9ff9bbc69ac1

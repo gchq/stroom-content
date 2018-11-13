@@ -1,12 +1,12 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <pipeline>
-   <name>Stroom console logs</name>
+   <name>Stroom App Logs SQL Statistic</name>
    <parentPipelineXML>&lt;?xml version="1.1" encoding="UTF-8"?&gt;
 &lt;doc&gt;
    &lt;type&gt;Pipeline&lt;/type&gt;
-   &lt;uuid&gt;d7c55950-7427-48ab-a1b6-11bc7b449dfd&lt;/uuid&gt;
-   &lt;name&gt;Event Data (Text)&lt;/name&gt;
+   &lt;uuid&gt;9d1bcf3d-dd5e-40f5-b739-fde01fc7381d&lt;/uuid&gt;
+   &lt;name&gt;Statistic&lt;/name&gt;
 &lt;/doc&gt;
 </parentPipelineXML>
-   <uuid>811f157b-c8f6-4c6f-9744-66e111978bc6</uuid>
+   <uuid>55cf64a7-6242-4302-8525-b5c6b5d57fa4</uuid>
 </pipeline>

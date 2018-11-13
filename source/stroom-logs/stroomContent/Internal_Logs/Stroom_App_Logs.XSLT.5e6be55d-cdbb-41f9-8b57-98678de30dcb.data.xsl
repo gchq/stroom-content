@@ -6,14 +6,14 @@
 
   <!-- Ingest the Evts tree -->
   <xsl:template match="records">
-    <records xsi:schemaLocation="records:2 file://records-v2.0.xsd" Version="2.0">
+    <records xsi:schemaLocation="records:2 file://records-v2.0.xsd">
       <xsl:apply-templates />
     </records>
   </xsl:template>
 
   <!-- Main record template for single Evt event -->
   <xsl:template match="record">
-    
+
     <!-- Check if we want this log level -->
     <xsl:if test="index-of($LOG_LEVEL_WHITELIST, ./data[@name='logLevel']/@value)[1] > 0">
 
@@ -79,28 +79,26 @@
 
       <!-- Build the record element -->
       <record>
-        <data>
-          <xsl:copy-of select="./data" />
-          <data name="system">
-            <xsl:attribute name="value" select="stroom:feed-attribute('System')" />
-          </data>
-          <data name="environment">
-            <xsl:attribute name="value" select="stroom:feed-attribute('Environment')" />
-          </data>
-          <data name="containerName">
-            <xsl:attribute name="value" select="stroom:feed-attribute('ContainerName')" />
-          </data>
-          <data name="feedName">
-            <xsl:attribute name="value" select="stroom:feed-name()" />
-          </data>
-          <data name="hostName">
-
-            <!-- TODO log sender needs to set the container's hostname in the meta -->
-            <xsl:attribute name="value" select="$_deviceHostName" />
-          </data>
-
-          <!-- TODO How do we identify a docker container, e.g. the host's hostanme + some form of container id? -->
+        <xsl:copy-of select="./data" />
+        <data name="system">
+          <xsl:attribute name="value" select="stroom:feed-attribute('System')" />
         </data>
+        <data name="environment">
+          <xsl:attribute name="value" select="stroom:feed-attribute('Environment')" />
+        </data>
+        <data name="containerName">
+          <xsl:attribute name="value" select="stroom:feed-attribute('ContainerName')" />
+        </data>
+        <data name="feedName">
+          <xsl:attribute name="value" select="stroom:feed-name()" />
+        </data>
+        <data name="hostName">
+
+          <!-- TODO log sender needs to set the container's hostname in the meta -->
+          <xsl:attribute name="value" select="$_deviceHostName" />
+        </data>
+
+        <!-- TODO How do we identify a docker container, e.g. the host's hostanme + some form of container id? -->
       </record>
     </xsl:if>
   </xsl:template>
