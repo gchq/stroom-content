@@ -1,0 +1,12 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<pipeline>
+   <name>Event Data (JSON)</name>
+   <parentPipelineXML>&lt;?xml version="1.1" encoding="UTF-8"?&gt;
+&lt;doc&gt;
+   &lt;type&gt;Pipeline&lt;/type&gt;
+   &lt;uuid&gt;0570140e-732c-4338-b0ec-4e09e9ec9214&lt;/uuid&gt;
+   &lt;name&gt;Common Event Data&lt;/name&gt;
+&lt;/doc&gt;
+</parentPipelineXML>
+   <uuid>712eba75-0aa8-4cde-b1da-9e5d71855daf</uuid>
+</pipeline>

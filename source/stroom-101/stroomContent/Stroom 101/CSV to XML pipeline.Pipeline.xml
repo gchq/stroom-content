@@ -2,6 +2,5 @@
 <pipeline>
    <description/>
    <name>CSV to XML pipeline</name>
-   <pipelineType>Event Data</pipelineType>
    <uuid>6a317bc8-8593-4bf7-b91c-7f77ef30d2f7</uuid>
 </pipeline>
