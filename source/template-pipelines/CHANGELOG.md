@@ -13,10 +13,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 
-## [template-pipelines-v1.0]
+## [template-pipelines-v0.1]
 
 * Initial version.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/template-pipelines-v1.0...HEAD
-[template-pipelines-v1.0]: https://github.com/gchq/stroom-content/compare/template-pipelines-v1.0...template-pipelines-v1.0
+[Unreleased]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.1...HEAD
+[template-pipelines-v0.1]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.1...template-pipelines-v0.1

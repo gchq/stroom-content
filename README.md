@@ -87,17 +87,9 @@ A set of standard data format agnostic pipelines for processing data.
 
 | Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
 | --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
-| [v1.0](https://github.com/gchq/stroom-content/releases/tag/standard-pipelines-v1.0)                 | Y              | Y             |
+| [v0.1](https://github.com/gchq/stroom-content/releases/tag/standard-pipelines-v0.1)                 | N              | Y             |
 
 
-
-### [**standard-translations**](./source/standard-translations/README.md) 
-
-A set of standard parsers and translations for example translations to uplift events to more recent versions of the event-logging schema.
-
-| Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
-| --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
-| [v1.0](https://github.com/gchq/stroom-content/releases/tag/standard-translations-v1.0)              | Y              | Y             |
 
 ### [**stroom-101**](./source/stroom-101/README.md)
 
@@ -128,7 +120,7 @@ A set of template pipelines that other pipelines can inherit from.
 
 | Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
 | --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
-| [v1.0](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v1.0)                 | Y              | Y             |
+| [v0.1](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.1)                 | N              | Y             |
 
 
 
