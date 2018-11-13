@@ -1,0 +1,18 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<pipeline>
+   <properties>
+      <add>
+         <property>
+            <element>xsltFilter</element>
+            <name>xslt</name>
+            <value>
+               <entity>
+                  <type>XSLT</type>
+                  <uuid>8ce723dc-e0f1-4719-a518-64e5447f009e</uuid>
+                  <name>Stroom App Logs Index</name>
+               </entity>
+            </value>
+         </property>
+      </add>
+   </properties>
+</pipeline>

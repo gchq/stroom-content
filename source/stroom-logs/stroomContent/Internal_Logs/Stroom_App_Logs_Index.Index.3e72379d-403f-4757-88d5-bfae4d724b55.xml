@@ -1,0 +1,11 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<index>
+   <description />
+   <maxDocsPerShard>1000000000</maxDocsPerShard>
+   <name>Stroom App Logs Index</name>
+   <partitionBy>MONTH</partitionBy>
+   <partitionSize>1</partitionSize>
+   <shardsPerPartition>1</shardsPerPartition>
+   <uuid>3e72379d-403f-4757-88d5-bfae4d724b55</uuid>
+   <volumes>Volume (id=1, version=0, node=node1a, volumeType=Private, path=/stroom/volumes/defaultIndexVolume (Used: 49G, Free: 19G, Total: 73G, Use%: 67%))</volumes>
+</index>

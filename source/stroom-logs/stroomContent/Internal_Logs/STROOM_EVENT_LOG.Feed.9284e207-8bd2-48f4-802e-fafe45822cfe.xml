@@ -1,8 +1,0 @@
-<?xml version="1.1" encoding="UTF-8"?>
-<feed>
-   <name>STROOM_EVENT_LOG</name>
-   <reference>false</reference>
-   <status>RECEIVE</status>
-   <streamType>Raw Events</streamType>
-   <uuid>9284e207-8bd2-48f4-802e-fafe45822cfe</uuid>
-</feed>

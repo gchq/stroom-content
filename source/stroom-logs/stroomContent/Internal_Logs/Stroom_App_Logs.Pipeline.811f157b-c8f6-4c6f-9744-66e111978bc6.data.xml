@@ -1,0 +1,47 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<pipeline>
+   <properties>
+      <add>
+         <property>
+            <element>translationFilter</element>
+            <name>xslt</name>
+            <value>
+               <entity>
+                  <type>XSLT</type>
+                  <uuid>5e6be55d-cdbb-41f9-8b57-98678de30dcb</uuid>
+                  <name>Stroom console logs</name>
+               </entity>
+            </value>
+         </property>
+         <property>
+            <element>schemaFilter</element>
+            <name>schemaGroup</name>
+            <value>
+               <string>RECORDS</string>
+            </value>
+         </property>
+         <property>
+            <element>streamAppender</element>
+            <name>feed</name>
+            <value>
+               <entity>
+                  <type>Feed</type>
+                  <uuid>b8f1b7dd-99ad-4e12-bd31-a26ae380355d</uuid>
+                  <name>STROOM_APP_LOG</name>
+               </entity>
+            </value>
+         </property>
+         <property>
+            <element>dsParser</element>
+            <name>textConverter</name>
+            <value>
+               <entity>
+                  <type>TextConverter</type>
+                  <uuid>b7ee8fed-3366-44ec-b40f-9ff9bbc69ac1</uuid>
+                  <name>Stroom console logs</name>
+               </entity>
+            </value>
+         </property>
+      </add>
+   </properties>
+</pipeline>
