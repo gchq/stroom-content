@@ -1,0 +1,12 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<pipeline>
+   <name>Stroom Family App Events Extraction</name>
+   <parentPipelineXML>&lt;?xml version="1.1" encoding="UTF-8"?&gt;
+&lt;doc&gt;
+   &lt;type&gt;Pipeline&lt;/type&gt;
+   &lt;uuid&gt;3d9d60e9-61c2-4c88-a57b-7bc584dd970e&lt;/uuid&gt;
+   &lt;name&gt;Search Extraction&lt;/name&gt;
+&lt;/doc&gt;
+</parentPipelineXML>
+   <uuid>2ac7b541-293d-4d9e-bb8d-f081dd631c7c</uuid>
+</pipeline>

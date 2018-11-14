@@ -1,0 +1,18 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<pipeline>
+   <properties>
+      <add>
+         <property>
+            <element>streamAppender</element>
+            <name>feed</name>
+            <value>
+               <entity>
+                  <type>Feed</type>
+                  <uuid>b8f1b7dd-99ad-4e12-bd31-a26ae380355d</uuid>
+                  <name>STROOM-APP-EVENTS</name>
+               </entity>
+            </value>
+         </property>
+      </add>
+   </properties>
+</pipeline>

@@ -1,0 +1,12 @@
+{
+  "type" : "Dictionary",
+  "uuid" : "17960fd3-6694-42cf-bfdd-8375409d209e",
+  "name" : "Stroom Family App Events Feeds",
+  "version" : "78d9eb0b-4a01-4859-9952-fa8b1c27ca13",
+  "createTime" : 1542124622557,
+  "updateTime" : 1542195264869,
+  "createUser" : "admin",
+  "updateUser" : "admin",
+  "description" : "",
+  "data" : "STROOM-APP-EVENTS\nSTROOM_AUTH-APP-EVENTS\nSTROOM_PROXY-APP-EVENTS"
+}

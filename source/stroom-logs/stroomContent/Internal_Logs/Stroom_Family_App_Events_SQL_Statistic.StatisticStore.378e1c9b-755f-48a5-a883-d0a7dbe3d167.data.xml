@@ -1,0 +1,32 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<data>
+   <customRollUpMask/>
+   <customRollUpMask>
+      <rolledUpTagPosition>2</rolledUpTagPosition>
+   </customRollUpMask>
+   <customRollUpMask>
+      <rolledUpTagPosition>2</rolledUpTagPosition>
+      <rolledUpTagPosition>3</rolledUpTagPosition>
+   </customRollUpMask>
+   <customRollUpMask>
+      <rolledUpTagPosition>0</rolledUpTagPosition>
+      <rolledUpTagPosition>2</rolledUpTagPosition>
+   </customRollUpMask>
+   <customRollUpMask>
+      <rolledUpTagPosition>0</rolledUpTagPosition>
+      <rolledUpTagPosition>2</rolledUpTagPosition>
+      <rolledUpTagPosition>3</rolledUpTagPosition>
+   </customRollUpMask>
+   <field>
+      <fieldName>Hostname</fieldName>
+   </field>
+   <field>
+      <fieldName>Log Level</fieldName>
+   </field>
+   <field>
+      <fieldName>Logger</fieldName>
+   </field>
+   <field>
+      <fieldName>System</fieldName>
+   </field>
+</data>
