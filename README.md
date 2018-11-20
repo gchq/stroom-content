@@ -120,6 +120,7 @@ A set of template pipelines that other pipelines can inherit from.
 
 | Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
 | --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
+| [v0.2](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.2)                 | N              | Y             |
 | [v0.1](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.1)                 | N              | Y             |
 
 
