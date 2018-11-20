@@ -7,16 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-### Added
+## [template-pipelines-v0.2]
 
-### Changed
-
-### Removed
+* Issue **gchq/stroom#918** Remove _Event Data Base_ pipeline and copy its structure into its child pipelines
 
 ## [template-pipelines-v0.1]
 
 * Initial version.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.1...HEAD
+[Unreleased]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.2...HEAD
+[template-pipelines-v0.2]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.1...template-pipelines-v0.2
 [template-pipelines-v0.1]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.1...template-pipelines-v0.1
