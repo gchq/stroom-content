@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [stroom-logs-v3.0-alpha.4]
+
+* Change stored stream type of _Stroom Family App Events Base_ pipeline to be `Records`.
+
 ## [stroom-logs-v2.0-alpha.3]
 
 * Add STROOM_NGINX_* feeds
@@ -28,7 +32,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 Initial version. Just contains feeds for logs from `stroom-auth-service`.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/stroom-logs-v2.0-alpha.3...HEAD
+[Unreleased]: https://github.com/gchq/stroom-content/compare/stroom-logs-v2.0-alpha.4...HEAD
+[stroom-logs-v2.0-alpha.4]: https://github.com/gchq/stroom-content/compare/stroom-logs-v2.0-alpha.3...stroom-logs-v2.0-alpha.4
 [stroom-logs-v2.0-alpha.3]: https://github.com/gchq/stroom-content/compare/stroom-logs-v2.0-alpha.2...stroom-logs-v2.0-alpha.3
 [stroom-logs-v2.0-alpha.2]: https://github.com/gchq/stroom-content/compare/stroom-logs-v2.0-alpha.1...stroom-logs-v2.0-alpha.2
 [stroom-logs-v2.0-alpha.1]: https://github.com/gchq/stroom-content/compare/stroom-logs-v1.1...stroom-logs-v2.0-alpha.1

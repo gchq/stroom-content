@@ -3,6 +3,17 @@
    <properties>
       <add>
          <property>
+            <element>dsParser</element>
+            <name>textConverter</name>
+            <value>
+               <entity>
+                  <type>TextConverter</type>
+                  <uuid>b7ee8fed-3366-44ec-b40f-9ff9bbc69ac1</uuid>
+                  <name>Stroom console logs</name>
+               </entity>
+            </value>
+         </property>
+         <property>
             <element>translationFilter</element>
             <name>xslt</name>
             <value>
@@ -21,14 +32,10 @@
             </value>
          </property>
          <property>
-            <element>dsParser</element>
-            <name>textConverter</name>
+            <element>streamAppender</element>
+            <name>streamType</name>
             <value>
-               <entity>
-                  <type>TextConverter</type>
-                  <uuid>b7ee8fed-3366-44ec-b40f-9ff9bbc69ac1</uuid>
-                  <name>Stroom console logs</name>
-               </entity>
+               <string>Records</string>
             </value>
          </property>
       </add>
