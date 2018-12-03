@@ -3,53 +3,63 @@
 This content pack contains feeds for receiving the logs from within the Stroom family of applications.
 
 * _Internal Logs_ 
-    * [AUTH_ACCESS_LOG](#AUTH_ACCESS_LOG) `Feed`
-    * [AUTH_APP_LOG](#AUTH_APP_LOG) `Feed`
-    * [AUTH_EVENT_LOG](#AUTH_EVENT_LOG) `Feed`
-    * [STROOM_ACCESS_LOG](#STROOM_ACCESS_LOG) `Feed`
-    * [STROOM_APP_LOG](#STROOM_APP_LOG) `Feed`
-    * [STROOM_EVENT_LOG](#STROOM_EVENT_LOG) `Feed`
-    * [STROOM_PROXY_ACCESS_LOG](#STROOM_PROXY_ACCESS_LOG) `Feed`
-    * [STROOM_PROXY_APP_LOG](#STROOM_PROXY_APP_LOG) `Feed`
-    * [STROOM_PROXY_SEND_LOG](#STROOM_PROXY_SEND_LOG) `Feed`
-    * [STROOM_PROXY_RECEIVE_LOG](#STROOM_PROXY_RECEIVE_LOG) `Feed`
+    * [STROOM_AUTH-ACCESS-EVENTS](#STROOM_AUTH-ACCESS-EVENTS) `Feed`
+    * [STROOM_AUTH-APP-EVENTS](#STROOM_AUTH-APP-EVENTS) `Feed`
+    * [STROOM_AUTH-USER-EVENTS](#STROOM_AUTH-USER-EVENTS) `Feed`
+    * [STROOM-ACCESS-EVENTS](#STROOM-ACCESS-EVENTS) `Feed`
+    * [STROOM-APP-EVENTS](#STROOM-APP-EVENTS) `Feed`
+    * [STROOM-USER-EVENTS](#STROOM-USER-EVENTS) `Feed`
+    * [STROOM_NGINX-ACCESS-EVENTS](#STROOM_NGINX-ACCESS-EVENTS) `Feed`
+    * [STROOM_NGINX-APP-EVENTS](#STROOM_NGINX-APP-EVENTS) `Feed`
+    * [STROOM_PROXY-ACCESS-EVENTS](#STROOM_PROXY-ACCESS-EVENTS) `Feed`
+    * [STROOM_PROXY-APP-EVENTS](#STROOM_PROXY-APP-EVENTS) `Feed`
+    * [STROOM_PROXY-SEND-EVENTS](#STROOM_PROXY-SEND-EVENTS) `Feed`
+    * [STROOM_PROXY-RECEIVE-EVENTS](#STROOM_PROXY-RECEIVE-EVENTS) `Feed`
 
-## AUTH_ACCESS_LOG
+## STROOM_AUTH-ACCESS-EVENTS
 
 Web server access logs from stroom-auth.
 
-## AUTH_APP_LOG
+## STROOM_AUTH-APP-EVENTS
 
 Application logs from stroom-auth.
 
-## AUTH_EVENT_LOG
+## STROOM_AUTH-USER-EVENTS
 
 Accounting and audit events from stroom-auth.
 
-## STROOM_ACCESS_LOG
+## STROOM_ACCESS-EVENTS
 
 Web server access logs from stroom.
 
-## STROOM_APP_LOG
+## STROOM_APP-EVENTS
 
 Application logs from stroom.
 
-## STROOM_EVENT_LOG
+## STROOM_USER-EVENTS
 
 Accounting and audit events from stroom.
 
-## STROOM_PROXY_ACCESS_LOG
+## STROOM_NGINX-ACCESS-EVENTS
+
+Web server access logs from stroom-nginx.
+
+## STROOM_NGINX-APP-EVENTS
+
+Application (error) logs from stroom-nginx.
+
+## STROOM_PROXY-ACCESS-EVENTS
 
 Web server access logs from stroom-proxy.
 
-## STROOM_PROXY_APP_LOG
+## STROOM_PROXY-APP-EVENTS
 
 Application logs from stroom-proxy.
 
-## STROOM_PROXY_SEND_LOG
+## STROOM_PROXY-SEND-EVENTS
 
 Events generated when data is sent from stroom-proxy.
 
-## STROOM_PROXY_RECEIVE_LOG
+## STROOM_PROXY-RECEIVE-EVENTS
 
 Events generated when data is received by stroom-proxy.

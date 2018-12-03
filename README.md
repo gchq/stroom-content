@@ -107,10 +107,13 @@ The entities used in the [quick start guide](https://gchq.github.io/stroom-docs/
 
 #### Compatibility matrix
 
-| Pack version                                                                 | Stroom 5.0.x | Stroom 6.0.x |
-| ---------------------------------------------------------------------------- | ------------ | ------------ |
-| [v1.1](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v1.1) | N            | Y            |
-| [v1.0](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v1.0) | N            | Y            |
+| Pack version                                                                                 | Stroom 5.0.x | Stroom 6.0.x |
+| -------------------------------------------------------------------------------------------- | ------------ | ------------ |
+| [v2.0-alpha.3](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v2.0-alpha.3) | N            | Y            |
+| [v2.0-alpha.2](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v2.0-alpha.2) | N            | Y            |
+| [v2.0-alpha.1](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v2.0-alpha.1) | N            | Y            |
+| [v1.1](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v1.1)                 | N            | Y            |
+| [v1.0](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v1.0)                 | N            | Y            |
 
 
 
