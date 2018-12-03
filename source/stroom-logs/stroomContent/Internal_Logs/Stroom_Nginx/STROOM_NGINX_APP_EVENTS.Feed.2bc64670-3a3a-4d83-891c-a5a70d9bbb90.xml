@@ -1,0 +1,8 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<feed>
+   <name>STROOM_NGINX-APP-EVENTS</name>
+   <reference>false</reference>
+   <status>RECEIVE</status>
+   <streamType>Raw Events</streamType>
+   <uuid>2bc64670-3a3a-4d83-891c-a5a70d9bbb90</uuid>
+</feed>
