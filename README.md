@@ -109,6 +109,7 @@ The entities used in the [quick start guide](https://gchq.github.io/stroom-docs/
 
 | Pack version                                                                                 | Stroom 5.0.x | Stroom 6.0.x |
 | -------------------------------------------------------------------------------------------- | ------------ | ------------ |
+| [v2.0-alpha.5](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v2.0-alpha.5) | N            | Y            |
 | [v2.0-alpha.4](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v2.0-alpha.4) | N            | Y            |
 | [v2.0-alpha.3](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v2.0-alpha.3) | N            | Y            |
 | [v2.0-alpha.2](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v2.0-alpha.2) | N            | Y            |
