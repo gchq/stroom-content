@@ -119,7 +119,18 @@ def validate_pre_stroom_six_folder_uuids(pack, stroom_content_path, path_to_uuid
                 print("ERROR - Multiple uuids exist for path {}".format(entity_path))
                 exit(1)
 
+def is_pack_stroom_six_or_greater(pack_dir):
+    # Determine if this pack is in v6+ format or not by the presence
+    # of any .node files
+    isStroomSixOrAbove = False
+    for root, dirnames, filenames in os.walk(pack_dir):
+        if not isStroomSixOrAbove:
+            for filename in filenames:
+                if not isStroomSixOrAbove and filename.endswith('.node'):
+                    isStroomSixOrAbove = True
+                    break
 
+    return isStroomSixOrAbove
 
 
 def validate_packs(pack_list, root_path):
@@ -130,6 +141,7 @@ def validate_packs(pack_list, root_path):
     uuids = []
     for pack in pack_list:
         pack_path = os.path.join(root_path, pack)
+
         #check the folder exists for the pack name
         if not os.path.isdir(pack_path):
             print("ERROR - Pack {} does not exist in {}".format(pack, root_path))
@@ -137,13 +149,9 @@ def validate_packs(pack_list, root_path):
 
         stroom_content_path = os.path.join(pack_path, STROOM_CONTENT_DIR_NAME)
 
-        isStroomSixOrAbove = False
-        for root, dirnames, filenames in os.walk(stroom_content_path):
-            if not isStroomSixOrAbove:
-                for filename in filenames:
-                    if not isStroomSixOrAbove and filename.endswith('.node'):
-                        isStroomSixOrAbove = True
-                        break
+        # Determine if this pack is in v6+ format or not by the presence
+        # of any .node files
+        isStroomSixOrAbove = is_pack_stroom_six_or_greater(stroom_content_path)
                 
         if isStroomSixOrAbove:
             print("Pack {} looks like a post-v6 project".format(pack))
@@ -151,7 +159,6 @@ def validate_packs(pack_list, root_path):
             print("Pack {} looks like a pre-v6 project, so we will try and validate folder uuids".format(pack))
             validate_pre_stroom_six_folder_uuids(
                     pack, stroom_content_path, path_to_uuid_dict)
-
 
         #Loop through all the xml files finding those that have a uuid element
         #for each one that isn't a folder entity make sure the uuid
