@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <system systemId="http://www.w3.org/2001/XMLSchema"
+            uri="XMLSchema.xsd"/>
+    <system systemId="http://www.w3.org/2001/xml.xsd"
+            uri="xml.xsd"/>
+</catalog>

@@ -1,6 +1,6 @@
 //root
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.10.2'
+wrapper {
+    gradleVersion = '4.10.3'
 }
 
 def STROOM_CONTENT_DIR="stroomContent"
@@ -114,9 +114,15 @@ subprojects {
                 .each { xsdFile -> 
                     def xsdFileName = xsdFile.absolutePath
                     def execResult = exec() {
-                        //xmlint is available in libxml2-utils
+                        
+                        // xmlint is available in libxml2-utils
+                        // we have to set XML_CATALOG_FILES so xmllint uses the catalog.xml file
+                        // to define the location of the various xsd files. If we don't it will
+                        // get xml.xsd from w3.org and they impose an arbitrary 15s delay to make
+                        // people cache it.
+                        environment XML_CATALOG_FILES: rootProject.file("catalog.xml")
                         executable 'xmllint'
-                        args '--noout', '--nowarning', '--schema', 'http://www.w3.org/2001/XMLSchema.xsd', xsdFileName
+                        args '--noout', '--nowarning', '--schema', 'XMLSchema.xsd', xsdFileName
                         ignoreExitValue true
                     }
 
