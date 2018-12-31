@@ -14,9 +14,9 @@ def DEP_SOURCE_DIR_NAME="${ZIP_SOURCE_DIR_NAME}/dependencies"
 //same path have the same uuid
 //TODO the logic in this script should be rewritten in groovy and stuck in here
 task runValidationScript(type: Exec) {
-    def validationScript = './buildContentPacks.py'
+    def validationScript = './validateContentPacks.py'
     executable = validationScript
-    args = ['--all', '--validateOnly']
+    args = ['--all']
 }
 
 task cleanRoot() {
@@ -112,7 +112,10 @@ subprojects {
             fileTree(dir: project.file(STROOM_CONTENT_DIR))
                 .include('**/*XMLSchema.data.xsd')
                 .each { xsdFile -> 
-                    def xsdFileName = xsdFile.absolutePath
+                    def basePath =  project.file(STROOM_CONTENT_DIR).toPath()
+                    def xsdPath = xsdFile.toPath()
+                    def relativeXsdPath = basePath.relativize(xsdPath)
+
                     def execResult = exec() {
                         
                         // xmlint is available in libxml2-utils
@@ -120,14 +123,15 @@ subprojects {
                         // to define the location of the various xsd files. If we don't it will
                         // get xml.xsd from w3.org and they impose an arbitrary 15s delay to make
                         // people cache it.
+                        workingDir project.file(STROOM_CONTENT_DIR)
                         environment XML_CATALOG_FILES: rootProject.file("catalog.xml")
                         executable 'xmllint'
-                        args '--noout', '--nowarning', '--schema', 'XMLSchema.xsd', xsdFileName
+                        args '--noout', '--nowarning', '--schema', rootProject.file("XMLSchema.xsd"), relativeXsdPath
                         ignoreExitValue true
                     }
 
                     if (execResult.exitValue != 0) {
-                        throw new GradleException("Schema failed validation: $xsdFileName")
+                        throw new GradleException("Schema failed validation: $relativeXsdPath")
                     }
             }
         }
