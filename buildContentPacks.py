@@ -46,7 +46,13 @@ import xml.etree.ElementTree as ET
 import ConfigParser
 
 
-USAGE_TXT = "Usage:\nbuildContentPacks.py [--combine] [--validateOnly] [--all] [packName ...]\ne.g.\nTo build all content packs - buildPacks.py [--combine] --all\nTo build specific named content packs - buildPacks.py [--combine] pack-1 pack-2 pack-n\nWhere --combine indicates all packs should be combined into a single zip file, otherwise each pack will be placed in its own zip file."
+USAGE_TXT = "\
+Usage:\nbuildContentPacks.py [--combine] [--validateOnly] [--all] [packName ...]\n\
+e.g.\n\
+To build all content packs - buildPacks.py [--combine] --all\n\
+To build specific named content packs - buildPacks.py [--combine] pack-1 pack-2 pack-n\n\
+Where --combine indicates all packs should be combined into a single zip file, \n\
+otherwise each pack will be placed in its own zip file."
 SOURCE_DIR_NAME = "source"
 TARGET_DIR_NAME = "target"
 STROOM_CONTENT_DIR_NAME = "stroomContent"
@@ -101,7 +107,8 @@ def zip_pack(root_path, pack_name, zip_handle, added_files):
 def build_pack(pack_name):
     dest_zip_file_name = pack_name + ".zip"
     dest_zip_file_path = os.path.join(target_path, dest_zip_file_name)
-    print("Building content pack: {} into zip file {}".format(pack_name, dest_zip_file_name))
+    print("Building content pack: {} into zip file {}".format(
+        pack_name, dest_zip_file_name))
 
     added_files = []
 
@@ -189,7 +196,8 @@ def validate_packs(pack_list, root_path):
             print("Pack {} looks like a post-v6 project".format(pack))
         else:
             print("Pack {} looks like a pre-v6 project, so we will try and validate folder uuids".format(pack))
-            validate_pre_stroom_six_folder_uuids(pack, stroom_content_path, path_to_uuid_dict)
+            validate_pre_stroom_six_folder_uuids(
+                    pack, stroom_content_path, path_to_uuid_dict)
 
 
         #Loop through all the xml files finding those that have a uuid element
@@ -206,7 +214,8 @@ def validate_packs(pack_list, root_path):
                     if entity_type != FOLDER_ENTITY_TYPE:
                         #this is not a folder entity
                         if uuid in uuids:
-                            print("ERROR - Entity {} with type {} has a duplicate UUID {}".format(full_filename, entity_type, uuid))
+                            print("ERROR - Entity {} with type {} has a duplicate UUID {}".format(
+                                full_filename, entity_type, uuid))
                             exit(1)
                         else:
                             uuids.append(uuid)
