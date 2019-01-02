@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #**********************************************************************
 # Copyright 2016 Crown Copyright
 # 
@@ -38,8 +38,11 @@ import zipfile
 import shutil
 import fnmatch
 import xml.etree.ElementTree as ET
-import ConfigParser
+import configparser
+import logging
 
+logging.basicConfig(level=logging.INFO)
+# logging.basicConfig(level=logging.DEBUG)
 
 USAGE_TXT = "\
 Usage:\nvalidateContentPacks.py [--all] [packName ...]\n\
@@ -56,6 +59,19 @@ root_path = os.path.dirname(os.path.realpath(__file__))
 source_path = os.path.join(root_path, SOURCE_DIR_NAME)
 target_path = os.path.join(root_path, TARGET_DIR_NAME)
 
+class DocRef:
+    def __init__(self, entity_type, uuid, name):
+        self.entity_type = entity_type
+        self.uuid = uuid
+        self.name = name
+
+
+class Node:
+    def __init__(self, path, entity_type, uuid, name):
+        self.path = path
+        self.doc_ref = DocRef(entity_type, uuid, name)
+
+
 def list_content_packs():
     for the_file in os.listdir(source_path):
         file_path = os.path.join(source_path, the_file)
@@ -68,22 +84,21 @@ def print_usage():
     list_content_packs()
     print("\n")
 
-def extract_uuid(entity_file):
-    if not os.path.isfile(entity_file):
-        print("ERROR - Entity file {} does not exist".format(entity_file))
-        exit(1)
+# def extract_doc_ref_from_xml(entity_file):
+    # if not os.path.isfile(entity_file):
+        # print("ERROR - Entity file {} does not exist".format(entity_file))
+        # exit(1)
 
-    # print("Extracting uuid for {}".format(entity_file))
-    xml_root = ET.parse(entity_file).getroot()
-    uuidElm = xml_root.find('uuid')
+    # xml_root = ET.parse(entity_file).getroot()
+    # uuidElm = xml_root.find('uuid')
 
-    if uuidElm == None:
-        uuid = None
-    else:
-        uuid = uuidElm.text
-    return uuid
-
-def extract_entity_type(entity_file):
+    # if uuidElm == None:
+        # uuid = None
+    # else:
+        # uuid = uuidElm.text
+    # return uuid
+    
+def extract_doc_ref_from_xml(entity_file):
     if not os.path.isfile(entity_file):
         print("ERROR - Entity file {} does not exist".format(entity_file))
         exit(1)
@@ -91,6 +106,65 @@ def extract_entity_type(entity_file):
     # print("Extracting uuid for {}".format(entity_file))
     xml_root = ET.parse(entity_file).getroot()
     entity_type = xml_root.tag
+    uuidElm = xml_root.find('uuid')
+    nameElm = xml_root.find('name')
+
+    uuid = uuidElm.text if uuidElm != None else None
+    name = nameElm.text if nameElm != None else None
+
+    return DocRef(entity_type, uuid, name)
+
+# def extract_entity_type_from_xml(entity_file):
+    # if not os.path.isfile(entity_file):
+        # print("ERROR - Entity file {} does not exist".format(entity_file))
+        # exit(1)
+
+    # # print("Extracting uuid for {}".format(entity_file))
+    # xml_root = ET.parse(entity_file).getroot()
+    # entity_type = xml_root.tag
+
+    # return entity_type
+
+def parse_node_file(node_file):
+    if not os.path.isfile(node_file):
+        print("ERROR - Node file {} does not exist".format(node_file))
+        exit(1)
+
+    dummy_section_name = 'dummy_section'
+
+    # ConfigParser is meant to deal with .ini files so adding dummy_section
+    # is a bit of a hack to work with section-less config files that look
+    # like .ini files.
+    with open(node_file, 'r') as f:
+        config_string = '[' + dummy_section_name + ']\n' + f.read()
+
+    config = configparser.ConfigParser()
+    config.read_string(config_string)
+    return config[dummy_section_name]
+
+def extract_doc_ref_from_node_file(node_file):
+    node_config = parse_node_file(node_file)
+    uuid = node_config.get('uuid')
+    entity_type = node_config.get('type')
+    name = node_config.get('name')
+
+    doc_ref = DocRef(entity_type, uuid, name)
+
+    return doc_ref
+
+def extract_uuid_from_node_config(node_config):
+    uuid = node_config.get('uuid')
+    if uuid == None:
+        print("ERROR - Node file {} does not contain a 'uuid' tag".format(entity_file))
+        exit(1)
+
+    return uuid
+
+def extract_entity_type_from_node_config(node_config):
+    entity_type = node_config.get('type')
+    if entity_type == None:
+        print("ERROR - Node file {} does not contain a 'type' tag".format(entity_file))
+        exit(1)
 
     return entity_type
 
@@ -99,19 +173,20 @@ def validate_pre_stroom_six_folder_uuids(pack, stroom_content_path, path_to_uuid
     #different uuids else this may cause odd behaviour on import
     for root, dirnames, filenames in os.walk(stroom_content_path):
         # folder_entities = fnmatch.filter(filenames, '*' + FOLDER_ENTITY_SUFFIX) 
-        # print("folder entities: {}".format(folder_entities))
+        # logging.debug("folder entities: {}".format(folder_entities))
         # for filename in folder_entities:
         for dirname in dirnames:
-            # print("dirname: {}".format(dirname))
+            # logging.debug("dirname: {}".format(dirname))
             full_filename = os.path.join(root, dirname, '..', dirname + FOLDER_ENTITY_SUFFIX)
-            # print("full_filename: {}".format(full_filename))
+            # logging.debug("full_filename: {}".format(full_filename))
             entity_path = os.path.relpath(os.path.join(root, dirname), stroom_content_path)
-            # print("entity_path: {}".format(entity_path))
-            uuid = extract_uuid(full_filename)
+            # logging.debug("entity_path: {}".format(entity_path))
+            doc_ref = extract_doc_ref_from_xml(full_filename)
+            uuid = doc_ref.uuid
             if uuid == None:
                 print("ERROR - Entity file {} does not have a UUID".format(full_filename))
                 exit(1)
-            # print("uuid = {}".format(uuid))
+            # logging.debug("uuid = {}".format(uuid))
 
             if not entity_path in path_to_uuid_dict:
                 path_to_uuid_dict[entity_path] = uuid
@@ -122,23 +197,101 @@ def validate_pre_stroom_six_folder_uuids(pack, stroom_content_path, path_to_uuid
 def is_pack_stroom_six_or_greater(pack_dir):
     # Determine if this pack is in v6+ format or not by the presence
     # of any .node files
-    isStroomSixOrAbove = False
+    is_stroom_six_or_above = False
     for root, dirnames, filenames in os.walk(pack_dir):
-        if not isStroomSixOrAbove:
+        if not is_stroom_six_or_above:
             for filename in filenames:
-                if not isStroomSixOrAbove and filename.endswith('.node'):
-                    isStroomSixOrAbove = True
+                if not is_stroom_six_or_above and filename.endswith('.node'):
+                    is_stroom_six_or_above = True
                     break
 
-    return isStroomSixOrAbove
+    return is_stroom_six_or_above
+
+def check_if_uuid_already_used(doc_ref, uuid_to_doc_ref_dict, full_filename):
+    if doc_ref.uuid in uuid_to_doc_ref_dict:
+        existing_doc_ref = uuid_to_doc_ref_dict.get(doc_ref.uuid)
+        print("ERROR - Entity {} with type {} has a duplicate UUID {}. Duplicate of entity {} with type {}".format(
+            full_filename, 
+            doc_ref.entity_type, 
+            doc_ref.uuid, 
+            existing_doc_ref.name, 
+            existing_doc_ref.entity_type))
+        exit(1)
+    else:
+        # Add our unique uuid/doc_ref to the dict
+        uuid_to_doc_ref_dict[doc_ref.uuid] = doc_ref
+        # uuids.append(uuid)
+
+
+def extract_entity_uuids_from_xml(pack_dir, uuid_to_doc_ref_dict):
+    for root, dirnames, filenames in os.walk(pack_dir):
+        for xml_file in fnmatch.filter(filenames, '*.xml'):
+            if not xml_file.endswith(".data.xml"):
+                full_filename = os.path.join(root, xml_file)
+                doc_ref = extract_doc_ref_from_xml(full_filename)
+                # uuid = doc_ref.uuid
+                if doc_ref.uuid != None:
+                    # this is a stroom entity
+                    if doc_ref.entity_type != FOLDER_ENTITY_TYPE:
+                        check_if_uuid_already_used(
+                                doc_ref, 
+                                uuid_to_doc_ref_dict, 
+                                full_filename)
+                        # if uuid in uuid_to_doc_ref_dict:
+                            # existing_doc_ref = uuid_to_doc_ref_dict.get(uuid)
+                            # print("ERROR - Entity {} with type {} has a duplicate UUID {}. Duplicate of entity {} with type {}".format(
+                                # full_filename, 
+                                # doc_ref.entity_type, 
+                                # doc_ref.uuid, 
+                                # existing_doc_ref.name, 
+                                # existing_doc_ref.entity_type))
+                            # exit(1)
+                        # else:
+                            # # Add our unique uuid/doc_ref to the dict
+                            # uuid_to_doc_ref_dict[uuid] = doc_ref
+                            # # uuids.append(uuid)
+
+def extract_entity_uuids_from_node_files(pack_dir, uuid_to_doc_ref_dict):
+    for root, dirnames, filenames in os.walk(pack_dir):
+        for node_file in fnmatch.filter(filenames, '*.node'):
+            logging.debug("node_file: {}".format(node_file))
+            full_filename = os.path.join(root, node_file)
+            logging.debug("full_filename: {}".format(full_filename))
+            # node_config = parse_node_file(full_filename)
+            # entity_type = extract_entity_type_from_node_config(node_config)
+            # uuid = extract_uuid_from_node_config
+            doc_ref = extract_doc_ref_from_node_file(full_filename)
+            # uuid = doc_ref.uuid
+            check_if_uuid_already_used(
+                    doc_ref, 
+                    uuid_to_doc_ref_dict, 
+                    full_filename)
+            # if uuid in uuid_to_doc_ref_dict:
+                # existing_doc_ref = uuid_to_doc_ref_dict.get(uuid)
+                # print("ERROR - Entity {} with type {} has a duplicate UUID {}. Duplicate of entity {} with type {}".format(
+                    # full_filename, 
+                    # doc_ref.entity_type, 
+                    # doc_ref.uuid, 
+                    # existing_doc_ref.name, 
+                    # existing_doc_ref.entity_type))
+                # exit(1)
+            # else:
+                # # Add our unique uuid/doc_ref to the dict
+                # uuid_to_doc_ref_dict[uuid] = doc_ref
+                # # uuids.append(uuid)
 
 
 def validate_packs(pack_list, root_path):
 
-    # print("Validating packs: {}".format(pack_list))
+    # logging.debug("Validating packs: {}".format(pack_list))
     
+    # A dict of path=>uuid mappings to establish if we have multiple folder
+    # paths with the same uuid (pre stroom6 only)
     path_to_uuid_dict = dict()
-    uuids = []
+    # A dict of uuid=>docref
+    uuid_to_doc_ref_dict = dict()
+    # An array of all entity uuids to be used for ensuring all entity
+    # uuids are unique
     for pack in pack_list:
         pack_path = os.path.join(root_path, pack)
 
@@ -151,34 +304,28 @@ def validate_packs(pack_list, root_path):
 
         # Determine if this pack is in v6+ format or not by the presence
         # of any .node files
-        isStroomSixOrAbove = is_pack_stroom_six_or_greater(stroom_content_path)
+        is_stroom_six_or_above = is_pack_stroom_six_or_greater(stroom_content_path)
                 
-        if isStroomSixOrAbove:
+        if is_stroom_six_or_above:
             print("Pack {} looks like a post-v6 project".format(pack))
         else:
             print("Pack {} looks like a pre-v6 project, so we will try and validate folder uuids".format(pack))
             validate_pre_stroom_six_folder_uuids(
-                    pack, stroom_content_path, path_to_uuid_dict)
+                    pack, 
+                    stroom_content_path, 
+                    path_to_uuid_dict)
 
         #Loop through all the xml files finding those that have a uuid element
         #for each one that isn't a folder entity make sure the uuid
         #is not already used by another entity
-        for root, dirnames, filenames in os.walk(stroom_content_path):
-            for xml_file in fnmatch.filter(filenames, '*.xml'):
-                full_filename = os.path.join(root, xml_file)
-                uuid = extract_uuid(full_filename)
-
-                if uuid != None:
-                    #this is a stroom entity
-                    entity_type = extract_entity_type(full_filename)
-                    if entity_type != FOLDER_ENTITY_TYPE:
-                        #this is not a folder entity
-                        if uuid in uuids:
-                            print("ERROR - Entity {} with type {} has a duplicate UUID {}".format(
-                                full_filename, entity_type, uuid))
-                            exit(1)
-                        else:
-                            uuids.append(uuid)
+        if is_stroom_six_or_above:
+            extract_entity_uuids_from_node_files(
+                    stroom_content_path,
+                    uuid_to_doc_ref_dict)
+        else:
+            extract_entity_uuids_from_xml(
+                    stroom_content_path, 
+                    uuid_to_doc_ref_dict)
 
     print("")
     print("UUIDs for paths:")
