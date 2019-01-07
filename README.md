@@ -158,24 +158,8 @@ The build will place the following pairs of zip files in `./build/distributions`
 
 - `my-pack-name-all.zip`
 
-The `-all` variant contains all dependency packs and is therefore larger. The other zip just contains the named pack with no dependencies.
-
-### Python script (_deprecated_)
-
-The content packs can be built into the zip files by running the python script _buildContentPacks.py_. You can either build all packs or a list of named packs and you can choose to have them packaged as single combined zip or one per pack.
-
-For example:
-
-```bash
-#build all packs into a single zip
-./buildContentPacks.py --combine --all
-
-#build all packs, one zip per pack
-./buildContentPacks.py  --all
-
-#build a named list of packs
-./buildContentPacks.py  stroom-101 core-xml-schemas
-```
+The `-all` variant contains all dependency packs and is therefore larger. 
+The other zip just contains the named pack with no dependencies.
 
 ## Released content packs
 
