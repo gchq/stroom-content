@@ -502,6 +502,7 @@ def validate_pack(
     # All folder entities (pre-v6 only) must have a uniqe UUID
     # All entities must have a unique UUID
     # All entities must have a unique (name, type) within a folder
+    # All node files must have a filename that matches a specific format
 
     pack_path = os.path.join(root_path, pack)
 
