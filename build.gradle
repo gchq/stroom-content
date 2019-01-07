@@ -1,6 +1,6 @@
 //root
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.10.2'
+wrapper {
+    gradleVersion = '4.10.3'
 }
 
 def STROOM_CONTENT_DIR="stroomContent"
@@ -13,10 +13,10 @@ def DEP_SOURCE_DIR_NAME="${ZIP_SOURCE_DIR_NAME}/dependencies"
 //for different entities. Also ensures any Folder entities with the 
 //same path have the same uuid
 //TODO the logic in this script should be rewritten in groovy and stuck in here
-task runValidationScript(type: Exec) {
-    def validationScript = './buildContentPacks.py'
+task validateContent(type: Exec) {
+    def validationScript = './validateContentPacks.py'
     executable = validationScript
-    args = ['--all', '--validateOnly']
+    args = ['--all']
 }
 
 task cleanRoot() {
@@ -112,16 +112,26 @@ subprojects {
             fileTree(dir: project.file(STROOM_CONTENT_DIR))
                 .include('**/*XMLSchema.data.xsd')
                 .each { xsdFile -> 
-                    def xsdFileName = xsdFile.absolutePath
+                    def basePath =  project.file(STROOM_CONTENT_DIR).toPath()
+                    def xsdPath = xsdFile.toPath()
+                    def relativeXsdPath = basePath.relativize(xsdPath)
+
                     def execResult = exec() {
-                        //xmlint is available in libxml2-utils
+                        
+                        // xmlint is available in libxml2-utils
+                        // we have to set XML_CATALOG_FILES so xmllint uses the catalog.xml file
+                        // to define the location of the various xsd files. If we don't it will
+                        // get xml.xsd from w3.org and they impose an arbitrary 15s delay to make
+                        // people cache it.
+                        workingDir project.file(STROOM_CONTENT_DIR)
+                        environment XML_CATALOG_FILES: rootProject.file("catalog.xml")
                         executable 'xmllint'
-                        args '--noout', '--nowarning', '--schema', 'http://www.w3.org/2001/XMLSchema.xsd', xsdFileName
+                        args '--noout', '--nowarning', '--schema', rootProject.file("XMLSchema.xsd"), relativeXsdPath
                         ignoreExitValue true
                     }
 
                     if (execResult.exitValue != 0) {
-                        throw new GradleException("Schema failed validation: $xsdFileName")
+                        throw new GradleException("Schema failed validation: $relativeXsdPath")
                     }
             }
         }
@@ -148,8 +158,14 @@ subprojects {
         }
     }
 
+    task validate() {
+        dependsOn validateContent
+        dependsOn validateXmlSchemas
+        dependsOn validateXml
+    }
+
     build {
-        dependsOn runValidationScript
+        dependsOn validateContent
         dependsOn validateXmlSchemas
         dependsOn validateXml
         dependsOn copyDeps
