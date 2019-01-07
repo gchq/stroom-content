@@ -100,7 +100,7 @@ class Folder:
             self.entities[key] = doc_ref
         else:
             existing_doc_ref = self.entities[key]
-            print("ERROR - Multiple entities with the same name in folder {}, name: {}, UUIDs: {}, {}"
+            print_error("Multiple entities with the same name in folder {}, name: {}, UUIDs: {}, {}"
                 .format(
                     self.full_path, 
                     doc_ref.name, 
@@ -187,7 +187,7 @@ class Folder:
                 self.entities.items(),
                 key=lambda item: (item[0][1], item[0][0])):
             preV6Str = "(pre-v6)" if doc_ref.isPreV6 else ""
-            print("{}{}- {}{}{} [{}{}{}] {}- {}{} {}{}{}"
+            print("{}{}- {}{}{} [{}{}{}] {}{}{} {}{}{}"
                 .format(
                     indent_str, 
                     single_indent, 
@@ -240,10 +240,18 @@ def print_usage():
     print("\n")
 
 
+def print_error(msg):
+    print("{}ERROR{} - {}".format(Col.RED, Col.NC, msg))
+
+
+def error_exit(msg):
+    print_error(msg)
+    exit(1)
+
+
 def extract_doc_ref_from_xml(entity_file):
     if not os.path.isfile(entity_file):
-        print("ERROR - Entity file {} does not exist".format(entity_file))
-        exit(1)
+        error_exit("Entity file {} does not exist".format(entity_file))
 
     # logging.debug("Extracting uuid for {}".format(entity_file))
     xml_root = ET.parse(entity_file).getroot()
@@ -259,8 +267,7 @@ def extract_doc_ref_from_xml(entity_file):
 
 def parse_node_file(node_file):
     if not os.path.isfile(node_file):
-        print("ERROR - Node file {} does not exist".format(node_file))
-        exit(1)
+        error_exit("Node file {} does not exist".format(node_file))
 
     dummy_section_name = 'dummy_section'
 
@@ -275,16 +282,32 @@ def parse_node_file(node_file):
     return config[dummy_section_name]
 
 
+# Turn the doc_ref name into a safe form for use in a filename
+def get_safe_file_name(doc_ref):
+    # Logic duplicated from 
+    # stroom.importexport.server.ImportExportFileNameUtil
+
+    safe_name = re.sub("[^A-Za-z0-9]", "_", doc_ref.name)
+    # Limit to 100 chars
+    safe_name = safe_name[0:100]
+    return safe_name
+
+
 def validate_node_against_node_file(node, node_file):
     # This validation matches the code in
     # stroom.importexport.server.ImportExportFileNameUtil
     filename = os.path.basename(node_file)
     doc_ref = node.doc_ref
-    pattern = ".*{}\.{}\.node".format(doc_ref.entity_type, doc_ref.uuid)
+
+    safe_name = get_safe_file_name(doc_ref)
+    pattern = "{}\.{}\.{}\.node".format(
+            safe_name, doc_ref.entity_type, doc_ref.uuid)
+
     if re.match(pattern, filename) == None:
-        print("ERROR - The name of node file {} does not match expected pattern {}"
-                .format(node_file, pattern))
-        exit(1)
+        error_exit("The name of node file {}{}{} does not match expected pattern {}{}{}"
+                .format(
+                    Col.BLUE, node_file, Col.NC,
+                    Col.GREEN, pattern, Col.NC))
 
 
 def extract_node_from_node_file(node_file):
@@ -319,17 +342,15 @@ def validate_pre_stroom_six_folder_uuids(stroom_content_path, path_to_uuid_dict)
             doc_ref = extract_doc_ref_from_xml(full_filename)
             uuid = doc_ref.uuid
             if uuid == None:
-                print("ERROR - Entity file {} does not have a UUID"
+                error_exit("Entity file {} does not have a UUID"
                     .format(full_filename))
-                exit(1)
             logging.debug("uuid = {}".format(uuid))
 
             if not entity_path in path_to_uuid_dict:
                 path_to_uuid_dict[entity_path] = uuid
             elif path_to_uuid_dict[entity_path] != uuid:
-                print("ERROR - Multiple uuids exist for path {}"
+                error_exit("Multiple uuids exist for path {}"
                     .format(entity_path))
-                exit(1)
 
 
 def is_pack_stroom_six_or_greater(pack_dir):
@@ -349,14 +370,13 @@ def is_pack_stroom_six_or_greater(pack_dir):
 def check_if_uuid_already_used(doc_ref, uuid_to_doc_ref_dict, full_filename):
     if doc_ref.uuid in uuid_to_doc_ref_dict:
         existing_doc_ref = uuid_to_doc_ref_dict.get(doc_ref.uuid)
-        print(("ERROR - Entity {} with type {} has a duplicate UUID {}. " 
+        error_exit(("Entity {} with type {} has a duplicate UUID {}. " 
             + "Duplicate of entity {} with type {}").format(
             full_filename, 
             doc_ref.entity_type, 
             doc_ref.uuid, 
             existing_doc_ref.name, 
             existing_doc_ref.entity_type))
-        exit(1)
     else:
         # Add our unique uuid/doc_ref to the dict
         uuid_to_doc_ref_dict[doc_ref.uuid] = doc_ref
@@ -423,8 +443,7 @@ def validate_pack(
 
     #check the folder exists for the pack name
     if not os.path.isdir(pack_path):
-        print("ERROR - Pack {} does not exist in {}".format(pack, root_path))
-        exit(1)
+        error_exit("Pack {} does not exist in {}".format(pack, root_path))
 
     stroom_content_path = os.path.join(pack_path, STROOM_CONTENT_DIR_NAME)
 
@@ -481,7 +500,7 @@ def validate_packs(pack_list, root_path):
 
     print("\nUUIDs for pre-v6 paths:")
     for key in sorted(path_to_uuid_dict):
-        print("{}{}{}{} - {}{}".format(
+        print("{}{}{} - {}{}{}".format(
             Col.BBLUE, key, Col.NC,
             Col.DGREY, path_to_uuid_dict[key], Col.NC))
 
@@ -497,7 +516,7 @@ def validate_packs(pack_list, root_path):
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 if len(sys.argv) == 1:
-    print("ERROR - No arguments supplied")
+    print_error("No arguments supplied")
     print_usage()
     exit(1)
 
@@ -511,12 +530,12 @@ for arg in sys.argv[1:]:
         packs_to_build.append(arg)
 
 if len(packs_to_build) > 0 and isAllPacks:
-    print("ERROR - Cannot specify --all and named packs")
+    print_error("Cannot specify --all and named packs")
     print_usage()
     exit(1)
 
 if len(packs_to_build) == 0 and not isAllPacks:
-    print("ERROR - Must specify --all or provide a list of named packs")
+    print_error("Must specify --all or provide a list of named packs")
     print_usage()
     exit(1)
 
