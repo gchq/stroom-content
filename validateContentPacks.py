@@ -64,18 +64,80 @@ class Col:
     RED = '\033[0;31m'
     BRED = '\033[1;31m'
     GREEN = '\033[0;32m'
-    BGREEN = '\033[1;32m'
+    BOLD_GREEN = '\033[1;32m'
     YELLOW = '\033[0;33m'
-    BYELLOW = '\033[1;33m'
+    BOLD_YELLOW = '\033[1;33m'
     BLUE = '\033[0;34m'
-    BBLUE = '\033[1;34m'
-    LGREY = '\033[37m'
-    DGREY = '\033[90m'
+    BOLD_BLUE = '\033[1;34m'
+    LIGHT_GREY = '\033[37m'
+    DARK_GREY = '\033[90m'
     MAGENTA = '\033[0;35m'
-    BMAGENTA = '\033[1;35m'
+    BOLD_MAGENTA = '\033[1;35m'
     CYAN = '\033[0;36m'
-    BCYAN = '\033[1;36m'
+    BOLD_CYAN = '\033[1;36m'
     NC = '\033[0m' # No Color
+
+    @staticmethod
+    def _colourise(string, colour_code):
+        return ''.join([colour_code, string, Col.NC])
+
+    @staticmethod
+    def red(string):
+        return Col._colourise(string, Col.RED)
+    
+    @staticmethod
+    def bold_red(string):
+        return Col._colourise(string, Col.BRED)
+    
+    @staticmethod
+    def green(string):
+        return Col._colourise(string, Col.GREEN)
+    
+    @staticmethod
+    def bold_green(string):
+        return Col._colourise(string, Col.BOLD_GREEN)
+    
+    @staticmethod
+    def yellow(string):
+        return Col._colourise(string, Col.YELLOW)
+    
+    @staticmethod
+    def bold_yellow(string):
+        return Col._colourise(string, Col.BOLD_YELLOW)
+    
+    @staticmethod
+    def blue(string):
+        return Col._colourise(string, Col.BLUE)
+    
+    @staticmethod
+    def bold_blue(string):
+        return Col._colourise(string, Col.BOLD_BLUE)
+    
+    @staticmethod
+    def light_grey(string):
+        return Col._colourise(string, Col.LIGHT_GREY)
+    
+    @staticmethod
+    def dark_grey(string):
+        return Col._colourise(string, Col.DARK_GREY)
+    
+    @staticmethod
+    def magenta(string):
+        return Col._colourise(string, Col.MAGENTA)
+    
+    @staticmethod
+    def bold_magenta(string):
+        return Col._colourise(string, Col.BOLD_MAGENTA)
+    
+    @staticmethod
+    def cyan(string):
+        return Col._colourise(string, Col.CYAN)
+    
+    @staticmethod
+    def bold_cyan(string):
+        return Col._colourise(string, Col.BOLD_CYAN)
+
+
 
 
 # Class to represent a folder in the heirarchy of folders/entities.
@@ -174,9 +236,9 @@ class Folder:
         indent_str = single_indent * level
 
         if (self.name != None):
-            print("{}+ {}{}{}".format(
+            print("{}+ {}".format(
                 indent_str, 
-                Col.BBLUE, self.name, Col.NC))
+                Col.bold_blue(self.name)))
 
         # Output all the folders (and their contents) first
         for child_folder_name, child_folder in sorted(self.child_folders.items()):
@@ -187,14 +249,14 @@ class Folder:
                 self.entities.items(),
                 key=lambda item: (item[0][1], item[0][0])):
             preV6Str = "(pre-v6)" if doc_ref.isPreV6 else ""
-            print("{}{}- {}{}{} [{}{}{}] {}{}{} {}{}{}"
+            print("{}{}- {} [{}] {} {}"
                 .format(
                     indent_str, 
                     single_indent, 
-                    Col.GREEN, doc_ref.name, Col.NC, 
-                    Col.CYAN, doc_ref.entity_type, Col.NC, 
-                    Col.DGREY, doc_ref.uuid, Col.NC,
-                    Col.RED, preV6Str, Col.NC))
+                    Col.green(doc_ref.name),
+                    Col.cyan(doc_ref.entity_type),
+                    Col.dark_grey(doc_ref.uuid),
+                    Col.red(preV6Str)))
 
     @staticmethod
     def create_root_folder():
@@ -241,7 +303,7 @@ def print_usage():
 
 
 def print_error(msg):
-    print("{}ERROR{} - {}".format(Col.RED, Col.NC, msg))
+    print(''.join([Col.red("ERROR"), " - ", msg]))
 
 
 def error_exit(msg):
@@ -304,10 +366,10 @@ def validate_node_against_node_file(node, node_file):
             safe_name, doc_ref.entity_type, doc_ref.uuid)
 
     if re.match(pattern, filename) == None:
-        error_exit("The name of node file {}{}{} does not match expected pattern {}{}{}"
+        error_exit("The name of node file {} does not match expected pattern {}"
                 .format(
-                    Col.BLUE, node_file, Col.NC,
-                    Col.GREEN, pattern, Col.NC))
+                    Col.blue(node_file),
+                    Col.green(pattern)))
 
 
 def extract_node_from_node_file(node_file):
@@ -343,14 +405,14 @@ def validate_pre_stroom_six_folder_uuids(stroom_content_path, path_to_uuid_dict)
             uuid = doc_ref.uuid
             if uuid == None:
                 error_exit("Entity file {} does not have a UUID"
-                    .format(full_filename))
+                    .format(Col.blue(full_filename)))
             logging.debug("uuid = {}".format(uuid))
 
             if not entity_path in path_to_uuid_dict:
                 path_to_uuid_dict[entity_path] = uuid
             elif path_to_uuid_dict[entity_path] != uuid:
                 error_exit("Multiple uuids exist for path {}"
-                    .format(entity_path))
+                    .format(Col.blue(entity_path)))
 
 
 def is_pack_stroom_six_or_greater(pack_dir):
@@ -372,11 +434,11 @@ def check_if_uuid_already_used(doc_ref, uuid_to_doc_ref_dict, full_filename):
         existing_doc_ref = uuid_to_doc_ref_dict.get(doc_ref.uuid)
         error_exit(("Entity {} with type {} has a duplicate UUID {}. " 
             + "Duplicate of entity {} with type {}").format(
-            full_filename, 
-            doc_ref.entity_type, 
-            doc_ref.uuid, 
-            existing_doc_ref.name, 
-            existing_doc_ref.entity_type))
+            Col.blue(full_filename), 
+            Col.cyan(doc_ref.entity_type), 
+            Col.dark_grey(doc_ref.uuid), 
+            Col.blue(existing_doc_ref.name), 
+            Col.cyan(existing_doc_ref.entity_type)))
     else:
         # Add our unique uuid/doc_ref to the dict
         uuid_to_doc_ref_dict[doc_ref.uuid] = doc_ref
@@ -452,9 +514,9 @@ def validate_pack(
     is_stroom_six_or_above = is_pack_stroom_six_or_greater(stroom_content_path)
             
     preV6Str = "" if is_stroom_six_or_above else "(pre-v6)"
-    print("Validating pack {}{}{} {}{}{}".format(
-        Col.GREEN, pack, Col.NC,
-        Col.RED, preV6Str, Col.NC))
+    print("Validating pack {} {}".format(
+        Col.green(pack),
+        Col.red(preV6Str)))
 
     if not is_stroom_six_or_above:
         validate_pre_stroom_six_folder_uuids(
@@ -500,9 +562,9 @@ def validate_packs(pack_list, root_path):
 
     print("\nUUIDs for pre-v6 paths:")
     for key in sorted(path_to_uuid_dict):
-        print("{}{}{} - {}{}{}".format(
-            Col.BBLUE, key, Col.NC,
-            Col.DGREY, path_to_uuid_dict[key], Col.NC))
+        print("{} - {}".format(
+            Col.bold_blue(key),
+            Col.dark_grey(path_to_uuid_dict[key])))
 
     print("\nDisplaying the complete explorer tree for the chosen packs\n")
     node_tree.print_tree()
@@ -547,8 +609,8 @@ if isAllPacks:
 else:
     print("Processing packs: {}".format(packs_to_build))
 
-print("Using root path: {}{}{}".format(Col.BLUE, root_path, Col.NC))
-print("Using source path: {}{}{}".format(Col.BLUE, source_path, Col.NC))
+print("Using root path: {}".format(Col.blue(root_path)))
+print("Using source path: {}".format(Col.blue(source_path)))
 
 validate_packs(packs_to_build, source_path)
 
