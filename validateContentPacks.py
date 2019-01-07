@@ -94,7 +94,7 @@ class Folder:
         return "full_path: {}, name: {}".format(self.full_path, self.name)
 
     # Adds an entity to this folder
-    def add_entity(self, doc_ref):
+    def _add_entity(self, doc_ref):
         key = (doc_ref.entity_type, doc_ref.name)
         if not key in self.entities:
             self.entities[key] = doc_ref
@@ -112,7 +112,7 @@ class Folder:
 
     # Adds a child folder with passed name to the dict of child folders
     # Returns the created folder instance
-    def add_child_folder(self, name):
+    def _add_child_folder(self, name):
         if not name in self.child_folders:
             logging.debug("Creating child folder {} in folder [{}]".format(
                 name, self))
@@ -141,7 +141,7 @@ class Folder:
             # entity belongs in this folder so just add it
             logging.debug("Adding entity [{}] to folder [{}]"
                 .format(node.doc_ref, self))
-            self.add_entity(node.doc_ref)
+            self._add_entity(node.doc_ref)
         else:
             # entity belongs further down so create the folder at this
             # level and try again
@@ -161,7 +161,7 @@ class Folder:
             logging.debug("relative_folder [{}], child_folder_name [{}]"
                     .format(relative_folder, child_folder_name))
 
-            child_folder = self.add_child_folder(child_folder_name)
+            child_folder = self._add_child_folder(child_folder_name)
 
             # recursive call to continue trying to add the node
             child_folder.add_node(node)
@@ -186,13 +186,15 @@ class Folder:
         for type_name_tuple, doc_ref in sorted(
                 self.entities.items(),
                 key=lambda item: (item[0][1], item[0][0])):
-            print("{}{}- {}{}{} [{}{}{}] {}- {}{}"
+            preV6Str = "(pre-v6)" if doc_ref.isPreV6 else ""
+            print("{}{}- {}{}{} [{}{}{}] {}- {}{} {}{}{}"
                 .format(
                     indent_str, 
                     single_indent, 
                     Col.GREEN, doc_ref.name, Col.NC, 
                     Col.CYAN, doc_ref.entity_type, Col.NC, 
-                    Col.DGREY, doc_ref.uuid, Col.NC))
+                    Col.DGREY, doc_ref.uuid, Col.NC,
+                    Col.RED, preV6Str, Col.NC))
 
     @staticmethod
     def create_root_folder():
@@ -201,23 +203,25 @@ class Folder:
 
 # Class to represent a stroom DocRef object that uniquely defines an entity
 class DocRef:
-    def __init__(self, entity_type, uuid, name):
+    def __init__(self, entity_type, uuid, name, isPreV6=False):
         self.entity_type = entity_type
         self.uuid = uuid
         self.name = name
+        self.isPreV6 = isPreV6
 
     def __str__(self):
-        return "entity_type: {}, uuid: {}, name: {}".format(
-            self.entity_type, self.uuid, self.name)
+        return "entity_type: {}, uuid: {}, name: {}, isPreV6 {}".format(
+            self.entity_type, self.uuid, self.name, self.isPreV6)
 
 
 # Class to represent a .node file, i.e. a DocRef with a path to provide a
 # location in the folder tree
 class Node:
     # def __init__(self, path, entity_type, uuid, name):
-    def __init__(self, path, doc_ref):
+    def __init__(self, path, doc_ref, isPreV6=False):
         self.path = path
         self.doc_ref = doc_ref
+        self.isPreV6 = isPreV6
         # self.doc_ref = DocRef(entity_type, uuid, name)
 
     def __str__(self):
@@ -252,7 +256,7 @@ def extract_doc_ref_from_xml(entity_file):
     uuid = uuidElm.text if uuidElm != None else None
     name = nameElm.text if nameElm != None else None
 
-    return DocRef(entity_type, uuid, name)
+    return DocRef(entity_type, uuid, name, True)
 
 
 def parse_node_file(node_file):
@@ -295,26 +299,6 @@ def extract_node_from_node_file(node_file):
     node = Node(path, doc_ref)
 
     return node
-
-
-def extract_uuid_from_node_config(node_config):
-    uuid = node_config.get('uuid')
-    if uuid == None:
-        print("ERROR - Node file {} does not contain a 'uuid' tag"
-            .format(entity_file))
-        exit(1)
-
-    return uuid
-
-
-def extract_entity_type_from_node_config(node_config):
-    entity_type = node_config.get('type')
-    if entity_type == None:
-        print("ERROR - Node file {} does not contain a 'type' tag"
-            .format(entity_file))
-        exit(1)
-
-    return entity_type
 
 
 def validate_pre_stroom_six_folder_uuids(stroom_content_path, path_to_uuid_dict):
@@ -395,7 +379,7 @@ def extract_entity_uuids_from_xml(pack_dir, uuid_to_doc_ref_dict, node_tree):
                     entity_path = os.path.relpath(
                         root, pack_dir)
                     logging.debug("entity_path: {}".format(entity_path))
-                    node = Node(entity_path, doc_ref)
+                    node = Node(entity_path, doc_ref, True)
 
                     # Add the found node to our tree, which will ensure the
                     # entity name is unique within its path
@@ -494,14 +478,14 @@ def validate_packs(pack_list, root_path):
             uuid_to_doc_ref_dict, 
             node_tree)
 
-    print("\nDisplaying the complete explorer tree for the chosen packs\n")
-    node_tree.print_tree()
-
     print("\nUUIDs for pre-v6 paths:")
     for key in sorted(path_to_uuid_dict):
         print("{}{}{}{} - {}{}".format(
             Col.BBLUE, key, Col.NC,
             Col.DGREY, path_to_uuid_dict[key], Col.NC))
+
+    print("\nDisplaying the complete explorer tree for the chosen packs\n")
+    node_tree.print_tree()
 
     print("\nValidation completed with no errors")
 
