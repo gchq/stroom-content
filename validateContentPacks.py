@@ -275,15 +275,16 @@ def parse_node_file(node_file):
     return config[dummy_section_name]
 
 
-def extract_doc_ref_from_node_file(node_file):
-    node_config = parse_node_file(node_file)
-    uuid = node_config.get('uuid')
-    entity_type = node_config.get('type')
-    name = node_config.get('name')
-
-    doc_ref = DocRef(entity_type, uuid, name)
-
-    return doc_ref
+def validate_node_against_node_file(node, node_file):
+    # This validation matches the code in
+    # stroom.importexport.server.ImportExportFileNameUtil
+    filename = os.path.basename(node_file)
+    doc_ref = node.doc_ref
+    pattern = ".*{}\.{}\.node".format(doc_ref.entity_type, doc_ref.uuid)
+    if re.match(pattern, filename) == None:
+        print("ERROR - The name of node file {} does not match expected pattern {}"
+                .format(node_file, pattern))
+        exit(1)
 
 
 def extract_node_from_node_file(node_file):
@@ -295,6 +296,8 @@ def extract_node_from_node_file(node_file):
 
     doc_ref = DocRef(entity_type, uuid, name)
     node = Node(path, doc_ref)
+
+    validate_node_against_node_file(node, node_file)
 
     return node
 
@@ -368,7 +371,6 @@ def extract_entity_uuids_from_xml(pack_dir, uuid_to_doc_ref_dict, node_tree):
 
                 full_filename = os.path.join(root, xml_file)
 
-
                 doc_ref = extract_doc_ref_from_xml(full_filename)
                 logging.debug("doc_ref: {}".format(doc_ref))
 
@@ -398,7 +400,6 @@ def extract_entity_uuids_from_node_files(
             full_filename = os.path.join(root, node_file)
             logging.debug("full_filename: {}".format(full_filename))
             node = extract_node_from_node_file(full_filename)
-            # doc_ref = extract_doc_ref_from_node_file(full_filename)
 
             # Add the found node to our tree, which will ensure the
             # entity name is unique within its path
@@ -527,8 +528,8 @@ if isAllPacks:
 else:
     print("Processing packs: {}".format(packs_to_build))
 
-print("Using root path: {}".format(root_path))
-print("Using source path: {}".format(source_path))
+print("Using root path: {}{}{}".format(Col.BLUE, root_path, Col.NC))
+print("Using source path: {}{}{}".format(Col.BLUE, source_path, Col.NC))
 
 validate_packs(packs_to_build, source_path)
 
