@@ -13,7 +13,7 @@ def DEP_SOURCE_DIR_NAME="${ZIP_SOURCE_DIR_NAME}/dependencies"
 //for different entities. Also ensures any Folder entities with the 
 //same path have the same uuid
 //TODO the logic in this script should be rewritten in groovy and stuck in here
-task runValidationScript(type: Exec) {
+task validateContent(type: Exec) {
     def validationScript = './validateContentPacks.py'
     executable = validationScript
     args = ['--all']
@@ -158,8 +158,14 @@ subprojects {
         }
     }
 
+    task validate() {
+        dependsOn validateContent
+        dependsOn validateXmlSchemas
+        dependsOn validateXml
+    }
+
     build {
-        dependsOn runValidationScript
+        dependsOn validateContent
         dependsOn validateXmlSchemas
         dependsOn validateXml
         dependsOn copyDeps
