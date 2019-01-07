@@ -218,11 +218,9 @@ class DocRef:
 # location in the folder tree
 class Node:
     # def __init__(self, path, entity_type, uuid, name):
-    def __init__(self, path, doc_ref, isPreV6=False):
+    def __init__(self, path, doc_ref):
         self.path = path
         self.doc_ref = doc_ref
-        self.isPreV6 = isPreV6
-        # self.doc_ref = DocRef(entity_type, uuid, name)
 
     def __str__(self):
         return "path: {}, doc_ref: {}".format(self.path, self.doc_ref)
@@ -379,7 +377,7 @@ def extract_entity_uuids_from_xml(pack_dir, uuid_to_doc_ref_dict, node_tree):
                     entity_path = os.path.relpath(
                         root, pack_dir)
                     logging.debug("entity_path: {}".format(entity_path))
-                    node = Node(entity_path, doc_ref, True)
+                    node = Node(entity_path, doc_ref)
 
                     # Add the found node to our tree, which will ensure the
                     # entity name is unique within its path
@@ -433,10 +431,12 @@ def validate_pack(
     # of any .node files
     is_stroom_six_or_above = is_pack_stroom_six_or_greater(stroom_content_path)
             
-    if is_stroom_six_or_above:
-        print("Validating pack {}{}{}".format(Col.GREEN, pack, Col.NC))
-    else:
-        print("Validating pack {}{}{} (pre-v6)".format(Col.GREEN, pack, Col.NC))
+    preV6Str = "" if is_stroom_six_or_above else "(pre-v6)"
+    print("Validating pack {}{}{} {}{}{}".format(
+        Col.GREEN, pack, Col.NC,
+        Col.RED, preV6Str, Col.NC))
+
+    if not is_stroom_six_or_above:
         validate_pre_stroom_six_folder_uuids(
                 stroom_content_path, 
                 path_to_uuid_dict)
