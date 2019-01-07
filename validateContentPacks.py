@@ -162,12 +162,14 @@ class Folder:
             self.entities[key] = doc_ref
         else:
             existing_doc_ref = self.entities[key]
-            print_error("Multiple entities with the same name in folder {}, name: {}, UUIDs: {}, {}"
+            print_error(("Multiple entities with the same name and type in "
+                + "folder {}, name: {}, type: {}, UUIDs: {}, {}")
                 .format(
-                    self.full_path, 
-                    doc_ref.name, 
-                    existing_doc_ref.uuid, 
-                    doc_ref.uuid))
+                    Col.blue(self.full_path), 
+                    Col.green(doc_ref.name), 
+                    Col.cyan(doc_ref.entity_type), 
+                    Col.yellow(existing_doc_ref.uuid), 
+                    Col.yellow(doc_ref.uuid)))
             print("\nDisplaying tree so far")
             self.print_tree()
             exit(1)
@@ -436,8 +438,8 @@ def check_if_uuid_already_used(doc_ref, uuid_to_doc_ref_dict, full_filename):
             + "Duplicate of entity {} with type {}").format(
             Col.blue(full_filename), 
             Col.cyan(doc_ref.entity_type), 
-            Col.dark_grey(doc_ref.uuid), 
-            Col.blue(existing_doc_ref.name), 
+            Col.yellow(doc_ref.uuid), 
+            Col.green(existing_doc_ref.name), 
             Col.cyan(existing_doc_ref.entity_type)))
     else:
         # Add our unique uuid/doc_ref to the dict
