@@ -1,5 +1,5 @@
 # Synopsis
-The script `generic_stroom_feeder.sh` is designed to run from a crontab entry that periodically collects and posts log files to a Stroom event repository (web service). Once collected,
+The script `stroom_generic_feeder.sh` is designed to run from a crontab entry that periodically collects and posts log files to a Stroom event repository (web service). Once collected,
 the original log files are deleted, although the script can optionally archive (to a directory) a copy of each file posted.
 The script manages the storage impost of the collected log files in the event of post failures. That is, it will queue the collected log files and age off (delete) the oldest given an aggregated size has been met.
 
@@ -14,7 +14,7 @@ It is assumes you have engaged with the Stroom event repository staff to gain
 
 # Storage Imposts
   - Deployment size of approx 20K (for the script itself)
-  - Temporary storage of up to 8.00GB for a period of 90 days (given failure of the Stroom System web service) within the configured queuing log directory (see later). These values are the default posture, if you need to change this, then edit `generic_stroom_feeder.sh` and change one or both of the **FAILED_RETENTION** and **FAILED_MAX**  environment variables
+  - Temporary storage of up to 8.00GB for a period of 90 days (given failure of the Stroom System web service) within the configured queuing log directory (see later). These values are the default posture, if you need to change this, then edit `stroom_generic_feeder.sh` and change one or both of the **FAILED_RETENTION** and **FAILED_MAX**  environment variables
 
 # Prerequisites
 The capability generating the log files with event data can
@@ -40,10 +40,12 @@ The following options are available. Note that all option arguments are single a
 | -1 logfilesuffix | '.log' | specify the log filename suffix to collect and post - used in the regular expression `logfileprefix`.*`logfixsuffix` |
 | -A archivedirectory | <null> | normally successfully posted log files are deleted, this option moves the posted files to the given archive directory for use by other systems. The directory must exist. |
 | -C | <null> | normally the script posts individual files, this option concatenates all files in `eventsdir` before posting ... ie one aggregated post occurs. The directory must exist. |
+| -c cacertfile | <null> | normally the script posts without two way trust (curl -k option). This option specifies the CA certificate file to be used by curl (--cacert). Must be paired with -p option
 | -d secs | 0 | specify the number of seconds to sleep between posting multiple files. The directory must exist. |
 | -E environment | Production | specify a capability environment type - usually chosen from `Production`, `QualityAssurance` or `Development` |
 | -F feedname | SomeApplication-V3.0-EVENTS | specify the Stroom `feedname` provided by the Stroom event repository staff |
 | -l lockFileTemplate | <null> | the script has a fixed log file name to prevent multiple invocations. This option allows the user to uniquely identify the lock file, so that the one script may be invoked multiple times simultaneously |
+| -p clientcertfile | <null> | normally the script posts without two way trust (curl -k option). This option specifies the client certificate to be used by curl (--cert). Must be paired with -c option
 | -n | <null> | normally a random delay is inserted before running script, this prevents the delay from occurring |
 | -Q queuedir | /var/log/someapplication/queue | specify the directory where log files are queued until successfully posted |
 | -S eventsdir | /var/log/someapplication | specify the directory where the source log files are |

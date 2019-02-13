@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Release 1.5  - 20190214 Burn Alting - burn@swtf.dyndns.org
+#   - Rename script to be in line with as yet to be released stroom "agents"
+#   - Add options to specify certificate details to curl in the event of requiring two sided trust
+#   - Add the collection of the IANA timezone name
 # Release 1.4  - 20180411 Burn Alting - burn@swtf.dyndns.org
 #   - Corrected some simple scripting errors
 #
@@ -72,9 +76,11 @@
 #	LckTemplate	'' (empty lock file template)
 
 # USAGE:
-#   <app>_stroom_feeder.sh [-nC] [-S eventsdir] [-Q queuedir] [-F feedname] [-U URL] [-E environment] [-s system] [-0 logfileprefix] [-1 logfixsuffix] [-V version] [-Z securityzone] [-d delaysecs] [-l lockFileTemplate] [-A archivedirectory]
+#   <app>_stroom_feeder.sh [-nC] [-S eventsdir] [-Q queuedir] [-F feedname] [-U URL] [-E environment] [-s system] [-0 logfileprefix] [-1 logfixsuffix] [-V version] [-Z securityzone] [-d delaysecs] [-l lockFileTemplate] [-A archivedirectory] [-c cacert -p clientcert]
+#   -c  specify CA certificate file (value becomes curl --cacert option argument)
 #   -d  specify the number of seconds between posting files
 #   -l  lockfilename template
+#   -p  specify the client certificate file (pem format) to use when posting (value becomes curl --cert option argument)
 #   -n  prevents the random sleep prior to processing
 #   -A  identify an optional archive directory (that is archive the files posted)
 #   -C  allow concatenation of event files in collection directory
@@ -89,7 +95,7 @@
 #   -0  logfile prefix
 #   -1  logfile suffix
 #
-Usage="Usage: `basename $0` [-nC] [-S eventsdir] [-Q queuedir] [-A archivedir] [-F feedname] [-U URL] [-E environment] [-s system] [-0 logfileprefix] [-1 logfilesuffix] [-V newversion] [-Z newsecurityzone] [-d delaysecs] [-l lockFileTemplate]"
+Usage="Usage: `basename $0` [-nC] [-S eventsdir] [-Q queuedir] [-A archivedir] [-F feedname] [-U URL] [-E environment] [-s system] [-0 logfileprefix] [-1 logfilesuffix] [-V newversion] [-Z newsecurityzone] [-d delaysecs] [-l lockFileTemplate] [-c cacert -p clientcert]"
 
 Arg0=`basename $0`
 LCK_FILE=/tmp/$Arg0.lck		# Not safe if multiple scripts execute at same time (use -l to support multiple invocations)
@@ -131,9 +137,19 @@ ARCHIVE=''
 Prefix=''
 Suffix='.log'
 
+# Certificate detail
+cacert=''
+cert=''
+
 # Check args
-while getopts "nCS:Q:A:F:U:E:V:Z:d:l:s:0:1:" opt; do
+while getopts "nCS:Q:A:F:U:E:V:Z:d:l:s:0:1:c:p:" opt; do
   case $opt in
+  c)
+    cacert=$OPTARG
+    ;;
+  p)
+    cert=$OPTARG
+    ;;
   n)
     NoSleep=1
     ;;
@@ -190,6 +206,33 @@ done
 if [ "${LckTemplate}" != $Arg0 ]; then
   LCK_FILE=/tmp/$LckTemplate.lck
 fi
+
+if [ -n "${cacert}" ]; then
+  if [ ! -f ${cacert} ]; then
+    echo "$0: cacert file not found - ${cacert}"
+    echo $Usage
+    exit 1
+  fi
+  if [ ! -n "${cert}" ]; then
+    echo "$0: cacert option also requires cert (-p) option"
+    echo $Usage
+    exit 1
+  fi
+fi
+
+if [ -n "${cert}" ]; then
+  if [ ! -f ${cert} ]; then
+    echo "$0: cert file not found - ${cert}"
+    echo $Usage
+    exit 1
+  fi
+  if [ ! -n "${cacert}" ]; then
+    echo "$0: cert option also requires cacert (-c) option"
+    echo $Usage
+    exit 1
+  fi
+fi
+
 
 # SYSTEM            - Name of System
 SYSTEM="My Stroom Capability"
@@ -372,6 +415,41 @@ stroom_rm_lock() {
   fi
 }
 
+# gain_iana_timezone()
+# Args:
+#   null
+#
+# Gain the host's Canonical timezone
+# The algorithm in general is
+#   if /etc/timezone then
+#     This is a ubuntu scenario
+#     cat /etc/timezone
+#   elif /etc/localtime is a symbolic link and /usr/share/zoneinfo exists
+#     # This is a RHEL/BSD scenario. Get the filename in the database directory
+#     readlink /etc/localtime | sed -e 's@.*share/zoneinfo/@@'
+#   elif /etc/localtime is a file and /usr/share/zoneinfo exists
+#     # This is also a RHEL/BSD scenario. Get the filename in the database directory by brute force comparison
+#     find /usr/share/zoneinfo -type f ! -name 'posixrules' -exec cmp -s {} /etc/localtime \; -print | sed -e 's@.*/zoneinfo/@@' | head -n1
+#   elif /etc/TIMEZONE exists
+#     # This is for Solaris for completeness. Get the TZ value. May need to delete double quotes
+#     grep 'TZ=' /etc/TIMEZONE | cut -d= -f2- | sed -e 's/"//g'
+#   else
+#     nothing
+#
+gain_iana_timezone()
+{
+  if [ -f /etc/timezone ]; then
+    # Ubuntu based
+    cat /etc/timezone
+  elif [ -h /etc/localtime -a -d /usr/share/zoneinfo ]; then
+    # RHEL/BSD based
+    readlink /etc/localtime | sed -e 's@.*share/zoneinfo/@@'
+  elif [ -f /etc/localtime -a -d /usr/share/zoneinfo ]; then
+    # Older RHEL based
+    find /usr/share/zoneinfo -type f ! -name 'posixrules' -exec cmp -s {} /etc/localtime \; -print | sed -e 's@.*/zoneinfo/@@' | head -n1
+  fi
+}
+
 # send_to_stroom()
 # Args:
 #  $1 - the log file
@@ -427,13 +505,24 @@ if ($1 ~ /^ipaddress/) printf "%s:%s\\\n", $1, $3;
       hostArgs="${hostArgs} -H MyTZ:${ltz}"
   fi
 
+  # Local Canonical Timezone
+  ctz=`gain_iana_timezone`
+  if [ -n "${ltz}" ]; then
+      hostArgs="${hostArgs} -H MyCanonicalTZ:${ctz}"
+  fi
+
   # Do the transfer.
 
-  # For two-way SSL authentication replace '-k' below with '--cert /path/to/server.pem --cacert /path/to/root_ca.crt' on the curl cmds below
+  # If we have specified a certificate and root certificate, set up the appropriate arguments
+  # Note that we have tested for the existance of both cert and cacert in earlier argument processing
+  if [ -n "${cert}" ]; then
+    curlCertArgs="--cert ${cert} --cacert ${cacert}"
+  else
+    curlCertArgs="-k"
+  fi
 
-  # If not two-way SSL authentication, use the -k option to curl
   if [ -n "${mySecZone}" -a "${mySecZone}" != "none" ]; then
-    RESPONSE_HTTP=`curl -k --connect-timeout ${C_TMO} --max-time ${M_TMO} --data-binary @${logFile} ${URL} \
+    RESPONSE_HTTP=`curl ${curlCertArgs} --connect-timeout ${C_TMO} --max-time ${M_TMO} --data-binary @${logFile} ${URL} \
 -H "Feed:${FEED_NAME}" -H "System:${SYSTEM}" -H "Environment:${ENVIRONMENT}" -H "Version:${VERSION}" \
 -H "MyHost:\"${myHost%"${myHost##*[![:space:]]}"}\"" \
 -H "MyIPaddress:\"${myIPaddress%"${myIPaddress##*[![:space:]]}"}\"" \
@@ -441,7 +530,7 @@ if ($1 ~ /^ipaddress/) printf "%s:%s\\\n", $1, $3;
 ${hostArgs} \
 -H "Compression:GZIP" --write-out "RESPONSE_CODE=%{http_code}" 2>&1`
   else
-    RESPONSE_HTTP=`curl -k --connect-timeout ${C_TMO} --max-time ${M_TMO} --data-binary @${logFile} ${URL} \
+    RESPONSE_HTTP=`curl ${curlCertArgs} --connect-timeout ${C_TMO} --max-time ${M_TMO} --data-binary @${logFile} ${URL} \
 -H "Feed:${FEED_NAME}" -H "System:${SYSTEM}" -H "Environment:${ENVIRONMENT}" -H "Version:${VERSION}" \
 -H "MyHost:\"${myHost%"${myHost##*[![:space:]]}"}\"" \
 -H "MyIPaddress:\"${myIPaddress%"${myIPaddress##*[![:space:]]}"}\"" \
