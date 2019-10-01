@@ -14,7 +14,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<xs:schema xmlns:krec="kafka-records:1" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="kafka-records:1" id="kafka-v0.1-beta.1" version="0.1-beta.1">
+<xs:schema xmlns:krec="kafka-records:1" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="kafka-records:1" id="kafka-records-v0.1-beta.1" version="0.1-beta.1">
   <xs:element name="kafkaRecords">
     <xs:annotation>
       <xs:documentation>An abstraction of a set of Kafka producer records. The XML records capture sufficient data to enable the generation of Kafka producer records that can be placed on a topic.</xs:documentation>
