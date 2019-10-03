@@ -14,7 +14,9 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<xs:schema xmlns:krec="kafka-records:1" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="kafka-records:1" id="kafka-records-v0.1-beta.1" version="0.1-beta.1">
+<xs:schema xmlns:krec="kafka-records:1" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="qualified" targetNamespace="kafka-records:1" id="kafka-records-v0.1-beta.1"
+  version="0.1-beta.1">
   <xs:element name="kafkaRecords">
     <xs:annotation>
       <xs:documentation>An abstraction of a set of Kafka producer records. The XML records capture sufficient data to enable the generation of Kafka producer records that can be placed on a topic.</xs:documentation>
@@ -36,7 +38,7 @@
           <xs:sequence>
             <xs:element name="key" type="xs:string">
               <xs:annotation>
-                <xs:documentation>The key of the header item.</xs:documentation>
+                <xs:documentation>The key of the header item. Duplicate keys are permitted.</xs:documentation>
               </xs:annotation>
             </xs:element>
             <xs:element minOccurs="0" name="value">
@@ -52,16 +54,27 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element minOccurs="0" name="key" type="xs:anyType">
-        <xs:annotation>
-          <xs:documentation>The optional key of the producer record. If no key or partition is supplied Kafka will assign a partition on a round-robin basis.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="value" type="xs:anyType">
-        <xs:annotation>
-          <xs:documentation>The value of the record. The value is optional to allow for tombstoning in compacted topics. A key should be supplied if no value if supplied.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element name="key" type="xs:anyType">
+            <xs:annotation>
+              <xs:documentation>The key of the producer record. The key will typically be a simple string value but could be a complex, e.g. JSON, or XML.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="value" type="xs:anyType">
+            <xs:annotation>
+              <xs:documentation>The value of the record. The value is optional to allow for 'tombstoning' in compacted topics. The value will typically be a string, e.g. JSON, or XML.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element name="value" type="xs:anyType">
+            <xs:annotation>
+              <xs:documentation>The value of the record. The value will typically be a string, e.g. JSON, or XML.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:choice>
     </xs:sequence>
     <xs:attribute name="topic" type="xs:string" use="required">
       <xs:annotation>
@@ -70,7 +83,7 @@
     </xs:attribute>
     <xs:attribute name="partition">
       <xs:annotation>
-        <xs:documentation>Optional partition number to send the record to.</xs:documentation>
+        <xs:documentation>Optional partition number to send the record to. If one is not provided, Kafka will assign a partition based on the record key, or use a round-robin approach is there isn't a record key.</xs:documentation>
       </xs:annotation>
       <xs:simpleType>
         <xs:restriction base="xs:int">
@@ -80,7 +93,7 @@
     </xs:attribute>
     <xs:attribute name="timestamp">
       <xs:annotation>
-        <xs:documentation>The optional timestamp of the record. If one is not supplied then Kafka will assign a timestamp according to the configuration of the topic.</xs:documentation>
+        <xs:documentation>The optional timestamp of the record represented as milliseconds since the epoch. If one is not supplied then Kafka will assign a timestamp according to the configuration of the topic.</xs:documentation>
       </xs:annotation>
       <xs:simpleType>
         <xs:restriction base="xs:long">
