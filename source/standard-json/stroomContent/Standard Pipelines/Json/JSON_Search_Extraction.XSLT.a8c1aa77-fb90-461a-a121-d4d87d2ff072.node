@@ -1,0 +1,4 @@
+name=JSON Search Extraction
+path=Standard Pipelines/Json
+type=XSLT
+uuid=a8c1aa77-fb90-461a-a121-d4d87d2ff072
