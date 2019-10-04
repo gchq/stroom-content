@@ -32,7 +32,12 @@ This XMLSchema defines the data used to describe a _Data Splitter_ configuration
 
 This schema comes from w3.org and defines the structure used to represent json data as XML.
 
-Data output by the _JSON_ type _Parser_ pipeline element will conform to this XMLSchema. Data input to the _JsonWriter_ pipeline element must conform to this XMLSchema.
+There are two versions of this schema:
+* http://www.w3.org/2005/xpath-functions is the current version and required by XSLT 3.0 standard function `xml-to-json`
+* http://www.w3.org/2013/XSL/json is now deprecated
+
+Data output by the _JSON_ type _Parser_ pipeline element will conform to this XMLSchema. 
+Data input to the _JsonWriter_ pipeline element must conform to this XMLSchema.
 
 ## records
 
