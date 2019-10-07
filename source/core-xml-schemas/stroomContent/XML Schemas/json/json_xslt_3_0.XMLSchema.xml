@@ -2,7 +2,7 @@
 <xmlSchema>
    <deprecated>false</deprecated>
    <description>This is a schema for the XML representation of JSON used as the target for the XSLT 3.0 function fn:json-to-xml()</description>
-   <name>json</name>
+   <name>xpath-functions</name>
    <namespaceURI>http://www.w3.org/2005/xpath-functions</namespaceURI>
    <schemaGroup>JSON</schemaGroup>
    <systemId>file://xpath-functions.xsd</systemId>
