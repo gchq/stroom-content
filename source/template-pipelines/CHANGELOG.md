@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+* Add `JSON` XSLT that defines utility functions and templates for JSON serialisation.
+
 ## [template-pipelines-v0.2]
 
 * Issue **gchq/stroom#918** Remove _Event Data Base_ pipeline and copy its structure into its child pipelines
