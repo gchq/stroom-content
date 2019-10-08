@@ -9,12 +9,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-### Changed
-
-## [core-xml-schemas-v3.0]
-
-### Added
-
 * Add json_xslt_3_0.XMLSchema containing file://xpath-functions.xsd (http://www.w3.org/2005/xpath-functions) to json
 
 ### Changed
@@ -50,7 +44,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 [Unreleased]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v2.0...HEAD
-[core-xml-schemas-v3.0]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v2.0...core-xml-schemas-v3.0
 [core-xml-schemas-v2.0]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v1.1...core-xml-schemas-v2.0
 [core-xml-schemas-v1.1]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v1.0...core-xml-schemas-v1.1
 [core-xml-schemas-v1.0]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v1.0...core-xml-schemas-v1.0
