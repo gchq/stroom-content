@@ -1,0 +1,4 @@
+name=events-multipleValueTagPairs
+path=Standard Pipelines/Json
+type=XSLT
+uuid=9ba21aef-f161-432c-bf13-8344c431174e

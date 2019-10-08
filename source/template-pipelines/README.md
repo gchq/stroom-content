@@ -13,8 +13,10 @@ The following represents the folder structure and content that will be imported 
     * [Event Data (Text)](#event-data-text) `Pipeline`
     * [Event Data (XML)](#event-data-xml) `Pipeline`
     * [Indexing](#indexing) `Pipeline`
+    * [JSON](#json-xslt) `XSLT`
     * [Reference Data](#reference-data) `Pipeline`
     * [Search Extraction](#search-extraction) `Pipeline`
+    * [Standard Raw Extraction](#raw-extraction) `Pipeline`
     * [Statistic](#statistic) `Pipeline`
 
 ## Event Data Base
@@ -45,6 +47,25 @@ Inherits from Event Data Base, adding a Data Splitter parser in front of it. Thi
 
 <!--TODO-->
 
+## JSON
+
+An XSLT that provides utility template and associated functions that can be used to turn arbitrary XML into JSON.
+
+The xsl function `stroom:json` called with a single XML node will return an `xs:string` containing a JSON representation of that node.
+
+This simple mode of operation creates JSON arrays when there is more than one XML element with a particuar tag, and JSON objects otherwise.
+This can have the effect that different XML fragments, that conform to the same schema result in JSON strings with different structures, if the multiplicity of sub-elements varies.
+
+The xsl function `stroom:json` can be called with an optional second argument of type `xs:string`. 
+This is a space or comma delimited list identifying elements that should always be contained within a JSON array, even when the multiplicity is 1.  
+Each item within the list should take the form `ParentTag/Tag` or `*/Tag` where `ParentTag` is the name of the parent of the tag that should be contained within an array, and `*` denotes that elements with this name should always be contained within an array.
+
+It is possible to create a standard for each XML schema that may be converted by this function and `<xsl:include>` the XSLT that defines this variable in all XSLTs that call `stroom:json`.  This approach avoids duplicating the multiple value tag list and creating a maintenance issue.
+
+Use of this more complex form of `stroom:json` can create more consistent JSON represntations of XML, making downstream parsing easier.
+
+This XSLT requires XSLT 3.0.
+
 ## Reference Data
 
 <!--TODO-->
@@ -54,6 +75,10 @@ Inherits from Event Data Base, adding a Data Splitter parser in front of it. Thi
 A _Search Extraction_ pipeline is used in a Dashboard query that uses an Index. If the fields used in the Dashboard Table are not present in the Index then the whole event XML record will need to be retrieved from the Stream Store.  To display the data in the XML event it must first be converted into a form suitable for use by the Table, given that XML can be highly hierarchical while the Table is a very flat structure.
 
 Pipelines inheriting from this will require an XSLT to translate from the event-logging format into XML conforming to the [records XML Schema](./core-xml-schemas.md#records).
+
+## Standard Raw Extraction
+
+A template for search extraction pipelines that utilise the `XPathOutputFilter` to allow extraction of arbitrary data from the XML input without using a specific XSLT for record/field creation.
 
 ## Statistic
 
