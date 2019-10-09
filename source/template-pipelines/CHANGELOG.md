@@ -7,7 +7,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-* Add `JSON` XSLT that defines utility functions and templates for JSON serialisation.
+### Added
+
+### Changed
+
+### Removed
+
+## [template-pipelines-v0.2]
+
+### Added
+
+* `JSON` XSLT that defines utility functions and templates for JSON serialisation.
+
+### Changed
+
+### Removed
 
 ## [template-pipelines-v0.2]
 
@@ -18,6 +32,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Initial version.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.2...HEAD
+[Unreleased]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.3...HEAD
+[template-pipelines-v0.3]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.2...template-pipelines-v0.3
 [template-pipelines-v0.2]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.1...template-pipelines-v0.2
 [template-pipelines-v0.1]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.1...template-pipelines-v0.1
