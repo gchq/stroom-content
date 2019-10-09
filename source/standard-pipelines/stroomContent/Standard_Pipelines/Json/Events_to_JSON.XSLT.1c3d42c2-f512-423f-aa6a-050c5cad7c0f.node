@@ -1,0 +1,4 @@
+name=Events to JSON
+path=Standard Pipelines/Json
+type=XSLT
+uuid=1c3d42c2-f512-423f-aa6a-050c5cad7c0f

@@ -13,10 +13,27 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 
+
+## [standard-pipelines-v0.1]
+
+
+### Added
+* _Standard Pipelines/Json_ 
+    * [JSON_EXTRACTION](#JSON_EXTRACTION) `Pipeline`
+    * [JSON_SEARCH_EXTRACTION](#JSON_SEARCH_EXTRACTION) `XSLT`
+    * [EVENTS_TO_JSON-PIPELINE](#EVENTS_TO_JSON-PIPELINE) `Pipeline`
+    * [EVENTS_TO_JSON](#EVENTS_TO_JSON) `XSLT`
+    * [EVENTS_MULTIPLE-TAG-PAIRS](#EVENTS_MULTIPLE-TAG-PAIRS) 'XSLT'
+    
+### Changed
+
+### Removed
+
 ## [standard-pipelines-v0.1]
 
 * Initial version.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/standard-pipelines-v0.1...HEAD
+[Unreleased]: https://github.com/gchq/stroom-content/compare/standard-pipelines-v0.2...HEAD
+[standard-pipelines-v0.2]: https://github.com/gchq/stroom-content/compare/standard-pipelines-v0.1...standard-pipelines-v0.2
 [standard-pipelines-v0.1]: https://github.com/gchq/stroom-content/compare/standard-pipelines-v0.1...standard-pipelines-v0.1
