@@ -17,7 +17,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-* `JSON` XSLT that defines utility functions and templates for JSON serialisation.
+* `stroom:JSON` XSLT that defines utility functions and templates for JSON serialisation.
+* Standard Raw Extraction `Pipeline` - A template search extraction pipeline that uses XPathExtractionOutputFilter
 
 ### Changed
 
