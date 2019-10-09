@@ -8,6 +8,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 
 ### Added
+
+### Changed
+
+### Removed
+
+
+## [standard-pipelines-v0.1]
+
+
+### Added
 * _Standard Pipelines/Json_ 
     * [JSON_EXTRACTION](#JSON_EXTRACTION) `Pipeline`
     * [JSON_SEARCH_EXTRACTION](#JSON_SEARCH_EXTRACTION) `XSLT`
@@ -24,5 +34,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Initial version.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/standard-pipelines-v0.1...HEAD
+[Unreleased]: https://github.com/gchq/stroom-content/compare/standard-pipelines-v0.2...HEAD
+[standard-pipelines-v0.2]: https://github.com/gchq/stroom-content/compare/standard-pipelines-v0.1...standard-pipelines-v0.2
 [standard-pipelines-v0.1]: https://github.com/gchq/stroom-content/compare/standard-pipelines-v0.1...standard-pipelines-v0.1
