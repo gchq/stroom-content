@@ -18,7 +18,6 @@ The core XML Schemas required by Stroom for basic operation.
 
 | Pack version                                                                      | Stroom 5.0.x | Stroom 6.0.x |
 | --------------------------------------------------------------------------------- | ------------ | ------------ |
-| [v2.1](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v2.1) | Y            | Y            |
 | [v2.0](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v2.0) | Y            | Y            |
 | [v1.1](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v1.1) | Y            | Y            |
 | [v1.0](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v1.0) | Y            | Y            |
@@ -88,7 +87,6 @@ A set of standard data format agnostic pipelines for processing data.
 
 | Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
 | --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
-| [v0.2](https://github.com/gchq/stroom-content/releases/tag/standard-pipelines-v0.2)                 | N              | Y             |
 | [v0.1](https://github.com/gchq/stroom-content/releases/tag/standard-pipelines-v0.1)                 | N              | Y             |
 
 
@@ -127,7 +125,6 @@ A set of template pipelines that other pipelines can inherit from.
 
 | Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |
 | --------------------------------------------------------------------------------------------------- | -------------- | ------------- |
-| [v0.3](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.3)                 | N              | N             |
 | [v0.2](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.2)                 | N              | Y             |
 | [v0.1](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.1)                 | N              | Y             |
 
