@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+* Add kafka-records-v1.0
+
+### Removed
+
 ## [core-xml-schemas-v2.1]
 
 ### Added
@@ -21,6 +25,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 * Marked original json schema as deprecated.
 
+### Removed
 
 ## [core-xml-schemas-v2.0]
 
