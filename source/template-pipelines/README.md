@@ -80,6 +80,9 @@ Pipelines inheriting from this will require an XSLT to translate from the event-
 
 A template for search extraction pipelines that utilise the `XPathOutputFilter` to allow extraction of arbitrary data from the XML input without using a specific XSLT for record/field creation.
 
+This template is designed to support a forthcoming release of Stroom that includes `XPathOutputFilter`.  Currently released versions of Stroom lack this feature and will
+produce an error if pipelines that are based on this template are used.  
+
 ## Statistic
 
 A template for pipelines that will generate statistic events for submission to a _Statistic Store_.  A pipeline inheriting from this will require an XSLT translation to covert from the event-logging format into XML conforming to the [statistics XML Schema](./core-xml-schemas.md#statistics). 
