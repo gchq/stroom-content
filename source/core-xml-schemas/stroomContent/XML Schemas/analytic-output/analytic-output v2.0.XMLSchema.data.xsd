@@ -11,7 +11,11 @@
             <xs:documentation>The time the analytic output was produced</xs:documentation>
           </xs:annotation>
         </xs:element>
-        <xs:element minOccurs="0" name="analyticDetail" type="s:AnalyticType"/>
+        <xs:element minOccurs="0" name="analyticDetail" type="s:AnalyticType">
+          <xs:annotation>
+            <xs:documentation>Details of the analytic that produced the output.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
         <xs:element name="record" minOccurs="0" maxOccurs="unbounded">
           <xs:complexType>
             <xs:sequence>
@@ -57,10 +61,26 @@ Names should be unique within a record element.</xs:documentation>
   </xs:element>
   <xs:complexType name="AnalyticType">
     <xs:sequence>
-      <xs:element name="name"/>
-      <xs:element minOccurs="0" name="version"/>
-      <xs:element minOccurs="0" name="instance"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="configuration" type="s:NameValueType"/>
+      <xs:element name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name of the generic form of the analytic being run.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="version" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The version of the analytic, e.g. v1.2.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="instance" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name of the instance of the analytic, e.g. where a generic anaytic has been applied to a specific use case.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="configuration" type="s:NameValueType">
+        <xs:annotation>
+          <xs:documentation>Details of the configuration of the analytic, e.g. any input parameters.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="EventIdType">
