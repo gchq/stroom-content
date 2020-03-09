@@ -2,9 +2,9 @@
 <xmlSchema>
    <deprecated>false</deprecated>
    <description/>
-   <name>kafka-records v1.0-beta.1</name>
+   <name>kafka-records v1.1</name>
    <namespaceURI>kafka-records:1</namespaceURI>
    <schemaGroup>KAFKA_RECORDS</schemaGroup>
-   <systemId>file://kafka-records-v1.1-beta.1.xsd</systemId>
+   <systemId>file://kafka-records-v1.1.xsd</systemId>
    <uuid>b3c7bd44-ca00-448d-ba64-66b48f926ec4</uuid>
 </xmlSchema>
