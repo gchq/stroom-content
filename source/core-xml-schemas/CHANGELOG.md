@@ -11,9 +11,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
-* Add kafka-records-v1.0
+## [core-xml-schemas-v2.2]
+
+### Added
+
+* Add annotation schema v1.0
+* Add detection schema v1.0
+* Add kafka-records schema v1.1
 
 ### Removed
+
+### Changed
 
 ## [core-xml-schemas-v2.1]
 
@@ -25,7 +33,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 * Marked original json schema as deprecated.
 
-### Removed
 
 ## [core-xml-schemas-v2.0]
 
@@ -54,7 +61,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Inital version.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v2.1...HEAD
+[Unreleased]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v2.2...HEAD
+[core-xml-schemas-v2.2]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v2.1...core-xml-schemas-v2.2
 [core-xml-schemas-v2.1]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v2.0...core-xml-schemas-v2.1
 [core-xml-schemas-v2.0]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v1.1...core-xml-schemas-v2.0
 [core-xml-schemas-v1.1]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v1.0...core-xml-schemas-v1.1
