@@ -7,12 +7,14 @@ The following represents the folder structure and content that will be imported 
 * _XMLSchemas_ 
     * _analytic-ouput_ 
         * [analytic-output v1.0](#analytic-output) `XMLSchema`
+        * [annotation v1.0](#annotation) `XMLSchema`
+        * [detection v1.0](#detection) `XMLSchema`
     * _data-splitter_ 
         * [data-splitter v3.0](#data-splitter) `XMLSchema`
     * _json_ 
         * [json](#json) `XMLSchema`
     * _kafka-records_ 
-        * [kafka-records v1.0](#kafka-records) `XMLSchema`
+        * [kafka-records v1.1](#kafka-records) `XMLSchema`
     * _records_ 
         * [records v2.0](#records) `XMLSchema`
     * _reference-data_ 
@@ -27,9 +29,19 @@ The following represents the folder structure and content that will be imported 
 This XMLSchema is a data structure for data produced by an analytic of some kind.
 The functionality for making use of this schema is currently not included in _Stroom_ and will be added at a later date.
 
+## annotation
+
+This XMLSchema defines a structure used to represent a single Stroom annotation as XML.
+
+Stroom version 7.0+ supports `AnnotationWriter`, which is a pipeline element that operates on XML documents of this structure, in order to create the corresponding annotations.
+
 ## data-splitter 
 
 This XMLSchema defines the data used to describe a _Data Splitter_ configuration, i.e the regexes and splits to convert a plain text file format into structured XML.
+
+## detection
+
+This XMLSchema defines a structure suitable for representing arbitrary analytic output that might reference pre-existing events within Stroom.
 
 ## json 
 
@@ -46,8 +58,10 @@ Data input to the _JsonWriter_ pipeline element must conform to this XMLSchema.
 
 This structure is intended as an XML representation of a Kafka producer record.
 Its intended use is to allow _Stroom_ to publish records onto Kafka topics.
-Events/records in _Stroom_ can be translated into this format and then passed to the _KafkaProducer_ for the kafka-records to be published onto a topic.
+Events/records in _Stroom_ can be translated into this format and then passed to a _KafkaProducer_ for the kafka-records to be published onto a topic.
 The structure allows all aspects of a producer record to be defined, such as the partion, key, headers, etc. using XSLT.
+
+Stroom version 7.0+ supports `StandardKafkaProducer`, which is a pipeline element that operates on XML documents of this structure, in order to create the corresponding messages on Kafka.
 
 ## records
 
