@@ -34,6 +34,7 @@ An XML Schema standard for describing audit events.
 
 | Pack version                                                                                  | Stroom 5.0.x | Stroom 6.0.x |
 | --------------------------------------------------------------------------------------------- | ------------ | ------------ |
+| [v3.4.2](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.4.2) | Y            | Y            |
 | [v3.2.3](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.2.3) | Y            | Y            |
 | [v3.1.2](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.1.2) | Y            | Y            |
 | [v3.1.1](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.1.1) | Y            | Y            |
