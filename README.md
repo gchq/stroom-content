@@ -9,7 +9,7 @@ The content is grouped into a number of _content packs_ which can each be built 
 The following content packs are currently available.  Click on the link for details of what is in each content pack.
 In each content pack section is a table detailing the different versions of the pack along with details of which versions of Stroom it is compatible with.
 
-####Caution!
+#### Caution!
  
  **Errors/problems will arise if you import an incompatible content pack into your version of Stroom.**
 
