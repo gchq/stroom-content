@@ -4,17 +4,17 @@ _Stroom Content_ is a repository of the content definition files used to import 
 
 The content is grouped into a number of _content packs_ which can each be built into a zip file that is ready for import directly into _Stroom_.
 
+#### Caution!
+ 
+**Errors/problems will arise if you import an incompatible content pack into your version of Stroom.**
+
+If you wish to build a previous version of a particular content pack, you will need to `git checkout` the appropriately
+named git tag.
+
 ## Content pack contents
 
 The following content packs are currently available.  Click on the link for details of what is in each content pack.
 In each content pack section is a table detailing the different versions of the pack along with details of which versions of Stroom it is compatible with.
-
-#### Caution!
- 
- **Errors/problems will arise if you import an incompatible content pack into your version of Stroom.**
-
-
-
 
 
 ### [**core-xml-schemas**](./source/core-xml-schemas/README.md)
