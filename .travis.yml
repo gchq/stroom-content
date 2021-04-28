@@ -1,6 +1,6 @@
-#No language required so just use ruby to avoid warnings in travis yml linter
-language: ruby
-dist: trusty
+language: java
+dist: focal
+arch: arm64 # LXD container for fast build
 sudo: required
 
 #libxml2-utils is required for the xmllint binary
