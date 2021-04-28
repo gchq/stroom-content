@@ -8,6 +8,9 @@ before_install:
     - sudo apt-get -qq update
     - sudo apt-get install -y libxml2-utils
 
+#Save a couple of seconds
+install: echo "skip 'gradle assemble' step"
+
 #Building all the packs will ensure we don't have any folder or uuid conflicts, so acts as a validator
 script: ./gradlew clean build
 
