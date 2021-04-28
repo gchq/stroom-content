@@ -1,4 +1,4 @@
-language: shell
+language: java
 dist: focal
 arch: arm64 # LXD container for fast build
 sudo: required
