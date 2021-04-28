@@ -22,6 +22,22 @@
             <id>xmlParser</id>
             <type>XMLParser</type>
          </element>
+         <element>
+            <id>Source</id>
+            <type>Source</type>
+         </element>
+         <element>
+            <id>toDetections</id>
+            <type>XSLTFilter</type>
+         </element>
+         <element>
+            <id>xmlWriter</id>
+            <type>XMLWriter</type>
+         </element>
+         <element>
+            <id>alertsStreamAppender</id>
+            <type>StreamAppender</type>
+         </element>
       </add>
    </elements>
    <properties>
@@ -38,6 +54,24 @@
             <name>splitCount</name>
             <value>
                <integer>100</integer>
+            </value>
+         </property>
+         <property>
+            <element>toDetections</element>
+            <name>xslt</name>
+            <value>
+               <entity>
+                  <type>XSLT</type>
+                  <uuid>d0e5279a-e4cd-4db8-9bd9-897c3596139e</uuid>
+                  <name>Alert To Detection</name>
+               </entity>
+            </value>
+         </property>
+         <property>
+            <element>alertsStreamAppender</element>
+            <name>streamType</name>
+            <value>
+               <string>Detections</string>
             </value>
          </property>
       </add>
@@ -57,8 +91,24 @@
             <to>searchResultOutputFilter</to>
          </link>
          <link>
+            <from>searchResultOutputFilter</from>
+            <to>toDetections</to>
+         </link>
+         <link>
+            <from>toDetections</from>
+            <to>xmlWriter</to>
+         </link>
+         <link>
             <from>xmlParser</from>
             <to>splitFilter</to>
+         </link>
+         <link>
+            <from>Source</from>
+            <to>xmlParser</to>
+         </link>
+         <link>
+            <from>xmlWriter</from>
+            <to>alertsStreamAppender</to>
          </link>
       </add>
    </links>

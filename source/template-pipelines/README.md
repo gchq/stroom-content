@@ -7,6 +7,7 @@ The following represents the folder structure and content that will be imported 
 * _Template Pipelines_ 
     * _Fragments_
         * [Event Data Base](#event-data-base) `Pipeline`
+    * [Alert To Detection](#alert-to-detection) `XSLT`
     * [Batch Search](#batch-search) `Pipeline`
     * [Context Data](#context-data) `Pipeline`
     * [Event Data (JSON)](#event-data-json) `Pipeline`
@@ -22,6 +23,12 @@ The following represents the folder structure and content that will be imported 
 ## Event Data Base
 
 This is a fragment of a pipeline that is inherited from by the Event Data (....) pipelines. This pipeline fragment expects XML data (of any structure) which will be translated into event-logging format, then validated against the event-logging XML Schema before being written to the stream store.
+
+## Alert To Detection
+
+This XSLT converts `<records>` format alerts as created by Stroom Rules from Dashboards feature into `<Detections>` format.
+
+For further information please refer to the section on [Search Extraction](#search-extraction).
 
 ## Batch Search
 
@@ -62,7 +69,7 @@ Each item within the list should take the form `ParentTag/Tag` or `*/Tag` where 
 
 It is possible to create a standard for each XML schema that may be converted by this function and `<xsl:include>` the XSLT that defines this variable in all XSLTs that call `stroom:json`.  This approach avoids duplicating the multiple value tag list and creating a maintenance issue.
 
-Use of this more complex form of `stroom:json` can create more consistent JSON represntations of XML, making downstream parsing easier.
+Use of this more complex form of `stroom:json` can create more consistent JSON representations of XML, making downstream parsing easier.
 
 This XSLT requires XSLT 3.0.
 
@@ -72,9 +79,33 @@ This XSLT requires XSLT 3.0.
 
 ## Search Extraction
 
-A _Search Extraction_ pipeline is used in a Dashboard query that uses an Index. If the fields used in the Dashboard Table are not present in the Index then the whole event XML record will need to be retrieved from the Stream Store.  To display the data in the XML event it must first be converted into a form suitable for use by the Table, given that XML can be highly hierarchical while the Table is a very flat structure.
+### Compatibility
+
+This version of the pipeline is not compatible with any versions of Stroom up to and including `v7.0.x` as these do not support Rules From Dashboards
+alerting functionality.  It is important that you do not import it into incompatible versions of Stroom.
+
+### Description
+
+A _Search Extraction_ pipeline is used in a Dashboard query that uses an Index. If the fields used in the Dashboard Table 
+are not present in the Index then the whole event XML record will need to be retrieved from the Stream Store.  
+To display the data in the XML event it must first be converted into a form suitable for use by the Table,
+given that XML can be highly hierarchical while the Table is a very flat structure.
+
+### Basic/Interactive Use
+
+It is typical to inherit from this pipeline in order to form hierarchical XML event data into a form suitable for display within
+a table on a dashboard.
 
 Pipelines inheriting from this will require an XSLT to translate from the event-logging format into XML conforming to the [records XML Schema](./core-xml-schemas.md#records).
+
+### Alerting Use
+
+Stroom versions `7.1.x` and later provide Rules from Dashboard functionality.
+Whilst evaluating and generating alerts, Stroom runs the Search Extraction pipeline associated with the 
+dashboard.
+ 
+Alerts are initially created as `<records>` XML format.  These are transformed into `<Detections>` XML by an XSLT filter
+step within this pipeline.  The XSLT used is also provided within this content pack:  [`Alert To Detection`](#alert-to-detection)
 
 ## Standard Raw Extraction
 

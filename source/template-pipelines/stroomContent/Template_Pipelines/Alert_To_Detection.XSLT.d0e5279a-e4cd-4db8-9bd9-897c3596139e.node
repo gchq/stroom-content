@@ -1,0 +1,4 @@
+name=Alert To Detection
+path=Template Pipelines
+type=XSLT
+uuid=d0e5279a-e4cd-4db8-9bd9-897c3596139e
