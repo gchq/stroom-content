@@ -143,6 +143,14 @@ A set of template pipelines that other pipelines can inherit from.
 
 
 
+### [**support-scripts**](./source/support-scripts/README.md) 
+
+A set of operating system specific scripts that support capability dealing with log content.
+
+#### Compatibility matrix
+
+Independant of Stroom version.
+
 ## Building the content packs
 
 Each content pack is defined as a directory within _stroom-content-source_ with the name of content pack being the name of the directory.
