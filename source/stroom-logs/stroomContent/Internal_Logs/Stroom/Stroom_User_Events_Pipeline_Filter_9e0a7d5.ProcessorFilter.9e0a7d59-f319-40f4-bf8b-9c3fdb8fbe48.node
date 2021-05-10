@@ -1,0 +1,4 @@
+name=Stroom User Events Pipeline-Filter 9e0a7d5
+path=Internal Logs/Stroom
+type=ProcessorFilter
+uuid=9e0a7d59-f319-40f4-bf8b-9c3fdb8fbe48

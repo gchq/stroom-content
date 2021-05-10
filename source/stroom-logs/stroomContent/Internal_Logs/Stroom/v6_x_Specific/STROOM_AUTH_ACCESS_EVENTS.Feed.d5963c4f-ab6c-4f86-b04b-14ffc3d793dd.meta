@@ -1,0 +1,9 @@
+{
+  "type" : "Feed",
+  "uuid" : "d5963c4f-ab6c-4f86-b04b-14ffc3d793dd",
+  "name" : "STROOM_AUTH-ACCESS-EVENTS",
+  "version" : "e3422acb-f503-4f62-ba87-eaffc9315458",
+  "reference" : false,
+  "streamType" : "Raw Events",
+  "status" : "RECEIVE"
+}

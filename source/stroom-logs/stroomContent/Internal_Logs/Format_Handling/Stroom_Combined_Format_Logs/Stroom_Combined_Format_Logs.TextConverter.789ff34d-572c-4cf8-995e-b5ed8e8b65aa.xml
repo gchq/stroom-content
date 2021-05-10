@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSplitter xmlns="data-splitter:3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="data-splitter:3 file://data-splitter-v3.0.xsd" version="3.0">
+
+  <!--
+  Stroom combined format for NGINX logs
+  '[$time_local] '
+  '[$msec] '
+  '$remote_addr '
+  '- '
+  '"$ssl_client_s_dn" '
+  '- '
+  '$server_name '
+  '> '
+  '$upstream_addr '
+  '"$request" '
+  '$status '
+  '$body_bytes_sent '
+  '"$http_referer" '
+  '"$http_user_agent" '
+  '$upstream_response_time '
+  '$request_time';
+  -->
+
+  <!-- Match line -->
+  <split delimiter="\n">
+    <group value="$1">
+      <regex pattern="^\[([^\]]+)\] \[([^\]]+)\] ([^ ]+) - &#34;([^&#34;]*)&#34; - ([^ ]+) . ([^ ]+) &#34;([^&#34;]*|&#34;{2})&#34; ([^ ]+) ([^ ]+) &#34;([^&#34;]*|&#34;{2})&#34; &#34;([^&#34;]*|&#34;{2})&#34; ([^ ]+) ([^ ]+)">
+        <data name="time" value="$1" />
+        <data name="msec" value="$2" />
+        <data name="host" value="$3" />
+        <data name="sslClientDn" value="$4" />
+        <data name="server" value="$5" />
+        <data name="upstreamAddr" value="$6" />
+        <data name="request" value="$7"/>
+        <data name="response" value="$8"/>
+        <data name="size" value="$9"/>
+        <data name="referrer" value="$10"/>
+        <data name="userAgent" value="$11"/>
+        <data name="upstreamResponseTime" value="$12"/>
+        <data name="requestTime" value="$13"/>
+
+        <!-- A user value of """" is sometimes given for a null value so drop the inner quote pair if present -->
+        <group value="$4">
+          <split delimiter="\n" containerStart="&#34;" containerEnd="&#34;">
+            <data name="user" value="$1" />
+          </split>
+        </group>
+        
+        <group value="$7" ignoreErrors="true">
+          <regex pattern="^([^ ]+) ([^ ]+) ([^ ]+)">
+            <data name="httpMethod" value="$1"/>
+            <data name="url" value="$2"/>
+            <data name="protocol" value="$3"/>
+          </regex>
+        </group>
+      </regex>
+    </group>
+  </split>
+</dataSplitter>

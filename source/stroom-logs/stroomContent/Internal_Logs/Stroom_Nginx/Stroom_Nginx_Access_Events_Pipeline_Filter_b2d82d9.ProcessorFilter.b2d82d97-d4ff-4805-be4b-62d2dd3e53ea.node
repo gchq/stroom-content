@@ -1,0 +1,4 @@
+name=Stroom Nginx Access Events Pipeline-Filter b2d82d9
+path=Internal Logs/Stroom Nginx
+type=ProcessorFilter
+uuid=b2d82d97-d4ff-4805-be4b-62d2dd3e53ea

@@ -1,0 +1,4 @@
+name=Stroom Proxy Access Events
+path=Internal Logs/Stroom Proxy
+type=Pipeline
+uuid=6388a435-d882-487d-a8cc-49b729b111a6

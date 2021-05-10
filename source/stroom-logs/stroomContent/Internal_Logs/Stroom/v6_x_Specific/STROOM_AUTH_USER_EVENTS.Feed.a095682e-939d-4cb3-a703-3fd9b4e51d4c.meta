@@ -1,0 +1,9 @@
+{
+  "type" : "Feed",
+  "uuid" : "a095682e-939d-4cb3-a703-3fd9b4e51d4c",
+  "name" : "STROOM_AUTH-USER-EVENTS",
+  "version" : "006ccbc0-a936-4487-be83-a2bb41013eb2",
+  "reference" : false,
+  "streamType" : "Raw Events",
+  "status" : "RECEIVE"
+}

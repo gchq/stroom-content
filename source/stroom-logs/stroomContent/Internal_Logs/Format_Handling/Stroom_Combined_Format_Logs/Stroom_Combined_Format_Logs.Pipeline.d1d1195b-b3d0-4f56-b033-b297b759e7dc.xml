@@ -1,0 +1,29 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<pipeline>
+   <properties>
+      <add>
+         <property>
+            <element>dsParser</element>
+            <name>textConverter</name>
+            <value>
+               <entity>
+                  <type>TextConverter</type>
+                  <uuid>789ff34d-572c-4cf8-995e-b5ed8e8b65aa</uuid>
+                  <name>Stroom Web Access</name>
+               </entity>
+            </value>
+         </property>
+         <property>
+            <element>translationFilter</element>
+            <name>xslt</name>
+            <value>
+               <entity>
+                  <type>XSLT</type>
+                  <uuid>fc84c604-569c-4ac9-8fe7-e16ac6727d8f</uuid>
+                  <name>Stroom Web Access</name>
+               </entity>
+            </value>
+         </property>
+      </add>
+   </properties>
+</pipeline>

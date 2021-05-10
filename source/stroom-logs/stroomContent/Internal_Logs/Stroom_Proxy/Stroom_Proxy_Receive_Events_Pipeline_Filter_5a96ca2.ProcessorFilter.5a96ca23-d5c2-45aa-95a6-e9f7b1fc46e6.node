@@ -1,0 +1,4 @@
+name=Stroom Proxy Receive Events Pipeline-Filter 5a96ca2
+path=Internal Logs/Stroom Proxy
+type=ProcessorFilter
+uuid=5a96ca23-d5c2-45aa-95a6-e9f7b1fc46e6

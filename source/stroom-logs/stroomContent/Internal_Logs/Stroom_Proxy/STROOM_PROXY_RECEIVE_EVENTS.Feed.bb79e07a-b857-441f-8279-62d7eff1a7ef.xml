@@ -1,8 +1,0 @@
-<?xml version="1.1" encoding="UTF-8"?>
-<feed>
-   <name>STROOM_PROXY-RECEIVE-EVENTS</name>
-   <reference>false</reference>
-   <status>RECEIVE</status>
-   <streamType>Raw Events</streamType>
-   <uuid>bb79e07a-b857-441f-8279-62d7eff1a7ef</uuid>
-</feed>

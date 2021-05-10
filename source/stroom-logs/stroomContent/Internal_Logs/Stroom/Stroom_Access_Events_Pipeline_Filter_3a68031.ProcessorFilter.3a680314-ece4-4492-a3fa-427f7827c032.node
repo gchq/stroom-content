@@ -1,0 +1,4 @@
+name=Stroom Access Events Pipeline-Filter 3a68031
+path=Internal Logs/Stroom
+type=ProcessorFilter
+uuid=3a680314-ece4-4492-a3fa-427f7827c032

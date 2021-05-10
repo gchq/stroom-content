@@ -1,0 +1,4 @@
+name=Stroom App Events Pipeline-Filter 462aaa8
+path=Internal Logs/Stroom
+type=ProcessorFilter
+uuid=462aaa8e-4ea2-47f3-a036-296647824c65

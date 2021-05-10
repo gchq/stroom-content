@@ -1,0 +1,93 @@
+{
+  "type" : "Index",
+  "uuid" : "3e72379d-403f-4757-88d5-bfae4d724b55",
+  "name" : "Stroom Family App Events Index",
+  "version" : "a5d9c569-6c0c-452a-982d-4abe226a0942",
+  "description" : "",
+  "maxDocsPerShard" : 1000000000,
+  "partitionBy" : "MONTH",
+  "partitionSize" : 1,
+  "shardsPerPartition" : 1,
+  "fields" : [ {
+    "fieldType" : "FIELD",
+    "fieldName" : "EventId",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : true,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "StreamId",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : true,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "DATE_FIELD",
+    "fieldName" : "Event Time",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : true,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "Log Level",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : true,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "Logger",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : true,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "Thread",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "Message",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "System",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : true,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "Hostname",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "Container Name",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  } ],
+  "volumeGroupName" : "Default Volume Group"
+}

@@ -1,0 +1,4 @@
+name=Stroom Nginx App Events
+path=Internal Logs/Stroom Nginx
+type=TextConverter
+uuid=d691a9fd-6885-4161-af03-27a0215a211f

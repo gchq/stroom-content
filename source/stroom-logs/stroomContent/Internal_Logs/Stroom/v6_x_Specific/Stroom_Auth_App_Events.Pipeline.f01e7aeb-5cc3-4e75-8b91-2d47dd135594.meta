@@ -1,0 +1,11 @@
+{
+  "type" : "Pipeline",
+  "uuid" : "f01e7aeb-5cc3-4e75-8b91-2d47dd135594",
+  "name" : "Stroom Auth App Events",
+  "version" : "f68939cc-d734-4ae3-b269-b3c434619a07",
+  "parentPipeline" : {
+    "type" : "Pipeline",
+    "uuid" : "811f157b-c8f6-4c6f-9744-66e111978bc6",
+    "name" : "Stroom Family App Logs"
+  }
+}

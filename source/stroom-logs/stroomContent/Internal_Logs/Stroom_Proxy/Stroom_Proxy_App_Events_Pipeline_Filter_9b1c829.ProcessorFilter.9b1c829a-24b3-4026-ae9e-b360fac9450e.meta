@@ -1,0 +1,36 @@
+{
+  "uuid" : "9b1c829a-24b3-4026-ae9e-b360fac9450e",
+  "queryData" : {
+    "dataSource" : {
+      "type" : "StreamStore",
+      "uuid" : "0",
+      "name" : "StreamStore"
+    },
+    "expression" : {
+      "type" : "operator",
+      "children" : [ {
+        "type" : "term",
+        "field" : "Feed",
+        "condition" : "IS_DOC_REF",
+        "value" : "STROOM_PROXY-APP-EVENTS",
+        "docRef" : {
+          "type" : "Feed",
+          "uuid" : "c6ee4f4f-1350-42f4-8839-378892a1a654",
+          "name" : "STROOM_PROXY-APP-EVENTS"
+        }
+      }, {
+        "type" : "term",
+        "field" : "Type",
+        "condition" : "EQUALS",
+        "value" : "Raw Events"
+      } ]
+    }
+  },
+  "priority" : 10,
+  "reprocess" : false,
+  "enabled" : true,
+  "deleted" : false,
+  "processorUuid" : "8e151832-5252-4826-9542-d2cec6eb463c",
+  "pipelineUuid" : "723618c3-599a-4285-9748-f09c7ebfde73",
+  "pipelineName" : "Stroom Proxy App Events"
+}

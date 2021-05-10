@@ -1,8 +1,0 @@
-<?xml version="1.1" encoding="UTF-8"?>
-<feed>
-   <name>STROOM_AUTH-APP-EVENTS</name>
-   <reference>false</reference>
-   <status>RECEIVE</status>
-   <streamType>Raw Events</streamType>
-   <uuid>7752386a-0e0d-434f-9361-213e57f40a60</uuid>
-</feed>

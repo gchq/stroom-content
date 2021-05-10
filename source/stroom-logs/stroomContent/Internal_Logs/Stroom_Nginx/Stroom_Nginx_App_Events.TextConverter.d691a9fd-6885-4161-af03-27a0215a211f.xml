@@ -1,0 +1,38 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<dataSplitter xmlns="data-splitter:3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="data-splitter:3 file://data-splitter-v3.0.1.xsd" version="3.0" bufferSize="100000">
+
+  <!--
+  Data Splitter for parsing NGINX application log
+  -->
+  <split delimiter="\n">
+    <group value="$1">
+      <regex pattern="^([^ ]+ [^ ]+) \[([^\]]+)\] ([^#]+)#([^:]+): [*]([^ ]+) ([^,]+), (.+)">
+
+      
+        
+        <data name="logLevel" value="$2" />
+        <data name="dateTime" value="$1" />
+        <data name="processId" value="$3" />
+        <data name="threadId" value="$4" />
+        <data name="connectionId" value="$5" />
+        <data name="message" value="$6" />
+        
+          <group value="$7">
+          <split delimiter="," containerStart="&#34;" containerEnd="&#34;">
+            <group value="$1">
+            
+              <regex pattern="^([^:]+): &#34;([^&#34;]+)|^([^:]+): ([^&#34;]+)">
+                <data name="$1" value="$2"/>    
+                <data name="$3" value="$4"/>
+              </regex>
+            </group>
+            
+            
+          </split>
+        </group>
+        
+      </regex>
+
+  </group>
+  </split>
+</dataSplitter>

@@ -1,0 +1,4 @@
+name=Stroom Proxy App Events Pipeline-Filter 9b1c829
+path=Internal Logs/Stroom Proxy
+type=ProcessorFilter
+uuid=9b1c829a-24b3-4026-ae9e-b360fac9450e

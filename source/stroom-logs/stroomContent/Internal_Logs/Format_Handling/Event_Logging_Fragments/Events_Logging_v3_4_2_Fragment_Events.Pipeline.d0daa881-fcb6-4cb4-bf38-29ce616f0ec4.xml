@@ -1,0 +1,50 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<pipeline>
+   <elements>
+      <add>
+         <element>
+            <id>dsParser</id>
+            <type>DSParser</type>
+         </element>
+      </add>
+      <remove>
+         <element>
+            <id>xmlFragmentParser</id>
+            <type>XMLFragmentParser</type>
+         </element>
+      </remove>
+   </elements>
+   <properties>
+      <add>
+         <property>
+            <element>dsParser</element>
+            <name>textConverter</name>
+            <value>
+               <entity>
+                  <type>TextConverter</type>
+                  <uuid>39864596-5f32-4fca-b2c4-cb61da2a0fe9</uuid>
+                  <name>Event Logging v3.4.2 Fragments</name>
+               </entity>
+            </value>
+         </property>
+      </add>
+   </properties>
+   <links>
+      <add>
+         <link>
+            <from>Source</from>
+            <to>dsParser</to>
+         </link>
+         <link>
+            <from>dsParser</from>
+            <to>readRecordCountFilter</to>
+         </link>
+      </add>
+      <remove>
+         <link>
+            <from>Source</from>
+            <to>xmlFragmentParser</to>
+         </link>
+      </remove>
+   </links>
+</pipeline>

@@ -1,0 +1,4 @@
+name=Stroom Nginx App Events
+path=Internal Logs/Stroom Nginx
+type=Pipeline
+uuid=2458e2f6-935b-44a4-b9d0-c6a5e39f5a87
