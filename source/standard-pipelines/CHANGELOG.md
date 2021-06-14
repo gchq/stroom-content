@@ -13,8 +13,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 
+## [standard-pipelines-v0.3]
 
-## [standard-pipelines-v0.1]
+### Changed
+
+  * [JSON_SEARCH_EXTRACTION](#JSON_SEARCH_EXTRACTION) `XSLT` Now works for other kinds of data as well as `Events`
+
+## [standard-pipelines-v0.2]
 
 
 ### Added
@@ -34,6 +39,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Initial version.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/standard-pipelines-v0.2...HEAD
+[Unreleased]: https://github.com/gchq/stroom-content/compare/standard-pipelines-v0.3...HEAD
+[standard-pipelines-v0.3]: https://github.com/gchq/stroom-content/compare/standard-pipelines-v0.2...standard-pipelines-v0.3
 [standard-pipelines-v0.2]: https://github.com/gchq/stroom-content/compare/standard-pipelines-v0.1...standard-pipelines-v0.2
 [standard-pipelines-v0.1]: https://github.com/gchq/stroom-content/compare/standard-pipelines-v0.1...standard-pipelines-v0.1

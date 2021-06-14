@@ -97,6 +97,7 @@ A set of standard data format agnostic pipelines for processing data.
 
 | Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  | Stroom 7.0.x |
 | --------------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------ |
+| [v0.3](https://github.com/gchq/stroom-content/releases/tag/standard-pipelines-v0.2)                 | No             | Y             | Y            |
 | [v0.2](https://github.com/gchq/stroom-content/releases/tag/standard-pipelines-v0.2)                 | No             | Y             | Y            |
 | [v0.1](https://github.com/gchq/stroom-content/releases/tag/standard-pipelines-v0.1)                 | No             | Y             | Y            |
 
@@ -142,6 +143,15 @@ A set of template pipelines that other pipelines can inherit from.
 | [v0.2](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.2)                 | No             | Y             | Y           |
 | [v0.1](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.1)                 | No             | Y             | Y           |
 
+
+
+### [**example-index**](./source/example-index/README.md) 
+
+A basic Stroom index designed for `event-logging` XML.
+
+| Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |Stroom 7.0.x |
+| --------------------------------------------------------------------------------------------------- | -------------- | ------------- |-------------|
+| [v1.0](https://github.com/gchq/stroom-content/releases/tag/example-index-v1.0)                      | No             | No            | Y           |
 
 
 ## Building the content packs

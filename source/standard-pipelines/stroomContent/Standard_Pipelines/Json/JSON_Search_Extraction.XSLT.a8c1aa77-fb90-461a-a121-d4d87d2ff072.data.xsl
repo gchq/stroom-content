@@ -3,15 +3,15 @@
   <xsl:include href="stroom-json" />
   <xsl:include href="events-multipleValueTagPairs" />
 
-  <!--Root template /Events-->
-  <xsl:template match="/Events">
+  <!--Root template-->
+  <xsl:template match="/*">
     <records xsi:schemaLocation="records:2 file://records-v2.0.xsd" version="2.0">
       <xsl:apply-templates />
     </records>
   </xsl:template>
 
-  <!--Record for each Event element-->
-  <xsl:template match="Event">
+  <!--Record for each element-->
+  <xsl:template match="*">
     <record>
       <data name="StreamId">
         <xsl:attribute name="value" select="@StreamId" />
