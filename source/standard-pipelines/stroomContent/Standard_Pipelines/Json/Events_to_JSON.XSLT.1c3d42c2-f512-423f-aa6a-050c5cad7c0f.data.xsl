@@ -5,7 +5,7 @@
 
   <!--Go-->
   <xsl:template match="/">
-    <xsl:call-template name="stroom:createJsonXml">
+    <xsl:call-template name="stroom:create-json-xml">
       <xsl:with-param name="input" select="." />
       <xsl:with-param name="multipleValueTagPairs" select="$multipleValueTagPairs" />
     </xsl:call-template>

@@ -13,6 +13,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 
+## [template-pipelines-v0.5]
+
+### Changed
+
+* `stroom:JSON` Changed / fixed for compatibility with Saxon 9.9
 
 ## [template-pipelines-v0.4.1]
 
@@ -57,7 +62,8 @@ Stroom up to and including `v7.0`.
 * Initial version.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.4.1...HEAD
+[Unreleased]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.5...HEAD
+[template-pipelines-v0.5]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.4.1...template-pipelines-v0.5
 [template-pipelines-v0.4.1]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.3...template-pipelines-v0.4.1
 [template-pipelines-v0.4]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.3...template-pipelines-v0.4
 [template-pipelines-v0.3]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.2...template-pipelines-v0.3

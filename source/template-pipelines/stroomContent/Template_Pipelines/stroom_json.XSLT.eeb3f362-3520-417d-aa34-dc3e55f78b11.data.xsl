@@ -79,7 +79,7 @@
 
     <!--Group to deal with multiples-->
     <xsl:for-each-group select="*" group-by="name()">
-      <xsl:variable name="alwaysArray" select="contains($multipleValueTagPairs,concat($currentNode/name(),'/',current-group()/name())) or contains($multipleValueTagPairs,concat('*','/',current-group()/name()))" />
+      <xsl:variable name="alwaysArray" select="contains($multipleValueTagPairs,concat($currentNode/name(),'/',current-grouping-key())) or contains($multipleValueTagPairs,concat('*','/',current-grouping-key()))" />
       <xsl:choose>
         <xsl:when test="count(current-group()) gt 1 or $alwaysArray">
           <xsl:element name="array">
