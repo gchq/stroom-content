@@ -6,7 +6,7 @@ This repository provides a means to share common _Stroom_ content in a form that
 
 The content is grouped into a number of _content packs_ which can each be built into a zip file that is ready for import directly into _Stroom_.
 
-If you are looking for visualisation content packs then see [stroom-visualisation-dev](https://github.com/gchq/stroom-visualisations-dev).
+If you are looking for visualisation content packs then see [stroom-visualisations-dev](https://github.com/gchq/stroom-visualisations-dev).
 
 #### Caution!
  
