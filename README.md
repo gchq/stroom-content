@@ -1,8 +1,12 @@
 # Stroom Content
 
-_Stroom Content_ is a repository of the content definition files used to import entities into _Stroom_. Entities are such things as XML Schemas, XSLT translations, data splitter definitions, pipelines, dashboards, visualisations, etc. This repository provides a means to share common _Stroom_ content in a form that can be imported into multiple instances of _Stroom_.
+_Stroom Content_ is a repository of the content definition files used to import entities into _Stroom_.
+Entities are such things as XML Schemas, XSLT translations, data splitter definitions, pipelines, dashboards, etc.
+This repository provides a means to share common _Stroom_ content in a form that can be imported into multiple instances of _Stroom_.
 
 The content is grouped into a number of _content packs_ which can each be built into a zip file that is ready for import directly into _Stroom_.
+
+If you are looking for visualisation content packs then see [stroom-visualisation-dev](https://github.com/gchq/stroom-visualisations-dev).
 
 #### Caution!
  
