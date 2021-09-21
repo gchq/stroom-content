@@ -1,6 +1,11 @@
 
-# Release 1.1  - 20180411 Burn Alting - burn@swtf.dyndsn.org
-#   - Correct minor script errors
+# Release 1.3  - 20201229 Burn Alting
+#   - Modify gain_iana_timezone to sed out not just zoneinfo but zoneinfo/(posix|right|leaps)
+# Release 1.2  - 20200515 Burn Alting
+#   -  Support multiple URL destinations
+# Release 1.1  - 20190630 Burn Alting
+#   -  Gain host's Canonical Timezone TZ database name (Australia/Sydney, Europe/London, etc
+#      - https://www.iana.org/time-zones) and pass in post
 # Release 1.0  - 20170623 Burn Alting - burn@swtf.dyndns.org
 #   - Initial Release
 
@@ -11,6 +16,9 @@
 #   - processes all rotated logs via the supporting squidplusXML.pl perl script leaving files in a queue directory
 #   - concatenate all raw logs into /var/log/squid/access.log
 #   - compresses then attempts to post the logs from the queue directory and removes them from the queue directory on successful post
+#     If multiple URLs are provided then each URL is applied in turn. Consideration should be given to reducing the curl connection
+#     timeout, C_TMO, if multiple URLs are provide
+
 #
 # Note this script will need to change if it is to support multiple Squid instances.
 
@@ -53,6 +61,11 @@ ENVIRONMENT="Production"
 #
 # This should NOT change without consultation with Audit Authority
 URL=https://stroomp00.strmdev00.org/stroom/datafeed
+
+# Split if we have multiple URLS (comma separated) into the array urls and note it's size
+IFS="," read -ra urls <<< "${URL}"
+urls_idx=0
+urls_mod=${#urls[@]}
 
 # mySecZone     - Security zone if pertinant
 #
@@ -103,6 +116,7 @@ FAILED_MAX=16777216
 MAX_SLEEP=580
 
 # C_TMO             - Maximum time in seconds to allow the connection to the server to take
+#                     Consider changing this value if multiple URLS are provided
 C_TMO=37
 
 # M_TMO             - Maximum time in seconds to allow the whole operation to take
@@ -206,6 +220,41 @@ stroom_rm_lock() {
   fi
 }
 
+# gain_iana_timezone()
+# Args:
+#   null
+#
+# Gain the host's Canonical timezone
+# The algorithm in general is
+#   if /etc/timezone then
+#     This is a ubuntu scenario
+#     cat /etc/timezone
+#   elif /etc/localtime is a symbolic link and /usr/share/zoneinfo exists
+#     # This is a RHEL/BSD scenario. Get the filename in the database directory
+#     readlink /etc/localtime | sed -e 's@.*share/zoneinfo/\(posix\|right\|leaps\)/\|.*share/zoneinfo/@@'
+#   elif /etc/localtime is a file and /usr/share/zoneinfo exists
+#     # This is also a RHEL/BSD scenario. Get the filename in the database directory by brute force comparison
+#     find /usr/share/zoneinfo -type f ! -name 'posixrules' -exec cmp -s {} /etc/localtime \; -print | sed -e 's@.*share/zoneinfo/\(posix\|right\|leaps\)/\|.*share/zoneinfo/@@' | head -n1
+#   elif /etc/TIMEZONE exists
+#     # This is for Solaris for completeness. Get the TZ value. May need to delete double quotes
+#     grep 'TZ=' /etc/TIMEZONE | cut -d= -f2- | sed -e 's/"//g'
+#   else
+#     nothing
+#
+gain_iana_timezone()
+{
+  if [ -f /etc/timezone ]; then
+    # Ubuntu based
+    cat /etc/timezone
+  elif [ -h /etc/localtime -a -d /usr/share/zoneinfo ]; then
+    # RHEL/BSD based
+    readlink /etc/localtime | sed -e 's@.*share/zoneinfo/\(posix\|right\|leaps\)/\|.*share/zoneinfo/@@'
+  elif [ -f /etc/localtime -a -d /usr/share/zoneinfo ]; then
+    # Older RHEL based
+    find /usr/share/zoneinfo -type f ! -name 'posixrules' -exec cmp -s {} /etc/localtime \; -print | sed -e 's@.*share/zoneinfo/\(posix\|right\|leaps\)/\|.*share/zoneinfo/@@' | head -n1
+  fi
+}
+
 # send_to_stroom()
 # Args:
 #  $1 - the log file
@@ -234,7 +283,7 @@ send_to_stroom() {
       # Let's try dumb and see if there is a name server in /etc/resolv.conf and choose the first one
       h=`egrep '^nameserver ' /etc/resolv.conf | head -1 | cut -f2 -d' '`
       if [ -n "${h}" ]; then
-        h0=`host $h 2> /dev/null | gawk '{print $NF }'`
+        h0=`host $h | gawk '{print $NF }'`
         if [ -n "${h0}" ]; then
            hostArgs="${hostArgs} -H MyNameServer:\"${h0}\""
         elif [ -n "${h}" ]; then
@@ -245,8 +294,8 @@ send_to_stroom() {
   fi
   # Gather various configuration details via facter(1) command if available
   if hash facter 2>/dev/null; then
-    # Redirect facter's stderr as this script may not be running as root
-    myMeta=`facter 2> /dev/null | awk '{
+    # Redirect facter's stderr as we may not be root
+    myMeta=`facter 2>/dev/null | awk '{
 if ($1 == "fqdn") printf "FQDN:%s\\\n", $3;
 if ($1 == "uuid") printf "UUID:%s\\\n", $3;
 if ($1 ~ /^ipaddress/) printf "%s:%s\\\n", $1, $3;
@@ -261,51 +310,69 @@ if ($1 ~ /^ipaddress/) printf "%s:%s\\\n", $1, $3;
       hostArgs="${hostArgs} -H MyTZ:${ltz}"
   fi
 
+  # Local Canonical Timezone
+  ctz=`gain_iana_timezone`
+  if [ -n "${ltz}" ]; then
+      hostArgs="${hostArgs} -H MyCanonicalTZ:${ctz}"
+  fi
+
   # Do the transfer.
+  # We loop through the urls array. We use the index urls_idx to iterate over the array
+  # this way, if we have a few failures to post, then the index will be at the successful
+  # url if we have multiple files to post
+  u=${urls[$urls_idx]}
+  _i=0
+  while [ $_i -lt $urls_mod ]; do
 
-  # For two-way SSL authentication replace '-k' below with '--cert /path/to/server.pem --cacert /path/to/root_ca.crt' on the curl cmds below
+    # For two-way SSL authentication replace '-k' below with '--cert /path/to/server.pem --cacert /path/to/root_ca.crt' on the curl cmds below
 
-  # If not two-way SSL authentication, use the -k option to curl
-  if [ -n "${mySecZone}" -a "${mySecZone}" != "none" ]; then
-    RESPONSE_HTTP=`curl -k --connect-timeout ${C_TMO} --max-time ${M_TMO} --data-binary @${logFile} ${URL} \
+    # If not two-way SSL authentication, use the -k option to curl
+    if [ -n "${mySecZone}" -a "${mySecZone}" != "none" ]; then
+      RESPONSE_HTTP=`curl -k --connect-timeout ${C_TMO} --max-time ${M_TMO} --data-binary @${logFile} ${u} \
 -H "Feed:${FEED_NAME}" -H "System:${SYSTEM}" -H "Environment:${ENVIRONMENT}" -H "Version:${VERSION}" \
 -H "MyHost:\"${myHost%"${myHost##*[![:space:]]}"}\"" \
 -H "MyIPaddress:\"${myIPaddress%"${myIPaddress##*[![:space:]]}"}\"" \
 -H "MySecurityDomain:\"${mySecZone%"${mySecZone##*[![:space:]]}"}\"" \
 ${hostArgs} \
 -H "Compression:GZIP" --write-out "RESPONSE_CODE=%{http_code}" 2>&1`
-  else
-    RESPONSE_HTTP=`curl -k --connect-timeout ${C_TMO} --max-time ${M_TMO} --data-binary @${logFile} ${URL} \
+    else
+      RESPONSE_HTTP=`curl -k --connect-timeout ${C_TMO} --max-time ${M_TMO} --data-binary @${logFile} ${u} \
 -H "Feed:${FEED_NAME}" -H "System:${SYSTEM}" -H "Environment:${ENVIRONMENT}" -H "Version:${VERSION}" \
 -H "MyHost:\"${myHost%"${myHost##*[![:space:]]}"}\"" \
 -H "MyIPaddress:\"${myIPaddress%"${myIPaddress##*[![:space:]]}"}\"" \
 ${hostArgs} \
 -H "Compression:GZIP" --write-out "RESPONSE_CODE=%{http_code}" 2>&1`
-  fi
+    fi
 
-  # We first look for a positive response (ie 200)
-  RESPONSE_CODE=`echo ${RESPONSE_HTTP} | sed -e 's/.*RESPONSE_CODE=\(200\).*/\1/'`
-  if [ "${RESPONSE_CODE}" = "200" ] ;then
-    logmsg "Send status: [${RESPONSE_CODE}] SUCCESS  Audit Log: ${logFile} Size: ${logSz} ProcessTime: ${ProcessTime} Feed: ${FEED_NAME}"
-    rm -f ${logFile}
-    return 0
-  fi
+    # We first look for a positive response (ie 200)
+    RESPONSE_CODE=`echo ${RESPONSE_HTTP} | sed -e 's/.*RESPONSE_CODE=\(200\).*/\1/'`
+    if [ "${RESPONSE_CODE}" = "200" ] ;then
+      logmsg "Send status: [${RESPONSE_CODE}] SUCCESS  Audit Log: ${logFile} Size: ${logSz} ProcessTime: ${ProcessTime} Feed: ${FEED_NAME}"
+      rm -f ${logFile}
+      return 0
+    fi
 
-  # If we can't find it in the output, look for the last response code
-  # We do this in the unlikely event that a corrupted arguement is passed to curl
-  RESPONSE_CODE=`echo ${RESPONSE_HTTP} | sed -e 's/.*RESPONSE_CODE=\([0-9]\+\)$/\1/'`
-  if [ "${RESPONSE_CODE}" = "200" ] ;then
-    logmsg "Send status: [${RESPONSE_CODE}] SUCCESS  Audit Log: ${logFile} Size: ${logSz} ProcessTime: ${ProcessTime}"
-    rm -f ${logFile}
-    return 0
-  fi
+    # If we can't find it in the output, look for the last response code
+    # We do this in the unlikely event that a corrupted arguement is passed to curl
+    RESPONSE_CODE=`echo ${RESPONSE_HTTP} | sed -e 's/.*RESPONSE_CODE=\([0-9]\+\)$/\1/'`
+    if [ "${RESPONSE_CODE}" = "200" ] ;then
+      logmsg "Send status: [${RESPONSE_CODE}] SUCCESS  Audit Log: ${logFile} Size: ${logSz} ProcessTime: ${ProcessTime}"
+      rm -f ${logFile}
+      return 0
+    fi
 
-  # Fall through ...
+    # Fall through ...
 
-  # We failed to tranfer the processed log file, so emit a message to that effect
-  msg="Send status: [${RESPONSE_CODE}] FAILED  Audit Log: ${logFile} Reason: curl returned http_code (${RESPONSE_CODE})"
-  logmsg "$msg"
+    # We failed to tranfer the processed log file, so emit a message to that effect
+    msg="Send status: [${RESPONSE_CODE}] FAILED  Audit Log: ${logFile} Reason: curl returned http_code (${RESPONSE_CODE})"
+    logmsg "$msg"
    
+    # Work out the next url to use
+    ((_i++))
+    urls_idx=$((++urls_idx % urls_mod))
+    u=${urls[$urls_idx]}
+  done
+
   # We also send an event into the security syslog destination
   logger -p "authpriv.info" -t $Arg0 "$msg"
 

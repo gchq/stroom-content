@@ -3,6 +3,10 @@
 
 # Install yum install 'perl(XML::Simple)'
 
+# Release 1.3 20200605 burn@swtf.dyndns.org
+#  -  Modify script to transform URL unwise characters ("{" | "}" | "|" | "\" | "^" | "[" | "]" | "`")
+#     into their %<hex> equivalent
+#
 # Perl script to take a specific output of a squid proxy server and enrich
 # supplied IP addresses with resolved fully qualified domain names if possible and convert
 # the data to a simple XML form.
@@ -156,6 +160,16 @@ while (<>) {
     $requestMethod =~ s/([[:cntrl:]])/'&#' . ord($1) . ';'/gse;
     $x0 =~ s/([[:cntrl:]])/'&#' . ord($1) . ';'/gse;
     $requestURL =~ s/([[:cntrl:]])/'&#' . ord($1) . ';'/gse;
+    # Correct for any unwise characters
+    #   unwise = "{" | "}" | "|" | "\" | "^" | "[" | "]" | "`"
+    $requestURL =~ s/{/'%7B'/gse;
+    $requestURL =~ s/}/'%7D'/gse;
+    $requestURL =~ s/\|/'%7C'/gse;
+    $requestURL =~ s/\\/'%5C'/gse;
+    $requestURL =~ s/\^/'%5E'/gse;
+    $requestURL =~ s/\[/'%5B'/gse;
+    $requestURL =~ s/\]/'%5D'/gse;
+    $requestURL =~ s/\`/'%60'/gse;
 
     # Now deal with the possible scenarios of
     # "<receivedHdr>" "<replyHdr>"
