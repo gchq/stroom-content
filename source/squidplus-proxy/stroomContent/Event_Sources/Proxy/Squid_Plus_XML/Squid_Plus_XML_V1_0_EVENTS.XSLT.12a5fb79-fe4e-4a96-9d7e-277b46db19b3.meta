@@ -1,0 +1,7 @@
+{
+  "type" : "XSLT",
+  "uuid" : "12a5fb79-fe4e-4a96-9d7e-277b46db19b3",
+  "name" : "Squid-Plus-XML-V1.0-EVENTS",
+  "version" : "c387f009-41ad-4331-8fd7-08f1b89d8c8a",
+  "description" : "Translation for SquidPlus XML format events."
+}

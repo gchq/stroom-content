@@ -1,0 +1,9 @@
+{
+  "type" : "Feed",
+  "uuid" : "ae1af17e-24a4-415e-8502-a11c39df1904",
+  "name" : "Squid-Plus-XML-V1.0-EVENTS",
+  "version" : "86d5b6ef-fb8b-466f-be4f-e43a8835021a",
+  "reference" : false,
+  "streamType" : "Raw Events",
+  "status" : "RECEIVE"
+}

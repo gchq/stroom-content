@@ -1,0 +1,11 @@
+{
+  "type" : "Pipeline",
+  "uuid" : "c8b3c862-9249-40e6-912d-8dcf9552e153",
+  "name" : "Squid-Plus-XML-V1.0-EVENTS",
+  "version" : "b6ae286e-d857-44b3-9e6c-a017c513f0c1",
+  "parentPipeline" : {
+    "type" : "Pipeline",
+    "uuid" : "b07a43a9-f970-4642-9452-42a38fbd447e",
+    "name" : "Event Data (XML)"
+  }
+}
