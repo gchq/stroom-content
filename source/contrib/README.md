@@ -5,7 +5,7 @@
 This content tree holds user contributed Event log source agents and associated Stroom content
 
 * _Proxy_ 
-    * [squidplus-proxy](#squidplus-proxy) `Agent and Stroom content`
+    * [squidplus-proxy](#squidplus-proxy) `Agent and Stroom content` Release [**squidplus-proxy**](./proxy/squidplus-proxy)
 * _OperatingSystem_
 
 ## squidplus-proxy
