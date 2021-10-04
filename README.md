@@ -160,6 +160,10 @@ A basic Stroom index designed for `event-logging` XML.
 | [v1.0](https://github.com/gchq/stroom-content/releases/tag/example-index-v1.0)                      | No             | No            | Y           |
 
 
+### [**contrib**](./source/contrib/README.md) 
+
+Contributions in the form of Event log source agents and associated Stroom content
+
 ## Building the content packs
 
 Each content pack is defined as a directory within _stroom-content-source_ with the name of content pack being the name of the directory.
