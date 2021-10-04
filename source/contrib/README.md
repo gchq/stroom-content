@@ -10,4 +10,4 @@ This content tree holds user contributed Event log source agents and associated 
 
 ## squidplus-proxy
 
-Linux based agent together with Stroom content to normalise Squid event logs.  [**squidplus-proxy**](./proxy/squidplus-proxy)
+[**squidplus-proxy**](./proxy/squidplus-proxy) Linux based agent together with Stroom content to normalise Squid event logs
