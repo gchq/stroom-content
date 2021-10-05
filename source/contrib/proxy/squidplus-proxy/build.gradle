@@ -1,7 +1,0 @@
-//squidplus-proxy
-
-dependencies {
-    compileSource project(path: ':event-logging-xml-schema', configuration: 'distConfig')
-    compileSource project(path: ':template-pipelines', configuration: 'distConfig')
-}
-

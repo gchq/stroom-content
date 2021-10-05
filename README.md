@@ -160,9 +160,10 @@ A basic Stroom index designed for `event-logging` XML.
 | [v1.0](https://github.com/gchq/stroom-content/releases/tag/example-index-v1.0)                      | No             | No            | Y           |
 
 
-### [**contrib**](./source/contrib/README.md) 
+### Other Content
 
-Contributions in the form of Event log source agents and associated Stroom content
+* _Proxy_ 
+    * [squidplus-proxy](./source/proxy/squidplus-proxy/README.md) `Agent and Stroom content`
 
 ## Building the content packs
 
