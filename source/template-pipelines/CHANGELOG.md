@@ -13,6 +13,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 
+## [template-pipelines-v0.3.1]
+
+### Added
+* `Event Data Split` pipelines for JSON, Text and XML input. These pipelines would be used when processed event data streams need to age out at differing times.
+
+### Changed
+
+### Removed
+
 ## [template-pipelines-v0.5]
 
 ### Changed

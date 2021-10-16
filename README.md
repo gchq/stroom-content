@@ -145,6 +145,7 @@ A set of template pipelines that other pipelines can inherit from.
 | --------------------------------------------------------------------------------------------------- | -------------- | ------------- |-------------|
 | [v0.5](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.5)                 | No             | No            | No          |
 | [v0.4.1](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.4.1)             | No             | No            | No          |
+| [v0.3.1](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.3.1)             | No             | No            | Y           |
 | [v0.3](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.3)                 | No             | No            | Y           |
 | [v0.2](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.2)                 | No             | Y             | Y           |
 | [v0.1](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.1)                 | No             | Y             | Y           |
