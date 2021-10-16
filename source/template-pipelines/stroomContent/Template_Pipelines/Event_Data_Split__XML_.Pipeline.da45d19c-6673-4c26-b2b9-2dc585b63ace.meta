@@ -1,0 +1,7 @@
+{
+  "type" : "Pipeline",
+  "uuid" : "da45d19c-6673-4c26-b2b9-2dc585b63ace",
+  "name" : "Event Data Split (XML)",
+  "version" : "af6e09c5-4b5f-430b-9899-85b740fcbdbd",
+  "description" : "This pipeline is designed to allow one to split data into two output streams. Typically this is used to break event data into one stream that should be held for a different time period to that of another. For example, all user attributed events could go to one output stream held for 7 years and all others could go to another output stream that could be held for say 1 year."
+}
