@@ -1,0 +1,10 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<statisticStore>
+   <description>Search Results Store Count</description>
+   <enabled>true</enabled>
+   <name>Search Results Store Count</name>
+   <precision>60000</precision>
+   <rollUpType>NONE</rollUpType>
+   <statisticType>VALUE</statisticType>
+   <uuid>35d60e7d-f11a-45c9-981d-16d8ddda081e</uuid>
+</statisticStore>
