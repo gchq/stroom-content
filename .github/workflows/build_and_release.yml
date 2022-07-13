@@ -100,7 +100,6 @@ jobs:
 
       - name: Run full build
         id: run_build
-        env:
         run: |
           pushd "${BUILD_DIR}" > /dev/null
           echo -e "${GREEN}Running gradle build${NC}"
