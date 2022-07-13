@@ -3,7 +3,7 @@
    <description>Reference Data Store Size</description>
    <enabled>true</enabled>
    <name>Reference Data Store Size</name>
-   <precision>60000</precision>
+   <precision>3600000</precision>
    <rollUpType>NONE</rollUpType>
    <statisticType>VALUE</statisticType>
    <uuid>e57959bf-0b2d-4008-98a7-ffcae4bbc4bb</uuid>
