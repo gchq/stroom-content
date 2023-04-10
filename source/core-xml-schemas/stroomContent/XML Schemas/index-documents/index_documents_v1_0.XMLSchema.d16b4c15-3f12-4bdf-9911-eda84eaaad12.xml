@@ -1,0 +1,10 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<xmlSchema>
+   <deprecated>false</deprecated>
+   <description/>
+   <name>index-documents v1.0</name>
+   <namespaceURI>index-documents:1</namespaceURI>
+   <schemaGroup>INDEX_DOCUMENTS</schemaGroup>
+   <systemId>file://index-documents-v1.0.xsd</systemId>
+   <uuid>b5c7bd44-ca00-448d-ba64-66b48f926ec4</uuid>
+</xmlSchema>

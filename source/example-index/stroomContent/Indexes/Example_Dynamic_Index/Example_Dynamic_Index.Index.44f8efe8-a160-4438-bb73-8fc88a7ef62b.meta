@@ -1,0 +1,147 @@
+{
+  "type" : "Index",
+  "uuid" : "44f8efe8-a160-4438-bb73-8fc88a7ef62b",
+  "name" : "Example Dynamic Index",
+  "version" : "f0413c6b-c2f3-449c-9156-b862c9c5db27",
+  "description" : "",
+  "maxDocsPerShard" : 1000000000,
+  "partitionBy" : "MONTH",
+  "partitionSize" : 1,
+  "shardsPerPartition" : 1,
+  "fields" : [ {
+    "fieldType" : "ID",
+    "fieldName" : "StreamId",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : true,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "ID",
+    "fieldName" : "EventId",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : true,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "Feed",
+    "analyzerType" : "ALPHA_NUMERIC",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "Feed (Keyword)",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "Action",
+    "analyzerType" : "ALPHA_NUMERIC",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "DATE_FIELD",
+    "fieldName" : "EventTime",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "UserId",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "System",
+    "analyzerType" : "ALPHA_NUMERIC",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "Environment",
+    "analyzerType" : "ALPHA_NUMERIC",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "IPAddress",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "HostName",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "Generator",
+    "analyzerType" : "ALPHA_NUMERIC",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "Command",
+    "analyzerType" : "ALPHA_NUMERIC",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "Command (Keyword)",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : true
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "Description",
+    "analyzerType" : "ALPHA_NUMERIC",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fieldType" : "FIELD",
+    "fieldName" : "Description (Case Sensitive)",
+    "analyzerType" : "ALPHA_NUMERIC",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : true
+  } ],
+  "timeField" : "EventTime",
+  "volumeGroupName" : "Default Volume Group",
+  "defaultExtractionPipeline" : {
+    "type" : "Pipeline",
+    "uuid" : "d7096882-7188-46b8-8c47-8b53c0118be9",
+    "name" : "Example Dynamic Extraction"
+  }
+}
