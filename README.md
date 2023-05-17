@@ -160,7 +160,7 @@ A set of template pipelines that other pipelines can inherit from.
 | [v0.2](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.2)      | No             | Y             | Y           | Y           | Y           |
 | [v0.1](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.1)      | No             | Y             | Y           | Y           | Y           |
 
-\* Stroom v7.1-beta.3 onwards is compatible with this content pack, but it must not be used in v7.1-beta.1 or v7.1-beta.2
+\* Stroom `v7.1-beta.3` onwards is compatible with this content pack, but it must not be used in `v7.1-beta.1` or `v7.1-beta.2`
 
 ### [**example-index**](./source/example-index/README.md) 
 
