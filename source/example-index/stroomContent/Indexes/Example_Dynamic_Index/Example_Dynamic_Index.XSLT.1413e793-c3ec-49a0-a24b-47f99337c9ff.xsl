@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xsl:stylesheet xpath-default-namespace="event-logging:3" xmlns="documents:1" xmlns:stroom="stroom" xmlns:sm="stroom-meta" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0">
+<xsl:stylesheet xpath-default-namespace="event-logging:3" xmlns="index-documents:1" xmlns:stroom="stroom" xmlns:sm="stroom-meta" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0">
   <xsl:template match="/Events">
-    <documents xsi:schemaLocation="documents:1 file://index-documents-v1.0.xsd" version="1.0">
+    <index-documents xsi:schemaLocation="index-documents:1 file://index-documents-v1.0.xsd" version="1.0.0">
       <xsl:apply-templates />
-    </documents>
+    </index-documents>
   </xsl:template>
   <xsl:template match="Event">
     <document>
