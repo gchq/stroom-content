@@ -13,6 +13,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 
+## [template-pipelines-v0.5.1]
+
+### Added
+
+* `Event Data Split (JSON)`, `Event Data Split (Text)` and `Event Data Split (XML)` pipelines to support multiple feed destinations dependent on additional filtering XSLTs
+
 ## [template-pipelines-v0.5]
 
 ### Changed
@@ -63,6 +69,7 @@ Stroom up to and including `v7.0`.
 
 
 [Unreleased]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.5...HEAD
+[template-pipelines-v0.5.1]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.5...template-pipelines-v0.5.1
 [template-pipelines-v0.5]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.4.1...template-pipelines-v0.5
 [template-pipelines-v0.4.1]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.3...template-pipelines-v0.4.1
 [template-pipelines-v0.4]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.3...template-pipelines-v0.4
