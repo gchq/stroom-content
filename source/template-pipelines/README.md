@@ -13,6 +13,9 @@ The following represents the folder structure and content that will be imported 
     * [Event Data (JSON)](#event-data-json) `Pipeline`
     * [Event Data (Text)](#event-data-text) `Pipeline`
     * [Event Data (XML)](#event-data-xml) `Pipeline`
+    * [Event Data Split (JSON)](#event-data-split-json) `Pipeline`
+    * [Event Data Split (Text)](#event-data-split-text) `Pipeline`
+    * [Event Data Split (XML)](#event-data-split-xml) `Pipeline`
     * [Indexing](#indexing) `Pipeline`
     * [JSON](#json-xslt) `XSLT`
     * [Reference Data](#reference-data) `Pipeline`
@@ -49,6 +52,20 @@ Inherits from Event Data Base, adding a Data Splitter parser in front of it. Thi
 ## Event Data (XML)
 
 Inherits from Event Data Base, adding a Data Splitter parser in front of it. This pipeline can be used as a template for pipelines processing text format data (e.g. Apache logs) into event-logging format XML. Pipelines inheriting from this will need to supply as a minimum a Text Converter to convert the text into XML, an XSLT translation to convert this XML into event-logging form and an XSLT translation to decorate the event-logging XML with any additional data (e.g. IP -> hostname lookups).
+
+## Event Data Split (JSON)
+
+This pipeline can be used as a template for pipelines processing JSON format data into event-logging format XML where the events can be split in half for storage in different streamAppender event feeds.  Typically this is used to break event data into one stream that should be held for a different time period to that of another. For example, all user attributed events could go to one output stream held for 7 years and all others could go to another output stream that could be held for say 1 year. Pipelines inheriting from this will need to supply as a mimumum a JSON Parser (`jsonParser`) to convert JSON fragments into XML, one or more XSLT translations (`preTranslationFilter`, `initialTranslationFilter`) to convert this XML into event-logging form and then two XSLT translations (`translationFilterA`, `translationFilterB`) to split the event-logging XML form into differing sub-pipelines than can individually decorate then store the events in a given event feed.
+
+## Event Data Split (Text)
+
+This pipeline can be used as a template for pipelines processing text format data (e.g. Apache logs) into event-logging format XML where the events can be split in half for storage in different streamAppender event feeds.  Typically this is used to break event data into one stream that should be held for a different time period to that of another. For example, all user attributed events could go to one output stream held for 7 years and all others could go to another output stream that could be held for say 1 year. Pipelines inheriting from this will need to supply as a mimumum a Text Converter (`dsParser`) to convert text into XML, one or more XSLT translations (`preTranslationFilter`, `initialTranslationFilter`) to convert this XML into event-logging form and then two XSLT translations (`translationFilterA`, `translationFilterB`) to split the event-logging XML form into differing sub-pipelines than can individually decorate then store the events in a given event feed.
+
+
+## Event Data Split (XML)
+
+This pipeline can be used as a template for pipelines processing text format data (e.g. Apache logs) into event-logging format XML where the events can be split in half for storage in different streamAppender event feeds.  Typically this is used to break event data into one stream that should be held for a different time period to that of another. For example, all user attributed events could go to one output stream held for 7 years and all others could go to another output stream that could be held for say 1 year. Pipelines inheriting from this will need to supply as a mimumum a XML Fragment parser (`xmlFragmentParser`),  one or more XSLT translations (`preTranslationFilter`, `initialTranslationFilter`) to convert this XML into event-logging form and then two XSLT translations (`translationFilterA`, `translationFilterB`) to split the event-logging XML form into differing sub-pipelines than can individually decorate then store the events in a given event feed.
+
 
 ## Indexing
 
