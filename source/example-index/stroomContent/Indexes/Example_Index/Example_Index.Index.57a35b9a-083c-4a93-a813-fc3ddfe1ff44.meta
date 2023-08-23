@@ -136,5 +136,11 @@
     "termPositions" : false,
     "caseSensitive" : true
   } ],
-  "volumeGroupName" : "Default Volume Group"
+  "timeField" : "EventTime",
+  "volumeGroupName" : "Default Volume Group",
+  "defaultExtractionPipeline" : {
+    "type" : "Pipeline",
+    "uuid" : "e5ecdf93-d433-45ac-b14a-1f77f16ae4f7",
+    "name" : "Example Extraction"
+  }
 }
