@@ -152,15 +152,15 @@ The entities used in the [quick start guide](https://gchq.github.io/stroom-docs/
 A set of template pipelines that other pipelines can inherit from.
 
 
-| Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |Stroom 7.0.x |
-| --------------------------------------------------------------------------------------------------- | -------------- | ------------- |-------------|
-| [v0.5](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.5)                 | No             | No            | No          |
-| [v0.4.1](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.4.1)             | No             | No            | No          |
-| [v0.3](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.3)                 | No             | No            | Y           |
-| [v0.2](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.2)                 | No             | Y             | Y           |
-| [v0.1](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.1)                 | No             | Y             | Y           |
+| Pack version                                                                             | Stroom 5.0.x   | Stroom 6.0.x  |Stroom 7.0.x |Stroom 7.1.x |Stroom 7.2.x |
+| ---------------------------------------------------------------------------------------- | -------------- | ------------- |-------------|-------------|-------------|
+| [v0.5](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.5)      | No             | No            | No          | No*         | Y           |
+| [v0.4.1](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.4.1)  | No             | No            | No          | No*         | Y           |
+| [v0.3](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.3)      | No             | No            | Y           | Y           | Y           |
+| [v0.2](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.2)      | No             | Y             | Y           | Y           | Y           |
+| [v0.1](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.1)      | No             | Y             | Y           | Y           | Y           |
 
-
+\* Stroom `v7.1-beta.3` onwards is compatible with this content pack, but it must not be used in `v7.1-beta.1` or `v7.1-beta.2`
 
 ### [**example-index**](./source/example-index/README.md) 
 

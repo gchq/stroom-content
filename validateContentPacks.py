@@ -162,17 +162,19 @@ class Folder:
             self.entities[key] = doc_ref
         else:
             existing_doc_ref = self.entities[key]
-            print_error(("Multiple entities with the same name and type in "
-                + "folder {}, name: {}, type: {}, UUIDs: {}, {}")
-                .format(
-                    Col.blue(self.full_path), 
-                    Col.green(doc_ref.name), 
-                    Col.cyan(doc_ref.entity_type), 
-                    Col.yellow(existing_doc_ref.uuid), 
-                    Col.yellow(doc_ref.uuid)))
-            print("\nDisplaying tree so far")
-            self.print_tree()
-            exit(1)
+            if not (existing_doc_ref.entity_type == "Folder"
+                    and existing_doc_ref.uuid == doc_ref.uuid):
+                print_error(("Multiple entities with the same name and type in "
+                             + "folder {}, name: {}, type: {}, UUIDs: {}, {}")
+                    .format(
+                        Col.blue(self.full_path), 
+                        Col.green(doc_ref.name), 
+                        Col.cyan(doc_ref.entity_type), 
+                        Col.yellow(existing_doc_ref.uuid), 
+                        Col.yellow(doc_ref.uuid)))
+                print("\nDisplaying tree so far")
+                self.print_tree()
+                exit(1)
 
     # Adds a child folder with passed name to the dict of child folders
     # Returns the created folder instance
@@ -250,15 +252,16 @@ class Folder:
         for type_name_tuple, doc_ref in sorted(
                 self.entities.items(),
                 key=lambda item: (item[0][1], item[0][0])):
-            preV6Str = "(pre-v6)" if doc_ref.isPreV6 else ""
-            print("{}{}- {} [{}] {} {}"
-                .format(
-                    indent_str, 
-                    single_indent, 
-                    Col.green(doc_ref.name),
-                    Col.cyan(doc_ref.entity_type),
-                    Col.dark_grey(doc_ref.uuid),
-                    Col.red(preV6Str)))
+            if doc_ref.entity_type != "Folder":
+                preV6Str = "(pre-v6)" if doc_ref.isPreV6 else ""
+                print("{}{}- {} [{}] {} {}"
+                    .format(
+                        indent_str, 
+                        single_indent, 
+                        Col.green(doc_ref.name),
+                        Col.cyan(doc_ref.entity_type),
+                        Col.dark_grey(doc_ref.uuid),
+                        Col.red(preV6Str)))
 
     @staticmethod
     def create_root_folder():
@@ -434,13 +437,21 @@ def is_pack_stroom_six_or_greater(pack_dir):
 def check_if_uuid_already_used(doc_ref, uuid_to_doc_ref_dict, full_filename):
     if doc_ref.uuid in uuid_to_doc_ref_dict:
         existing_doc_ref = uuid_to_doc_ref_dict.get(doc_ref.uuid)
-        error_exit(("Entity {} with type {} has a duplicate UUID {}. " 
-            + "Duplicate of entity {} with type {}").format(
-            Col.blue(full_filename), 
-            Col.cyan(doc_ref.entity_type), 
-            Col.yellow(doc_ref.uuid), 
-            Col.green(existing_doc_ref.name), 
-            Col.cyan(existing_doc_ref.entity_type)))
+        if existing_doc_ref.entity_type == "Folder":
+            if existing_doc_ref.name != doc_ref.name:
+                error_exit(("Folder {} has a duplicate UUID {}. " 
+                    + "Duplicate of entity {}").format(
+                    Col.blue(full_filename), 
+                    Col.yellow(doc_ref.uuid), 
+                    Col.green(existing_doc_ref.name)))
+        else:
+            error_exit(("Entity {} with type {} has a duplicate UUID {}. " 
+                + "Duplicate of entity {} with type {}").format(
+                Col.blue(full_filename), 
+                Col.cyan(doc_ref.entity_type), 
+                Col.yellow(doc_ref.uuid), 
+                Col.green(existing_doc_ref.name), 
+                Col.cyan(existing_doc_ref.entity_type)))
     else:
         # Add our unique uuid/doc_ref to the dict
         uuid_to_doc_ref_dict[doc_ref.uuid] = doc_ref
