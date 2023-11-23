@@ -37,7 +37,7 @@ subprojects {
             exclude "${BUILD_DIR_NAME}*"
             exclude '**/.gitkeep'
         }
-        archiveName "${project.name}.zip"
+        archiveFileName = "${project.name}.zip"
     }
 
     configurations {
@@ -83,8 +83,8 @@ subprojects {
 
     //zip up this project's source + any dependency source into a fat zip
     task zipAll(type: Zip, dependsOn: [unzipDeps, unzipPack]) {
-        destinationDir project.file(DIST_DIR_NAME)
-        archiveName "${project.name}-all.zip"
+        destinationDirectory = project.file(DIST_DIR_NAME)
+        archiveFileName = "${project.name}-all.zip"
         from(project.file(ZIP_SOURCE_DIR_NAME)) 
     }
 
