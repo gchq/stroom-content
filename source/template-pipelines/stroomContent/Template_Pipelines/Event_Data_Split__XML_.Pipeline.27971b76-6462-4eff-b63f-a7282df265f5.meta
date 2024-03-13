@@ -1,0 +1,6 @@
+{
+  "type" : "Pipeline",
+  "uuid" : "27971b76-6462-4eff-b63f-a7282df265f5",
+  "name" : "Event Data Split (XML)",
+  "version" : "fa99e8ff-41bb-4238-93f0-381588d08370"
+}
