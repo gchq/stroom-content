@@ -6,6 +6,14 @@ The following represents the folder structure and content that will be imported 
 
 * _XML Schemas_ 
     * _event-logging_ 
+        * **event-logging v4.1.0** `XMLSchema`
+
+            Version 4.1.0 of the event-logging XMLSchema.
+
+        * **event-logging v4.0.0** `XMLSchema`
+
+            Version 4.0.0 of the event-logging XMLSchema.
+
         * **event-logging v3.4.2** `XMLSchema`
 
             Version 3.4.2 of the event-logging XMLSchema.
