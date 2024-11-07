@@ -1,4 +1,5 @@
 {
+  "type" : "StateStore",
   "uuid" : "b61694cd-fa11-4d5e-962c-74b86e5126ef",
   "name" : "State Store",
   "version" : "4d6d47eb-ef5a-4fe2-9099-bb5e94d389ab",
