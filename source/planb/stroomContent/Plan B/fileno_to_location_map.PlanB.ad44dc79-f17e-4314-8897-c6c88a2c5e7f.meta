@@ -1,0 +1,11 @@
+{
+  "type" : "PlanB",
+  "uuid" : "ad44dc79-f17e-4314-8897-c6c88a2c5e7f",
+  "name" : "fileno_to_location_map",
+  "version" : "6b5c6bd1-a907-49dc-a7e5-cadbc361f1ff",
+  "stateType" : "TEMPORAL_STATE",
+  "condense" : false,
+  "condenseAge" : 0,
+  "retainForever" : true,
+  "retainAge" : 0
+}

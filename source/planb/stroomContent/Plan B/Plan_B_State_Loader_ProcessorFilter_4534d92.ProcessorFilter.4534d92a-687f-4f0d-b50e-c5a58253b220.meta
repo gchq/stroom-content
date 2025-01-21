@@ -1,0 +1,28 @@
+{
+  "uuid" : "4534d92a-687f-4f0d-b50e-c5a58253b220",
+  "queryData" : {
+    "dataSource" : {
+      "type" : "StreamStore",
+      "uuid" : "0",
+      "name" : "StreamStore"
+    },
+    "expression" : {
+      "type" : "operator",
+      "children" : [ {
+        "type" : "term",
+        "field" : "Type",
+        "condition" : "EQUALS",
+        "value" : "Reference"
+      } ]
+    }
+  },
+  "priority" : 10,
+  "maxProcessingTasks" : 0,
+  "reprocess" : false,
+  "enabled" : false,
+  "deleted" : false,
+  "processorType" : "PIPELINE",
+  "processorUuid" : "ef322786-4587-4636-89b9-84fe91349b8f",
+  "pipelineUuid" : "571a3ca3-5f94-4dcb-8289-119a95d60360",
+  "pipelineName" : "Plan B State Loader"
+}

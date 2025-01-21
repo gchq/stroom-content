@@ -1,0 +1,11 @@
+{
+  "type" : "PlanB",
+  "uuid" : "99f62e75-fe70-4ddb-9341-df25ea096e0e",
+  "name" : "user_to_eff_date_map",
+  "version" : "f9db6f1c-b235-4875-89ab-234f440f7b08",
+  "stateType" : "TEMPORAL_STATE",
+  "condense" : false,
+  "condenseAge" : 0,
+  "retainForever" : true,
+  "retainAge" : 0
+}

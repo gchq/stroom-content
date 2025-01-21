@@ -1,0 +1,11 @@
+{
+  "type" : "PlanB",
+  "uuid" : "ae7b0fe3-9e07-4b25-8823-fb3a3e6a09a7",
+  "name" : "greekalphabet",
+  "version" : "d9d1069f-a07f-4d95-a8c0-2ab337ec21e7",
+  "stateType" : "TEMPORAL_STATE",
+  "condense" : false,
+  "condenseAge" : 0,
+  "retainForever" : true,
+  "retainAge" : 0
+}

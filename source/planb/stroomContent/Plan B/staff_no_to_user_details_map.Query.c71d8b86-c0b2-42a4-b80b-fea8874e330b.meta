@@ -1,0 +1,12 @@
+{
+  "type" : "Query",
+  "uuid" : "c71d8b86-c0b2-42a4-b80b-fea8874e330b",
+  "name" : "staff_no_to_user_details_map",
+  "version" : "0cfa7a69-beee-4355-90e6-320e303c5d59",
+  "timeRange" : {
+    "name" : "All time",
+    "condition" : "BETWEEN"
+  },
+  "query" : "from staff_no_to_user_details_map\nselect Key, EffectiveTime, ValueType, Value",
+  "queryTablePreferences" : { }
+}

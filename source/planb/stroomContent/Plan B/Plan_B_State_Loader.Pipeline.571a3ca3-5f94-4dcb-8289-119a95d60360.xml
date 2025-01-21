@@ -16,21 +16,6 @@
          </element>
       </add>
    </elements>
-   <properties>
-<!--      <add>-->
-<!--         <property>-->
-<!--            <element>planBFilter</element>-->
-<!--            <name>stateDoc</name>-->
-<!--            <value>-->
-<!--               <entity>-->
-<!--                  <type>StateStore</type>-->
-<!--                  <uuid>b61694cd-fa11-4d5e-962c-74b86e5126ef</uuid>-->
-<!--                  <name>State Store</name>-->
-<!--               </entity>-->
-<!--            </value>-->
-<!--         </property>-->
-<!--      </add>-->
-   </properties>
    <links>
       <add>
          <link>

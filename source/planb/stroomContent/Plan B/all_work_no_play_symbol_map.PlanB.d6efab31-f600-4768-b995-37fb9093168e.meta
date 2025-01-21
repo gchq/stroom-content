@@ -1,0 +1,11 @@
+{
+  "type" : "PlanB",
+  "uuid" : "d6efab31-f600-4768-b995-37fb9093168e",
+  "name" : "all_work_no_play_symbol_map",
+  "version" : "c03e5e6f-afd8-4a77-af35-c377a4c8e7cd",
+  "stateType" : "TEMPORAL_STATE",
+  "condense" : false,
+  "condenseAge" : 0,
+  "retainForever" : true,
+  "retainAge" : 0
+}
