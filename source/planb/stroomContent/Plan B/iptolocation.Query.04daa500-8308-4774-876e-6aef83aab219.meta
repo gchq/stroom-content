@@ -2,11 +2,11 @@
   "type" : "Query",
   "uuid" : "04daa500-8308-4774-876e-6aef83aab219",
   "name" : "iptolocation",
-  "version" : "4a115d11-8ecf-4b7f-b913-4e7ec046418e",
+  "version" : "e72dfc3e-7851-47de-af72-d594f5bf64fc",
   "timeRange" : {
     "name" : "All time",
     "condition" : "BETWEEN"
   },
-  "query" : "from iptolocation\nselect Key, EffectiveTime, ValueType, Value",
+  "query" : "from iptolocation\nselect KeyStart, KeyEnd, EffectiveTime, ValueType, Value",
   "queryTablePreferences" : { }
 }

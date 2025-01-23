@@ -1,9 +1,8 @@
 {
-  "type" : "PlanB",
   "uuid" : "7c46e0a6-7dd1-458e-a303-8eed5f246d83",
   "name" : "iptolocation",
-  "version" : "bead3128-a253-41f4-98fe-324acd5c3590",
-  "stateType" : "TEMPORAL_STATE",
+  "version" : "93934b4f-0e64-46c4-b382-8c96308d7c10",
+  "stateType" : "TEMPORAL_RANGED_STATE",
   "condense" : false,
   "condenseAge" : 0,
   "retainForever" : true,
