@@ -1,0 +1,7 @@
+{
+  "type" : "PlanB",
+  "uuid" : "b913d40b-c4f0-47ab-96df-25b4232bddbc",
+  "name" : "event_histogram",
+  "version" : "b490ad3a-ccac-45ca-822d-b6d26382b35b",
+  "stateType" : "HISTOGRAM"
+}

@@ -6,15 +6,18 @@
     </plan-b>
   </xsl:template>
   <xsl:template match="Event">
-    <session>
-      <map>user_sessions</map>
-      <key>
-        <xsl:value-of select="EventSource/User/Id" />
-      </key>
+    <histogram>
+      <map>event_histogram</map>
+      <tags>
+        <tag>
+          <name>user</name>
+          <value><xsl:value-of select="EventSource/User/Id" /></value>
+        </tag>
+      </tags>
       <time>
         <xsl:value-of select="EventTime/TimeCreated" />
       </time>
-      <timeout>15m</timeout>
-    </session>
+      <value>1</value>
+    </histogram>
   </xsl:template>
 </xsl:stylesheet>

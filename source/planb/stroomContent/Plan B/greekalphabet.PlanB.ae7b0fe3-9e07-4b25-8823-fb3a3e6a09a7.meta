@@ -1,11 +1,38 @@
 {
-  "type" : "PlanB",
   "uuid" : "ae7b0fe3-9e07-4b25-8823-fb3a3e6a09a7",
   "name" : "greekalphabet",
-  "version" : "d9d1069f-a07f-4d95-a8c0-2ab337ec21e7",
+  "version" : "35d54fbc-7dfa-485a-af05-7fa4d9d052bd",
   "stateType" : "TEMPORAL_STATE",
-  "condense" : false,
-  "condenseAge" : 0,
-  "retainForever" : true,
-  "retainAge" : 0
+  "settings" : {
+    "type" : "temporalState",
+    "maxStoreSize" : 10737418240,
+    "retention" : {
+      "enabled" : false,
+      "duration" : {
+        "time" : 1,
+        "timeUnit" : "YEARS"
+      },
+      "useStateTime" : false
+    },
+    "snapshotSettings" : {
+      "useSnapshotsForLookup" : false,
+      "useSnapshotsForGet" : false,
+      "useSnapshotsForQuery" : false
+    },
+    "condense" : {
+      "enabled" : false,
+      "duration" : {
+        "time" : 1,
+        "timeUnit" : "YEARS"
+      }
+    },
+    "keySchema" : {
+      "hashLength" : "INTEGER",
+      "temporalPrecision" : "MILLISECOND"
+    },
+    "valueSchema" : {
+      "stateValueType" : "VARIABLE",
+      "hashLength" : "INTEGER"
+    }
+  }
 }

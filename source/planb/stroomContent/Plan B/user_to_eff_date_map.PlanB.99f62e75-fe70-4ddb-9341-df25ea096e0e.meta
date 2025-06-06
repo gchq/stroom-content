@@ -1,11 +1,38 @@
 {
-  "type" : "PlanB",
   "uuid" : "99f62e75-fe70-4ddb-9341-df25ea096e0e",
   "name" : "user_to_eff_date_map",
-  "version" : "f9db6f1c-b235-4875-89ab-234f440f7b08",
+  "version" : "2049d7b4-3d7e-4b36-ab06-0f5e13b98e88",
   "stateType" : "TEMPORAL_STATE",
-  "condense" : false,
-  "condenseAge" : 0,
-  "retainForever" : true,
-  "retainAge" : 0
+  "settings" : {
+    "type" : "temporalState",
+    "maxStoreSize" : 10737418240,
+    "retention" : {
+      "enabled" : false,
+      "duration" : {
+        "time" : 1,
+        "timeUnit" : "YEARS"
+      },
+      "useStateTime" : false
+    },
+    "snapshotSettings" : {
+      "useSnapshotsForLookup" : false,
+      "useSnapshotsForGet" : false,
+      "useSnapshotsForQuery" : false
+    },
+    "condense" : {
+      "enabled" : false,
+      "duration" : {
+        "time" : 1,
+        "timeUnit" : "YEARS"
+      }
+    },
+    "keySchema" : {
+      "hashLength" : "INTEGER",
+      "temporalPrecision" : "MILLISECOND"
+    },
+    "valueSchema" : {
+      "stateValueType" : "VARIABLE",
+      "hashLength" : "INTEGER"
+    }
+  }
 }

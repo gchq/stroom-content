@@ -1,10 +1,11 @@
 {
-  "uuid" : "7c46e0a6-7dd1-458e-a303-8eed5f246d83",
-  "name" : "iptolocation",
-  "version" : "5f052e09-58bc-4302-a9d0-04095825286e",
-  "stateType" : "TEMPORAL_RANGED_STATE",
+  "type" : "PlanB",
+  "uuid" : "2ccf8e7c-acd9-4053-adc5-2562fc25a636",
+  "name" : "user_sessions",
+  "version" : "98f5d4c2-de32-40e5-86ea-9e00c80457c2",
+  "stateType" : "SESSION",
   "settings" : {
-    "type" : "temporalRangeState",
+    "type" : "session",
     "maxStoreSize" : 10737418240,
     "retention" : {
       "enabled" : false,
@@ -27,12 +28,8 @@
       }
     },
     "keySchema" : {
-      "rangeType" : "LONG",
+      "hashLength" : "INTEGER",
       "temporalPrecision" : "MILLISECOND"
-    },
-    "valueSchema" : {
-      "stateValueType" : "VARIABLE",
-      "hashLength" : "INTEGER"
     }
   }
 }

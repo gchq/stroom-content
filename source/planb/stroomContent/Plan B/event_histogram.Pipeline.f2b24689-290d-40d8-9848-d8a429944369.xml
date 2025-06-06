@@ -8,8 +8,8 @@
             <value>
                <entity>
                   <type>XSLT</type>
-                  <uuid>228a6860-f8ff-47c1-993d-bd604043f141</uuid>
-                  <name>user_sessions</name>
+                  <uuid>05a7b2a8-63ae-445a-bd80-df0b0fdf9f9b</uuid>
+                  <name>event_histogram</name>
                </entity>
             </value>
          </property>

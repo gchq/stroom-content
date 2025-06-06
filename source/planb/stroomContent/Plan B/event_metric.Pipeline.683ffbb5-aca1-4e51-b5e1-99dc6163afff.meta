@@ -1,8 +1,8 @@
 {
   "type" : "Pipeline",
-  "uuid" : "19e28e89-38c7-4bd0-a388-316c4a694322",
-  "name" : "user_sessions",
-  "version" : "3c1239ff-2901-4f38-b822-e29acbc7779d",
+  "uuid" : "683ffbb5-aca1-4e51-b5e1-99dc6163afff",
+  "name" : "event_metric",
+  "version" : "62b44c34-1ab1-49f7-94d2-c7788c30518c",
   "parentPipeline" : {
     "type" : "Pipeline",
     "uuid" : "7c93b5b1-ebda-42c0-b05b-9ea0fbab83b3",

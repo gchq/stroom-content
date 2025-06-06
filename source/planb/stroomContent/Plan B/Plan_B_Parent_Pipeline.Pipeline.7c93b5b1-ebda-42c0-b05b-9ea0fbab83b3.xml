@@ -15,11 +15,30 @@
             <type>PlanBFilter</type>
          </element>
          <element>
+            <id>xsltFilter</id>
+            <type>XSLTFilter</type>
+         </element>
+         <element>
+            <id>schemaFilter</id>
+            <type>SchemaFilter</type>
+         </element>
+         <element>
             <id>splitFilter</id>
             <type>SplitFilter</type>
          </element>
       </add>
    </elements>
+   <properties>
+      <add>
+         <property>
+            <element>schemaFilter</element>
+            <name>schemaGroup</name>
+            <value>
+               <string>PLAN_B</string>
+            </value>
+         </property>
+      </add>
+   </properties>
    <links>
       <add>
          <link>
@@ -31,8 +50,16 @@
             <to>splitFilter</to>
          </link>
          <link>
-            <from>splitFilter</from>
+            <from>xsltFilter</from>
+            <to>schemaFilter</to>
+         </link>
+         <link>
+            <from>schemaFilter</from>
             <to>planBFilter</to>
+         </link>
+         <link>
+            <from>splitFilter</from>
+            <to>xsltFilter</to>
          </link>
       </add>
    </links>

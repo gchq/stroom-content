@@ -1,0 +1,43 @@
+{
+  "type" : "PlanB",
+  "uuid" : "2c29a53a-4d67-47c0-bd11-860dac63b3d4",
+  "name" : "event_metric_2",
+  "version" : "9b9a81de-f54d-4245-a578-4b31a55e927a",
+  "stateType" : "METRIC",
+  "settings" : {
+    "type" : "metric",
+    "maxStoreSize" : 10737418240,
+    "retention" : {
+      "enabled" : false,
+      "duration" : {
+        "time" : 1,
+        "timeUnit" : "YEARS"
+      },
+      "useStateTime" : false
+    },
+    "snapshotSettings" : {
+      "useSnapshotsForLookup" : false,
+      "useSnapshotsForGet" : false,
+      "useSnapshotsForQuery" : false
+    },
+    "keySchema" : {
+      "keyType" : "TAGS",
+      "hashLength" : "INTEGER",
+      "temporalResolution" : "SECOND",
+      "timeZone" : {
+        "use" : "ID",
+        "id" : "Europe/London",
+        "offsetHours" : 0,
+        "offsetMinutes" : 0
+      }
+    },
+    "valueSchema" : {
+      "valueType" : "TWO",
+      "storeLatestValue" : true,
+      "storeMin" : false,
+      "storeMax" : false,
+      "storeCount" : false,
+      "storeSum" : false
+    }
+  }
+}
