@@ -8,133 +8,133 @@
   "partitionSize" : 1,
   "shardsPerPartition" : 1,
   "fields" : [ {
-    "fieldType" : "ID",
-    "fieldName" : "StreamId",
-    "analyzerType" : "KEYWORD",
-    "indexed" : true,
-    "stored" : true,
-    "termPositions" : false,
-    "caseSensitive" : false
-  }, {
-    "fieldType" : "ID",
-    "fieldName" : "EventId",
-    "analyzerType" : "KEYWORD",
-    "indexed" : true,
-    "stored" : true,
-    "termPositions" : false,
-    "caseSensitive" : false
-  }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "Feed",
+    "fldName" : "Action",
+    "fldType" : "TEXT",
     "analyzerType" : "ALPHA_NUMERIC",
     "indexed" : true,
     "stored" : false,
     "termPositions" : false,
     "caseSensitive" : false
   }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "Feed (Keyword)",
-    "analyzerType" : "KEYWORD",
-    "indexed" : true,
-    "stored" : false,
-    "termPositions" : false,
-    "caseSensitive" : false
-  }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "Action",
+    "fldName" : "Command",
+    "fldType" : "TEXT",
     "analyzerType" : "ALPHA_NUMERIC",
     "indexed" : true,
     "stored" : false,
     "termPositions" : false,
     "caseSensitive" : false
   }, {
-    "fieldType" : "DATE_FIELD",
-    "fieldName" : "EventTime",
-    "analyzerType" : "KEYWORD",
-    "indexed" : true,
-    "stored" : false,
-    "termPositions" : false,
-    "caseSensitive" : false
-  }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "UserId",
-    "analyzerType" : "KEYWORD",
-    "indexed" : true,
-    "stored" : false,
-    "termPositions" : false,
-    "caseSensitive" : false
-  }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "System",
-    "analyzerType" : "ALPHA_NUMERIC",
-    "indexed" : true,
-    "stored" : false,
-    "termPositions" : false,
-    "caseSensitive" : false
-  }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "Environment",
-    "analyzerType" : "ALPHA_NUMERIC",
-    "indexed" : true,
-    "stored" : false,
-    "termPositions" : false,
-    "caseSensitive" : false
-  }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "IPAddress",
-    "analyzerType" : "KEYWORD",
-    "indexed" : true,
-    "stored" : false,
-    "termPositions" : false,
-    "caseSensitive" : false
-  }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "HostName",
-    "analyzerType" : "KEYWORD",
-    "indexed" : true,
-    "stored" : false,
-    "termPositions" : false,
-    "caseSensitive" : false
-  }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "Generator",
-    "analyzerType" : "ALPHA_NUMERIC",
-    "indexed" : true,
-    "stored" : false,
-    "termPositions" : false,
-    "caseSensitive" : false
-  }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "Command",
-    "analyzerType" : "ALPHA_NUMERIC",
-    "indexed" : true,
-    "stored" : false,
-    "termPositions" : false,
-    "caseSensitive" : false
-  }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "Command (Keyword)",
+    "fldName" : "Command (Keyword)",
+    "fldType" : "TEXT",
     "analyzerType" : "KEYWORD",
     "indexed" : true,
     "stored" : false,
     "termPositions" : false,
     "caseSensitive" : true
   }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "Description",
+    "fldName" : "Description",
+    "fldType" : "TEXT",
     "analyzerType" : "ALPHA_NUMERIC",
     "indexed" : true,
     "stored" : false,
     "termPositions" : false,
     "caseSensitive" : false
   }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "Description (Case Sensitive)",
+    "fldName" : "Description (Case Sensitive)",
+    "fldType" : "TEXT",
     "analyzerType" : "ALPHA_NUMERIC",
     "indexed" : true,
     "stored" : false,
     "termPositions" : false,
     "caseSensitive" : true
+  }, {
+    "fldName" : "Environment",
+    "fldType" : "TEXT",
+    "analyzerType" : "ALPHA_NUMERIC",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fldName" : "EventId",
+    "fldType" : "ID",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : true,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fldName" : "EventTime",
+    "fldType" : "DATE",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fldName" : "Feed",
+    "fldType" : "TEXT",
+    "analyzerType" : "ALPHA_NUMERIC",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fldName" : "Feed (Keyword)",
+    "fldType" : "TEXT",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fldName" : "Generator",
+    "fldType" : "TEXT",
+    "analyzerType" : "ALPHA_NUMERIC",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fldName" : "HostName",
+    "fldType" : "TEXT",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fldName" : "IPAddress",
+    "fldType" : "TEXT",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fldName" : "StreamId",
+    "fldType" : "ID",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : true,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fldName" : "System",
+    "fldType" : "TEXT",
+    "analyzerType" : "ALPHA_NUMERIC",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fldName" : "UserId",
+    "fldType" : "TEXT",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
   } ],
   "timeField" : "EventTime",
   "volumeGroupName" : "Default Volume Group",
