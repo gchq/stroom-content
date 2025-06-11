@@ -1,0 +1,11 @@
+{
+  "type" : "XMLSchema",
+  "uuid" : "207ac11d-e2ce-4e18-af56-5b54ccb726b6",
+  "name" : "statistics v3.0",
+  "version" : "7190df3c-c71a-494b-9385-e850181ae9c9",
+  "description" : "XML Schema for sending statistic events to Stroom-Stats",
+  "namespaceURI" : "statistics:3",
+  "systemId" : "file://statistics-v3.0.xsd",
+  "deprecated" : true,
+  "schemaGroup" : "STATISTICS"
+}

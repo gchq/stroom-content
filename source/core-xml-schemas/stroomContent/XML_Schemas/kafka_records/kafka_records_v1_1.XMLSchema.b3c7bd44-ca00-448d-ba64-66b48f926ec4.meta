@@ -1,0 +1,11 @@
+{
+  "type" : "XMLSchema",
+  "uuid" : "b3c7bd44-ca00-448d-ba64-66b48f926ec4",
+  "name" : "kafka-records v1.1",
+  "version" : "8eeacd1d-3a58-4f0e-b1bc-35b15f85574a",
+  "description" : "",
+  "namespaceURI" : "kafka-records:1",
+  "systemId" : "file://kafka-records-v1.1.xsd",
+  "deprecated" : false,
+  "schemaGroup" : "KAFKA_RECORDS"
+}

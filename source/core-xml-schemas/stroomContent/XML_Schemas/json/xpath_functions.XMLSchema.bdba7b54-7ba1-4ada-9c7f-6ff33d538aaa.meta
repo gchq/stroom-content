@@ -1,0 +1,11 @@
+{
+  "type" : "XMLSchema",
+  "uuid" : "bdba7b54-7ba1-4ada-9c7f-6ff33d538aaa",
+  "name" : "xpath-functions",
+  "version" : "422afd73-14b7-4b1a-b290-b777740c996a",
+  "description" : "This is a schema for the XML representation of JSON used as the target for the XSLT 3.0 function fn:json-to-xml()",
+  "namespaceURI" : "http://www.w3.org/2005/xpath-functions",
+  "systemId" : "file://xpath-functions.xsd",
+  "deprecated" : false,
+  "schemaGroup" : "JSON"
+}

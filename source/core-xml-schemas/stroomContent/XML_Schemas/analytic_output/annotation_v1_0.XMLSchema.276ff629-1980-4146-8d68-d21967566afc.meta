@@ -1,0 +1,11 @@
+{
+  "type" : "XMLSchema",
+  "uuid" : "276ff629-1980-4146-8d68-d21967566afc",
+  "name" : "annotation v1.0",
+  "version" : "9e167a4b-1c74-486f-b744-7c4db6f56f85",
+  "description" : "",
+  "namespaceURI" : "annotation:1",
+  "systemId" : "file://annotation-v1.0.xsd",
+  "deprecated" : false,
+  "schemaGroup" : "ANNOTATION"
+}
