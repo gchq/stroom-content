@@ -1,0 +1,6 @@
+{
+  "type" : "Pipeline",
+  "uuid" : "d7c55950-7427-48ab-a1b6-11bc7b449dfd",
+  "name" : "Event Data (Text)",
+  "version" : "d9c2099a-f013-4d32-99a3-b72a76b9a0ae"
+}
