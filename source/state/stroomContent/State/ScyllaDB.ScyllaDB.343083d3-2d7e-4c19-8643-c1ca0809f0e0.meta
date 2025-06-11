@@ -1,9 +1,0 @@
-{
-  "type" : "ScyllaDB",
-  "uuid" : "343083d3-2d7e-4c19-8643-c1ca0809f0e0",
-  "name" : "ScyllaDB",
-  "version" : "0fb7c5a6-755d-475e-9868-257f1374e883",
-  "connection" : "# See full reference https://github.com/apache/cassandra-java-driver/blob/4.0.1/core/src/main/resources/reference.conf\ndatastax-java-driver {\n    basic.contact-points = [ \"localhost:9042\" ]\n    basic.session-name = my_session\n    # basic.session-keyspace = state\n    basic.load-balancing-policy {\n        local-datacenter = datacenter1\n    }\n}\n",
-  "keyspace" : "state",
-  "keyspaceCql" : "CREATE KEYSPACE IF NOT EXISTS state\nWITH replication = { 'class': 'NetworkTopologyStrategy', 'replication_factor': '1' }\nAND durable_writes = TRUE;\n"
-}
