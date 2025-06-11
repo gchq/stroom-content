@@ -1,0 +1,4 @@
+name=Reference Data Store Stream Count
+path=Internal Statistics/Stroom-Stats
+type=StroomStatsStore
+uuid=3405f940-00fc-41c4-99e4-2166faaccbc2

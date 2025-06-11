@@ -1,0 +1,4 @@
+name=Stream Task Queue Size
+path=Internal Statistics/Stroom-Stats
+type=StroomStatsStore
+uuid=4ce8d6e7-94be-40e1-8294-bf29dd089962

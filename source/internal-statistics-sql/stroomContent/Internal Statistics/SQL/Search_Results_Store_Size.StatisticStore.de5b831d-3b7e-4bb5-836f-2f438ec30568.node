@@ -1,0 +1,4 @@
+name=Search Results Store Size
+path=Internal Statistics/SQL
+type=StatisticStore
+uuid=de5b831d-3b7e-4bb5-836f-2f438ec30568

@@ -1,0 +1,19 @@
+{
+  "type" : "StatisticStore",
+  "uuid" : "77c09ccb-e251-4ca5-bca0-56a842654397",
+  "name" : "Memory",
+  "version" : "f7380741-54d4-4cca-b13f-77ab8d60bcdf",
+  "description" : "Memory",
+  "statisticType" : "VALUE",
+  "rollUpType" : "NONE",
+  "precision" : 60000,
+  "enabled" : true,
+  "config" : {
+    "fields" : [ {
+      "fieldName" : "Node"
+    }, {
+      "fieldName" : "Type"
+    } ],
+    "customRollUpMasks" : [ ]
+  }
+}

@@ -1,0 +1,4 @@
+name=Heap Histogram Bytes
+path=Internal Statistics/SQL
+type=StatisticStore
+uuid=934a1600-b456-49bf-9aea-f1e84025febd

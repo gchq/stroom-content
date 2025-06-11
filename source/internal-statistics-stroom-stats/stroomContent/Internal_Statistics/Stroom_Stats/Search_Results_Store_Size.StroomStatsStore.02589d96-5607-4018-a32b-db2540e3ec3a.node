@@ -1,0 +1,4 @@
+name=Search Results Store Size
+path=Internal Statistics/Stroom-Stats
+type=StroomStatsStore
+uuid=02589d96-5607-4018-a32b-db2540e3ec3a

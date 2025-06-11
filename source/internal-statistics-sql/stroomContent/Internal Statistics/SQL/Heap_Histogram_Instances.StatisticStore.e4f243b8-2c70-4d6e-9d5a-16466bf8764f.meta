@@ -1,0 +1,19 @@
+{
+  "type" : "StatisticStore",
+  "uuid" : "e4f243b8-2c70-4d6e-9d5a-16466bf8764f",
+  "name" : "Heap Histogram Instances",
+  "version" : "6dfd7de1-f241-43b8-9cc0-70e18ff941a8",
+  "description" : "The instance count from a jmap heap histogram, qualified by node and java class name. Change the property stroom.node.status.heapHistogram.classNameMatchRegex to control which classes are included.",
+  "statisticType" : "VALUE",
+  "rollUpType" : "ALL",
+  "precision" : 60000,
+  "enabled" : true,
+  "config" : {
+    "fields" : [ {
+      "fieldName" : "Class Name"
+    }, {
+      "fieldName" : "Node"
+    } ],
+    "customRollUpMasks" : [ ]
+  }
+}

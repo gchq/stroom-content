@@ -1,0 +1,4 @@
+name=CPU
+path=Internal Statistics/Stroom-Stats
+type=StroomStatsStore
+uuid=1edfd582-5e60-413a-b91c-151bd544da47

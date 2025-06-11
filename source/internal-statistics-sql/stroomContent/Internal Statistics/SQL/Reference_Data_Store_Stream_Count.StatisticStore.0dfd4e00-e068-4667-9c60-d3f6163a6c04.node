@@ -1,0 +1,4 @@
+name=Reference Data Store Stream Count
+path=Internal Statistics/SQL
+type=StatisticStore
+uuid=0dfd4e00-e068-4667-9c60-d3f6163a6c04

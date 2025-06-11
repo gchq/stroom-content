@@ -1,0 +1,4 @@
+name=PipelineStreamProcessor
+path=Internal Statistics/Stroom-Stats
+type=StroomStatsStore
+uuid=efd9bad4-0bab-460f-ae98-79e9717deeaf

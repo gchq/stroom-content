@@ -1,0 +1,4 @@
+name=Stream Task Queue Size
+path=Internal Statistics/SQL
+type=StatisticStore
+uuid=946a7f0f-a59a-11e6-bdc4-0242ac110002

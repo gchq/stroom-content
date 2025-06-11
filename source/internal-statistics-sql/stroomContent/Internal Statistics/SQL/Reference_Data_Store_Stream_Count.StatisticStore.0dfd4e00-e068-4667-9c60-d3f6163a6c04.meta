@@ -1,0 +1,19 @@
+{
+  "type" : "StatisticStore",
+  "uuid" : "0dfd4e00-e068-4667-9c60-d3f6163a6c04",
+  "name" : "Reference Data Store Stream Count",
+  "version" : "c12a22eb-3d25-4868-8bfb-b0ecbaa2f32f",
+  "description" : "Reference Data Store Stream Count",
+  "statisticType" : "VALUE",
+  "rollUpType" : "NONE",
+  "precision" : 3600000,
+  "enabled" : true,
+  "config" : {
+    "fields" : [ {
+      "fieldName" : "Feed"
+    }, {
+      "fieldName" : "Node"
+    } ],
+    "customRollUpMasks" : [ ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type" : "StatisticStore",
+  "uuid" : "f1587262-9cbc-46b4-80eb-51deb011b2c1",
+  "name" : "Reference Data Store Entry Count",
+  "version" : "053e2b7e-8038-4542-b51e-79b85499f2e5",
+  "description" : "Reference Data Store Entry Count",
+  "statisticType" : "VALUE",
+  "rollUpType" : "NONE",
+  "precision" : 3600000,
+  "enabled" : true,
+  "config" : {
+    "fields" : [ {
+      "fieldName" : "Feed"
+    }, {
+      "fieldName" : "Node"
+    } ],
+    "customRollUpMasks" : [ ]
+  }
+}
