@@ -9,80 +9,80 @@
   "partitionSize" : 1,
   "shardsPerPartition" : 1,
   "fields" : [ {
-    "fieldType" : "FIELD",
-    "fieldName" : "EventId",
-    "analyzerType" : "KEYWORD",
-    "indexed" : true,
-    "stored" : true,
-    "termPositions" : false,
-    "caseSensitive" : false
-  }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "StreamId",
-    "analyzerType" : "KEYWORD",
-    "indexed" : true,
-    "stored" : true,
-    "termPositions" : false,
-    "caseSensitive" : false
-  }, {
-    "fieldType" : "DATE_FIELD",
-    "fieldName" : "Event Time",
-    "analyzerType" : "KEYWORD",
-    "indexed" : true,
-    "stored" : true,
-    "termPositions" : false,
-    "caseSensitive" : false
-  }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "Log Level",
-    "analyzerType" : "KEYWORD",
-    "indexed" : true,
-    "stored" : true,
-    "termPositions" : false,
-    "caseSensitive" : false
-  }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "Logger",
-    "analyzerType" : "KEYWORD",
-    "indexed" : true,
-    "stored" : true,
-    "termPositions" : false,
-    "caseSensitive" : false
-  }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "Thread",
+    "fldName" : "Container Name",
+    "fldType" : "TEXT",
     "analyzerType" : "KEYWORD",
     "indexed" : true,
     "stored" : false,
     "termPositions" : false,
     "caseSensitive" : false
   }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "Message",
-    "analyzerType" : "KEYWORD",
-    "indexed" : true,
-    "stored" : false,
-    "termPositions" : false,
-    "caseSensitive" : false
-  }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "System",
+    "fldName" : "Event Time",
+    "fldType" : "DATE",
     "analyzerType" : "KEYWORD",
     "indexed" : true,
     "stored" : true,
     "termPositions" : false,
     "caseSensitive" : false
   }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "Hostname",
+    "fldName" : "EventId",
+    "fldType" : "TEXT",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : true,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fldName" : "Hostname",
+    "fldType" : "TEXT",
     "analyzerType" : "KEYWORD",
     "indexed" : true,
     "stored" : false,
     "termPositions" : false,
     "caseSensitive" : false
   }, {
-    "fieldType" : "FIELD",
-    "fieldName" : "Container Name",
+    "fldName" : "Log Level",
+    "fldType" : "TEXT",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : true,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fldName" : "Logger",
+    "fldType" : "TEXT",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : true,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fldName" : "Message",
+    "fldType" : "TEXT",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : false,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fldName" : "StreamId",
+    "fldType" : "TEXT",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : true,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fldName" : "System",
+    "fldType" : "TEXT",
+    "analyzerType" : "KEYWORD",
+    "indexed" : true,
+    "stored" : true,
+    "termPositions" : false,
+    "caseSensitive" : false
+  }, {
+    "fldName" : "Thread",
+    "fldType" : "TEXT",
     "analyzerType" : "KEYWORD",
     "indexed" : true,
     "stored" : false,
