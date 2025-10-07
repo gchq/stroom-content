@@ -27,6 +27,7 @@ allprojects {
 }
 
 subprojects {
+    println "Configuring project ${project.name}"
 
     apply plugin: 'base'
 
@@ -106,68 +107,89 @@ subprojects {
         }
     }
 
-    task validateXmlSchemas() {
-        doLast {
-            //def dir = project.file(STROOM_CONTENT_DIR);
-            fileTree(dir: project.file(STROOM_CONTENT_DIR))
-                .include('**/*XMLSchema.data.xsd')
-                .each { xsdFile -> 
-                    def basePath =  project.file(STROOM_CONTENT_DIR).toPath()
-                    def xsdPath = xsdFile.toPath()
-                    def relativeXsdPath = basePath.relativize(xsdPath)
-
-                    def execResult = exec() {
-                        
-                        // xmlint is available in libxml2-utils
-                        // we have to set XML_CATALOG_FILES so xmllint uses the catalog.xml file
-                        // to define the location of the various xsd files. If we don't it will
-                        // get xml.xsd from w3.org and they impose an arbitrary 15s delay to make
-                        // people cache it.
-                        workingDir project.file(STROOM_CONTENT_DIR)
-                        environment XML_CATALOG_FILES: rootProject.file("catalog.xml")
-                        executable 'xmllint'
-                        args '--noout', '--nowarning', '--schema', rootProject.file("XMLSchema.xsd"), relativeXsdPath
-                        ignoreExitValue true
-                    }
-
-                    if (execResult.exitValue != 0) {
-                        throw new GradleException("Schema failed validation: $relativeXsdPath")
-                    }
-            }
-        }
-    }
-
-    task validateXml() {
-        doLast {
-            //def dir = project.file(STROOM_CONTENT_DIR);
-            fileTree(dir: project.file(STROOM_CONTENT_DIR))
-                .include('**/*.xml')
-                .each { xmlFile -> 
-                    def xmlFileName = xmlFile.absolutePath
-                    def execResult = exec() {
-                        //xmlint is available in libxml2-utils
-                        executable 'xmllint'
-                        args '--noout', '--nowarning', xmlFileName
-                        ignoreExitValue true
-                    }
-
-                    if (execResult.exitValue != 0) {
-                        throw new GradleException("XML file failed validation: $xmlFileName")
-                    }
-            }
-        }
-    }
-
     task validate() {
         dependsOn validateContent
-        dependsOn validateXmlSchemas
-        dependsOn validateXml
+    }
+
+    def xsdValidationTaskNo = 0
+    fileTree(dir: project.file(STROOM_CONTENT_DIR))
+        .include('**/*.xsd')
+        .each { xsdFile -> 
+            def basePath =  project.file(STROOM_CONTENT_DIR).toPath()
+            def xsdPath = xsdFile.toPath()
+            def relativeXsdPath = basePath.relativize(xsdPath)
+            //println "Found XSD ${xsdPath}"
+
+            xsdValidationTaskNo++
+            def xsdValidationTask = tasks.create("xsdValidation_${xsdValidationTaskNo}", Exec) {
+                // xmlint is available in libxml2-utils
+                // we have to set XML_CATALOG_FILES so xmllint uses the catalog.xml file
+                // to define the location of the various xsd files. If we don't it will
+                // get xml.xsd from w3.org and they impose an arbitrary 15s delay to make
+                // people cache it.
+                workingDir project.file(STROOM_CONTENT_DIR)
+                environment XML_CATALOG_FILES: rootProject.file("catalog.xml")
+                executable 'xmllint'
+                args '--noout', '--nowarning', '--schema', rootProject.file("XMLSchema.xsd"), relativeXsdPath
+                ignoreExitValue true
+                //store the output instead of printing to the console:
+                standardOutput = new ByteArrayOutputStream()
+                errorOutput = new ByteArrayOutputStream()
+
+                doLast {
+                    if (executionResult.get().exitValue != 0) {
+                        println "XSD failed validation: $relativeXmlPath\n${standardOutput}\n${errorOutput}"
+                        throw new GradleException("Schema failed validation: $relativeXsdPath")
+                    }
+                    //println "Validated XML Schema ${xsdPath}"
+                }
+            }
+
+            //println "Registered task ${xsdValidationTask.name}"
+            tasks.validate.dependsOn xsdValidationTask
+    }
+
+    def xmlValidationTaskNo = 0
+    fileTree(dir: project.file(STROOM_CONTENT_DIR))
+        .include('**/*.xml')
+        .each { xmlFile -> 
+            def basePath =  project.file(STROOM_CONTENT_DIR).toPath()
+            def xmlPath = xmlFile.toPath()
+            def relativeXmlPath = basePath.relativize(xmlPath)
+            //println "Found XML ${xmlPath}"
+
+            xmlValidationTaskNo++
+            def xmlValidationTask = tasks.create("xmlValidation_${xmlValidationTaskNo}", Exec) {
+                // xmlint is available in libxml2-utils
+                // we have to set XML_CATALOG_FILES so xmllint uses the catalog.xml file
+                // to define the location of the various xml files. If we don't it will
+                // get xml.xsd from w3.org and they impose an arbitrary 15s delay to make
+                // people cache it.
+                workingDir project.file(STROOM_CONTENT_DIR)
+                environment XML_CATALOG_FILES: rootProject.file("catalog.xml")
+                executable 'xmllint'
+                args '--noout', '--nowarning', relativeXmlPath
+                ignoreExitValue true
+                //store the output instead of printing to the console:
+                standardOutput = new ByteArrayOutputStream()
+                errorOutput = new ByteArrayOutputStream()
+
+                doLast {
+                    if (executionResult.get().exitValue != 0) {
+                        println "XML failed validation: $relativeXmlPath\n${standardOutput}\n${errorOutput}"
+                        throw new GradleException("XML failed validation: $relativeXmlPath")
+                    }
+                    //println "Validated XML Schema ${xmlPath}"
+                }
+            }
+
+            //println "Registered task ${xmlValidationTask.name}"
+            tasks.validate.dependsOn xmlValidationTask
+            rootProject.tasks.validateContent.dependsOn xmlValidationTask
     }
 
     build {
-        dependsOn validateContent
-        dependsOn validateXmlSchemas
-        dependsOn validateXml
+        dependsOn validate
         dependsOn copyDeps
         dependsOn unzipPack
         dependsOn unzipDeps
