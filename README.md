@@ -39,22 +39,25 @@ The core XML Schemas required by Stroom for basic operation.
 
 
 
-### [**event-logging-xml-schema**](./source/event-logging-xml-schema/README.md)
+### [**event-logging-xml-schemas**](./source/event-logging-xml-schemas/README.md)
 
 An XML Schema standard for describing audit events.
+
+> Pack formally called `event-logging-schema`.
 
 
 #### Compatibility matrix
 
 | Pack version                                                                                  | Stroom 5.0.x | Stroom 6.0.x | Stroom 7.0.x | Stroom 7.10.x |
 | --------------------------------------------------------------------------------------------- | ------------ | ------------ | -------------| --------------|
-| [v4.1.0](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v4.1.0) | ✔️            | ✔️            | ✔️            | ?             |
-| [v4.0.0](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v4.0.0) | ✔️            | ✔️            | ✔️            | ?             |
-| [v3.4.2](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.4.2) | ✔️            | ✔️            | ✔️            | ?             |
-| [v3.2.3](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.2.3) | ✔️            | ✔️            | ✔️            | ?             |
-| [v3.1.2](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.1.2) | ✔️            | ✔️            | ✔️            | ?             |
-| [v3.1.1](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.1.1) | ✔️            | ✔️            | ✔️            | ?             |
-| [v1.0](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v1.0)     | ✔️            | ✔️            | ✔️            | ?             |
+| [v5.0](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schemas-v5.0)    | ❌           | ❌           | ✔️            | ✔️             |
+| [v4.1.0](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v4.1.0) | ✔️            | ✔️            | ✔️            | ❌            |
+| [v4.0.0](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v4.0.0) | ✔️            | ✔️            | ✔️            | ❌            |
+| [v3.4.2](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.4.2) | ✔️            | ✔️            | ✔️            | ❌            |
+| [v3.2.3](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.2.3) | ✔️            | ✔️            | ✔️            | ❌            |
+| [v3.1.2](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.1.2) | ✔️            | ✔️            | ✔️            | ❌            |
+| [v3.1.1](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.1.1) | ✔️            | ✔️            | ✔️            | ❌            |
+| [v1.0](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v1.0)     | ✔️            | ✔️            | ✔️            | ❌            |
 
 
 
