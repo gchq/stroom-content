@@ -115,7 +115,8 @@ main() {
     extra_args+=( "${temp_zip_all_file}" )
   fi
 
-  echo -e "${GREEN}Creating release for pack ${BLUE}${pack_name}${GREEN}" \
+  echo -e "${GREEN}You are about to create a release for pack" \
+    "${BLUE}${pack_name}${GREEN}" \
     "with tag ${BLUE}${tag}${GREEN} and assets:${NC}"
 
   for file in "${extra_args[@]}"; do
@@ -133,6 +134,8 @@ main() {
     cleanup
     exit 0
   fi
+
+  echo -e "${GREEN}Creating the tag and release. This may take a little time.${NC}"
   
   gh release create \
     "${tag}" \
