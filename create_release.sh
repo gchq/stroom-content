@@ -43,30 +43,73 @@ debug() {
   fi
 }
 
+validate_for_uncommitted_work() {
+  debug "validate_for_uncommitted_work() called"
+  if [ "$(git status --porcelain 2>/dev/null | wc -l)" -ne 0 ]; then
+    
+    echo -e "There are uncommitted changes or untracked files." \
+      "\nCommit them before running this script."
+    exit 1
+  fi
+}
+
 main() {
   IS_DEBUG=false
+  SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
   setup_echo_colours
 
   local pack_name="${1?pack_name argument must be supplied, e.g. "stroom-101"}"; shift
   local version="${1?version argument must be supplied, e.g. "v2.0"}"; shift
   local notes="${1?notes argument must be supplied, e.g. "Adds feature X"}"; shift
+  local tag="${pack_name}-${version}"
+  local dist_sub_dir="build/distributions"
+  local zip_file="${dist_sub_dir}/${pack_name}.zip"
+  local zip_all_file="${dist_sub_dir}/${pack_name}-all.zip"
+
+  validate_for_uncommitted_work
 
   if ! command -v "gh" 1>/dev/null; then
     echo "GitHub CLI 'gh' is not installed. Install it." >&2
     exit 1
   fi
 
-  local tag="${pack_name}-${version}"
+  pushd "${SCRIPT_DIR}" >/dev/null
+
+  ./gradlew clean build
+
+  if [[ ! -f "${zip_file}" ]]; then
+    echo "Can't find content pack zip ${zip_file}" >&2
+    exit 1
+  fi
+
+  if [[ ! -f "${zip_all_file}" ]]; then
+    echo "Can't find content pack zip ${zip_all_file}" >&2
+    exit 1
+  fi
+
   echo -e "${GREEN}Creating release for pack ${BLUE}${pack_name}${GREEN}" \
     "with tag ${BLUE}${tag}${NC}"
+
+  local extra_args=()
+  extra_args+=( "${zip_file}" )
+
+  # No point including the -all file if it is the same
+  if cmp -s "${zip_file}" "${zip_all_file}"; then
+    echo -e "${GREEN}Skipping identical asset ${BLUE}${zip_all_file}${NC}"
+  else
+    extra_args+=( "${zip_all_file}" )
+  fi
   
   gh release create \
     "${tag}" \
     --title "${tag}" \
-    --notes "${notes}"
+    --notes "${notes}" \
+    "${extra_args[@]}"
   
+  popd >/dev/null
   echo -e "${GREEN}Done${NC}"
 }
 
 main "$@"
+
