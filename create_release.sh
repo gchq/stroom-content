@@ -88,8 +88,6 @@ main() {
     exit 1
   fi
 
-  echo -e "${GREEN}Creating release for pack ${BLUE}${pack_name}${GREEN}" \
-    "with tag ${BLUE}${tag}${NC}"
 
   local extra_args=()
   extra_args+=( "${zip_file}" )
@@ -99,6 +97,22 @@ main() {
     echo -e "${GREEN}Skipping identical asset ${BLUE}${zip_all_file}${NC}"
   else
     extra_args+=( "${zip_all_file}" )
+  fi
+
+  echo -e "${GREEN}Creating release for pack ${BLUE}${pack_name}${GREEN}" \
+    "with tag ${BLUE}${tag}${GREEN} and assets:${NC}"
+
+  for file in "${extra_args[@]}"; do
+    echo -e "  ${BLUE}${file}${NC}"
+  done
+
+  read -rsp $'Press "y" to continue, any other key to cancel.\n' -n1 keyPressed
+
+  if [ "$keyPressed" != 'y' ] && [ "$keyPressed" != 'Y' ]; then
+    echo
+    echo -e "${GREEN}Exiting without creating a release.${NC}"
+    echo
+    exit 0
   fi
   
   gh release create \
