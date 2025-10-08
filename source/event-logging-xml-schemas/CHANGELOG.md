@@ -250,8 +250,8 @@ This changelog largely mirrors the changes in [event-logging-schema CHANGELOG](h
 * Inital version.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schema-v5.0...HEAD
-[event-logging-xml-schema-v3.0]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schema-v4.1.0...event-logging-xml-schema-v3.0
+[Unreleased]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schemas-v5.0...HEAD
+[event-logging-xml-schemas-v5.0]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schema-v4.1.0...event-logging-xml-schemas-v5.0
 [event-logging-xml-schema-v4.1.0]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schema-v4.0.0...event-logging-xml-schema-v4.1.0
 [event-logging-xml-schema-v4.0.0]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schema-v3.4.2...event-logging-xml-schema-v4.0.0
 [event-logging-xml-schema-v3.4.2]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schema-v3.4.1...event-logging-xml-schema-v3.4.2
