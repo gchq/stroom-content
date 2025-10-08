@@ -11,9 +11,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+### Removed
+
+
+## [internal-dashboards-v2.0]
+
+### Changed
+
+* Upgrade to v7.0.x content pack format.
+
 * Refactor content pack directory structure
 
-### Removed
 
 ## [internal-dashboards-v1.1]
 
@@ -21,11 +29,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 * Change queries to reflect the combining of some of the internal statistics, e.g. 'Node Status-CpuUser' becomes 'CPU' with Type 'User (%)'.
 
+
 ## [internal-dashboards-v1.0]
 
 * Inital version.
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/internal-dashboards-v1.1...HEAD
+[Unreleased]: https://github.com/gchq/stroom-content/compare/internal-dashboards-v2.0...HEAD
+[internal-dashboards-v2.0]: https://github.com/gchq/stroom-content/compare/internal-dashboards-v1.1...internal-dashboards-v2.0
 [internal-dashboards-v1.1]: https://github.com/gchq/stroom-content/compare/internal-dashboards-v1.0...internal-dashboards-v1.1
 [internal-dashboards-v1.0]: https://github.com/gchq/stroom-content/compare/internal-dashboards-v1.0...internal-dashboards-v1.0
 

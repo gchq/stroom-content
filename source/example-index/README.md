@@ -6,4 +6,4 @@ extraction pipeline.
 The included data processor filter matches all streams of type `Events`
 
 ## Compatibility
-This content pack is designed for use with Stroom v7.0 and later.
+This content pack is designed for use with Stroom v7.10.x and later.

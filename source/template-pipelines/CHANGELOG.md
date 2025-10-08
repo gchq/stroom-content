@@ -13,6 +13,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 
+
+## [template-pipelines-v0.6]
+
+### Changed
+
+* Upgrade to v7.10.x content pack format.
+
+
 ## [template-pipelines-v0.5]
 
 ### Changed
@@ -62,7 +70,8 @@ Stroom up to and including `v7.0`.
 * Initial version.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.5...HEAD
+[Unreleased]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.6...HEAD
+[template-pipelines-v0.6]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.5...template-pipelines-v0.6
 [template-pipelines-v0.5]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.4.1...template-pipelines-v0.5
 [template-pipelines-v0.4.1]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.3...template-pipelines-v0.4.1
 [template-pipelines-v0.4]: https://github.com/gchq/stroom-content/compare/template-pipelines-v0.3...template-pipelines-v0.4

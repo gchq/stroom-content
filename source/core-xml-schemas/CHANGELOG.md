@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-### Added
+
+## [core-xml-schemas-v3.0]
 
 ### Changed
+
+* Upgrade to v7.0.x content pack format.
+
 
 ## [core-xml-schemas-v2.2]
 
@@ -61,7 +65,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Inital version.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v2.2...HEAD
+[Unreleased]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v3.0...HEAD
+[core-xml-schemas-v3.0]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v2.2...core-xml-schemas-v3.0
 [core-xml-schemas-v2.2]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v2.1...core-xml-schemas-v2.2
 [core-xml-schemas-v2.1]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v2.0...core-xml-schemas-v2.1
 [core-xml-schemas-v2.0]: https://github.com/gchq/stroom-content/compare/core-xml-schemas-v1.1...core-xml-schemas-v2.0

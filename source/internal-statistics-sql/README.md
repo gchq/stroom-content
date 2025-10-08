@@ -1,8 +1,12 @@
 # _internal-statistics-sql_ Content Pack
 
-When Stroom is running it generates a number of statistics relating to the state of the application, its storage tier and its underlying hardware. In order to be able to query the internal statistics, this content pack is required.
+When Stroom is running it generates a number of statistics relating to the state of the application, its storage tier and its underlying hardware.
+In order to be able to query the internal statistics, this content pack is required.
 
-Internal statistics can currently be recorded by two mechanisms; _SQL Statistics_ and _Stroom-Stats_. _SQL Statistics_ comes built in with _Stroom_, however _Stroom-Stats_ is an external service.  This pack enables the recording and querying of internal statistics with _SQL_Statistics_.
+Internal statistics can currently be recorded by two mechanisms; _SQL Statistics_ and _Stroom-Stats_.
+_SQL Statistics_ comes built in with _Stroom_, however _Stroom-Stats_ is an external service.
+This pack enables the recording and querying of internal statistics with _SQL_Statistics_.
+
 
 ## Contents
 

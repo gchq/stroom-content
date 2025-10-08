@@ -10,6 +10,13 @@ This changelog largely mirrors the changes in [event-logging-schema CHANGELOG](h
 ## [Unreleased]
 
 
+## [event-logging-xml-schemas-v5.0]
+
+* Upgrade to v7.0.x content pack format.
+
+* Rename the pack from `event-logging-schema` to  `event-logging-schemas`.
+
+
 ## [event-logging-xml-schema-v4.1.0]
 
 * Issue **gchq/event-logging-schema#86** : Change PermittedOrganisation to be unbounded within PermittedOrganisations.
@@ -243,7 +250,8 @@ This changelog largely mirrors the changes in [event-logging-schema CHANGELOG](h
 * Inital version.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schema-v4.1.0...HEAD
+[Unreleased]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schema-v5.0...HEAD
+[event-logging-xml-schema-v3.0]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schema-v4.1.0...event-logging-xml-schema-v3.0
 [event-logging-xml-schema-v4.1.0]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schema-v4.0.0...event-logging-xml-schema-v4.1.0
 [event-logging-xml-schema-v4.0.0]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schema-v3.4.2...event-logging-xml-schema-v4.0.0
 [event-logging-xml-schema-v3.4.2]: https://github.com/gchq/stroom-content/compare/event-logging-xml-schema-v3.4.1...event-logging-xml-schema-v3.4.2

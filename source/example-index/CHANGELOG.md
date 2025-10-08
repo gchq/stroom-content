@@ -13,10 +13,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 
+
+## [example-index-v2.0]
+
+### Changed
+
+* Upgrade to v7.10.x content pack format.
+
+
 ## [example-index-v1.0]
 
 Initial version, based on content that is included within the Stroom source code git repository.
 
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/example-index-v1.0...HEAD
+[Unreleased]: https://github.com/gchq/stroom-content/compare/example-index-v2.0...HEAD
+[example-index-v2.0]: https://github.com/gchq/stroom-content/compare/example-index-v1.0...example-index-v2.0
 [example-index-v1.0]: https://github.com/gchq/stroom-content/compare/example-index-v1.0...example-index-v1.0

@@ -1,4 +1,4 @@
-# _event-logging-xml-schema_ Content Pack
+# _event-logging-xml-schemas_ Content Pack
 
 ## Contents
 

@@ -13,6 +13,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 
+
+## [standard-pipelines-v0.5]
+
+### Changed
+
+* Upgrade to v7.10.x content pack format.
+
+
 ## [standard-pipelines-v0.4]
 
 ### Changed
@@ -44,7 +52,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 * Initial version.
 
-[Unreleased]: https://github.com/gchq/stroom-content/compare/standard-pipelines-v0.4...HEAD
+[Unreleased]: https://github.com/gchq/stroom-content/compare/standard-pipelines-v0.5...HEAD
+[standard-pipelines-v0.5]: https://github.com/gchq/stroom-content/compare/standard-pipelines-v0.4...standard-pipelines-v0.5
 [standard-pipelines-v0.4]: https://github.com/gchq/stroom-content/compare/standard-pipelines-v0.3...standard-pipelines-v0.4
 [standard-pipelines-v0.3]: https://github.com/gchq/stroom-content/compare/standard-pipelines-v0.2...standard-pipelines-v0.3
 [standard-pipelines-v0.2]: https://github.com/gchq/stroom-content/compare/standard-pipelines-v0.1...standard-pipelines-v0.2
