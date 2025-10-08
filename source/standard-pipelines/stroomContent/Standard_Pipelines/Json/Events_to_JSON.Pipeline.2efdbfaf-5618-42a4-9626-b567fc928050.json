@@ -1,0 +1,54 @@
+{
+  "elements" : {
+    "add" : [ {
+      "id" : "Source",
+      "type" : "Source"
+    }, {
+      "id" : "combinedParser",
+      "type" : "CombinedParser"
+    }, {
+      "id" : "xsltFilter",
+      "type" : "XSLTFilter"
+    }, {
+      "id" : "schemaFilter",
+      "type" : "SchemaFilter"
+    }, {
+      "id" : "jsonWriter",
+      "type" : "JSONWriter"
+    } ]
+  },
+  "properties" : {
+    "add" : [ {
+      "element" : "xsltFilter",
+      "name" : "xslt",
+      "value" : {
+        "entity" : {
+          "type" : "XSLT",
+          "uuid" : "1c3d42c2-f512-423f-aa6a-050c5cad7c0f",
+          "name" : "Events to JSON"
+        }
+      }
+    }, {
+      "element" : "schemaFilter",
+      "name" : "schemaGroup",
+      "value" : {
+        "string" : "JSON"
+      }
+    } ]
+  },
+  "links" : {
+    "add" : [ {
+      "from" : "Source",
+      "to" : "combinedParser"
+    }, {
+      "from" : "combinedParser",
+      "to" : "xsltFilter"
+    }, {
+      "from" : "xsltFilter",
+      "to" : "schemaFilter"
+    }, {
+      "from" : "schemaFilter",
+      "to" : "jsonWriter"
+    } ]
+  }
+}

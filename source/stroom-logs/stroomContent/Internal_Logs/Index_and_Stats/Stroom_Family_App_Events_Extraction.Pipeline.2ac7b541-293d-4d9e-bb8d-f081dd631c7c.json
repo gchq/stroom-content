@@ -1,0 +1,15 @@
+{
+  "properties" : {
+    "add" : [ {
+      "element" : "xsltFilter",
+      "name" : "xslt",
+      "value" : {
+        "entity" : {
+          "type" : "XSLT",
+          "uuid" : "8ce723dc-e0f1-4719-a518-64e5447f009e",
+          "name" : "Stroom App Logs Index"
+        }
+      }
+    } ]
+  }
+}

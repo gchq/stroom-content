@@ -1,0 +1,4 @@
+name=Stroom Proxy Send Events ProcessorFilter be21ee4
+path=Internal Logs/Stroom Proxy
+type=ProcessorFilter
+uuid=be21ee44-7b9e-49ec-8360-1861ac81bf12

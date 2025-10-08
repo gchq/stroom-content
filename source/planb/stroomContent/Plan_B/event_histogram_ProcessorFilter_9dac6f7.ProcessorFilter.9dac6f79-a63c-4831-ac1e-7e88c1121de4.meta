@@ -25,7 +25,7 @@
   "priority" : 10,
   "maxProcessingTasks" : 0,
   "reprocess" : false,
-  "enabled" : false,
+  "enabled" : true,
   "deleted" : false,
   "processorType" : "PIPELINE",
   "processorUuid" : "3494132e-b88e-4f37-a16f-da119e6678db",

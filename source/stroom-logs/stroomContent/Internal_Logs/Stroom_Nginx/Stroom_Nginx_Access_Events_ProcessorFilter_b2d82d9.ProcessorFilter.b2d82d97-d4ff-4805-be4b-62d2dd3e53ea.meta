@@ -1,0 +1,38 @@
+{
+  "uuid" : "b2d82d97-d4ff-4805-be4b-62d2dd3e53ea",
+  "queryData" : {
+    "dataSource" : {
+      "type" : "StreamStore",
+      "uuid" : "0",
+      "name" : "StreamStore"
+    },
+    "expression" : {
+      "type" : "operator",
+      "children" : [ {
+        "type" : "term",
+        "field" : "Feed",
+        "condition" : "IS_DOC_REF",
+        "value" : "STROOM_NGINX-ACCESS-EVENTS",
+        "docRef" : {
+          "type" : "Feed",
+          "uuid" : "404f2bd8-be38-42e2-93d2-9a9236761dcf",
+          "name" : "STROOM_NGINX-ACCESS-EVENTS"
+        }
+      }, {
+        "type" : "term",
+        "field" : "Type",
+        "condition" : "EQUALS",
+        "value" : "Raw Events"
+      } ]
+    }
+  },
+  "priority" : 10,
+  "maxProcessingTasks" : 0,
+  "reprocess" : false,
+  "enabled" : true,
+  "deleted" : false,
+  "processorType" : "PIPELINE",
+  "processorUuid" : "5fcc05e0-a24c-4153-9763-75d3a51739a3",
+  "pipelineUuid" : "00afba9a-70de-4225-bbf3-47b058fa6ebf",
+  "pipelineName" : "Stroom Nginx Access Events"
+}

@@ -1,0 +1,44 @@
+{
+  "elements" : {
+    "add" : [ {
+      "id" : "standardiseRecords",
+      "type" : "XSLTFilter"
+    } ]
+  },
+  "properties" : {
+    "add" : [ {
+      "element" : "dsParser",
+      "name" : "textConverter",
+      "value" : {
+        "entity" : {
+          "type" : "TextConverter",
+          "uuid" : "d691a9fd-6885-4161-af03-27a0215a211f",
+          "name" : "Stroom Nginx App Events"
+        }
+      }
+    }, {
+      "element" : "standardiseRecords",
+      "name" : "xslt",
+      "value" : {
+        "entity" : {
+          "type" : "XSLT",
+          "uuid" : "91a1d1f3-e643-468d-911d-130d742abcee",
+          "name" : "Stroom Nginx App Events"
+        }
+      }
+    } ]
+  },
+  "links" : {
+    "add" : [ {
+      "from" : "splitFilter",
+      "to" : "standardiseRecords"
+    }, {
+      "from" : "standardiseRecords",
+      "to" : "translationFilter"
+    } ],
+    "remove" : [ {
+      "from" : "splitFilter",
+      "to" : "translationFilter"
+    } ]
+  }
+}

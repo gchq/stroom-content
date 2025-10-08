@@ -111,6 +111,7 @@ subprojects {
         dependsOn validateContent
     }
 
+    // Create an xsd validation task for each xsd file found
     def xsdValidationTaskNo = 0
     fileTree(dir: project.file(STROOM_CONTENT_DIR))
         .include('**/*.xsd')
@@ -149,6 +150,7 @@ subprojects {
             tasks.validate.dependsOn xsdValidationTask
     }
 
+    // Create an xml validation task for each xml file found
     def xmlValidationTaskNo = 0
     fileTree(dir: project.file(STROOM_CONTENT_DIR))
         .include('**/*.xml')
@@ -166,7 +168,7 @@ subprojects {
                 // get xml.xsd from w3.org and they impose an arbitrary 15s delay to make
                 // people cache it.
                 workingDir project.file(STROOM_CONTENT_DIR)
-                environment XML_CATALOG_FILES: rootProject.file("catalog.xml")
+                //environment XML_CATALOG_FILES: rootProject.file("catalog.xml")
                 executable 'xmllint'
                 args '--noout', '--nowarning', relativeXmlPath
                 ignoreExitValue true
@@ -186,6 +188,40 @@ subprojects {
             //println "Registered task ${xmlValidationTask.name}"
             tasks.validate.dependsOn xmlValidationTask
             rootProject.tasks.validateContent.dependsOn xmlValidationTask
+    }
+
+    // Create a json validation task for each json file found
+    def jsonValidationTaskNo = 0
+    fileTree(dir: project.file(STROOM_CONTENT_DIR))
+        .include('**/*.json')
+        .each { jsonFile -> 
+            def basePath =  project.file(STROOM_CONTENT_DIR).toPath()
+            def jsonPath = jsonFile.toPath()
+            def relativeJsonPath = basePath.relativize(jsonPath)
+            //println "Found JSON ${jsonPath}"
+
+            jsonValidationTaskNo++
+            def jsonValidationTask = tasks.create("jsonValidation_${jsonValidationTaskNo}", Exec) {
+                workingDir project.file(STROOM_CONTENT_DIR)
+                executable 'python3'
+                args '-mjson.tool', relativeJsonPath
+                ignoreExitValue true
+                //store the output instead of printing to the console:
+                standardOutput = new ByteArrayOutputStream()
+                errorOutput = new ByteArrayOutputStream()
+
+                doLast {
+                    if (executionResult.get().exitValue != 0) {
+                        println "JSON failed validation: $relativeJsonPath\n${errorOutput}"
+                        throw new GradleException("JSON failed validation: $relativeJsonPath")
+                    }
+                    //println "Validated JSON Schema ${jsonPath}"
+                }
+            }
+
+            //println "Registered task ${jsonValidationTask.name}"
+            tasks.validate.dependsOn jsonValidationTask
+            rootProject.tasks.validateContent.dependsOn jsonValidationTask
     }
 
     build {

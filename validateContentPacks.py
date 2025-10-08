@@ -367,7 +367,7 @@ def validate_node_against_node_file(node, node_file):
     doc_ref = node.doc_ref
 
     safe_name = get_safe_file_name(doc_ref)
-    pattern = "{}\.{}\.{}\.node".format(
+    pattern = "{}\\.{}\\.{}\\.node".format(
             safe_name, doc_ref.entity_type, doc_ref.uuid)
 
     if re.match(pattern, filename) == None:
