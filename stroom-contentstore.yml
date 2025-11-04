@@ -84,7 +84,7 @@ contentPacks:
   -
     id: event-logging-xml-schema
     uiName: Event Logging XML Schema
-    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/source/event-logging-xml-schema/docs/content-pack-icon.svg
+    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/source/event-logging-xml-schemas/docs/content-pack-icon.svg
     licenseName: Apache 2.0
     licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/7.10/LICENCE.txt
     stroomPath: /XML Schemas
