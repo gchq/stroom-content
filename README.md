@@ -186,6 +186,11 @@ A basic Stroom index designed for `event-logging` XML.
 | [v1.0](https://github.com/gchq/stroom-content/releases/tag/example-index-v1.0)                      | ❌             | ❌            | ✔️            | ❌            |
 
 
+### Other Content
+
+* _Proxy_ 
+    * [squidplus-proxy](./source/proxy/squidplus-proxy/README.md) `Agent and Stroom content`
+
 ## Building the content packs
 
 Each content pack is defined as a directory within _stroom-content-source_ with the name of content pack being the name of the directory.
