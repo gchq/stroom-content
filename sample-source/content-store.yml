@@ -23,7 +23,7 @@ contentPacks:
   -
     id: sample-feeds-and-translations
     uiName: Feeds and Translations
-    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/sample-source/Feeds_and_Translations.Folder.41ca475d-5812-4655-a60b-fd542bd8b388/content-pack-icon.svg
+    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/images/Pipeline.svg
     licenseName: Apache 2.0
     licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
     stroomPath: /
@@ -34,7 +34,7 @@ contentPacks:
   -
     id: sample-hdfs-file-appender
     uiName: HDFS File Appender
-    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/sample-source/HDFS_File_Appender.Folder.66e32fa7-edec-49ad-a569-a8dc33d42db1/content-pack-icon.svg
+    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/images/Hadoop.svg
     licenseName: Apache 2.0
     licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
     stroomPath: /
@@ -45,7 +45,7 @@ contentPacks:
   -
     id: sample-import-export-test
     uiName: Import Export Test
-    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/sample-source/Import_Export_Test.Folder.acd81f4a-cac8-4a81-83b8-cccf2aeabed9/content-pack-icon.svg
+    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/images/Feed.svg
     licenseName: Apache 2.0
     licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
     stroomPath: /
@@ -56,7 +56,7 @@ contentPacks:
   -
     id: example-solr-index
     uiName: Example Solr Index
-    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/sample-source/Indexes.Folder.22fbf6f9-06c4-46dd-8475-d2d40be0f70e/content-pack-icon.svg
+    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/images/Indexes.svg
     licenseName: Apache 2.0
     licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
     stroomPath: /
@@ -67,7 +67,7 @@ contentPacks:
   -
     id: sample-kafka-brokers
     uiName: Kafka Brokers
-    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/sample-source/Kafka_Brokers.Folder.4f0e982e-8b16-47ad-b1c7-cf69ad1686ee/content-pack-icon.svg
+    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/images/KafkaConfig.svg
     licenseName: Apache 2.0
     licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
     stroomPath: /
@@ -78,7 +78,7 @@ contentPacks:
   -
     id: sample-reference-data-store
     uiName: Reference Data Store
-    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/sample-source/Reference_Data_Store.Folder.5ba365e2-31fd-4295-a07a-96dddb7acd3f/content-pack-icon.svg
+    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/images/Feed.svg
     licenseName: Apache 2.0
     licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
     stroomPath: /
@@ -89,7 +89,7 @@ contentPacks:
   -
     id: sample-search
     uiName: Search
-    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/sample-source/Search.Folder.d226574e-fef6-462b-a27c-18a55dba6fd6/content-pack-icon.svg
+    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/images/Query.svg
     licenseName: Apache 2.0
     licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
     stroomPath: /
@@ -97,21 +97,10 @@ contentPacks:
     gitBranch: master
     gitPath: sample-source/Search.Folder.d226574e-fef6-462b-a27c-18a55dba6fd6/
 
-#  -
-#    id: sample-statistics
-#    uiName: Statistics
-#    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/sample-source/sample-statistics/content-pack-icon.svg
-#    licenseName: Apache 2.0
-#    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
-#    stroomPath: /
-#    gitUrl: https://github.com/gchq/stroom-content.git
-#    gitBranch: master
-#    gitPath: sample-source/sample-statistics/stroomContent/
-
   -
     id: sample-statistics-test-data
     uiName: Statistics Test Data
-    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/sample-source/Statistics_Test_Data.Folder.61e288b4-0390-4d3d-a4f8-a3ceb948a2ab/content-pack-icon.svg
+    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/images/StatisticStore.svg
     licenseName: Apache 2.0
     licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
     stroomPath: /
@@ -122,65 +111,10 @@ contentPacks:
   -
     id: sample-visualisation-examples
     uiName: Visualisation Examples
-    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/sample-source/Visualisations.Folder.95600122-fa8f-4a91-a54b-fe5b6d56fd0a/content-pack-icon.svg
+    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/images/Visualisation.svg
     licenseName: Apache 2.0
     licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
     stroomPath: /
     gitUrl: https://github.com/gchq/stroom-content.git
     gitBranch: master
     gitPath: sample-source/Visualisations.Folder.95600122-fa8f-4a91-a54b-fe5b6d56fd0a/
-
-  -
-    id: test-feed
-    uiName: Test Feeds
-    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/sample-source/test-feed/content-pack-icon.svg
-    licenseName: Apache 2.0
-    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
-    stroomPath: /
-    gitUrl: https://github.com/gchq/stroom-content.git
-    gitBranch: master
-    gitPath: sample-source/test-feed/stroomContent/
-
-  -
-    id: test-pipeline
-    uiName: Test Pipeline
-    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/sample-source/test-pipeline/content-pack-icon.svg
-    licenseName: Apache 2.0
-    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
-    stroomPath: /
-    gitUrl: https://github.com/gchq/stroom-content.git
-    gitBranch: master
-    gitPath: sample-source/test-pipeline/stroomContent/
-
-  -
-    id: test-textconverter
-    uiName: Test Text Converter
-    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/sample-source/test-textconverter/content-pack-icon.svg
-    licenseName: Apache 2.0
-    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
-    stroomPath: /
-    gitUrl: https://github.com/gchq/stroom-content.git
-    gitBranch: master
-    gitPath: sample-source/test-textconverter/stroomContent/
-
-  -
-    id: test-xmlschema
-    uiName: Test XML Schema
-    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/sample-source/test-xmlschema/content-pack-icon.svg
-    licenseName: Apache 2.0
-    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
-    stroomPath: /
-    gitUrl: https://github.com/gchq/stroom-content.git
-    gitBranch: master
-    gitPath: sample-source/test-xmlschema/stroomContent/
-
-  -
-    id: test-xslt
-    uiName: Test XSLT
-    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/sample-source/test-xslt/content-pack-icon.svg
-    licenseName: Apache 2.0
-    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
-    stroomPath: /
-    gitUrl: https://github.com/gchq/stroom-content.git
-    gitBranch: master
-    gitPath: sample-source/test-xslt/stroomContent/

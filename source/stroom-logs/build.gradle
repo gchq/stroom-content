@@ -1,7 +1,0 @@
-//stroom-logs
-
-//example of how to configure dependencies on another content packs
-dependencies {
-    compileSource project(path: ':core-xml-schemas', configuration: 'distConfig')
-    compileSource project(path: ':template-pipelines', configuration: 'distConfig')
-}
