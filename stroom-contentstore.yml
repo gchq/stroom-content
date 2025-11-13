@@ -34,7 +34,7 @@ contentPacks:
     licenseName: Apache 2.0
 
     # Link to the full license
-    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/7.10/LICENCE.txt
+    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
 
     # Where this will be installed in Stroom
     stroomPath: /XML Schemas/
@@ -68,7 +68,7 @@ contentPacks:
     uiName: Standard Pipelines
     iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/source/standard-pipelines/docs/content-pack-icon.svg
     licenseName: Apache 2.0
-    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/7.10/LICENCE.txt
+    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
     stroomPath: /
     details: |
       # Standard Pipelines
@@ -86,7 +86,7 @@ contentPacks:
     uiName: Event Logging XML Schema
     iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/source/event-logging-xml-schemas/docs/content-pack-icon.svg
     licenseName: Apache 2.0
-    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/7.10/LICENCE.txt
+    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
     stroomPath: /XML Schemas
     details: |
       # Event Logging XML Schema
@@ -103,7 +103,7 @@ contentPacks:
     uiName: Example Index
     iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/source/example-index/docs/content-pack-icon.svg
     licenseName: Apache 2.0
-    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/7.10/LICENCE.txt
+    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
     stroomPath: /
     details: |
       # Example Index
@@ -120,7 +120,7 @@ contentPacks:
     uiName: Internal Dashboards
     iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/source/internal-dashboards/docs/content-pack-icon.svg
     licenseName: Apache 2.0
-    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/7.10/LICENCE.txt
+    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
     stroomPath: /
     details: |
       # Internal Dashboards
@@ -139,7 +139,7 @@ contentPacks:
     uiName: Internal Statistics (SQL)
     iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/source/internal-statistics-sql/docs/content-pack-icon.svg
     licenseName: Apache 2.0
-    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/7.10/LICENCE.txt
+    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
     stroomPath: /Internal Statistics
     details: |
       # Internal Statistics (SQL)
@@ -158,7 +158,7 @@ contentPacks:
     uiName: Stroom-Stats
     iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/source/internal-statistics-stroom-stats/docs/content-pack-icon.svg
     licenseName: Apache 2.0
-    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/7.10/LICENCE.txt
+    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
     stroomPath: /Internal Statistics
     details: |
       # Internal Statistics (Stroom)
@@ -176,7 +176,7 @@ contentPacks:
     uiName: Stroom 101
     iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/source/stroom-101/docs/content-pack-icon.svg
     licenseName: Apache 2.0
-    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/7.10/LICENCE.txt
+    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
     stroomPath: /
     details: |
       # Quickstart Exercise for Stroom
@@ -198,7 +198,7 @@ contentPacks:
     uiName: Internal Logs
     iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/source/stroom-logs/docs/content-pack-icon.svg
     licenseName: Apache 2.0
-    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/7.10/LICENCE.txt
+    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
     stroomPath: /
     details: |
       # Internal Logs
@@ -215,7 +215,7 @@ contentPacks:
     uiName: Template Pipelines
     iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/source/template-pipelines/docs/content-pack-icon.svg
     licenseName: Apache 2.0
-    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/7.10/LICENCE.txt
+    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
     stroomPath: /
     details: |
       # Template Pipelines
@@ -232,7 +232,7 @@ contentPacks:
     uiName: Plan B
     iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/source/planb/docs/content-pack-icon.svg
     licenseName: Apache 2.0
-    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/7.10/LICENCE.txt
+    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
     stroomPath: /
     details: |
       # Plan B

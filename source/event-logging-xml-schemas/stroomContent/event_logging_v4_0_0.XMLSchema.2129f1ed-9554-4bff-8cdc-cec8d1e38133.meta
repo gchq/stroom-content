@@ -1,0 +1,11 @@
+{
+  "type" : "XMLSchema",
+  "uuid" : "2129f1ed-9554-4bff-8cdc-cec8d1e38133",
+  "name" : "event-logging v4.0.0",
+  "version" : "c38d1c38-0613-468d-8e8b-4b52e35d8255",
+  "description" : "",
+  "namespaceURI" : "event-logging:3",
+  "systemId" : "file://event-logging-v4.0.0.xsd",
+  "deprecated" : false,
+  "schemaGroup" : "EVENTS"
+}
