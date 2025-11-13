@@ -1,0 +1,5 @@
+name=Events to JSON
+path=/Standard Pipelines/Json/Events to JSON
+type=Pipeline
+uuid=2efdbfaf-5618-42a4-9626-b567fc928050
+version=V2

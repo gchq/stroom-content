@@ -1,0 +1,5 @@
+name=Reference Data Store Size
+path=/Internal Statistics/SQL/Reference Data Store Size
+type=StatisticStore
+uuid=e57959bf-0b2d-4008-98a7-ffcae4bbc4bb
+version=V2

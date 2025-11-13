@@ -1,0 +1,8 @@
+{
+  "type" : "TextConverter",
+  "uuid" : "d691a9fd-6885-4161-af03-27a0215a211f",
+  "name" : "Stroom Nginx App Events",
+  "version" : "d2c3d701-044c-46d6-b49b-98e876f20c26",
+  "description" : "",
+  "converterType" : "DATA_SPLITTER"
+}

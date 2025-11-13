@@ -1,0 +1,11 @@
+{
+  "type" : "Pipeline",
+  "uuid" : "6388a435-d882-487d-a8cc-49b729b111a6",
+  "name" : "Stroom Proxy Access Events",
+  "version" : "a07a1724-9a91-4367-97de-21920f7e97e3",
+  "parentPipeline" : {
+    "type" : "Pipeline",
+    "uuid" : "7bc2fc6b-c9d4-4121-8a0c-07982071c78d",
+    "name" : "CLF aka Apache httpd Logs"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type" : "Pipeline",
+  "uuid" : "d0daa881-fcb6-4cb4-bf38-29ce616f0ec4",
+  "name" : "Events Logging v3.4.2 Fragment Events",
+  "version" : "a4bab3f3-14be-4e57-9ac0-29cc4f9bd5ef",
+  "parentPipeline" : {
+    "type" : "Pipeline",
+    "uuid" : "d7c55950-7427-48ab-a1b6-11bc7b449dfd",
+    "name" : "Event Data (XML Fragments)"
+  }
+}

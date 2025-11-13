@@ -1,0 +1,5 @@
+name=CLF aka Apache httpd Logs
+path=/Internal Logs/Format Handling/Combined Log Format Logs/CLF aka Apache httpd Logs
+type=TextConverter
+uuid=09780b07-5fed-4c33-9898-6a68f422d82f
+version=V2

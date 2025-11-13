@@ -1,0 +1,5 @@
+name=Reference Data Store Entry Count
+path=/Internal Statistics/SQL/Reference Data Store Entry Count
+type=StatisticStore
+uuid=f1587262-9cbc-46b4-80eb-51deb011b2c1
+version=V2

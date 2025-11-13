@@ -1,0 +1,19 @@
+{
+  "type" : "StroomStatsStore",
+  "uuid" : "b0110ab4-ac25-4b73-b4f6-96f2b50b456a",
+  "name" : "Heap Histogram Bytes",
+  "version" : "7555ff9d-2b26-4a4d-abf0-46213764294e",
+  "description" : "The total bytes used in the java heap from a jmap heap histogram, qualified by node and java class name. Change the property stroom.node.status.heapHistogram.classNameMatchRegex to control which classes are included.",
+  "statisticType" : "VALUE",
+  "rollUpType" : "ALL",
+  "precision" : "MINUTE",
+  "enabled" : true,
+  "config" : {
+    "fields" : [ {
+      "fieldName" : "Class Name"
+    }, {
+      "fieldName" : "Node"
+    } ],
+    "customRollUpMasks" : [ ]
+  }
+}

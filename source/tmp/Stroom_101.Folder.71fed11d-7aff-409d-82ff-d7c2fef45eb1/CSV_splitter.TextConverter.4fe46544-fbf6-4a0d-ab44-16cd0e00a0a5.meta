@@ -1,0 +1,8 @@
+{
+  "type" : "TextConverter",
+  "uuid" : "4fe46544-fbf6-4a0d-ab44-16cd0e00a0a5",
+  "name" : "CSV splitter",
+  "version" : "c09b429e-1b8f-489e-b539-1def1670d8aa",
+  "description" : "",
+  "converterType" : "DATA_SPLITTER"
+}

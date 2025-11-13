@@ -1,0 +1,5 @@
+name=Stroom Proxy Receive Events
+path=/Internal Logs/Stroom Proxy/Stroom Proxy Receive Events
+type=Pipeline
+uuid=aa917188-1fb2-42a3-8bc9-ecbf87e1b301
+version=V2

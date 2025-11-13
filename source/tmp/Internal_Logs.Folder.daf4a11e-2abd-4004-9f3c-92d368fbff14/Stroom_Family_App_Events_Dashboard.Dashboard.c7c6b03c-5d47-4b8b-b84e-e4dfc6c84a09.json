@@ -1,0 +1,387 @@
+{
+  "components" : [ {
+    "type" : "table",
+    "id" : "table-IIO1T",
+    "name" : "Errors",
+    "settings" : {
+      "type" : "table",
+      "queryId" : "query-JT8D7",
+      "fields" : [ {
+        "name" : "Event Time",
+        "expression" : "${Event Time}",
+        "sort" : {
+          "order" : 0,
+          "direction" : "DESCENDING"
+        },
+        "format" : {
+          "type" : "DATE_TIME",
+          "wrap" : false
+        },
+        "width" : 200,
+        "visible" : true,
+        "special" : false
+      }, {
+        "name" : "System",
+        "expression" : "${System}",
+        "format" : {
+          "type" : "GENERAL",
+          "wrap" : false
+        },
+        "width" : 200,
+        "visible" : true,
+        "special" : false
+      }, {
+        "name" : "Hostname",
+        "expression" : "${Hostname}",
+        "format" : {
+          "type" : "GENERAL",
+          "wrap" : false
+        },
+        "width" : 200,
+        "visible" : true,
+        "special" : false
+      }, {
+        "name" : "Logger",
+        "expression" : "${Logger}",
+        "format" : {
+          "type" : "GENERAL",
+          "wrap" : false
+        },
+        "width" : 200,
+        "visible" : true,
+        "special" : false
+      }, {
+        "name" : "Message",
+        "expression" : "${Message}",
+        "format" : {
+          "type" : "GENERAL",
+          "wrap" : false
+        },
+        "width" : 200,
+        "visible" : true,
+        "special" : false
+      }, {
+        "name" : "StreamId",
+        "expression" : "${StreamId}",
+        "width" : 200,
+        "visible" : true,
+        "special" : false
+      }, {
+        "name" : "EventId",
+        "expression" : "${EventId}",
+        "width" : 200,
+        "visible" : true,
+        "special" : false
+      } ],
+      "extractionPipeline" : {
+        "type" : "Pipeline",
+        "uuid" : "2ac7b541-293d-4d9e-bb8d-f081dd631c7c",
+        "name" : "Stroom Family App Events Extraction"
+      },
+      "maxResults" : [ 1000000 ]
+    }
+  }, {
+    "type" : "query",
+    "id" : "query-JT8D7",
+    "name" : "Query",
+    "settings" : {
+      "type" : "query",
+      "dataSource" : {
+        "type" : "Index",
+        "uuid" : "3e72379d-403f-4757-88d5-bfae4d724b55",
+        "name" : "Stroom Family App Events Index"
+      },
+      "expression" : {
+        "type" : "operator",
+        "children" : [ {
+          "type" : "term",
+          "field" : "Log Level",
+          "condition" : "EQUALS",
+          "value" : "ERROR"
+        }, {
+          "type" : "term",
+          "field" : "Event Time",
+          "condition" : "BETWEEN",
+          "value" : "now()-1d,now()"
+        } ]
+      },
+      "automate" : {
+        "open" : true,
+        "refresh" : true,
+        "refreshInterval" : "60s"
+      }
+    }
+  }, {
+    "type" : "query",
+    "id" : "query-G7Y0D",
+    "name" : "Query",
+    "settings" : {
+      "type" : "query",
+      "dataSource" : {
+        "type" : "StatisticStore",
+        "uuid" : "378e1c9b-755f-48a5-a883-d0a7dbe3d167",
+        "name" : "Stroom Family App Events SQL Statistic"
+      },
+      "expression" : {
+        "type" : "operator",
+        "children" : [ {
+          "type" : "term",
+          "field" : "Date Time",
+          "condition" : "BETWEEN",
+          "value" : "now()-1d,now()"
+        } ]
+      },
+      "automate" : {
+        "open" : true,
+        "refresh" : true,
+        "refreshInterval" : "60s"
+      }
+    }
+  }, {
+    "type" : "table",
+    "id" : "table-UO7RH",
+    "name" : "Error & Warning Counts",
+    "settings" : {
+      "type" : "table",
+      "queryId" : "query-G7Y0D",
+      "fields" : [ {
+        "name" : "Log Level",
+        "expression" : "${Log Level}",
+        "sort" : {
+          "order" : 0,
+          "direction" : "ASCENDING"
+        },
+        "format" : {
+          "type" : "GENERAL",
+          "wrap" : false
+        },
+        "group" : 0,
+        "width" : 200,
+        "visible" : true,
+        "special" : false
+      }, {
+        "name" : "System",
+        "expression" : "${System}",
+        "sort" : {
+          "order" : 1,
+          "direction" : "ASCENDING"
+        },
+        "format" : {
+          "type" : "GENERAL",
+          "wrap" : false
+        },
+        "group" : 0,
+        "width" : 200,
+        "visible" : true,
+        "special" : false
+      }, {
+        "name" : "Hostname",
+        "expression" : "${Hostname}",
+        "sort" : {
+          "order" : 2,
+          "direction" : "ASCENDING"
+        },
+        "format" : {
+          "type" : "GENERAL",
+          "wrap" : false
+        },
+        "group" : 0,
+        "width" : 200,
+        "visible" : true,
+        "special" : false
+      }, {
+        "name" : "Logger",
+        "expression" : "${Logger}",
+        "sort" : {
+          "order" : 3,
+          "direction" : "ASCENDING"
+        },
+        "format" : {
+          "type" : "GENERAL",
+          "wrap" : false
+        },
+        "group" : 0,
+        "width" : 200,
+        "visible" : true,
+        "special" : false
+      }, {
+        "name" : "Statistic Count",
+        "expression" : "sum(${Statistic Count})",
+        "format" : {
+          "type" : "NUMBER",
+          "wrap" : false
+        },
+        "width" : 200,
+        "visible" : true,
+        "special" : false
+      } ],
+      "extractValues" : false,
+      "extractionPipeline" : {
+        "type" : "",
+        "uuid" : "",
+        "name" : "None"
+      },
+      "maxResults" : [ 1000000 ]
+    }
+  }, {
+    "type" : "query",
+    "id" : "query-7EFXA",
+    "name" : "Query",
+    "settings" : {
+      "type" : "query",
+      "dataSource" : {
+        "type" : "StatisticStore",
+        "uuid" : "378e1c9b-755f-48a5-a883-d0a7dbe3d167",
+        "name" : "Stroom Family App Events SQL Statistic"
+      },
+      "expression" : {
+        "type" : "operator",
+        "children" : [ {
+          "type" : "term",
+          "field" : "Date Time",
+          "condition" : "BETWEEN",
+          "value" : "now()-1d,now()"
+        }, {
+          "type" : "term",
+          "field" : "Logger",
+          "condition" : "EQUALS",
+          "value" : "*",
+          "enabled" : false
+        }, {
+          "type" : "term",
+          "field" : "Log Level",
+          "condition" : "EQUALS",
+          "value" : "ERROR"
+        } ]
+      },
+      "automate" : {
+        "open" : true,
+        "refresh" : true,
+        "refreshInterval" : "60s"
+      }
+    }
+  }, {
+    "type" : "table",
+    "id" : "table-ZGSKB",
+    "name" : "Table",
+    "settings" : {
+      "type" : "table",
+      "queryId" : "query-7EFXA",
+      "fields" : [ {
+        "name" : "System",
+        "expression" : "concat(${System}, ' - ', ${Hostname})",
+        "sort" : {
+          "order" : 0,
+          "direction" : "ASCENDING"
+        },
+        "format" : {
+          "type" : "GENERAL",
+          "wrap" : false
+        },
+        "group" : 0,
+        "width" : 200,
+        "visible" : true,
+        "special" : false
+      }, {
+        "name" : "Time slot",
+        "expression" : "formatDate(${Date Time}, 'yyyy/MM/dd HH:mm:ss', 'UTC')",
+        "sort" : {
+          "order" : 1,
+          "direction" : "DESCENDING"
+        },
+        "format" : {
+          "type" : "GENERAL",
+          "wrap" : false
+        },
+        "group" : 0,
+        "width" : 200,
+        "visible" : true,
+        "special" : false
+      }, {
+        "name" : "Statistic Count",
+        "expression" : "sum(${Statistic Count})",
+        "format" : {
+          "type" : "NUMBER",
+          "wrap" : false
+        },
+        "width" : 200,
+        "visible" : true,
+        "special" : false
+      } ],
+      "extractionPipeline" : {
+        "type" : "",
+        "uuid" : "",
+        "name" : "None"
+      },
+      "maxResults" : [ 1000000 ]
+    }
+  }, {
+    "type" : "vis",
+    "id" : "vis-ICSMT",
+    "name" : "Visualisation",
+    "settings" : {
+      "type" : "vis",
+      "tableId" : "table-ZGSKB",
+      "visualisation" : {
+        "type" : "Visualisation",
+        "uuid" : "547b440d-4bb1-4d3b-86b7-ff2e41b49311",
+        "name" : "BarChart"
+      },
+      "json" : "{\"x\":\"Time slot\", \"y\":\"Statistic Count\", \"gridSeries\":\"System\", \"sortSeries\":\"Ascending\", \"maxSeries\":\"100\", \"sortGridSeries\":\"Ascending\", \"maxGridSeries\":\"20\", \"synchXAxis\":\"True\", \"displayXAxis\":\"True\", \"synchYAxis\":\"True\", \"displayYAxis\":\"True\", \"synchSeries\":\"True\"}"
+    }
+  } ],
+  "layout" : {
+    "type" : "splitLayout",
+    "preferredSize" : {
+      "width" : 200,
+      "height" : 200
+    },
+    "dimension" : 1,
+    "children" : [ {
+      "type" : "tabLayout",
+      "preferredSize" : {
+        "width" : 200,
+        "height" : 284
+      },
+      "tabs" : [ {
+        "id" : "query-JT8D7",
+        "visible" : true
+      }, {
+        "id" : "table-IIO1T",
+        "visible" : true
+      } ],
+      "selected" : 1
+    }, {
+      "type" : "tabLayout",
+      "preferredSize" : {
+        "width" : 200,
+        "height" : 266
+      },
+      "tabs" : [ {
+        "id" : "query-G7Y0D",
+        "visible" : true
+      }, {
+        "id" : "table-UO7RH",
+        "visible" : true
+      } ],
+      "selected" : 1
+    }, {
+      "type" : "tabLayout",
+      "preferredSize" : {
+        "width" : 200,
+        "height" : 494
+      },
+      "tabs" : [ {
+        "id" : "query-7EFXA",
+        "visible" : true
+      }, {
+        "id" : "table-ZGSKB",
+        "visible" : true
+      }, {
+        "id" : "vis-ICSMT",
+        "visible" : true
+      } ],
+      "selected" : 2
+    } ]
+  }
+}

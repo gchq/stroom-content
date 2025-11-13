@@ -1,0 +1,50 @@
+{
+  "elements" : {
+    "add" : [ {
+      "id" : "Source",
+      "type" : "Source"
+    }, {
+      "id" : "xmlParser",
+      "type" : "XMLParser"
+    }, {
+      "id" : "planBFilter",
+      "type" : "PlanBFilter"
+    }, {
+      "id" : "xsltFilter",
+      "type" : "XSLTFilter"
+    }, {
+      "id" : "schemaFilter",
+      "type" : "SchemaFilter"
+    }, {
+      "id" : "splitFilter",
+      "type" : "SplitFilter"
+    } ]
+  },
+  "properties" : {
+    "add" : [ {
+      "element" : "schemaFilter",
+      "name" : "schemaGroup",
+      "value" : {
+        "string" : "PLAN_B"
+      }
+    } ]
+  },
+  "links" : {
+    "add" : [ {
+      "from" : "Source",
+      "to" : "xmlParser"
+    }, {
+      "from" : "xmlParser",
+      "to" : "splitFilter"
+    }, {
+      "from" : "xsltFilter",
+      "to" : "schemaFilter"
+    }, {
+      "from" : "schemaFilter",
+      "to" : "planBFilter"
+    }, {
+      "from" : "splitFilter",
+      "to" : "xsltFilter"
+    } ]
+  }
+}

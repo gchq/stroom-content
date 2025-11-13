@@ -1,0 +1,11 @@
+{
+  "type" : "Pipeline",
+  "uuid" : "f35df2d2-abe5-448d-8ef1-49c359c529f9",
+  "name" : "Stroom User Events",
+  "version" : "36bd2c24-6de5-4674-9d46-232a3c1305d5",
+  "parentPipeline" : {
+    "type" : "Pipeline",
+    "uuid" : "d0daa881-fcb6-4cb4-bf38-29ce616f0ec4",
+    "name" : "Events Logging v3.4.2 Fragment Events"
+  }
+}

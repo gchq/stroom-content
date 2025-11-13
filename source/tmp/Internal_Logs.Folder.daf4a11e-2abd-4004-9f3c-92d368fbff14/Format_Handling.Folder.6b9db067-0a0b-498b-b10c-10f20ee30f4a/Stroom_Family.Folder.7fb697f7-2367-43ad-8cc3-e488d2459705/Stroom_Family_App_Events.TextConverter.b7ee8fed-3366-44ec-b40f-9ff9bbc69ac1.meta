@@ -1,0 +1,8 @@
+{
+  "type" : "TextConverter",
+  "uuid" : "b7ee8fed-3366-44ec-b40f-9ff9bbc69ac1",
+  "name" : "Stroom Family App Events",
+  "version" : "762431c1-79b4-40e4-a0a8-b08a042e30eb",
+  "description" : "",
+  "converterType" : "DATA_SPLITTER"
+}

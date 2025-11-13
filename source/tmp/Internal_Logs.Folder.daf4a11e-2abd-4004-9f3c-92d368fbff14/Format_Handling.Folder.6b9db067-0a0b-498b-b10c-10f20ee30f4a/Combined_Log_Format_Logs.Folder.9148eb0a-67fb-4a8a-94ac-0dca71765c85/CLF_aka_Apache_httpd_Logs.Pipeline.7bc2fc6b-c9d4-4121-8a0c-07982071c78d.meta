@@ -1,0 +1,11 @@
+{
+  "type" : "Pipeline",
+  "uuid" : "7bc2fc6b-c9d4-4121-8a0c-07982071c78d",
+  "name" : "CLF aka Apache httpd Logs",
+  "version" : "b5893edd-33c6-4023-9b83-1e648d21e17e",
+  "parentPipeline" : {
+    "type" : "Pipeline",
+    "uuid" : "d7c55950-7427-48ab-a1b6-11bc7b449dfd",
+    "name" : "Event Data (Text)"
+  }
+}

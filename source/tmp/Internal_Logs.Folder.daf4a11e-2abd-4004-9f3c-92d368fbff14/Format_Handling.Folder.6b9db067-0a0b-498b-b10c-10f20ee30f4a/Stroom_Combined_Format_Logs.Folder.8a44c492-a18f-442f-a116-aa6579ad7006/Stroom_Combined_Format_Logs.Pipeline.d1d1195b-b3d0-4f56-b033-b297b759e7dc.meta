@@ -1,0 +1,11 @@
+{
+  "type" : "Pipeline",
+  "uuid" : "d1d1195b-b3d0-4f56-b033-b297b759e7dc",
+  "name" : "Stroom Combined Format Logs",
+  "version" : "09e16663-2201-42dd-b9ed-df59c58d061d",
+  "parentPipeline" : {
+    "type" : "Pipeline",
+    "uuid" : "d7c55950-7427-48ab-a1b6-11bc7b449dfd",
+    "name" : "Event Data (Text)"
+  }
+}

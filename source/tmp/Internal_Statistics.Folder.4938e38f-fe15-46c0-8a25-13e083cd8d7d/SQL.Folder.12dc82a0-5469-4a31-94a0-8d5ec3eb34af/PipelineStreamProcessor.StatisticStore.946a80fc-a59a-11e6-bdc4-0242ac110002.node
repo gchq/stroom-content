@@ -1,0 +1,5 @@
+name=PipelineStreamProcessor
+path=/Internal Statistics/SQL/PipelineStreamProcessor
+type=StatisticStore
+uuid=946a80fc-a59a-11e6-bdc4-0242ac110002
+version=V2

@@ -1,0 +1,21 @@
+{
+  "type" : "StroomStatsStore",
+  "uuid" : "efd9bad4-0bab-460f-ae98-79e9717deeaf",
+  "name" : "PipelineStreamProcessor",
+  "version" : "32430d58-82ea-4901-b6d1-7d697202d299",
+  "description" : "Counts the number of times that a node/feed/pipeline combination is processed",
+  "statisticType" : "COUNT",
+  "rollUpType" : "ALL",
+  "precision" : "MINUTE",
+  "enabled" : true,
+  "config" : {
+    "fields" : [ {
+      "fieldName" : "Feed"
+    }, {
+      "fieldName" : "Node"
+    }, {
+      "fieldName" : "Pipeline"
+    } ],
+    "customRollUpMasks" : [ ]
+  }
+}

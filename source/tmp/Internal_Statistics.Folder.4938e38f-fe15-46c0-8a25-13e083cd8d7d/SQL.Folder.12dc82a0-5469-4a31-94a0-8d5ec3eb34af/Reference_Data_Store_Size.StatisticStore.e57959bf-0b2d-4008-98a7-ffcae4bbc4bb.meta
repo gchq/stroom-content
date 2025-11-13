@@ -1,0 +1,19 @@
+{
+  "type" : "StatisticStore",
+  "uuid" : "e57959bf-0b2d-4008-98a7-ffcae4bbc4bb",
+  "name" : "Reference Data Store Size",
+  "version" : "4b816b38-cbc8-4ff2-8ec6-ffd6465c3d4c",
+  "description" : "Reference Data Store Size",
+  "statisticType" : "VALUE",
+  "rollUpType" : "NONE",
+  "precision" : 3600000,
+  "enabled" : true,
+  "config" : {
+    "fields" : [ {
+      "fieldName" : "Feed"
+    }, {
+      "fieldName" : "Node"
+    } ],
+    "customRollUpMasks" : [ ]
+  }
+}

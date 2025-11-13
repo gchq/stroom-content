@@ -1,0 +1,11 @@
+{
+  "type" : "Pipeline",
+  "uuid" : "00afba9a-70de-4225-bbf3-47b058fa6ebf",
+  "name" : "Stroom Nginx Access Events",
+  "version" : "34dbe530-4fcc-493a-a54a-f9a0f95850fe",
+  "parentPipeline" : {
+    "type" : "Pipeline",
+    "uuid" : "d1d1195b-b3d0-4f56-b033-b297b759e7dc",
+    "name" : "Stroom Combined Format Logs"
+  }
+}

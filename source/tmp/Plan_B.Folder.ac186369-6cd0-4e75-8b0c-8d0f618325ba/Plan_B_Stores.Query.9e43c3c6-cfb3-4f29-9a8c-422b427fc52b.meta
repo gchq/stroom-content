@@ -1,0 +1,12 @@
+{
+  "type" : "Query",
+  "uuid" : "9e43c3c6-cfb3-4f29-9a8c-422b427fc52b",
+  "name" : "Plan B Stores",
+  "version" : "7329c55c-0a5e-42a0-9a9e-cbfe049d2d03",
+  "timeRange" : {
+    "name" : "All time",
+    "condition" : "BETWEEN"
+  },
+  "query" : "from \"Plan B Shards\"\nselect Name, ${Schema Type}, Node, ${Shard Type}, ${Byte Size}, Settings",
+  "queryTablePreferences" : { }
+}

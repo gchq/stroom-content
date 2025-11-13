@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:d="detection:1" elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="detection:1" id="detection-v1.1" version="1.1">
+  <xs:element name="detections">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:documentation>Allows a number of detections, e.g. alerts created by analytics to be recorded.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:element name="detection" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>A single detection, e.g. a single alert from an analytic.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="detectTime" type="d:DateTimeSimpleType" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>When the detection occurred.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="detectorName" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>
+                    Recommended detector detail - name of detector.
+                    This should be unique within the system.
+                    Some detectors are very specific and only ever create one kind of detection, and in these cases it is likely that the name of the detector will be
+                    very similar to the name of the detection headline that it creates.  Example: detectorSourceName="Bad Thing Detector" headline="Bad Thing Detected".
+                    
+                    However, it is possible to create detectors that are sufficiently configurable that they can create many kinds of detection.  
+                    In these cases, this field should always be assigned to the same literal regardless of the detection/headline.
+                    Example: detectorSourceName="Really Configurable Detector" headline="Good Thing Detected", and 
+                    detectorSourceName="Really Configurable Detector" headline="Bad Thing Detected"
+                      
+                    For detectors that run within Stroom pipelines, the name of the XSLT can be specified here.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="detectorVersion" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>
+                    Recommended detector detail - version of detector.
+                    This is the version of the detector identified in detectorSourceName field.  Different versions might produce different detections.
+                    For detectors that run within Stroom pipelines, the version of the XSLT can be specified here.
+                    Example: "v1.0"
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="detectorEnvironment" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>
+                    Recommended detector detail - where the detector was deployed.
+                    For analytics that run within Stroom itself, the name of the processing pipeline can be used.
+                    Note: the XSLT function stroom:pipeline-name() can be used within Stroom XSLT processing to determine pipeline name.
+                    Other analytics might run within an external processing framework, such as Apache Spark.
+                    Example: "DevOps Spark Cluster"
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="headline" minOccurs="1" maxOccurs="1" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+                    Required detection detail.
+                    A high level description of what was detected.
+                    This should be the same for all detections of a particular type, and should be easily understood.
+                    It must be possible to search for all detections of this kind using just this one literal, e.g. for triage.
+                    All detections of a particular kind can be expected to be triaged via the same process.  If it is likely that different triage processes may be
+                    needed for different versions of the same detection, then these could be considered to be different kinds of detection, and therefore it might
+                    be reasonable to produce more than one value for this field.
+                    Example: "Charitable Donation Detected"
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="detailedDescription" minOccurs="0" maxOccurs="1" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+                    Recommended detection detail.
+                    A more detailed description of what was detected than provided by headline.
+                    This will normally include some information relating to what triggered the detection, such as a specific device, location, or user.
+                    In addition to descriptive text that will be the same for all detections of this kind, there are typically several possible variable dimensions that could
+                    be used to populate parts of the string that is assigned to this field. 
+                    Normally, only one such dimension is selected, based on the likely triage process (the kind of analysis that takes place, and principal area of interest of the analysts).
+                    It should be possible to group by this field value to collect all detections that relate to the thing that the analysts are most interested in during triage.
+                    Example: "Charitable Donation By 'Freya Bloggs' Detected" or "Charitable Donation To 'Happy Cats Cattery' Detected" depending on anticipated area of analyst interest
+                    (perhaps philanthropic activities of individuals or financial transactions to organisations, respectively). 
+                    
+                    For some detections, this field will have the same value as that for headline as no further information is available.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="fullDescription" minOccurs="0" maxOccurs="1" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+                  Recommended detection detail.
+                  Complete description of what was detected.  
+                  This will normally include some detail relating to what triggered the detection.  All dimensions with ordinal (literal) values that are useful for triage are output.
+                  Numeric and other continuous values such as timestamps are not included in this full description, in order that grouping by this single field will work effectively.
+                  Example: "Charitable Donation By 'Freya Bloggs' to 'Happy Cats Cattery' Detected".
+                  
+                  For some detections, this field will have the same value as that for detailedDescription as no further information is available.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="detectionUniqueId" minOccurs="0" maxOccurs="1" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+                    This field does not need to be assigned.  Any assignment should be to a value that is sufficiently unique to identify a specific detection from a specific detector.
+                    Typically, but not necessarily, the value of this field is a UUID.
+                    It can be useful to assign this field in order to support analytic development / debugging.
+                    It is necessary to assign this field if detectionRevision field is assigned a value.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="detectionRevision" minOccurs="0" maxOccurs="1" type="xs:integer">
+                <xs:annotation>
+                  <xs:documentation>
+                    Can be used, in conjunction with detectionUniqueId to allow detectors that run continuously, 
+                    in a streaming fashion to revise their detections in the light of new information.
+                    For example, it might be useful to revise the same detection with additional linked events and a new standard deviation.
+                    Where more than one detection has the same detectionUniqueId value, then the one with the highest detectionRevision will be the current one and
+                    all previous revisions (lower numbers in detectionRevision field) are superceded / ignored.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="defunct" type="xs:boolean" default="false" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>
+                    This field allows a detection to declare that all previous revisions (same detectionUniqueId, lower detectionRevision numbers) are now considered invalid.
+                    For example, new data might arrive later than expected and invalidate a detection that has already been sent into Stroom.
+                    Default value is false.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="value" minOccurs="0" maxOccurs="100">
+                <xs:annotation>
+                  <xs:documentation>
+                    Individual dimensions or other properties associated with this detection should be defined as value elements.
+                    These can be ordinal or continuous quantities and can refer either to properties of the detector (for example its configuration)
+                    or refer to properties of the data that caused the detection (for example the name of devices or statistical quantities).
+                    Example1: value[@name='device'] = "MyHost.MyOrg.com"
+                    Example2: value[@name='standardDeviation'] = "2.1"
+                    Example3: value[@name='threshold'] = "2.0"
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="name" type="xs:string" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="linkedEvents" type="d:LinkedEventsComplexType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>
+                    Sequence of events that already exist within Stroom and that contributed in some manner towards the creation of this detection.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="DateTimeSimpleType">
+    <xs:annotation>
+      <xs:documentation>This type constrains the date time format further so that is always represented as 'yyyy-MM-ssThh:mm:ss.sssZ'.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:dateTime">
+      <xs:pattern value="[\d]{4}-[\d]{2}-[\d]{2}T[\d]{2}:[\d]{2}:[\d]{2}.[\d]{3}Z" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="LinkedEventsComplexType">
+    <xs:annotation>
+      <xs:documentation>Any associated events that exist elsewhere in Stroom.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="linkedEvent" minOccurs="0" maxOccurs="unbounded" type="d:LinkedEventComplexType">
+        <xs:annotation>
+          <xs:documentation>
+            An event that already exists within Stroom and that contributed in some manner towards the creation of this detection.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LinkedEventComplexType">
+    <xs:sequence>
+      <xs:element name="stroom" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The Stroom instance within which this event exists, assumed to be this instance of Stroom if not supplied.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="streamId" type="xs:long">
+        <xs:annotation>
+          <xs:documentation>The StreamId of the linked event.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="eventId" type="xs:long">
+        <xs:annotation>
+          <xs:documentation>The EventId of the linked event.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

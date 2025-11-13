@@ -1,0 +1,38 @@
+{
+  "elements" : {
+    "add" : [ {
+      "id" : "dsParser",
+      "type" : "DSParser"
+    } ],
+    "remove" : [ {
+      "id" : "xmlFragmentParser",
+      "type" : "XMLFragmentParser"
+    } ]
+  },
+  "properties" : {
+    "add" : [ {
+      "element" : "dsParser",
+      "name" : "textConverter",
+      "value" : {
+        "entity" : {
+          "type" : "TextConverter",
+          "uuid" : "39864596-5f32-4fca-b2c4-cb61da2a0fe9",
+          "name" : "Event Logging v3.4.2 Fragments"
+        }
+      }
+    } ]
+  },
+  "links" : {
+    "add" : [ {
+      "from" : "Source",
+      "to" : "dsParser"
+    }, {
+      "from" : "dsParser",
+      "to" : "readRecordCountFilter"
+    } ],
+    "remove" : [ {
+      "from" : "Source",
+      "to" : "xmlFragmentParser"
+    } ]
+  }
+}

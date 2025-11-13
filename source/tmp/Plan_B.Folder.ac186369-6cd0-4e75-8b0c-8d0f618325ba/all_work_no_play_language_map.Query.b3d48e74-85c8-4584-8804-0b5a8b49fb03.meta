@@ -1,0 +1,12 @@
+{
+  "type" : "Query",
+  "uuid" : "b3d48e74-85c8-4584-8804-0b5a8b49fb03",
+  "name" : "all_work_no_play_language_map",
+  "version" : "5e86c63f-b96f-4d32-a4ee-b50e3e5b9eb8",
+  "timeRange" : {
+    "name" : "All time",
+    "condition" : "BETWEEN"
+  },
+  "query" : "from all_work_no_play_language_map\nselect Key, EffectiveTime, ValueType, Value",
+  "queryTablePreferences" : { }
+}

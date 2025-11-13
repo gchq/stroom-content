@@ -1,0 +1,17 @@
+{
+  "type" : "StatisticStore",
+  "uuid" : "35d60e7d-f11a-45c9-981d-16d8ddda081e",
+  "name" : "Search Results Store Count",
+  "version" : "258f7829-d14e-47c6-9b1c-423e1770bcfd",
+  "description" : "Search Results Store Count",
+  "statisticType" : "VALUE",
+  "rollUpType" : "NONE",
+  "precision" : 60000,
+  "enabled" : true,
+  "config" : {
+    "fields" : [ {
+      "fieldName" : "Node"
+    } ],
+    "customRollUpMasks" : [ ]
+  }
+}

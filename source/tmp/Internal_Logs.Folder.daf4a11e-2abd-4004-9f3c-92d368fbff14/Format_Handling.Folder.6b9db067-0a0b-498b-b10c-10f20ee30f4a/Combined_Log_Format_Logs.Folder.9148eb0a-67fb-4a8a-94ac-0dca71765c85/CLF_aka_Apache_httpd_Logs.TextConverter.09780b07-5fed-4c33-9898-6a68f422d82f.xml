@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSplitter xmlns="data-splitter:3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="data-splitter:3 file://data-splitter-v3.0.xsd" version="3.0">
+
+  <!--
+  Stroom access log format
+  
+  This is Combined Log Format (standard Apache format) with fields delimited to ensure successful parsing.
+  
+  %h - host name should be ok without quotes
+  %l - Remote logname (from identd, if supplied). This will return a dash unless IdentityCheck is set On.
+  "%u" - user name should be quoted to deal with DNs.  This splitter should also cope without quoted usernames, so long as they do not contain any spaces
+  [%t] - time is added in square brackets so is contained for parsing purposes
+  "%r" - Request field includes the HTTP method and protocol. Quoted as per standard format.
+  %s - Response code doesn't need to be quoted as it is a single number
+  %b - The size in bytes of the response sent to the client
+  "%i{Referer\" - Referrer is quoted for parsing purposes
+  "%i{User-Agent}" - User agent is also quoted for parsing purposes
+  %D - Time taken to serve request
+  
+  logFormat: '%h %l "%u" [%t] "%r" %s %b "%i{Referer}" "%i{User-Agent}" %D'
+  -->
+
+  <!-- Match line -->
+  <split delimiter="\n">
+    <group value="$1">
+      <regex pattern="^([^ ]+) ([^ ]+) ([^ &#34;]+|&#34;[^&#34;]*&#34;|&#34;{4}) \[([^\]]+)] &#34;([^&#34;]*|&#34;{2})&#34; ([^ ]+) ([^ ]+) &#34;([^&#34;]*|&#34;{2})&#34; &#34;([^&#34;]*|&#34;{2})&#34; ([0-9]+)">
+        <data name="host" value="$1" />
+        <data name="log" value="$2" />
+        <data name="time" value="$4" />
+        <data name="request" value="$5" />
+        <data name="response" value="$6" />
+        <data name="size" value="$7" />
+        <data name="referrer" value="$8" />
+        <data name="userAgent" value="$9" />
+        <data name="requestDuration" value="$10" />
+
+        <!-- A user value of """" is sometimes given for a null value so drop the inner quote pair if present -->
+        <group value="$3">
+          <split delimiter="\n" containerStart="&#34;" containerEnd="&#34;">
+            <data name="user" value="$1" />
+          </split>
+        </group>
+
+        <!--Parse the request field -->
+        <group value="$5" ignoreErrors="true">
+          <regex pattern="^([^ ]+) ([^ ]+) ([^ /]*)/([^ ]*)">
+            <data name="httpMethod" value="$1" />
+            <data name="url" value="$2" />
+            <data name="protocol" value="$3" />
+            <data name="version" value="$4" />
+          </regex>
+        </group>
+      </regex>
+    </group>
+  </split>
+</dataSplitter>

@@ -1,0 +1,5 @@
+name=Event Data (JSON)
+path=/Template Pipelines/Event Data (JSON)
+type=Pipeline
+uuid=712eba75-0aa8-4cde-b1da-9e5d71855daf
+version=V2

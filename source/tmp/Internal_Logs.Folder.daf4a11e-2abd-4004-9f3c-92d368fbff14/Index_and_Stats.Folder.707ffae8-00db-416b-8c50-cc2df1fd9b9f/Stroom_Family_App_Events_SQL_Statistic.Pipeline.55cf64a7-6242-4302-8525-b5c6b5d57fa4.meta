@@ -1,0 +1,11 @@
+{
+  "type" : "Pipeline",
+  "uuid" : "55cf64a7-6242-4302-8525-b5c6b5d57fa4",
+  "name" : "Stroom Family App Events SQL Statistic",
+  "version" : "363a2f94-2d37-4647-8949-fa308f9fa817",
+  "parentPipeline" : {
+    "type" : "Pipeline",
+    "uuid" : "9d1bcf3d-dd5e-40f5-b739-fde01fc7381d",
+    "name" : "Statistic"
+  }
+}

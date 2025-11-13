@@ -1,0 +1,20 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!DOCTYPE records [<!ENTITY fragment SYSTEM "fragment">]>
+<Events
+  xmlns="event-logging:3"
+  xmlns:stroom="stroom"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="event-logging:3 file://event-logging-v3.4.2.xsd"
+  Version="3.4.2">
+  &fragment;
+</Events>
+
+<!--?xml version=“1.1” encoding=“UTF-8"?>-->
+<!--<!DOCTYPE Events [ <!ENTITY fragment SYSTEM “fragment”>]>-->
+<!--<Events-->
+<!--xmlns=“event-logging:3"-->
+<!--xmlns:stroom=“stroom”-->
+<!--xmlns:xsi=“http://www.w3.org/2001/XMLSchema-instance”-->
+<!--xsi:schemaLocation=“event-logging:3 file://event-logging-v3.0.0.xsd” Version=“3.0.0">-->
+<!--&fragment;-->
+<!--</Events>-->

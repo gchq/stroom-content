@@ -1,0 +1,41 @@
+{
+  "uuid" : "d6efab31-f600-4768-b995-37fb9093168e",
+  "name" : "all_work_no_play_symbol_map",
+  "version" : "a152df1b-a22a-4d38-bc96-f323f8210980",
+  "stateType" : "TEMPORAL_STATE",
+  "settings" : {
+    "type" : "temporalState",
+    "maxStoreSize" : 10737418240,
+    "synchroniseMerge" : false,
+    "overwrite" : true,
+    "retention" : {
+      "enabled" : false,
+      "duration" : {
+        "time" : 1,
+        "timeUnit" : "YEARS"
+      },
+      "useStateTime" : false
+    },
+    "snapshotSettings" : {
+      "useSnapshotsForLookup" : false,
+      "useSnapshotsForGet" : false,
+      "useSnapshotsForQuery" : false
+    },
+    "condense" : {
+      "enabled" : false,
+      "duration" : {
+        "time" : 1,
+        "timeUnit" : "YEARS"
+      }
+    },
+    "keySchema" : {
+      "keyType" : "VARIABLE",
+      "hashLength" : "INTEGER",
+      "temporalPrecision" : "MILLISECOND"
+    },
+    "valueSchema" : {
+      "stateValueType" : "VARIABLE",
+      "hashLength" : "INTEGER"
+    }
+  }
+}

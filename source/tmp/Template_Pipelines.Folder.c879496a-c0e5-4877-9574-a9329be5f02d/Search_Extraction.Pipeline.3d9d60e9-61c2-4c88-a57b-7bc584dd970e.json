@@ -1,0 +1,90 @@
+{
+  "elements" : {
+    "add" : [ {
+      "id" : "splitFilter",
+      "type" : "SplitFilter"
+    }, {
+      "id" : "idEnrichmentFilter",
+      "type" : "IdEnrichmentFilter"
+    }, {
+      "id" : "xsltFilter",
+      "type" : "XSLTFilter"
+    }, {
+      "id" : "searchResultOutputFilter",
+      "type" : "SearchResultOutputFilter"
+    }, {
+      "id" : "xmlParser",
+      "type" : "XMLParser"
+    }, {
+      "id" : "Source",
+      "type" : "Source"
+    }, {
+      "id" : "toDetections",
+      "type" : "XSLTFilter"
+    }, {
+      "id" : "xmlWriter",
+      "type" : "XMLWriter"
+    }, {
+      "id" : "alertsStreamAppender",
+      "type" : "StreamAppender"
+    } ]
+  },
+  "properties" : {
+    "add" : [ {
+      "element" : "splitFilter",
+      "name" : "splitDepth",
+      "value" : {
+        "integer" : 1
+      }
+    }, {
+      "element" : "splitFilter",
+      "name" : "splitCount",
+      "value" : {
+        "integer" : 100
+      }
+    }, {
+      "element" : "toDetections",
+      "name" : "xslt",
+      "value" : {
+        "entity" : {
+          "type" : "XSLT",
+          "uuid" : "d0e5279a-e4cd-4db8-9bd9-897c3596139e",
+          "name" : "Alert To Detection"
+        }
+      }
+    }, {
+      "element" : "alertsStreamAppender",
+      "name" : "streamType",
+      "value" : {
+        "string" : "Detections"
+      }
+    } ]
+  },
+  "links" : {
+    "add" : [ {
+      "from" : "splitFilter",
+      "to" : "idEnrichmentFilter"
+    }, {
+      "from" : "idEnrichmentFilter",
+      "to" : "xsltFilter"
+    }, {
+      "from" : "xsltFilter",
+      "to" : "searchResultOutputFilter"
+    }, {
+      "from" : "searchResultOutputFilter",
+      "to" : "toDetections"
+    }, {
+      "from" : "toDetections",
+      "to" : "xmlWriter"
+    }, {
+      "from" : "xmlParser",
+      "to" : "splitFilter"
+    }, {
+      "from" : "Source",
+      "to" : "xmlParser"
+    }, {
+      "from" : "xmlWriter",
+      "to" : "alertsStreamAppender"
+    } ]
+  }
+}

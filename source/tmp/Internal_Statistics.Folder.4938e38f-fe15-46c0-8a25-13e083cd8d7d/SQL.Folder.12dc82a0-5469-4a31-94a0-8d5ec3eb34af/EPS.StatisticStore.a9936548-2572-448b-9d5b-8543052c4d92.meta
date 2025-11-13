@@ -1,0 +1,19 @@
+{
+  "type" : "StatisticStore",
+  "uuid" : "a9936548-2572-448b-9d5b-8543052c4d92",
+  "name" : "EPS",
+  "version" : "1ef92624-4652-4b82-b51a-41a1b1ad69a8",
+  "description" : "EPS",
+  "statisticType" : "VALUE",
+  "rollUpType" : "NONE",
+  "precision" : 60000,
+  "enabled" : true,
+  "config" : {
+    "fields" : [ {
+      "fieldName" : "Node"
+    }, {
+      "fieldName" : "Type"
+    } ],
+    "customRollUpMasks" : [ ]
+  }
+}

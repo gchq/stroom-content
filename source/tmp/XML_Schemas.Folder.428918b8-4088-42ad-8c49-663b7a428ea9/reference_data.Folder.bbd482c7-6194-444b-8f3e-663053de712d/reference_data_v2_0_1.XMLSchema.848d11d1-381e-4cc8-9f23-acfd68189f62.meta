@@ -1,0 +1,11 @@
+{
+  "type" : "XMLSchema",
+  "uuid" : "848d11d1-381e-4cc8-9f23-acfd68189f62",
+  "name" : "reference-data v2.0.1",
+  "version" : "c660140f-799e-4eab-9b16-a421a258750b",
+  "description" : "",
+  "namespaceURI" : "reference-data:2",
+  "systemId" : "file://reference-data-v2.0.1.xsd",
+  "deprecated" : false,
+  "schemaGroup" : "REFERENCE_DATA"
+}

@@ -1,0 +1,5 @@
+name=Search Results Store Count
+path=/Internal Statistics/Stroom-Stats/Search Results Store Count
+type=StroomStatsStore
+uuid=87605fe7-21ee-4989-9b61-6d8e23ef4bcf
+version=V2

@@ -1,0 +1,33 @@
+{
+  "type" : "StatisticStore",
+  "uuid" : "378e1c9b-755f-48a5-a883-d0a7dbe3d167",
+  "name" : "Stroom Family App Events SQL Statistic",
+  "version" : "dd9ba752-17c8-493d-b17c-1ba81164e14b",
+  "description" : "",
+  "statisticType" : "COUNT",
+  "rollUpType" : "CUSTOM",
+  "precision" : 3600000,
+  "enabled" : true,
+  "config" : {
+    "fields" : [ {
+      "fieldName" : "Hostname"
+    }, {
+      "fieldName" : "Log Level"
+    }, {
+      "fieldName" : "Logger"
+    }, {
+      "fieldName" : "System"
+    } ],
+    "customRollUpMasks" : [ {
+      "rolledUpTagPosition" : [ ]
+    }, {
+      "rolledUpTagPosition" : [ 2 ]
+    }, {
+      "rolledUpTagPosition" : [ 2, 3 ]
+    }, {
+      "rolledUpTagPosition" : [ 0, 2 ]
+    }, {
+      "rolledUpTagPosition" : [ 0, 2, 3 ]
+    } ]
+  }
+}

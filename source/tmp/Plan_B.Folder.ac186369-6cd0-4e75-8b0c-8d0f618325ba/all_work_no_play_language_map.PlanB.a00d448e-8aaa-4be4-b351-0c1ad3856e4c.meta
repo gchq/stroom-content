@@ -1,0 +1,41 @@
+{
+  "uuid" : "a00d448e-8aaa-4be4-b351-0c1ad3856e4c",
+  "name" : "all_work_no_play_language_map",
+  "version" : "afe94858-6f6f-4b0b-97d5-889db78d65d0",
+  "stateType" : "TEMPORAL_STATE",
+  "settings" : {
+    "type" : "temporalState",
+    "maxStoreSize" : 10737418240,
+    "synchroniseMerge" : false,
+    "overwrite" : true,
+    "retention" : {
+      "enabled" : false,
+      "duration" : {
+        "time" : 1,
+        "timeUnit" : "YEARS"
+      },
+      "useStateTime" : false
+    },
+    "snapshotSettings" : {
+      "useSnapshotsForLookup" : false,
+      "useSnapshotsForGet" : false,
+      "useSnapshotsForQuery" : false
+    },
+    "condense" : {
+      "enabled" : false,
+      "duration" : {
+        "time" : 1,
+        "timeUnit" : "YEARS"
+      }
+    },
+    "keySchema" : {
+      "keyType" : "VARIABLE",
+      "hashLength" : "INTEGER",
+      "temporalPrecision" : "MILLISECOND"
+    },
+    "valueSchema" : {
+      "stateValueType" : "VARIABLE",
+      "hashLength" : "INTEGER"
+    }
+  }
+}
