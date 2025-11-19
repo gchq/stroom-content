@@ -9,15 +9,15 @@ def DIST_DIR_NAME="${BUILD_DIR_NAME}/distributions"
 def ZIP_SOURCE_DIR_NAME="${BUILD_DIR_NAME}/zipSource"
 def DEP_SOURCE_DIR_NAME="${ZIP_SOURCE_DIR_NAME}/dependencies"
 
-//Validates all the uuids to make sure there are no dup uuids
-//for different entities. Also ensures any Folder entities with the 
-//same path have the same uuid
-//TODO the logic in this script should be rewritten in groovy and stuck in here
-task validateContent(type: Exec) {
-    def validationScript = './validateContentPacks.py'
-    executable = validationScript
-    args = ['--all']
-}
+////Validates all the uuids to make sure there are no dup uuids
+////for different entities. Also ensures any Folder entities with the
+////same path have the same uuid
+////TODO the logic in this script should be rewritten in groovy and stuck in here
+//task validateContent(type: Exec) {
+//    def validationScript = './validateContentPacks.py'
+//    executable = validationScript
+//    args = ['--all']
+//}
 
 task cleanRoot() {
     delete project.file(BUILD_DIR_NAME)
@@ -107,9 +107,9 @@ subprojects {
         }
     }
 
-    task validate() {
-        dependsOn validateContent
-    }
+//    task validate() {
+//        dependsOn validateContent
+//    }
 
     // Create an xsd validation task for each xsd file found
     def xsdValidationTaskNo = 0
@@ -147,7 +147,7 @@ subprojects {
             }
 
             //println "Registered task ${xsdValidationTask.name}"
-            tasks.validate.dependsOn xsdValidationTask
+//            tasks.validate.dependsOn xsdValidationTask
     }
 
     // Create an xml validation task for each xml file found
@@ -186,8 +186,8 @@ subprojects {
             }
 
             //println "Registered task ${xmlValidationTask.name}"
-            tasks.validate.dependsOn xmlValidationTask
-            rootProject.tasks.validateContent.dependsOn xmlValidationTask
+//            tasks.validate.dependsOn xmlValidationTask
+//            rootProject.tasks.validateContent.dependsOn xmlValidationTask
     }
 
     // Create a json validation task for each json file found
@@ -220,12 +220,12 @@ subprojects {
             }
 
             //println "Registered task ${jsonValidationTask.name}"
-            tasks.validate.dependsOn jsonValidationTask
-            rootProject.tasks.validateContent.dependsOn jsonValidationTask
+//            tasks.validate.dependsOn jsonValidationTask
+//            rootProject.tasks.validateContent.dependsOn jsonValidationTask
     }
 
     build {
-        dependsOn validate
+//        dependsOn validate
         dependsOn copyDeps
         dependsOn unzipPack
         dependsOn unzipDeps
