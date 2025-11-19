@@ -1,0 +1,43 @@
+{
+  "uuid" : "ee06b18a-0735-49c6-b47d-5e130cec3e61",
+  "queryData" : {
+    "dataSource" : {
+      "type" : "StreamStore",
+      "uuid" : "StreamStore",
+      "name" : "Stream Store"
+    },
+    "expression" : {
+      "type" : "operator",
+      "children" : [ {
+        "type" : "term",
+        "field" : "Feed",
+        "condition" : "EQUALS",
+        "value" : "RAW_STREAMING_FORK-EVENTS"
+      }, {
+        "type" : "operator",
+        "op" : "OR",
+        "children" : [ {
+          "type" : "term",
+          "field" : "Type",
+          "condition" : "EQUALS",
+          "value" : "Raw Events"
+        }, {
+          "type" : "term",
+          "field" : "Type",
+          "condition" : "EQUALS",
+          "value" : "Raw Reference"
+        } ]
+      } ]
+    }
+  },
+  "priority" : 10,
+  "maxProcessingTasks" : 0,
+  "reprocess" : false,
+  "enabled" : true,
+  "deleted" : false,
+  "export" : true,
+  "processorType" : "PIPELINE",
+  "processorUuid" : "33334345-5505-45dc-ace2-ec41e40d6735",
+  "pipelineUuid" : "a092e9bc-3e55-405a-a9ab-5927b78e2410",
+  "pipelineName" : "RAW_STREAMING_FORK-EVENTS"
+}

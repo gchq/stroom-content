@@ -1,0 +1,5 @@
+name=JSON Extraction
+path=/Standard Pipelines/Json/JSON Extraction
+type=Pipeline
+uuid=13143179-b494-4146-ac4b-9a6010cada89
+version=V2

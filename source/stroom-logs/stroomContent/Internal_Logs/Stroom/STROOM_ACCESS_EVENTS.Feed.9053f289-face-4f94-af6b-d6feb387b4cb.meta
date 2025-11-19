@@ -1,9 +1,0 @@
-{
-  "type" : "Feed",
-  "uuid" : "9053f289-face-4f94-af6b-d6feb387b4cb",
-  "name" : "STROOM-ACCESS-EVENTS",
-  "version" : "34561661-36fa-4752-9348-9402b56c426b",
-  "reference" : false,
-  "streamType" : "Raw Events",
-  "status" : "RECEIVE"
-}

@@ -1,0 +1,29 @@
+{
+  "uuid" : "f4ce8c3d-2493-4da4-9717-d6e63b13ab08",
+  "queryData" : {
+    "dataSource" : {
+      "type" : "StreamStore",
+      "uuid" : "StreamStore",
+      "name" : "Stream Store"
+    },
+    "expression" : {
+      "type" : "operator",
+      "children" : [ {
+        "type" : "term",
+        "field" : "Type",
+        "condition" : "EQUALS",
+        "value" : "Events"
+      } ]
+    }
+  },
+  "priority" : 10,
+  "maxProcessingTasks" : 0,
+  "reprocess" : false,
+  "enabled" : true,
+  "deleted" : false,
+  "export" : true,
+  "processorType" : "PIPELINE",
+  "processorUuid" : "2e7b4b50-92e2-485f-b010-2856d716fb9f",
+  "pipelineUuid" : "c9c879ee-d88a-40ff-8654-d018f1c2d957",
+  "pipelineName" : "Example Index"
+}

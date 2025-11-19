@@ -1,0 +1,43 @@
+{
+  "uuid" : "8987d81a-3fc6-4cbe-994f-1fa0a18a2c61",
+  "queryData" : {
+    "dataSource" : {
+      "type" : "StreamStore",
+      "uuid" : "StreamStore",
+      "name" : "Stream Store"
+    },
+    "expression" : {
+      "type" : "operator",
+      "children" : [ {
+        "type" : "term",
+        "field" : "Feed",
+        "condition" : "EQUALS",
+        "value" : "BOM_AND_REPLACE_XML-EVENTS"
+      }, {
+        "type" : "operator",
+        "op" : "OR",
+        "children" : [ {
+          "type" : "term",
+          "field" : "Type",
+          "condition" : "EQUALS",
+          "value" : "Raw Events"
+        }, {
+          "type" : "term",
+          "field" : "Type",
+          "condition" : "EQUALS",
+          "value" : "Raw Reference"
+        } ]
+      } ]
+    }
+  },
+  "priority" : 10,
+  "maxProcessingTasks" : 0,
+  "reprocess" : false,
+  "enabled" : true,
+  "deleted" : false,
+  "export" : true,
+  "processorType" : "PIPELINE",
+  "processorUuid" : "8dfa2b9c-51e1-4e62-88d3-9beb9634cde7",
+  "pipelineUuid" : "e40dfda1-0240-49cf-9695-c1f6fa8c65d9",
+  "pipelineName" : "BOM_AND_REPLACE_XML-EVENTS"
+}

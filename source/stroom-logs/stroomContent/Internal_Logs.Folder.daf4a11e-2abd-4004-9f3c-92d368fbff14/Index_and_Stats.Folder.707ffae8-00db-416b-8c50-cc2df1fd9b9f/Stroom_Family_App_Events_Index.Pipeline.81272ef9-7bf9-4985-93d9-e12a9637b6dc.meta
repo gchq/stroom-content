@@ -1,0 +1,11 @@
+{
+  "type" : "Pipeline",
+  "uuid" : "81272ef9-7bf9-4985-93d9-e12a9637b6dc",
+  "name" : "Stroom Family App Events Index",
+  "version" : "a25003dd-d9e7-4d5f-b268-b1dcdc9bfb2f",
+  "parentPipeline" : {
+    "type" : "Pipeline",
+    "uuid" : "fcef1b20-083e-436c-ab95-47a6ce453435",
+    "name" : "Indexing"
+  }
+}

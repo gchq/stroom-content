@@ -1,0 +1,43 @@
+{
+  "uuid" : "d43d0c2f-dbf0-451c-a86e-a293e0d49847",
+  "queryData" : {
+    "dataSource" : {
+      "type" : "StreamStore",
+      "uuid" : "StreamStore",
+      "name" : "Stream Store"
+    },
+    "expression" : {
+      "type" : "operator",
+      "children" : [ {
+        "type" : "term",
+        "field" : "Feed",
+        "condition" : "EQUALS",
+        "value" : "IP_RANGE_TO_LOCATION-REFERENCE"
+      }, {
+        "type" : "operator",
+        "op" : "OR",
+        "children" : [ {
+          "type" : "term",
+          "field" : "Type",
+          "condition" : "EQUALS",
+          "value" : "Raw Events"
+        }, {
+          "type" : "term",
+          "field" : "Type",
+          "condition" : "EQUALS",
+          "value" : "Raw Reference"
+        } ]
+      } ]
+    }
+  },
+  "priority" : 10,
+  "maxProcessingTasks" : 0,
+  "reprocess" : false,
+  "enabled" : true,
+  "deleted" : false,
+  "export" : true,
+  "processorType" : "PIPELINE",
+  "processorUuid" : "3e50c6d4-787e-4754-b31c-2fa70d9d1912",
+  "pipelineUuid" : "5cf275ab-33a6-4c34-9439-c68fdd41bbbe",
+  "pipelineName" : "IP_RANGE_TO_LOCATION-REFERENCE"
+}

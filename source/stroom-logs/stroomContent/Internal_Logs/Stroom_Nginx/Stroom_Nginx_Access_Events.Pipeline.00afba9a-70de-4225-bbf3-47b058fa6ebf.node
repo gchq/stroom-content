@@ -1,4 +1,0 @@
-name=Stroom Nginx Access Events
-path=Internal Logs/Stroom Nginx
-type=Pipeline
-uuid=00afba9a-70de-4225-bbf3-47b058fa6ebf

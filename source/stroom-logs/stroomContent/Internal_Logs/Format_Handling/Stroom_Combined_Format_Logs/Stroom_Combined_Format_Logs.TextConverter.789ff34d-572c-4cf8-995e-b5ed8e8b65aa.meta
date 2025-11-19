@@ -1,8 +1,0 @@
-{
-  "type" : "TextConverter",
-  "uuid" : "789ff34d-572c-4cf8-995e-b5ed8e8b65aa",
-  "name" : "Stroom Combined Format Logs",
-  "version" : "945ff648-0adb-4589-b320-4bf1276d1ecc",
-  "description" : "",
-  "converterType" : "NONE"
-}

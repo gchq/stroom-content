@@ -1,8 +1,0 @@
-{
-  "type" : "TextConverter",
-  "uuid" : "09780b07-5fed-4c33-9898-6a68f422d82f",
-  "name" : "CLF aka Apache httpd Logs",
-  "version" : "44f6d637-90d4-4a30-bddb-99d11689729c",
-  "description" : "",
-  "converterType" : "NONE"
-}

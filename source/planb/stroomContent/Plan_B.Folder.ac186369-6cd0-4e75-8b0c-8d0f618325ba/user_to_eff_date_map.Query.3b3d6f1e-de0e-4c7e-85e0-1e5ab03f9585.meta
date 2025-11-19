@@ -1,0 +1,12 @@
+{
+  "type" : "Query",
+  "uuid" : "3b3d6f1e-de0e-4c7e-85e0-1e5ab03f9585",
+  "name" : "user_to_eff_date_map",
+  "version" : "44b4181b-23fb-4955-81ba-6def8d41e08f",
+  "timeRange" : {
+    "name" : "All time",
+    "condition" : "BETWEEN"
+  },
+  "query" : "from user_to_eff_date_map\nselect Key, EffectiveTime, ValueType, Value",
+  "queryTablePreferences" : { }
+}

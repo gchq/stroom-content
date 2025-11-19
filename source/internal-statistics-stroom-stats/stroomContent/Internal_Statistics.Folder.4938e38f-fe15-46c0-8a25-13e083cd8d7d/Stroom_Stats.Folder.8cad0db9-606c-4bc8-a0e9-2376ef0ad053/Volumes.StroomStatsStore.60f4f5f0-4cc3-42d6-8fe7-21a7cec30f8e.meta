@@ -1,0 +1,23 @@
+{
+  "type" : "StroomStatsStore",
+  "uuid" : "60f4f5f0-4cc3-42d6-8fe7-21a7cec30f8e",
+  "name" : "Volumes",
+  "version" : "c67016e1-aade-434e-90c1-fb0f0aa05593",
+  "description" : "Volumes",
+  "statisticType" : "VALUE",
+  "rollUpType" : "NONE",
+  "precision" : "MINUTE",
+  "enabled" : true,
+  "config" : {
+    "fields" : [ {
+      "fieldName" : "Id"
+    }, {
+      "fieldName" : "Node"
+    }, {
+      "fieldName" : "Path"
+    }, {
+      "fieldName" : "Type"
+    } ],
+    "customRollUpMasks" : [ ]
+  }
+}

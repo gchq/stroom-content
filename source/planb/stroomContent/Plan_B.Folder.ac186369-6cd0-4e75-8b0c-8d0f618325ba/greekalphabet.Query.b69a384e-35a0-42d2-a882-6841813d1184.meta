@@ -1,0 +1,12 @@
+{
+  "type" : "Query",
+  "uuid" : "b69a384e-35a0-42d2-a882-6841813d1184",
+  "name" : "greekalphabet",
+  "version" : "f2308848-48af-4480-92d8-725445fa4d14",
+  "timeRange" : {
+    "name" : "All time",
+    "condition" : "BETWEEN"
+  },
+  "query" : "from greekalphabet\nselect Key, EffectiveTime, ValueType, Value",
+  "queryTablePreferences" : { }
+}

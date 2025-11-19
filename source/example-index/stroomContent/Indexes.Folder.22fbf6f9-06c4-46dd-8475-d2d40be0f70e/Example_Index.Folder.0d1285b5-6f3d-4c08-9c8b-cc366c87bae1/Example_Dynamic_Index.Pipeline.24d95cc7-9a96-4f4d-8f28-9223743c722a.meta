@@ -1,0 +1,11 @@
+{
+  "type" : "Pipeline",
+  "uuid" : "24d95cc7-9a96-4f4d-8f28-9223743c722a",
+  "name" : "Example Dynamic Index",
+  "version" : "241fabc6-a9ed-412e-b142-f6bc9f591911",
+  "parentPipeline" : {
+    "type" : "Pipeline",
+    "uuid" : "252eed11-5392-4817-8305-7027c772ff1c",
+    "name" : "Dynamic Indexing"
+  }
+}

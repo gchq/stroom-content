@@ -1,9 +1,0 @@
-{
-  "type" : "Feed",
-  "uuid" : "404f2bd8-be38-42e2-93d2-9a9236761dcf",
-  "name" : "STROOM_NGINX-ACCESS-EVENTS",
-  "version" : "423a64db-5f87-4fbc-9943-87e99c912126",
-  "reference" : false,
-  "streamType" : "Raw Events",
-  "status" : "RECEIVE"
-}

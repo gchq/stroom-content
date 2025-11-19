@@ -1,0 +1,15 @@
+{
+  "properties" : {
+    "add" : [ {
+      "element" : "streamAppender",
+      "name" : "feed",
+      "value" : {
+        "entity" : {
+          "type" : "Feed",
+          "uuid" : "b8f1b7dd-99ad-4e12-bd31-a26ae380355d",
+          "name" : "STROOM-APP-EVENTS"
+        }
+      }
+    } ]
+  }
+}

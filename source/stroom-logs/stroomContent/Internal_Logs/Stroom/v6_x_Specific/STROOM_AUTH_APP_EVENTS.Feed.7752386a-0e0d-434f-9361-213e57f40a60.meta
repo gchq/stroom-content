@@ -1,9 +1,0 @@
-{
-  "type" : "Feed",
-  "uuid" : "7752386a-0e0d-434f-9361-213e57f40a60",
-  "name" : "STROOM_AUTH-APP-EVENTS",
-  "version" : "83de3be5-e235-4272-97ec-50fc1735bcd5",
-  "reference" : false,
-  "streamType" : "Raw Events",
-  "status" : "RECEIVE"
-}

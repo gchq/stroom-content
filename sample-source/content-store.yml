@@ -1,0 +1,120 @@
+# Metadata about the content store
+meta:
+  # ID uniquely identifies this content store
+  ownerId: gchq.gov.uk
+
+  # Name of content store as displayed in UI
+  ownerName: GCHQ
+
+  # URL for further information
+  ownerUrl: https://www.gchq.gov.uk/
+
+  # Description of the owner of this content store, in Markdown.
+  ownerDescription: |
+    We are the UK's intelligence, security and cyber agency. Our mission is to help keep the country safe.
+
+  # If a content pack is marked gitNeedsAuth:true, this Markdown is displayed
+  # so users know where to get credentials from.
+  authContact:
+    Contact us at [GCHQ](https://www.gchq.gov.uk/section/about-this-website/contact).
+
+# List of content packs
+contentPacks:
+  -
+    id: sample-feeds-and-translations
+    uiName: Feeds and Translations
+    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/images/Pipeline.svg
+    licenseName: Apache 2.0
+    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
+    stroomPath: /
+    gitUrl: https://github.com/gchq/stroom-content.git
+    gitBranch: master
+    gitPath: sample-source/sample-feeds-and-translations/stroomContent/Feeds_and_Translations.Folder.41ca475d-5812-4655-a60b-fd542bd8b388/
+
+  -
+    id: sample-hdfs-file-appender
+    uiName: HDFS File Appender
+    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/images/Hadoop.svg
+    licenseName: Apache 2.0
+    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
+    stroomPath: /
+    gitUrl: https://github.com/gchq/stroom-content.git
+    gitBranch: master
+    gitPath: sample-source/sample-hdfs-file-appender/stroomContent/HDFS_File_Appender.Folder.66e32fa7-edec-49ad-a569-a8dc33d42db1/
+
+  -
+    id: sample-import-export-test
+    uiName: Import Export Test
+    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/images/Feed.svg
+    licenseName: Apache 2.0
+    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
+    stroomPath: /
+    gitUrl: https://github.com/gchq/stroom-content.git
+    gitBranch: master
+    gitPath: sample-source/sample-import-export-test/stroomContent/Import_Export_Test.Folder.acd81f4a-cac8-4a81-83b8-cccf2aeabed9/
+
+  -
+    id: example-solr-index
+    uiName: Example Solr Index
+    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/images/Indexes.svg
+    licenseName: Apache 2.0
+    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
+    stroomPath: /
+    gitUrl: https://github.com/gchq/stroom-content.git
+    gitBranch: master
+    gitPath: sample-source/sample-indexes/stroomContent/Indexes.Folder.22fbf6f9-06c4-46dd-8475-d2d40be0f70e/
+
+  -
+    id: sample-kafka-brokers
+    uiName: Kafka Brokers
+    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/images/KafkaConfig.svg
+    licenseName: Apache 2.0
+    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
+    stroomPath: /
+    gitUrl: https://github.com/gchq/stroom-content.git
+    gitBranch: master
+    gitPath: sample-source/sample-kafka-brokers/stroomContent/Kafka_Brokers.Folder.4f0e982e-8b16-47ad-b1c7-cf69ad1686ee/
+
+  -
+    id: sample-reference-data-store
+    uiName: Reference Data Store
+    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/images/Feed.svg
+    licenseName: Apache 2.0
+    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
+    stroomPath: /
+    gitUrl: https://github.com/gchq/stroom-content.git
+    gitBranch: master
+    gitPath: sample-source/sample-reference-data-store/stroomContent/Reference_Data_Store.Folder.5ba365e2-31fd-4295-a07a-96dddb7acd3f/
+
+  -
+    id: sample-search
+    uiName: Search
+    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/images/Query.svg
+    licenseName: Apache 2.0
+    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
+    stroomPath: /
+    gitUrl: https://github.com/gchq/stroom-content.git
+    gitBranch: master
+    gitPath: sample-source/sample-search/stroomContent/Search.Folder.d226574e-fef6-462b-a27c-18a55dba6fd6/
+
+  -
+    id: sample-statistics-test-data
+    uiName: Statistics Test Data
+    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/images/StatisticStore.svg
+    licenseName: Apache 2.0
+    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
+    stroomPath: /
+    gitUrl: https://github.com/gchq/stroom-content.git
+    gitBranch: master
+    gitPath: sample-source/sample-statistics-test-data/stroomContent/Statistics_Test_Data.Folder.61e288b4-0390-4d3d-a4f8-a3ceb948a2ab/
+
+  -
+    id: sample-visualisation-examples
+    uiName: Visualisation Examples
+    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/images/Visualisation.svg
+    licenseName: Apache 2.0
+    licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
+    stroomPath: /
+    gitUrl: https://github.com/gchq/stroom-content.git
+    gitBranch: master
+    gitPath: sample-source/sample-visualisation-examples/stroomContent/Visualisations.Folder.95600122-fa8f-4a91-a54b-fe5b6d56fd0a/

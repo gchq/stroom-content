@@ -1,9 +1,0 @@
-{
-  "type" : "Feed",
-  "uuid" : "306959c0-7125-492d-8f0d-81af248a85f2",
-  "name" : "CSV_FEED",
-  "version" : "d9804052-86ec-4cfc-9b64-9dd0b4d0b3b1",
-  "reference" : false,
-  "streamType" : "Raw Events",
-  "status" : "RECEIVE"
-}

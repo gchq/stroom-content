@@ -1,0 +1,43 @@
+{
+  "uuid" : "df39b42e-05c9-4beb-9aa7-bf1e7934e63c",
+  "queryData" : {
+    "dataSource" : {
+      "type" : "StreamStore",
+      "uuid" : "StreamStore",
+      "name" : "Stream Store"
+    },
+    "expression" : {
+      "type" : "operator",
+      "children" : [ {
+        "type" : "term",
+        "field" : "Feed",
+        "condition" : "EQUALS",
+        "value" : "FILENO_TO_LOCATION-REFERENCE"
+      }, {
+        "type" : "operator",
+        "op" : "OR",
+        "children" : [ {
+          "type" : "term",
+          "field" : "Type",
+          "condition" : "EQUALS",
+          "value" : "Raw Events"
+        }, {
+          "type" : "term",
+          "field" : "Type",
+          "condition" : "EQUALS",
+          "value" : "Raw Reference"
+        } ]
+      } ]
+    }
+  },
+  "priority" : 10,
+  "maxProcessingTasks" : 0,
+  "reprocess" : false,
+  "enabled" : true,
+  "deleted" : false,
+  "export" : true,
+  "processorType" : "PIPELINE",
+  "processorUuid" : "4eb3f35f-267e-4438-8a45-f0a4555e3775",
+  "pipelineUuid" : "7826035a-b248-4d86-bf15-3fbdd03084a6",
+  "pipelineName" : "FILENO_TO_LOCATION-REFERENCE"
+}

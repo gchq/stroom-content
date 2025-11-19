@@ -1,0 +1,29 @@
+{
+  "elements" : {
+    "add" : [ {
+      "id" : "Source",
+      "type" : "Source"
+    }, {
+      "id" : "xmlParser",
+      "type" : "XMLParser"
+    }, {
+      "id" : "planBFilter",
+      "type" : "PlanBFilter"
+    }, {
+      "id" : "splitFilter",
+      "type" : "SplitFilter"
+    } ]
+  },
+  "links" : {
+    "add" : [ {
+      "from" : "Source",
+      "to" : "xmlParser"
+    }, {
+      "from" : "xmlParser",
+      "to" : "splitFilter"
+    }, {
+      "from" : "splitFilter",
+      "to" : "planBFilter"
+    } ]
+  }
+}

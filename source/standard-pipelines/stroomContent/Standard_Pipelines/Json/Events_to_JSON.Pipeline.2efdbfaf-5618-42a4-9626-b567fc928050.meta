@@ -1,6 +1,0 @@
-{
-  "type" : "Pipeline",
-  "uuid" : "2efdbfaf-5618-42a4-9626-b567fc928050",
-  "name" : "Events to JSON",
-  "version" : "9bf111b6-fc95-4da2-9d36-7de79608a869"
-}

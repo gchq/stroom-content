@@ -1,0 +1,5 @@
+name=Stroom Access Events
+path=/Internal Logs/Stroom/Stroom Access Events
+type=Pipeline
+uuid=053a3812-30a9-4c16-b18e-187e5dbeb971
+version=V2

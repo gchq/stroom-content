@@ -9,7 +9,7 @@ The content is grouped into a number of _content packs_ which can each be built 
 If you are looking for visualisation content packs then see [stroom-visualisations-dev](https://github.com/gchq/stroom-visualisations-dev).
 
 #### Caution!
- 
+
 **Errors/problems will arise if you import an incompatible content pack into your version of Stroom.**
 
 If you wish to build a previous version of a particular content pack, you will need to `git checkout` the appropriately
@@ -39,7 +39,7 @@ The core XML Schemas required by Stroom for basic operation.
 
 
 
-### [**event-logging-xml-schemas**](./source/event-logging-xml-schemas/README.md)
+### [**event-logging-xml-schema**](./source/event-logging-xml-schemas/README.md)
 
 An XML Schema standard for describing audit events.
 
@@ -113,7 +113,7 @@ A set of _StroomStatsStore_ entities for representing the internal statistics ge
 
 
 
-### [**standard-pipelines**](./source/standard-pipelines/README.md) 
+### [**standard-pipelines**](./source/standard-pipelines/README.md)
 
 A set of standard data format agnostic pipelines for processing data.
 
@@ -160,7 +160,7 @@ The entities used in the [quick start guide](https://gchq.github.io/stroom-docs/
 
 
 
-### [**template-pipelines**](./source/template-pipelines/README.md) 
+### [**template-pipelines**](./source/template-pipelines/README.md)
 
 A set of template pipelines that other pipelines can inherit from.
 
@@ -176,7 +176,7 @@ A set of template pipelines that other pipelines can inherit from.
 
 \* Stroom `v7.1-beta.3` onwards is compatible with this content pack, but it must not be used in `v7.1-beta.1` or `v7.1-beta.2`
 
-### [**example-index**](./source/example-index/README.md) 
+### [**example-index**](./source/example-index/README.md)
 
 A basic Stroom index designed for `event-logging` XML.
 
@@ -218,7 +218,7 @@ The build will place the following pairs of zip files in `./build/distributions`
 
 - `my-pack-name-all.zip`
 
-The `-all` variant contains all dependency packs and is therefore larger. 
+The `-all` variant contains all dependency packs and is therefore larger.
 The other zip just contains the named pack with no dependencies.
 
 
@@ -266,7 +266,7 @@ The new content should be created in the chosen folder structure. Once the conte
 
 The _Export_ function will create a zip file containing all the serialised entities complete with the original path structure.
 You should create a directory under _stroom-content-source/_ with the name being the name of the content-pack.
-The content of the zip file should be unzipped into this directory. 
+The content of the zip file should be unzipped into this directory.
 
 
 ### Modifying existing content

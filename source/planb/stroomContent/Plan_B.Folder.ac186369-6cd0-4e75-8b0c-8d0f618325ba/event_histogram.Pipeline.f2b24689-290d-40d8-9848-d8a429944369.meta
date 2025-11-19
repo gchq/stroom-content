@@ -1,0 +1,11 @@
+{
+  "type" : "Pipeline",
+  "uuid" : "f2b24689-290d-40d8-9848-d8a429944369",
+  "name" : "event_histogram",
+  "version" : "124326c4-8a24-44cc-891b-464b177c700f",
+  "parentPipeline" : {
+    "type" : "Pipeline",
+    "uuid" : "7c93b5b1-ebda-42c0-b05b-9ea0fbab83b3",
+    "name" : "Plan B Parent Pipeline"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "elements" : {
+    "add" : [ {
+      "id" : "splitFilter",
+      "type" : "SplitFilter"
+    }, {
+      "id" : "xsltFilter",
+      "type" : "XSLTFilter"
+    }, {
+      "id" : "statisticsFilter",
+      "type" : "StatisticsFilter"
+    }, {
+      "id" : "xmlParser",
+      "type" : "XMLParser"
+    } ]
+  },
+  "links" : {
+    "add" : [ {
+      "from" : "splitFilter",
+      "to" : "xsltFilter"
+    }, {
+      "from" : "xsltFilter",
+      "to" : "statisticsFilter"
+    }, {
+      "from" : "xmlParser",
+      "to" : "splitFilter"
+    } ]
+  }
+}

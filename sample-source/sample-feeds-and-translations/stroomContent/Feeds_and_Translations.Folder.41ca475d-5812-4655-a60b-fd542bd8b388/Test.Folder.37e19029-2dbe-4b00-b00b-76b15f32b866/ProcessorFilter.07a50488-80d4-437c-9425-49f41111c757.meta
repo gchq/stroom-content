@@ -1,0 +1,43 @@
+{
+  "uuid" : "07a50488-80d4-437c-9425-49f41111c757",
+  "queryData" : {
+    "dataSource" : {
+      "type" : "StreamStore",
+      "uuid" : "StreamStore",
+      "name" : "Stream Store"
+    },
+    "expression" : {
+      "type" : "operator",
+      "children" : [ {
+        "type" : "term",
+        "field" : "Feed",
+        "condition" : "EQUALS",
+        "value" : "ZIP_TEST-DATA_SPLITTER-EVENTS"
+      }, {
+        "type" : "operator",
+        "op" : "OR",
+        "children" : [ {
+          "type" : "term",
+          "field" : "Type",
+          "condition" : "EQUALS",
+          "value" : "Raw Events"
+        }, {
+          "type" : "term",
+          "field" : "Type",
+          "condition" : "EQUALS",
+          "value" : "Raw Reference"
+        } ]
+      } ]
+    }
+  },
+  "priority" : 10,
+  "maxProcessingTasks" : 0,
+  "reprocess" : false,
+  "enabled" : true,
+  "deleted" : false,
+  "export" : true,
+  "processorType" : "PIPELINE",
+  "processorUuid" : "85c1f28f-3c70-400b-9bd7-8c0de3632d02",
+  "pipelineUuid" : "ee00de01-cd54-4f89-8587-8bf2d0228b9c",
+  "pipelineName" : "ZIP_TEST-DATA_SPLITTER-EVENTS"
+}

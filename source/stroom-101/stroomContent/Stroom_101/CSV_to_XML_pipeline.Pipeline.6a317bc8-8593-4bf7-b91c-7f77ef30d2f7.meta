@@ -1,7 +1,0 @@
-{
-  "type" : "Pipeline",
-  "uuid" : "6a317bc8-8593-4bf7-b91c-7f77ef30d2f7",
-  "name" : "CSV to XML pipeline",
-  "version" : "7113ed2a-e114-4faf-bd19-4dbd548b5beb",
-  "description" : ""
-}

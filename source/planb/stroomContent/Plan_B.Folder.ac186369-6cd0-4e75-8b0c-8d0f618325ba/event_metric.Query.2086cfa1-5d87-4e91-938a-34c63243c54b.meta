@@ -1,0 +1,12 @@
+{
+  "type" : "Query",
+  "uuid" : "2086cfa1-5d87-4e91-938a-34c63243c54b",
+  "name" : "event_metric",
+  "version" : "e4f62363-a732-43aa-870e-2f5218078511",
+  "timeRange" : {
+    "name" : "All time",
+    "condition" : "BETWEEN"
+  },
+  "query" : "from event_metric\nwhere Time > 2010-01-01T01:00:00.000Z and Time < 2010-01-02T00:00:00.000Z\n// and Key = \"user=user4\"\nselect *\n// show BarChart(x = Time, y = Value, maxValues = 100000)",
+  "queryTablePreferences" : { }
+}

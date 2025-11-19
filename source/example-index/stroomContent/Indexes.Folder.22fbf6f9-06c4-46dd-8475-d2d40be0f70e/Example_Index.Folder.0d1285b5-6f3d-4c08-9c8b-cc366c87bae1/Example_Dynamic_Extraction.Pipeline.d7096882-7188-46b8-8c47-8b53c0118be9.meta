@@ -1,0 +1,11 @@
+{
+  "type" : "Pipeline",
+  "uuid" : "d7096882-7188-46b8-8c47-8b53c0118be9",
+  "name" : "Example Dynamic Extraction",
+  "version" : "13555ef1-552d-4256-b6ec-fb6d9627eb0b",
+  "parentPipeline" : {
+    "type" : "Pipeline",
+    "uuid" : "217378f1-165a-4c38-ab34-04a6d2c497fa",
+    "name" : "Dynamic Search Extraction"
+  }
+}

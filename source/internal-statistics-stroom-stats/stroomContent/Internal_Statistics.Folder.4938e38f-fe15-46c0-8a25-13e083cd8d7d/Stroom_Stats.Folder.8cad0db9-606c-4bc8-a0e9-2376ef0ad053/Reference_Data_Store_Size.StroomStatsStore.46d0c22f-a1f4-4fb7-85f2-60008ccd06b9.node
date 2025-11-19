@@ -1,0 +1,5 @@
+name=Reference Data Store Size
+path=/Internal Statistics/Stroom-Stats/Reference Data Store Size
+type=StroomStatsStore
+uuid=46d0c22f-a1f4-4fb7-85f2-60008ccd06b9
+version=V2

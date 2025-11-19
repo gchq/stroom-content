@@ -1,0 +1,5 @@
+name=Memory
+path=/Internal Statistics/SQL/Memory
+type=StatisticStore
+uuid=77c09ccb-e251-4ca5-bca0-56a842654397
+version=V2

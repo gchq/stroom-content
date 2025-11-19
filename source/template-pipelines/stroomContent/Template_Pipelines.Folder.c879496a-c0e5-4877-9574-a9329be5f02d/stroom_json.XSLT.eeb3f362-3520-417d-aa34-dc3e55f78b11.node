@@ -1,0 +1,5 @@
+name=stroom-json
+path=/Template Pipelines/stroom-json
+type=XSLT
+uuid=eeb3f362-3520-417d-aa34-dc3e55f78b11
+version=V2

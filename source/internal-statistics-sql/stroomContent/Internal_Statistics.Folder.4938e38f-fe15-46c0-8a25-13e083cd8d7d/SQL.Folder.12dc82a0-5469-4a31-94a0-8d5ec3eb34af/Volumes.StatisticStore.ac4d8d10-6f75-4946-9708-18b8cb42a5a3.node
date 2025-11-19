@@ -1,0 +1,5 @@
+name=Volumes
+path=/Internal Statistics/SQL/Volumes
+type=StatisticStore
+uuid=ac4d8d10-6f75-4946-9708-18b8cb42a5a3
+version=V2

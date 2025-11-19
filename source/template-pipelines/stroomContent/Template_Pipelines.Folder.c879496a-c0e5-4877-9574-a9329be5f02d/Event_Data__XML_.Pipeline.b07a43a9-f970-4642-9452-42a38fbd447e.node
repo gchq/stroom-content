@@ -1,0 +1,5 @@
+name=Event Data (XML)
+path=/Template Pipelines/Event Data (XML)
+type=Pipeline
+uuid=b07a43a9-f970-4642-9452-42a38fbd447e
+version=V2

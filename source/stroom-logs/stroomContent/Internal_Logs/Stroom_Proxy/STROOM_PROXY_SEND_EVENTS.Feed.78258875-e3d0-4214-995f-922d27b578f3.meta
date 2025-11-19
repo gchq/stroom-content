@@ -1,9 +1,0 @@
-{
-  "type" : "Feed",
-  "uuid" : "78258875-e3d0-4214-995f-922d27b578f3",
-  "name" : "STROOM_PROXY-SEND-EVENTS",
-  "version" : "a454bfd2-2cb4-4cb9-89e0-79872dd30491",
-  "reference" : false,
-  "streamType" : "Raw Events",
-  "status" : "RECEIVE"
-}

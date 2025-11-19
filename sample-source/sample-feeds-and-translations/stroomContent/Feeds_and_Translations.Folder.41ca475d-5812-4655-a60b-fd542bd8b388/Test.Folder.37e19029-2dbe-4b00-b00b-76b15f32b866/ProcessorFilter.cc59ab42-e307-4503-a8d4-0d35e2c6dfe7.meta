@@ -1,0 +1,43 @@
+{
+  "uuid" : "cc59ab42-e307-4503-a8d4-0d35e2c6dfe7",
+  "queryData" : {
+    "dataSource" : {
+      "type" : "StreamStore",
+      "uuid" : "StreamStore",
+      "name" : "Stream Store"
+    },
+    "expression" : {
+      "type" : "operator",
+      "children" : [ {
+        "type" : "term",
+        "field" : "Feed",
+        "condition" : "EQUALS",
+        "value" : "DATA_VIEWING_XML_SINGLE_LINE-EVENTS"
+      }, {
+        "type" : "operator",
+        "op" : "OR",
+        "children" : [ {
+          "type" : "term",
+          "field" : "Type",
+          "condition" : "EQUALS",
+          "value" : "Raw Events"
+        }, {
+          "type" : "term",
+          "field" : "Type",
+          "condition" : "EQUALS",
+          "value" : "Raw Reference"
+        } ]
+      } ]
+    }
+  },
+  "priority" : 10,
+  "maxProcessingTasks" : 0,
+  "reprocess" : false,
+  "enabled" : true,
+  "deleted" : false,
+  "export" : true,
+  "processorType" : "PIPELINE",
+  "processorUuid" : "800b3146-11fb-400d-a63d-5d7bf33a9df6",
+  "pipelineUuid" : "7f8d616b-e400-4ffb-ba4e-50d86c25ea04",
+  "pipelineName" : "DATA_VIEWING_XML_SINGLE_LINE-EVENTS"
+}
