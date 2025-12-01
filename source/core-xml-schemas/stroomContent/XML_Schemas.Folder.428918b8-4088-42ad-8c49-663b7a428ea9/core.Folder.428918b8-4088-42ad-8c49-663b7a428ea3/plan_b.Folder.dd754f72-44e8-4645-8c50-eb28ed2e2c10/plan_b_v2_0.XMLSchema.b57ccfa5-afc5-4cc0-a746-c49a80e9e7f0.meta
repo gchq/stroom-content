@@ -1,0 +1,11 @@
+{
+  "type" : "XMLSchema",
+  "uuid" : "b57ccfa5-afc5-4cc0-a746-c49a80e9e7f0",
+  "name" : "plan-b v2.0",
+  "version" : "dd7a195b-2b74-4875-84c8-a0f554e9c625",
+  "description" : "",
+  "namespaceURI" : "plan-b:2",
+  "systemId" : "file://plan-b-v2.0.xsd",
+  "deprecated" : false,
+  "schemaGroup" : "PLAN_B"
+}

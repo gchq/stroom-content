@@ -1,0 +1,5 @@
+name=test_traces
+path=/Plan B/test_traces
+type=Pipeline
+uuid=b7158e24-481c-4714-83d4-f64467b93d40
+version=V2

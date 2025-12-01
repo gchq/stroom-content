@@ -1,4 +1,5 @@
 {
+  "type" : "PlanB",
   "uuid" : "5bdbbdfa-b84c-4cc7-ad01-2930fc395818",
   "name" : "event_counts_histogram",
   "version" : "482be682-c3ac-4f9f-abee-febdc6577a95",

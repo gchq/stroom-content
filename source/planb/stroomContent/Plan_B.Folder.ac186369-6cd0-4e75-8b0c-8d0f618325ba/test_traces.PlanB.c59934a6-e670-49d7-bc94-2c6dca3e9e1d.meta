@@ -1,0 +1,26 @@
+{
+  "type" : "PlanB",
+  "uuid" : "c59934a6-e670-49d7-bc94-2c6dca3e9e1d",
+  "name" : "test_traces",
+  "version" : "3e989d18-32aa-4e64-8910-3cce3ce435ad",
+  "stateType" : "TRACE",
+  "settings" : {
+    "type" : "trace",
+    "maxStoreSize" : 10737418240,
+    "synchroniseMerge" : false,
+    "overwrite" : true,
+    "retention" : {
+      "enabled" : false,
+      "duration" : {
+        "time" : 1,
+        "timeUnit" : "YEARS"
+      },
+      "useStateTime" : false
+    },
+    "snapshotSettings" : {
+      "useSnapshotsForLookup" : false,
+      "useSnapshotsForGet" : false,
+      "useSnapshotsForQuery" : false
+    }
+  }
+}

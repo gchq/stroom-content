@@ -1,0 +1,71 @@
+{
+  "elements" : {
+    "add" : [ {
+      "id" : "Source",
+      "type" : "Source"
+    }, {
+      "id" : "6999F0A1-94DA-4B9A-AC12-7A11677AA67A",
+      "type" : "JSONParser",
+      "name" : "JSON Parser"
+    }, {
+      "id" : "BDDA7E7D-1865-4DF1-9C81-06DB1A16935A",
+      "type" : "SplitFilter",
+      "name" : "Split Filter"
+    }, {
+      "id" : "27EC357E-8965-4CED-88B3-08543255D6F9",
+      "type" : "XSLTFilter",
+      "name" : "XSLT Filter"
+    }, {
+      "id" : "0CB8A6A2-A10C-4CA9-A616-623490176C34",
+      "type" : "SchemaFilter",
+      "name" : "Schema Filter"
+    }, {
+      "id" : "7DA5B827-2D60-4060-931D-19243B6B184D",
+      "type" : "PlanBFilter",
+      "name" : "PlanB Filter"
+    } ]
+  },
+  "properties" : {
+    "add" : [ {
+      "element" : "BDDA7E7D-1865-4DF1-9C81-06DB1A16935A",
+      "name" : "splitDepth",
+      "value" : {
+        "integer" : 7
+      }
+    }, {
+      "element" : "27EC357E-8965-4CED-88B3-08543255D6F9",
+      "name" : "xslt",
+      "value" : {
+        "entity" : {
+          "type" : "XSLT",
+          "uuid" : "1498441b-ab3f-4326-af42-7a65d55264ed",
+          "name" : "test_traces"
+        }
+      }
+    }, {
+      "element" : "0CB8A6A2-A10C-4CA9-A616-623490176C34",
+      "name" : "namespaceURI",
+      "value" : {
+        "string" : "plan-b:2"
+      }
+    } ]
+  },
+  "links" : {
+    "add" : [ {
+      "from" : "Source",
+      "to" : "6999F0A1-94DA-4B9A-AC12-7A11677AA67A"
+    }, {
+      "from" : "6999F0A1-94DA-4B9A-AC12-7A11677AA67A",
+      "to" : "BDDA7E7D-1865-4DF1-9C81-06DB1A16935A"
+    }, {
+      "from" : "BDDA7E7D-1865-4DF1-9C81-06DB1A16935A",
+      "to" : "27EC357E-8965-4CED-88B3-08543255D6F9"
+    }, {
+      "from" : "27EC357E-8965-4CED-88B3-08543255D6F9",
+      "to" : "0CB8A6A2-A10C-4CA9-A616-623490176C34"
+    }, {
+      "from" : "0CB8A6A2-A10C-4CA9-A616-623490176C34",
+      "to" : "7DA5B827-2D60-4060-931D-19243B6B184D"
+    } ]
+  }
+}
