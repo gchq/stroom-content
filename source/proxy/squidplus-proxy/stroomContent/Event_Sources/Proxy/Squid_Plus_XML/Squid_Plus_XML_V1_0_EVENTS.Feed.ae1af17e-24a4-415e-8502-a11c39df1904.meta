@@ -1,0 +1,13 @@
+{
+  "type" : "Feed",
+  "uuid" : "ae1af17e-24a4-415e-8502-a11c39df1904",
+  "name" : "Squid-Plus-XML-V1.0-EVENTS",
+  "version" : "bc32fa00-8dac-46b1-87ac-867941ccc65d",
+  "description" : "Squid Proxy logs formed using the Squid-Plus XML proxy agent",
+  "classification" : "",
+  "encoding" : "UTF-8",
+  "contextEncoding" : "UTF-8",
+  "reference" : false,
+  "streamType" : "Raw Events",
+  "status" : "RECEIVE"
+}
