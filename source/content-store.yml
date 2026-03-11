@@ -101,7 +101,7 @@ contentPacks:
   -
     id: example-index
     uiName: Example Index
-    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/images/Indexes.svg
+    iconUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/images/indexes.svg
     licenseName: Apache 2.0
     licenseUrl: https://raw.githubusercontent.com/gchq/stroom-content/refs/heads/master/LICENCE.txt
     stroomPath: /
