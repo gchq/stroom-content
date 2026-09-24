@@ -20,7 +20,13 @@
     </data>
     
   </xsl:template>
-  <xsl:template match="data[@name!='logLevel']">
+  <xsl:template match="data[@name='dateTime']">
+    <data name="dateTime">
+      <xsl:attribute name="value" select="stroom:format-date(@value, 'yyyy/MM/dd HH:mm:ss')"/>
+    </data>
+  </xsl:template>
+
+  <xsl:template match="data[@name!='logLevel' and @name!='dateTime']">
     <xsl:copy-of select="."/>
   </xsl:template>
 </xsl:stylesheet>
